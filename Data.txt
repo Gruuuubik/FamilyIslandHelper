@@ -1,0 +1,12 @@
+Tree(114 energy)
+wood = 31
+stick = 10
+
+114/31 = 4
+114/10 = 11
+
+
+Gold rock(54 energy)
+gold ore = 6
+
+54/6 = 9

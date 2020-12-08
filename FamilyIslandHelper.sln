@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.960
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FamilyIslandHelper", "FamilyIslandHelper\FamilyIslandHelper.csproj", "{6E03D90F-0FBD-4A2B-954B-9A87B81FB01B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FamilyIslandHelper.UnitTests", "FamilyIslandHelper.UnitTests\FamilyIslandHelper.UnitTests.csproj", "{A03E510C-CE69-4FC3-A3AF-07022DF2AEFE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6E03D90F-0FBD-4A2B-954B-9A87B81FB01B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6E03D90F-0FBD-4A2B-954B-9A87B81FB01B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6E03D90F-0FBD-4A2B-954B-9A87B81FB01B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6E03D90F-0FBD-4A2B-954B-9A87B81FB01B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A03E510C-CE69-4FC3-A3AF-07022DF2AEFE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A03E510C-CE69-4FC3-A3AF-07022DF2AEFE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A03E510C-CE69-4FC3-A3AF-07022DF2AEFE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A03E510C-CE69-4FC3-A3AF-07022DF2AEFE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {1C2A577B-88EA-4573-9F1E-770009A01F8E}
+	EndGlobalSection
+EndGlobal
