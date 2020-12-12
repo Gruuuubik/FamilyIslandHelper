@@ -16,7 +16,7 @@ namespace FamilyIslandHelper.UnitTests
 		[Fact]
 		public void When_GetAllBuildingsNames_Then_AllBuildingsHaveFolders()
 		{
-			var actualBuildingsNames = GetStaticClassesNames(relativePathToBuildings);
+			var actualBuildingsNames = GetClassesNames(relativePathToBuildings, true);
 
 			var buildingsDirectories = Directory.GetDirectories(folderWithPictures);
 			var expectedBuildingsNames = buildingsDirectories.Select(b => b.Split('\\').Last());
@@ -24,11 +24,22 @@ namespace FamilyIslandHelper.UnitTests
 			Assert.Equal(expectedBuildingsNames, actualBuildingsNames);
 		}
 
+		[Fact]
+		public void When_GetAllResources_Then_AllResourcesHaveImages()
+		{
+			var actualResourcesNames = GetClassesNames("FamilyIslandHelper.Models", false).OrderBy(i => i);
+
+			var resourcesPathes = Directory.GetFiles("Resources");
+			var expectedResourcesNames = resourcesPathes.Select(r => r.Split('.').First().Split('\\').Last()).OrderBy(i => i);
+
+			Assert.Equal(expectedResourcesNames, actualResourcesNames);
+		}
+
 		public static IEnumerable<object[]> BuildingsClassesProvider
 		{
 			get
 			{
-				var buildingsClasses = GetStaticClasses(relativePathToBuildings);
+				var buildingsClasses = GetClasses(relativePathToBuildings, true);
 
 				return buildingsClasses.Select(b => new object[] { b });
 			}
@@ -46,18 +57,18 @@ namespace FamilyIslandHelper.UnitTests
 			Assert.Equal(expectedItemsNames, actualItemsNames);
 		}
 
-		private static IEnumerable<Type> GetStaticClasses(string nameSpace)
+		private static IEnumerable<Type> GetClasses(string nameSpace, bool isStatic)
 		{
 			var assemblyName = nameSpace.Split('.').First();
 			var assembly = Assembly.Load(assemblyName);
 
 			return assembly.GetTypes()
-				.Where(type => type.Namespace == nameSpace && type.IsAbstract && type.IsSealed);
+				.Where(type => type.Namespace == nameSpace && (!isStatic || (type.IsAbstract && type.IsSealed)));
 		}
 
-		private static IEnumerable<string> GetStaticClassesNames(string nameSpace)
+		private static IEnumerable<string> GetClassesNames(string nameSpace, bool isStatic)
 		{
-			return GetStaticClasses(nameSpace).Select(type => type.Name);
+			return GetClasses(nameSpace, isStatic).Select(type => type.Name);
 		}
 
 		[Theory]

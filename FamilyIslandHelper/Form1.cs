@@ -91,7 +91,10 @@ namespace FamilyIslandHelper
 			treeView1.Nodes.Clear();
 
 			var imageIndex = GetImageIndex(itemTypeString);
-			var treeNode = new TreeNode(item.Name, imageIndex, imageIndex);
+			var treeNode = new TreeNode(item.Name, imageIndex, imageIndex)
+			{
+				Name = item.GetType().Name
+			};
 
 			treeView1.Nodes.Add(treeNode);
 
@@ -108,12 +111,18 @@ namespace FamilyIslandHelper
 
 				for (var i = 0; i < producableItem.Components.Count; i++)
 				{
-					var imageIndex = GetImageIndex(producableItem.Components[i].item.GetType().Name);
-					var treeNode = new TreeNode(producableItem.Components[i].item.Name, imageIndex, imageIndex);
+					var childComponent = producableItem.Components[i];
+					var childItem = childComponent.item;
+
+					var imageIndex = GetImageIndex(childItem.GetType().Name);
+					var treeNode = new TreeNode($"{childItem.Name}({childComponent.count})", imageIndex, imageIndex)
+					{
+						Name = childItem.GetType().Name
+					};
 
 					parentTreeNode.Nodes.Add(treeNode);
 
-					AddItemComponentsToItemNode(parentTreeNode.Nodes[i], producableItem.Components[i].item);
+					AddItemComponentsToItemNode(parentTreeNode.Nodes[i], childItem);
 				}
 			}
 		}
@@ -123,7 +132,7 @@ namespace FamilyIslandHelper
 			var itemTypeString = ((Panel) sender).Tag.ToString();
 
 			AddInfoToTreeView(currentBuildingName, itemTypeString);
-			AddInfoToListBox(currentBuildingName, itemTypeString);
+			//AddInfoToListBox(currentBuildingName, itemTypeString);
 		}
 
 		private void cb_Buildings_SelectedIndexChanged(object sender, EventArgs e)
@@ -163,6 +172,15 @@ namespace FamilyIslandHelper
 					imageList.Images.Add(Image.FromFile(itemsPathes[i]));
 					counter++;
 				}
+			}
+
+			var resourcesPathes = Directory.GetFiles("Resources").ToList();
+
+			for (var i = 0; i < resourcesPathes.Count; i++)
+			{
+				dictImagesIndexes.Add(GetItemNameByPath(resourcesPathes[i]), counter);
+				imageList.Images.Add(Image.FromFile(resourcesPathes[i]));
+				counter++;
 			}
 
 			return imageList;
