@@ -3,7 +3,6 @@ using System.Collections.Generic;
 
 namespace FamilyIslandHelper.Models.Buildings
 {
-	//Мешалка
 	public static class Mixer
 	{
 		public static string Name = "Мешалка";

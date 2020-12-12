@@ -3,7 +3,6 @@ using System.Collections.Generic;
 
 namespace FamilyIslandHelper.Models.Buildings
 {
-	//Плавильня
 	public static class Smelter
 	{
 		public static string Name = "Плавильня";

@@ -3,7 +3,6 @@ using System.Collections.Generic;
 
 namespace FamilyIslandHelper.Models.Buildings
 {
-	//Ткацкий станок
 	public static class Loom
 	{
 		public static string Name = "Ткацкий станок";
