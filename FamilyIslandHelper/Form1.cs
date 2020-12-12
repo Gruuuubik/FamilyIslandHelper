@@ -13,6 +13,8 @@ namespace FamilyIslandHelper
 		private const string folderWithPictures = "Pictures";
 		private string currentBuildingName;
 
+		private readonly Dictionary<string, int> dictImagesIndexes = new Dictionary<string, int>();
+
 		public Form1()
 		{
 			InitializeComponent();
@@ -23,7 +25,6 @@ namespace FamilyIslandHelper
 		private void InitBuildings()
 		{
 			var buildingsDirectories = Directory.GetDirectories(folderWithPictures);
-
 			var buildingsNames = buildingsDirectories.Select(b => b.Split('\\').Last()).ToArray();
 
 			cb_Buildings.Items.AddRange(buildingsNames);
@@ -38,7 +39,7 @@ namespace FamilyIslandHelper
 			{
 				var panel = new Panel
 				{
-					Tag = itemsPathes[i].Split('.').First().Split('\\').Last(),
+					Tag = GetItemNameByPath(itemsPathes[i]),
 					Size = new Size(60, 60),
 					BackgroundImage = Image.FromFile(itemsPathes[i]),
 					BackgroundImageLayout = ImageLayout.Stretch,
@@ -52,7 +53,7 @@ namespace FamilyIslandHelper
 			}
 		}
 
-		private void AddInfo(string buildingName, string itemTypeString)
+		private void AddInfoToListBox(string buildingName, string itemTypeString)
 		{
 			var item = ItemCreator.CreateItem(buildingName, itemTypeString);
 
@@ -76,11 +77,43 @@ namespace FamilyIslandHelper
 			}
 		}
 
+		private void AddInfoToTreeView(string buildingName, string itemTypeString)
+		{
+			var item = ItemCreator.CreateItem(buildingName, itemTypeString);
+
+			treeView1.Nodes.Clear();
+
+			var imageIndex = GetImageIndex(itemTypeString);
+			var treeNode = new TreeNode(item.Name, imageIndex, imageIndex);
+
+			treeView1.Nodes.Add(treeNode);
+
+			AddItemComponentsToItemNode(treeView1.Nodes[0], item);
+
+			treeView1.ExpandAll();
+		}
+
+		private void AddItemComponentsToItemNode(TreeNode treeNode, Item item)
+		{
+			if (item is ProducableItem)
+			{
+				var producableItem = item as ProducableItem;
+
+				for (var i = 0; i < producableItem.Components.Count; i++)
+				{
+					treeNode.Nodes.Add(producableItem.Components[i].item.Name);
+
+					AddItemComponentsToItemNode(treeNode.Nodes[i], producableItem.Components[i].item);
+				}
+			}
+		}
+
 		private void pnl_Item_MouseDown(object sender, MouseEventArgs e)
 		{
 			var itemTypeString = ((Panel) sender).Tag.ToString();
 
-			AddInfo(currentBuildingName, itemTypeString);
+			AddInfoToTreeView(currentBuildingName, itemTypeString);
+			AddInfoToListBox(currentBuildingName, itemTypeString);
 		}
 
 		private void cb_Buildings_SelectedIndexChanged(object sender, EventArgs e)
@@ -90,7 +123,38 @@ namespace FamilyIslandHelper
 
 			var itemsPathes = Directory.GetFiles($"{folderWithPictures}\\{currentBuildingName}").ToList();
 
+			treeView1.ImageList = GetImageList(itemsPathes);
+
 			InitPanels(itemsPathes);
+		}
+
+		private ImageList GetImageList(List<string> itemsPathes)
+		{
+			dictImagesIndexes.Clear();
+
+			var imageList = new ImageList
+			{
+				ImageSize = new Size(30, 30)
+			};
+
+			for (var i = 0; i < itemsPathes.Count; i++)
+			{
+				dictImagesIndexes.Add(GetItemNameByPath(itemsPathes[i]), i);
+
+				imageList.Images.Add(Image.FromFile(itemsPathes[i]));
+			}
+
+			return imageList;
+		}
+
+		private int GetImageIndex(string itemName)
+		{
+			return dictImagesIndexes[itemName];
+		}
+
+		private string GetItemNameByPath(string itemPath)
+		{
+			return itemPath.Split('.').First().Split('\\').Last();
 		}
 	}
 }

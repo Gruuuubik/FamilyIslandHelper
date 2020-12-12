@@ -31,16 +31,17 @@
 			this.listBox1 = new System.Windows.Forms.ListBox();
 			this.pnl_Main = new System.Windows.Forms.Panel();
 			this.cb_Buildings = new System.Windows.Forms.ComboBox();
+			this.treeView1 = new System.Windows.Forms.TreeView();
 			this.SuspendLayout();
 			// 
 			// listBox1
 			// 
 			this.listBox1.FormattingEnabled = true;
 			this.listBox1.ItemHeight = 16;
-			this.listBox1.Location = new System.Drawing.Point(22, 180);
+			this.listBox1.Location = new System.Drawing.Point(489, 180);
 			this.listBox1.Margin = new System.Windows.Forms.Padding(4);
 			this.listBox1.Name = "listBox1";
-			this.listBox1.Size = new System.Drawing.Size(1131, 404);
+			this.listBox1.Size = new System.Drawing.Size(664, 404);
 			this.listBox1.TabIndex = 2;
 			// 
 			// pnl_Main
@@ -62,11 +63,21 @@
 			this.cb_Buildings.TabIndex = 4;
 			this.cb_Buildings.SelectedIndexChanged += new System.EventHandler(this.cb_Buildings_SelectedIndexChanged);
 			// 
+			// treeView1
+			// 
+			this.treeView1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+			this.treeView1.ItemHeight = 30;
+			this.treeView1.Location = new System.Drawing.Point(22, 180);
+			this.treeView1.Name = "treeView1";
+			this.treeView1.Size = new System.Drawing.Size(443, 404);
+			this.treeView1.TabIndex = 5;
+			// 
 			// Form1
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(1184, 611);
+			this.Controls.Add(this.treeView1);
 			this.Controls.Add(this.cb_Buildings);
 			this.Controls.Add(this.pnl_Main);
 			this.Controls.Add(this.listBox1);
@@ -83,6 +94,7 @@
 		private System.Windows.Forms.ListBox listBox1;
 		private System.Windows.Forms.Panel pnl_Main;
 		private System.Windows.Forms.ComboBox cb_Buildings;
+		private System.Windows.Forms.TreeView treeView1;
 	}
 }
 
