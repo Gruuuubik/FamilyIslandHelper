@@ -55,19 +55,19 @@
     </Compile>
     <Compile Include="ItemCreator.cs" />
     <Compile Include="Models\Buildings\CarpentryWorkshop.cs" />
-    <Compile Include="Models\Item.cs" />
+    <Compile Include="Models\Abstract\Item.cs" />
     <Compile Include="Models\Buildings\Knocker.cs" />
     <Compile Include="Models\Buildings\Loom.cs" />
     <Compile Include="Models\Buildings\Mill.cs" />
     <Compile Include="Models\Buildings\Mixer.cs" />
     <Compile Include="Models\Buildings\Pottery.cs" />
-    <Compile Include="Models\ProducableItem.cs" />
+    <Compile Include="Models\Abstract\ProducableItem.cs" />
     <Compile Include="Models\Resources.cs" />
     <Compile Include="Models\Buildings\Sawmill.cs" />
     <Compile Include="Models\Buildings\Smelter.cs" />
     <Compile Include="Models\Buildings\Tannery.cs" />
     <Compile Include="Models\Buildings\Workshop.cs" />
-    <Compile Include="Models\ResourceItem.cs" />
+    <Compile Include="Models\Abstract\ResourceItem.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Form1.resx">
@@ -257,13 +257,22 @@
     <Content Include="Resources\Corn.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Resources\Cotton.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Resources\Egg.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Resources\Emerald.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Resources\GoldOre.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Resources\Grass.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Milk.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Resources\PalmLeaf.png">
@@ -275,13 +284,22 @@
     <Content Include="Resources\Poison.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Resources\Salt.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Resources\Shell.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Resources\Skin.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Resources\Stick.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Resources\Stone.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Wheat.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Resources\Wood.png">

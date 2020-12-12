@@ -1,4 +1,4 @@
-﻿namespace FamilyIslandHelper.Models
+﻿namespace FamilyIslandHelper.Models.Abstract
 {
 	public abstract class Item
 	{

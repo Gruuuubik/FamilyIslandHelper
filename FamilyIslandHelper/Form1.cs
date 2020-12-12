@@ -1,4 +1,4 @@
-﻿using FamilyIslandHelper.Models;
+﻿using FamilyIslandHelper.Models.Abstract;
 using System;
 using System.Collections.Generic;
 using System.Drawing;

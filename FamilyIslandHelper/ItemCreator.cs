@@ -1,4 +1,4 @@
-﻿using FamilyIslandHelper.Models;
+﻿using FamilyIslandHelper.Models.Abstract;
 using System;
 
 namespace FamilyIslandHelper

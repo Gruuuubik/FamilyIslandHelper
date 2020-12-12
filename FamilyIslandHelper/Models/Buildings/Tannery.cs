@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FamilyIslandHelper.Models.Abstract;
+using System;
 using System.Collections.Generic;
 
 namespace FamilyIslandHelper.Models.Buildings

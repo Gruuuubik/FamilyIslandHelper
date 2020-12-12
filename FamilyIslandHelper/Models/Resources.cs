@@ -1,4 +1,6 @@
-﻿namespace FamilyIslandHelper.Models
+﻿using FamilyIslandHelper.Models.Abstract;
+
+namespace FamilyIslandHelper.Models
 {
 	public class Clay : ResourceItem
 	{
