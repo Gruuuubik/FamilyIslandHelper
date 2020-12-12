@@ -101,6 +101,9 @@
     <Content Include="Pictures\CarpentryWorkshop\Stairs.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Pictures\Empty.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Pictures\Loom\Gloves.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

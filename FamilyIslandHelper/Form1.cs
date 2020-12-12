@@ -20,6 +20,8 @@ namespace FamilyIslandHelper
 			InitializeComponent();
 
 			InitBuildings();
+
+			treeView1.ImageList = GetImageList();
 		}
 
 		private void InitBuildings()
@@ -93,7 +95,7 @@ namespace FamilyIslandHelper
 			treeView1.ExpandAll();
 		}
 
-		private void AddItemComponentsToItemNode(TreeNode treeNode, Item item)
+		private void AddItemComponentsToItemNode(TreeNode parentTreeNode, Item item)
 		{
 			if (item is ProducableItem)
 			{
@@ -101,9 +103,12 @@ namespace FamilyIslandHelper
 
 				for (var i = 0; i < producableItem.Components.Count; i++)
 				{
-					treeNode.Nodes.Add(producableItem.Components[i].item.Name);
+					var imageIndex = GetImageIndex(producableItem.Components[i].item.GetType().Name);
+					var treeNode = new TreeNode(producableItem.Components[i].item.Name, imageIndex, imageIndex);
 
-					AddItemComponentsToItemNode(treeNode.Nodes[i], producableItem.Components[i].item);
+					parentTreeNode.Nodes.Add(treeNode);
+
+					AddItemComponentsToItemNode(parentTreeNode.Nodes[i], producableItem.Components[i].item);
 				}
 			}
 		}
@@ -123,12 +128,10 @@ namespace FamilyIslandHelper
 
 			var itemsPathes = Directory.GetFiles($"{folderWithPictures}\\{currentBuildingName}").ToList();
 
-			treeView1.ImageList = GetImageList(itemsPathes);
-
 			InitPanels(itemsPathes);
 		}
 
-		private ImageList GetImageList(List<string> itemsPathes)
+		private ImageList GetImageList()
 		{
 			dictImagesIndexes.Clear();
 
@@ -137,11 +140,25 @@ namespace FamilyIslandHelper
 				ImageSize = new Size(30, 30)
 			};
 
-			for (var i = 0; i < itemsPathes.Count; i++)
-			{
-				dictImagesIndexes.Add(GetItemNameByPath(itemsPathes[i]), i);
+			var buildingsDirectories = Directory.GetDirectories(folderWithPictures);
+			var buildingsNames = buildingsDirectories.Select(b => b.Split('\\').Last()).ToArray();
 
-				imageList.Images.Add(Image.FromFile(itemsPathes[i]));
+			var counter = 0;
+			var itemPath = Directory.GetFiles(folderWithPictures).FirstOrDefault();
+			dictImagesIndexes.Add(GetItemNameByPath(itemPath), counter);
+			imageList.Images.Add(Image.FromFile(itemPath));
+			counter++;
+
+			foreach (var buildingName in buildingsNames)
+			{
+				var itemsPathes = Directory.GetFiles($"{folderWithPictures}\\{buildingName}").ToList();
+
+				for (var i = 0; i < itemsPathes.Count; i++)
+				{
+					dictImagesIndexes.Add(GetItemNameByPath(itemsPathes[i]), counter);
+					imageList.Images.Add(Image.FromFile(itemsPathes[i]));
+					counter++;
+				}
 			}
 
 			return imageList;
@@ -149,6 +166,11 @@ namespace FamilyIslandHelper
 
 		private int GetImageIndex(string itemName)
 		{
+			if (!dictImagesIndexes.ContainsKey(itemName))
+			{
+				return 0;
+			}
+
 			return dictImagesIndexes[itemName];
 		}
 
