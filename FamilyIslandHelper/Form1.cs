@@ -26,11 +26,16 @@ namespace FamilyIslandHelper
 
 		private void InitBuildings()
 		{
+			cb_Buildings.Items.AddRange(GetBuildingsNames());
+			cb_Buildings.SelectedIndex = 0;
+		}
+
+		private string[] GetBuildingsNames()
+		{
 			var buildingsDirectories = Directory.GetDirectories(folderWithPictures);
 			var buildingsNames = buildingsDirectories.Select(b => b.Split('\\').Last()).ToArray();
 
-			cb_Buildings.Items.AddRange(buildingsNames);
-			cb_Buildings.SelectedIndex = 0;
+			return buildingsNames;
 		}
 
 		private void InitPanels(List<string> itemsPathes)
@@ -140,8 +145,7 @@ namespace FamilyIslandHelper
 				ImageSize = new Size(30, 30)
 			};
 
-			var buildingsDirectories = Directory.GetDirectories(folderWithPictures);
-			var buildingsNames = buildingsDirectories.Select(b => b.Split('\\').Last()).ToArray();
+			var buildingsNames = GetBuildingsNames();
 
 			var counter = 0;
 			var itemPath = Directory.GetFiles(folderWithPictures).FirstOrDefault();
