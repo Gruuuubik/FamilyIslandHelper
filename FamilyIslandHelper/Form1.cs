@@ -40,13 +40,6 @@ namespace FamilyIslandHelper
 			return buildingsClasses.Select(bc => new BuildingInfo { Value = bc.Name, Name = bc.GetFields()[0].GetValue(null).ToString() }).ToList();
 		}
 
-		private string[] GetBuildingsNames()
-		{
-			var buildingsNames = ItemHelper.GetClassesNames("FamilyIslandHelper.Models.Buildings", true).ToArray();
-
-			return buildingsNames;
-		}
-
 		private void InitPanels(List<string> itemsPathes)
 		{
 			pnl_Main.Controls.Clear();
@@ -167,7 +160,7 @@ namespace FamilyIslandHelper
 				ImageSize = new Size(30, 30)
 			};
 
-			var buildingsNames = GetBuildingsNames();
+			var buildingsNames = ItemHelper.GetClassesNames("FamilyIslandHelper.Models.Buildings", true).ToArray();
 
 			var counter = 0;
 			var itemPath = Directory.GetFiles(folderWithPictures).FirstOrDefault();
