@@ -54,6 +54,7 @@
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
     <Compile Include="ItemHelper.cs" />
+    <Compile Include="Models\BuildingInfo.cs" />
     <Compile Include="Models\Buildings\CarpentryWorkshop.cs" />
     <Compile Include="Models\Abstract\Item.cs" />
     <Compile Include="Models\Buildings\Knocker.cs" />

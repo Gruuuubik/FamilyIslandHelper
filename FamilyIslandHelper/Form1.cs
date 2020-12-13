@@ -1,4 +1,5 @@
-﻿using FamilyIslandHelper.Models.Abstract;
+﻿using FamilyIslandHelper.Models;
+using FamilyIslandHelper.Models.Abstract;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -26,14 +27,23 @@ namespace FamilyIslandHelper
 
 		private void InitBuildings()
 		{
-			cb_Buildings.Items.AddRange(GetBuildingsNames());
+			cb_Buildings.DataSource = GetBuildingsClasses();
+			cb_Buildings.DisplayMember = "Name";
+			cb_Buildings.ValueMember = "Value";
+
 			cb_Buildings.SelectedIndex = 0;
+		}
+
+		private List<BuildingInfo> GetBuildingsClasses()
+		{
+			var buildingsClasses = ItemHelper.GetClasses("FamilyIslandHelper.Models.Buildings", true).ToList();
+
+			return buildingsClasses.Select(bc => new BuildingInfo { Value = bc.Name, Name = bc.GetFields()[0].GetValue(null).ToString() }).ToList();
 		}
 
 		private string[] GetBuildingsNames()
 		{
-			var buildingsDirectories = Directory.GetDirectories(folderWithPictures);
-			var buildingsNames = buildingsDirectories.Select(b => b.Split('\\').Last()).ToArray();
+			var buildingsNames = ItemHelper.GetClassesNames("FamilyIslandHelper.Models.Buildings", true).ToArray();
 
 			return buildingsNames;
 		}
@@ -137,7 +147,7 @@ namespace FamilyIslandHelper
 
 		private void cb_Buildings_SelectedIndexChanged(object sender, EventArgs e)
 		{
-			currentBuildingName = cb_Buildings.SelectedItem.ToString();
+			currentBuildingName = cb_Buildings.SelectedValue.ToString();
 			listBox1.Items.Clear();
 			treeView1.Nodes.Clear();
 
