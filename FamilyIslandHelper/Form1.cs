@@ -12,7 +12,6 @@ namespace FamilyIslandHelper
 	public partial class Form1 : Form
 	{
 		private const string folderWithPictures = "Pictures";
-		private string currentBuildingName;
 
 		private readonly Dictionary<string, int> dictImagesIndexes = new Dictionary<string, int>();
 
@@ -111,6 +110,8 @@ namespace FamilyIslandHelper
 			AddItemComponentsToItemNode(treeView1.Nodes[0], item);
 
 			treeView1.ExpandAll();
+
+			treeView1.SelectedNode = treeView1.Nodes[0];
 		}
 
 		private void AddItemComponentsToItemNode(TreeNode parentTreeNode, Item item)
@@ -142,12 +143,13 @@ namespace FamilyIslandHelper
 			var itemTypeString = ((Panel) sender).Tag.ToString();
 			listBox1.Items.Clear();
 
+			var currentBuildingName = cb_Buildings.SelectedValue.ToString();
 			AddInfoToTreeView(currentBuildingName, itemTypeString);
 		}
 
 		private void cb_Buildings_SelectedIndexChanged(object sender, EventArgs e)
 		{
-			currentBuildingName = cb_Buildings.SelectedValue.ToString();
+			var currentBuildingName = cb_Buildings.SelectedValue.ToString();
 			listBox1.Items.Clear();
 			treeView1.Nodes.Clear();
 
