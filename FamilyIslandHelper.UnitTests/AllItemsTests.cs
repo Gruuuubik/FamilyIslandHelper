@@ -1,9 +1,9 @@
-﻿using FamilyIslandHelper.Models.Buildings;
+﻿using FamilyIslandHelper.Models;
+using FamilyIslandHelper.Models.Buildings;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Reflection;
 using Xunit;
 
 namespace FamilyIslandHelper.UnitTests
@@ -16,7 +16,7 @@ namespace FamilyIslandHelper.UnitTests
 		[Fact]
 		public void When_GetAllBuildingsNames_Then_AllBuildingsHaveFolders()
 		{
-			var actualBuildingsNames = GetClassesNames(relativePathToBuildings, true);
+			var actualBuildingsNames = ItemHelper.GetClassesNames(relativePathToBuildings, true);
 
 			var buildingsDirectories = Directory.GetDirectories(folderWithPictures);
 			var expectedBuildingsNames = buildingsDirectories.Select(b => b.Split('\\').Last());
@@ -24,10 +24,19 @@ namespace FamilyIslandHelper.UnitTests
 			Assert.Equal(expectedBuildingsNames, actualBuildingsNames);
 		}
 
+		[Theory]
+		[InlineData("Lace", typeof(Loom.Lace))]
+		public void When_FindItemByName_Then_ReturnCorrectItem(string itemName, Type expectedItemType)
+		{
+			var actualItem = ItemHelper.FindItemByName(itemName);
+
+			Assert.Equal(expectedItemType, actualItem.GetType());
+		}
+
 		[Fact]
 		public void When_GetAllResources_Then_AllResourcesHaveImages()
 		{
-			var actualResourcesNames = GetClassesNames("FamilyIslandHelper.Models", false).OrderBy(i => i);
+			var actualResourcesNames = ItemHelper.GetClassesNames("FamilyIslandHelper.Models", false).OrderBy(i => i);
 
 			var resourcesPathes = Directory.GetFiles("Resources");
 			var expectedResourcesNames = resourcesPathes.Select(r => r.Split('.').First().Split('\\').Last()).OrderBy(i => i);
@@ -39,7 +48,7 @@ namespace FamilyIslandHelper.UnitTests
 		{
 			get
 			{
-				var buildingsClasses = GetClasses(relativePathToBuildings, true);
+				var buildingsClasses = ItemHelper.GetClasses(relativePathToBuildings, true);
 
 				return buildingsClasses.Select(b => new object[] { b });
 			}
@@ -57,25 +66,20 @@ namespace FamilyIslandHelper.UnitTests
 			Assert.Equal(expectedItemsNames, actualItemsNames);
 		}
 
-		private static IEnumerable<Type> GetClasses(string nameSpace, bool isStatic)
+		[Theory]
+		[InlineData("Loom", "Lace", typeof(Loom.Lace))]
+		public void When_TryToCreateProducableItem_Then_ReturnCorrectProducableItem(string buildingName, string itemTypeString, Type expectedItemType)
 		{
-			var assemblyName = nameSpace.Split('.').First();
-			var assembly = Assembly.Load(assemblyName);
+			var item = ItemHelper.CreateProducableItem(buildingName, itemTypeString);
 
-			return assembly.GetTypes()
-				.Where(type => type.Namespace == nameSpace && (!isStatic || (type.IsAbstract && type.IsSealed)));
-		}
-
-		private static IEnumerable<string> GetClassesNames(string nameSpace, bool isStatic)
-		{
-			return GetClasses(nameSpace, isStatic).Select(type => type.Name);
+			Assert.Equal(expectedItemType, item.GetType());
 		}
 
 		[Theory]
-		[InlineData("Loom", "Lace", typeof(Loom.Lace))]
-		public void When_TryToCreateItem_Then_ReturnCorrectItem(string buildingName, string itemTypeString, Type expectedItemType)
+		[InlineData("Stone", typeof(Stone))]
+		public void When_TryToCreateResourceItem_Then_ReturnCorrectResourceItem(string itemTypeString, Type expectedItemType)
 		{
-			var item = ItemCreator.CreateItem(buildingName, itemTypeString);
+			var item = ItemHelper.CreateResourceItem(itemTypeString);
 
 			Assert.Equal(expectedItemType, item.GetType());
 		}

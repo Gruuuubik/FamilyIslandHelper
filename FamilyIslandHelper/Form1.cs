@@ -60,9 +60,9 @@ namespace FamilyIslandHelper
 			}
 		}
 
-		private void AddInfoToListBox(string buildingName, string itemTypeString)
+		private void AddInfoToListBox(string itemName)
 		{
-			var item = ItemCreator.CreateItem(buildingName, itemTypeString);
+			var item = ItemHelper.FindItemByName(itemName);
 
 			listBox1.Items.Clear();
 			listBox1.Items.Add(item.ToString());
@@ -86,7 +86,7 @@ namespace FamilyIslandHelper
 
 		private void AddInfoToTreeView(string buildingName, string itemTypeString)
 		{
-			var item = ItemCreator.CreateItem(buildingName, itemTypeString);
+			var item = ItemHelper.CreateProducableItem(buildingName, itemTypeString);
 
 			treeView1.Nodes.Clear();
 
@@ -130,15 +130,16 @@ namespace FamilyIslandHelper
 		private void pnl_Item_MouseDown(object sender, MouseEventArgs e)
 		{
 			var itemTypeString = ((Panel) sender).Tag.ToString();
+			listBox1.Items.Clear();
 
 			AddInfoToTreeView(currentBuildingName, itemTypeString);
-			//AddInfoToListBox(currentBuildingName, itemTypeString);
 		}
 
 		private void cb_Buildings_SelectedIndexChanged(object sender, EventArgs e)
 		{
 			currentBuildingName = cb_Buildings.SelectedItem.ToString();
 			listBox1.Items.Clear();
+			treeView1.Nodes.Clear();
 
 			var itemsPathes = Directory.GetFiles($"{folderWithPictures}\\{currentBuildingName}").ToList();
 
@@ -199,6 +200,11 @@ namespace FamilyIslandHelper
 		private string GetItemNameByPath(string itemPath)
 		{
 			return itemPath.Split('.').First().Split('\\').Last();
+		}
+
+		private void treeView1_AfterSelect(object sender, TreeViewEventArgs e)
+		{
+			AddInfoToListBox(treeView1.SelectedNode.Name);
 		}
 	}
 }
