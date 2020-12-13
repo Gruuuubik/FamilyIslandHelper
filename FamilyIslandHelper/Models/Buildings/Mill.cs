@@ -11,7 +11,7 @@ namespace FamilyIslandHelper.Models.Buildings
 		public class ChickenFood : ProducableItem
 		{
 			public override string Name => "Корм для кур";
-			public override TimeSpan ProduceTime => TimeSpan.FromMinutes(5);
+			public override TimeSpan ProduceTime => TimeSpan.FromSeconds(5 * 60 / GlobalSettings.ProduceRatio);
 
 			public override List<(Item item, int count)> Components => new List<(Item item, int count)>
 			{
@@ -23,7 +23,7 @@ namespace FamilyIslandHelper.Models.Buildings
 		public class Ocher : ProducableItem
 		{
 			public override string Name => "Охра";
-			public override TimeSpan ProduceTime => TimeSpan.FromMinutes(30);
+			public override TimeSpan ProduceTime => TimeSpan.FromMinutes(30 / GlobalSettings.ProduceRatio);
 
 			public override List<(Item item, int count)> Components => new List<(Item item, int count)>
 			{
@@ -35,7 +35,7 @@ namespace FamilyIslandHelper.Models.Buildings
 		public class Flour : ProducableItem
 		{
 			public override string Name => "Мука";
-			public override TimeSpan ProduceTime => TimeSpan.FromMinutes(45);
+			public override TimeSpan ProduceTime => TimeSpan.FromMinutes(45 / GlobalSettings.ProduceRatio);
 
 			public override List<(Item item, int count)> Components => new List<(Item item, int count)>
 			{

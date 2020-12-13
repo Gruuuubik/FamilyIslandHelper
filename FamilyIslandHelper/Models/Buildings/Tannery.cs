@@ -11,7 +11,7 @@ namespace FamilyIslandHelper.Models.Buildings
 		public class Leather : ProducableItem
 		{
 			public override string Name => "Кожа";
-			public override TimeSpan ProduceTime => TimeSpan.FromMinutes(60);
+			public override TimeSpan ProduceTime => TimeSpan.FromMinutes(60 / GlobalSettings.ProduceRatio);
 
 			public override List<(Item item, int count)> Components => new List<(Item item, int count)>
 			{
@@ -23,7 +23,7 @@ namespace FamilyIslandHelper.Models.Buildings
 		public class Papyrus : ProducableItem
 		{
 			public override string Name => "Папирус";
-			public override TimeSpan ProduceTime => TimeSpan.FromMinutes(180);
+			public override TimeSpan ProduceTime => TimeSpan.FromMinutes(180 / GlobalSettings.ProduceRatio);
 
 			public override List<(Item item, int count)> Components => new List<(Item item, int count)>
 			{

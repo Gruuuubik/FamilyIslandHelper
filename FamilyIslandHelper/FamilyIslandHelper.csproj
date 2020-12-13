@@ -63,6 +63,7 @@
     <Compile Include="Models\Buildings\Mixer.cs" />
     <Compile Include="Models\Buildings\Pottery.cs" />
     <Compile Include="Models\Abstract\ProducableItem.cs" />
+    <Compile Include="Models\GlobalSettings.cs" />
     <Compile Include="Models\Resources.cs" />
     <Compile Include="Models\Buildings\Sawmill.cs" />
     <Compile Include="Models\Buildings\Smelter.cs" />

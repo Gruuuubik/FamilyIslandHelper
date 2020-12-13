@@ -11,7 +11,7 @@ namespace FamilyIslandHelper.Models.Buildings
 		public class Needle : ProducableItem
 		{
 			public override string Name => "Игла";
-			public override TimeSpan ProduceTime => TimeSpan.FromMinutes(15);
+			public override TimeSpan ProduceTime => TimeSpan.FromMinutes(15 / GlobalSettings.ProduceRatio);
 
 			public override List<(Item item, int count)> Components => new List<(Item item, int count)>
 			{
@@ -24,7 +24,7 @@ namespace FamilyIslandHelper.Models.Buildings
 		public class Stairs : ProducableItem
 		{
 			public override string Name => "Лестница";
-			public override TimeSpan ProduceTime => TimeSpan.FromMinutes(60);
+			public override TimeSpan ProduceTime => TimeSpan.FromMinutes(60 / GlobalSettings.ProduceRatio);
 
 			public override List<(Item item, int count)> Components => new List<(Item item, int count)>
 			{
@@ -36,7 +36,7 @@ namespace FamilyIslandHelper.Models.Buildings
 		public class Crest : ProducableItem
 		{
 			public override string Name => "Гребень";
-			public override TimeSpan ProduceTime => TimeSpan.FromMinutes(60);
+			public override TimeSpan ProduceTime => TimeSpan.FromMinutes(60 / GlobalSettings.ProduceRatio);
 
 			public override List<(Item item, int count)> Components => new List<(Item item, int count)>
 			{
@@ -48,7 +48,7 @@ namespace FamilyIslandHelper.Models.Buildings
 		public class Stool : ProducableItem
 		{
 			public override string Name => "Табуретка";
-			public override TimeSpan ProduceTime => TimeSpan.FromMinutes(120);
+			public override TimeSpan ProduceTime => TimeSpan.FromMinutes(120 / GlobalSettings.ProduceRatio);
 
 			public override List<(Item item, int count)> Components => new List<(Item item, int count)>
 			{
@@ -61,7 +61,7 @@ namespace FamilyIslandHelper.Models.Buildings
 		public class Paints : ProducableItem
 		{
 			public override string Name => "Краски";
-			public override TimeSpan ProduceTime => TimeSpan.FromMinutes(180);
+			public override TimeSpan ProduceTime => TimeSpan.FromMinutes(180 / GlobalSettings.ProduceRatio);
 
 			public override List<(Item item, int count)> Components => new List<(Item item, int count)>
 			{
@@ -74,7 +74,7 @@ namespace FamilyIslandHelper.Models.Buildings
 		public class Pipe : ProducableItem
 		{
 			public override string Name => "Труба";
-			public override TimeSpan ProduceTime => TimeSpan.FromMinutes(180);
+			public override TimeSpan ProduceTime => TimeSpan.FromMinutes(180 / GlobalSettings.ProduceRatio);
 
 			public override List<(Item item, int count)> Components => new List<(Item item, int count)>
 			{
@@ -86,7 +86,7 @@ namespace FamilyIslandHelper.Models.Buildings
 		public class Tambourine : ProducableItem
 		{
 			public override string Name => "Бубен";
-			public override TimeSpan ProduceTime => TimeSpan.FromMinutes(360);
+			public override TimeSpan ProduceTime => TimeSpan.FromMinutes(360 / GlobalSettings.ProduceRatio);
 
 			public override List<(Item item, int count)> Components => new List<(Item item, int count)>
 			{
@@ -99,7 +99,7 @@ namespace FamilyIslandHelper.Models.Buildings
 		public class Barrel : ProducableItem
 		{
 			public override string Name => "Бочка";
-			public override TimeSpan ProduceTime => TimeSpan.FromMinutes(360);
+			public override TimeSpan ProduceTime => TimeSpan.FromMinutes(360 / GlobalSettings.ProduceRatio);
 
 			public override List<(Item item, int count)> Components => new List<(Item item, int count)>
 			{

@@ -218,5 +218,20 @@ namespace FamilyIslandHelper
 		{
 			AddInfoToListBox(treeView1.SelectedNode.Name);
 		}
+
+		private void rb_Ratio_CheckedChanged(object sender, EventArgs e)
+		{
+			var radioButton = (RadioButton)sender;
+
+			if (radioButton.Checked)
+			{
+				GlobalSettings.ProduceRatio = double.Parse(radioButton.Text);
+
+				if (treeView1.SelectedNode != null)
+				{
+					AddInfoToListBox(treeView1.SelectedNode.Name);
+				}
+			}
+		}
 	}
 }

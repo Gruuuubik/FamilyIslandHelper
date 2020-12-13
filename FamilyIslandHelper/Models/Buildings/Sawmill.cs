@@ -11,7 +11,7 @@ namespace FamilyIslandHelper.Models.Buildings
 		public class Stakes : ProducableItem
 		{
 			public override string Name => "Колья";
-			public override TimeSpan ProduceTime => TimeSpan.FromMinutes(9);
+			public override TimeSpan ProduceTime => TimeSpan.FromMinutes(9 / GlobalSettings.ProduceRatio);
 
 			public override List<(Item item, int count)> Components => new List<(Item item, int count)>
 			{
@@ -23,7 +23,7 @@ namespace FamilyIslandHelper.Models.Buildings
 		public class UnedgedBoard : ProducableItem
 		{
 			public override string Name => "Доска необрезная";
-			public override TimeSpan ProduceTime => TimeSpan.FromMinutes(15);
+			public override TimeSpan ProduceTime => TimeSpan.FromMinutes(15 / GlobalSettings.ProduceRatio);
 
 			public override List<(Item item, int count)> Components => new List<(Item item, int count)>
 			{
@@ -35,7 +35,7 @@ namespace FamilyIslandHelper.Models.Buildings
 		public class EdgedBoard : ProducableItem
 		{
 			public override string Name => "Доска обрезная";
-			public override TimeSpan ProduceTime => TimeSpan.FromMinutes(60);
+			public override TimeSpan ProduceTime => TimeSpan.FromMinutes(60 / GlobalSettings.ProduceRatio);
 
 			public override List<(Item item, int count)> Components => new List<(Item item, int count)>
 			{

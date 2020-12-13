@@ -32,6 +32,9 @@
 			this.pnl_Main = new System.Windows.Forms.Panel();
 			this.cb_Buildings = new System.Windows.Forms.ComboBox();
 			this.treeView1 = new System.Windows.Forms.TreeView();
+			this.rb_Ratio_1_0 = new System.Windows.Forms.RadioButton();
+			this.rb_Ratio_1_2 = new System.Windows.Forms.RadioButton();
+			this.rb_Ratio_1_5 = new System.Windows.Forms.RadioButton();
 			this.SuspendLayout();
 			// 
 			// listBox1
@@ -73,11 +76,50 @@
 			this.treeView1.TabIndex = 5;
 			this.treeView1.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeView1_AfterSelect);
 			// 
+			// rb_Ratio_1_0
+			// 
+			this.rb_Ratio_1_0.AutoSize = true;
+			this.rb_Ratio_1_0.Location = new System.Drawing.Point(732, 15);
+			this.rb_Ratio_1_0.Name = "rb_Ratio_1_0";
+			this.rb_Ratio_1_0.Size = new System.Drawing.Size(43, 20);
+			this.rb_Ratio_1_0.TabIndex = 7;
+			this.rb_Ratio_1_0.Text = "1,0";
+			this.rb_Ratio_1_0.UseVisualStyleBackColor = true;
+			this.rb_Ratio_1_0.CheckedChanged += new System.EventHandler(this.rb_Ratio_CheckedChanged);
+			// 
+			// rb_Ratio_1_2
+			// 
+			this.rb_Ratio_1_2.AutoSize = true;
+			this.rb_Ratio_1_2.Location = new System.Drawing.Point(792, 15);
+			this.rb_Ratio_1_2.Name = "rb_Ratio_1_2";
+			this.rb_Ratio_1_2.Size = new System.Drawing.Size(43, 20);
+			this.rb_Ratio_1_2.TabIndex = 8;
+			this.rb_Ratio_1_2.TabStop = true;
+			this.rb_Ratio_1_2.Text = "1,2";
+			this.rb_Ratio_1_2.UseVisualStyleBackColor = true;
+			this.rb_Ratio_1_2.CheckedChanged += new System.EventHandler(this.rb_Ratio_CheckedChanged);
+			// 
+			// rb_Ratio_1_5
+			// 
+			this.rb_Ratio_1_5.AutoSize = true;
+			this.rb_Ratio_1_5.Checked = true;
+			this.rb_Ratio_1_5.Location = new System.Drawing.Point(851, 15);
+			this.rb_Ratio_1_5.Name = "rb_Ratio_1_5";
+			this.rb_Ratio_1_5.Size = new System.Drawing.Size(43, 20);
+			this.rb_Ratio_1_5.TabIndex = 9;
+			this.rb_Ratio_1_5.TabStop = true;
+			this.rb_Ratio_1_5.Text = "1,5";
+			this.rb_Ratio_1_5.UseVisualStyleBackColor = true;
+			this.rb_Ratio_1_5.CheckedChanged += new System.EventHandler(this.rb_Ratio_CheckedChanged);
+			// 
 			// Form1
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(1184, 611);
+			this.Controls.Add(this.rb_Ratio_1_5);
+			this.Controls.Add(this.rb_Ratio_1_2);
+			this.Controls.Add(this.rb_Ratio_1_0);
 			this.Controls.Add(this.treeView1);
 			this.Controls.Add(this.cb_Buildings);
 			this.Controls.Add(this.pnl_Main);
@@ -88,6 +130,7 @@
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 			this.Text = "FamilyIslandHelper";
 			this.ResumeLayout(false);
+			this.PerformLayout();
 
 		}
 
@@ -96,6 +139,9 @@
 		private System.Windows.Forms.Panel pnl_Main;
 		private System.Windows.Forms.ComboBox cb_Buildings;
 		private System.Windows.Forms.TreeView treeView1;
+		private System.Windows.Forms.RadioButton rb_Ratio_1_0;
+		private System.Windows.Forms.RadioButton rb_Ratio_1_2;
+		private System.Windows.Forms.RadioButton rb_Ratio_1_5;
 	}
 }
 
