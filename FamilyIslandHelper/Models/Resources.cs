@@ -98,6 +98,11 @@ namespace FamilyIslandHelper.Models
 		public override string Name => "Изумруд";
 	}
 
+	public class Potherb : ZeroCostResourceItem
+	{
+		public override string Name => "Коренья";
+	}
+
 	public class Corn : ZeroCostResourceItem
 	{
 		public override string Name => "Кукуруза";

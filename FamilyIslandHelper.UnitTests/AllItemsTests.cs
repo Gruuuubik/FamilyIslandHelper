@@ -84,5 +84,14 @@ namespace FamilyIslandHelper.UnitTests
 
 			Assert.Equal(expectedItemType, item.GetType());
 		}
+
+		[Theory]
+		[InlineData("Mill", new[] { "ChickenFood", "Flour", "GoatFood", "Ocher" })]
+		public void When_TryToGetItemsOfBuulding_Then_ReturnCorrectItems(string buildingName, IEnumerable<string> expectedItems)
+		{
+			var actualItems = ItemHelper.GetItemsOfBuilding(buildingName);
+
+			Assert.Equal(expectedItems, actualItems);
+		}
 	}
 }

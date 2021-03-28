@@ -32,5 +32,18 @@ namespace FamilyIslandHelper.Models.Buildings
 				(new Smelter.Resin(), 1)
 			};
 		}
+
+		public class PalmBeams : ProducableItem
+		{
+			public override string Name => "Пальмовый брус";
+			public override TimeSpan ProduceTime => TimeSpan.FromMinutes(180 / GlobalSettings.ProduceRatio);
+
+			public override List<(Item item, int count)> Components => new List<(Item item, int count)>
+			{
+				(new PalmLog(), 10),
+				(new PalmLeaf(), 3),
+				(new Workshop.Knife(), 1)
+			};
+		}
 	}
 }

@@ -8,6 +8,18 @@ namespace FamilyIslandHelper.Models.Buildings
 	{
 		public static string Name = "Мельница";
 
+		public class GoatFood : ProducableItem
+		{
+			public override string Name => "Корм для коз";
+			public override TimeSpan ProduceTime => TimeSpan.FromSeconds(3 * 60 / GlobalSettings.ProduceRatio);
+
+			public override List<(Item item, int count)> Components => new List<(Item item, int count)>
+			{
+				(new Grass(), 2),
+				(new Potherb(), 4)
+			};
+		}
+
 		public class ChickenFood : ProducableItem
 		{
 			public override string Name => "Корм для кур";
