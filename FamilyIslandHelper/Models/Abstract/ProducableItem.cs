@@ -9,6 +9,8 @@ namespace FamilyIslandHelper.Models.Abstract
 
 		public abstract List<(Item item, int count)> Components { get; }
 
+		public abstract int LevelWhenAppears { get; }
+
 		public TimeSpan TotalProduceTime
 		{
 			get

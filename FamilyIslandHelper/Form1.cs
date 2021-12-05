@@ -60,7 +60,8 @@ namespace FamilyIslandHelper
 				panels[i] = panel;
 			}
 
-			panels = panels.OrderBy(p => ItemHelper.CreateProducableItem(cb_Buildings.SelectedValue.ToString(), p.Tag.ToString()).TotalProduceTime).ToArray();
+			panels = panels.OrderBy(p => ItemHelper.CreateProducableItem(cb_Buildings.SelectedValue.ToString(), p.Tag.ToString()).LevelWhenAppears)
+				.ThenBy(p => ItemHelper.CreateProducableItem(cb_Buildings.SelectedValue.ToString(), p.Tag.ToString()).TotalProduceTime).ToArray();
 
 			for (var i = 0; i < panels.Length; i++)
 			{

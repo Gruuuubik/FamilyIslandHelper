@@ -11,6 +11,7 @@ namespace FamilyIslandHelper.Models.Buildings
 		public class Bowl : ProducableItem
 		{
 			public override string Name => "Миска";
+			public override int LevelWhenAppears => 10;
 			public override TimeSpan ProduceTime => TimeSpan.FromMinutes(9 / GlobalSettings.ProduceRatio);
 
 			public override List<(Item item, int count)> Components => new List<(Item item, int count)>
@@ -22,6 +23,7 @@ namespace FamilyIslandHelper.Models.Buildings
 		public class Pot : ProducableItem
 		{
 			public override string Name => "Горшок";
+			public override int LevelWhenAppears => 18;
 			public override TimeSpan ProduceTime => TimeSpan.FromMinutes(30 / GlobalSettings.ProduceRatio);
 
 			public override List<(Item item, int count)> Components => new List<(Item item, int count)>
@@ -33,6 +35,7 @@ namespace FamilyIslandHelper.Models.Buildings
 		public class Jug : ProducableItem
 		{
 			public override string Name => "Кувшин";
+			public override int LevelWhenAppears => 27;
 			public override TimeSpan ProduceTime => TimeSpan.FromMinutes(90 / GlobalSettings.ProduceRatio);
 
 			public override List<(Item item, int count)> Components => new List<(Item item, int count)>
@@ -45,6 +48,7 @@ namespace FamilyIslandHelper.Models.Buildings
 		public class Amphora : ProducableItem
 		{
 			public override string Name => "Амфора";
+			public override int LevelWhenAppears => 39;
 			public override TimeSpan ProduceTime => TimeSpan.FromMinutes(180 / GlobalSettings.ProduceRatio);
 
 			public override List<(Item item, int count)> Components => new List<(Item item, int count)>
