@@ -42,7 +42,7 @@ namespace FamilyIslandHelper
 
 		private void InitPanels(List<string> itemsPathes)
 		{
-			pnl_Main.Controls.Clear();
+			var panels = new Control[itemsPathes.Count];
 
 			for (var i = 0; i < itemsPathes.Count; i++)
 			{
@@ -52,14 +52,23 @@ namespace FamilyIslandHelper
 					Size = new Size(60, 60),
 					BackgroundImage = Image.FromFile(itemsPathes[i]),
 					BackgroundImageLayout = ImageLayout.Stretch,
-					Cursor = Cursors.Hand,
-					Location = new Point(10 + 80 * i, 10)
+					Cursor = Cursors.Hand
 				};
 
 				panel.MouseDown += new MouseEventHandler(pnl_Item_MouseDown);
 
-				pnl_Main.Controls.Add(panel);
+				panels[i] = panel;
 			}
+
+			panels = panels.OrderBy(p => ItemHelper.CreateProducableItem(cb_Buildings.SelectedValue.ToString(), p.Tag.ToString()).TotalProduceTime).ToArray();
+
+			for (var i = 0; i < panels.Length; i++)
+			{
+				panels[i].Location = new Point(10 + 80 * i, 10);
+			}
+
+			pnl_Main.Controls.Clear();
+			pnl_Main.Controls.AddRange(panels);
 		}
 
 		private void AddInfoToListBox(string itemName)
@@ -82,14 +91,12 @@ namespace FamilyIslandHelper
 				}
 
 				listBox1.Items.Add("");
-				listBox1.Items.Add("Итого: " + producableItem.TotalProduceTime);
+				listBox1.Items.Add("Итого времени на производство: " + producableItem.TotalProduceTime);
 			}
 		}
 
-		private void AddInfoToTreeView(string buildingName, string itemTypeString)
+		private void AddInfoToTreeView(Item item, string itemTypeString)
 		{
-			var item = ItemHelper.CreateProducableItem(buildingName, itemTypeString);
-
 			treeView1.Nodes.Clear();
 
 			var imageIndex = GetImageIndex(itemTypeString);
@@ -137,7 +144,9 @@ namespace FamilyIslandHelper
 			listBox1.Items.Clear();
 
 			var currentBuildingName = cb_Buildings.SelectedValue.ToString();
-			AddInfoToTreeView(currentBuildingName, itemTypeString);
+			var item = ItemHelper.CreateProducableItem(currentBuildingName, itemTypeString);
+
+			AddInfoToTreeView(item, itemTypeString);
 		}
 
 		private void cb_Buildings_SelectedIndexChanged(object sender, EventArgs e)
