@@ -8,12 +8,12 @@ namespace FamilyIslandHelper
 {
 	public static class ItemHelper
 	{
-		public static Item CreateProducableItem(string buildingName, string itemTypeString)
+		public static ProducableItem CreateProducableItem(string buildingName, string itemTypeString)
 		{
 			var buildingType = Type.GetType($"FamilyIslandHelper.Models.Buildings.{buildingName}", true);
 			var itemType = buildingType.GetNestedType(itemTypeString);
 
-			return Activator.CreateInstance(itemType) as Item;
+			return Activator.CreateInstance(itemType) as ProducableItem;
 		}
 
 		public static Item CreateResourceItem(string itemTypeString)
@@ -61,6 +61,14 @@ namespace FamilyIslandHelper
 			}
 
 			return item;
+		}
+
+		public static IEnumerable<string> GetItemsOfBuilding(string buildingName)
+		{
+			var buildingType = Type.GetType($"FamilyIslandHelper.Models.Buildings.{buildingName}", true);
+			var itemsNames = buildingType.GetNestedTypes().Where(t => t.IsClass).Select(t => t.Name).OrderBy(i => i);
+
+			return itemsNames;
 		}
 	}
 }
