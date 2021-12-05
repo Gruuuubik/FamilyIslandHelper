@@ -86,7 +86,7 @@ namespace FamilyIslandHelper.UnitTests
 		}
 
 		[Theory]
-		[InlineData("Mill", new[] { "ChickenFood", "Flour", "GoatFood", "Ocher" })]
+		[InlineData("Mill", new[] { "ChickenFood", "Flour", "GoatFood", "Ocher", "SunflowerOil" })]
 		public void When_TryToGetItemsOfBuulding_Then_ReturnCorrectItems(string buildingName, IEnumerable<string> expectedItems)
 		{
 			var actualItems = ItemHelper.GetItemsOfBuilding(buildingName);

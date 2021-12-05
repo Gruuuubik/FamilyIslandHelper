@@ -59,5 +59,19 @@ namespace FamilyIslandHelper.Models.Buildings
 				(new Stone(), 2)
 			};
 		}
+
+		public class SunflowerOil : ProducableItem
+		{
+			public override string Name => "Подсолнечное масло";
+			public override int LevelWhenAppears => 44;
+			public override TimeSpan ProduceTime => TimeSpan.FromMinutes(15 / GlobalSettings.ProduceRatio);
+
+			public override List<(Item item, int count)> Components => new List<(Item item, int count)>
+			{
+				(new Sunflower(), 5),
+				(new Pottery.Jug(), 1),
+				(new Knocker.Millstone(), 1)
+			};
+		}
 	}
 }

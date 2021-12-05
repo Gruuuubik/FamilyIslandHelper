@@ -48,5 +48,18 @@ namespace FamilyIslandHelper.Models.Buildings
 				(new Workshop.Knife(), 1)
 			};
 		}
+
+		public class Millstone : ProducableItem
+		{
+			public override string Name => "Жернов";
+			public override int LevelWhenAppears => 43;
+			public override TimeSpan ProduceTime => TimeSpan.FromMinutes(60 / GlobalSettings.ProduceRatio);
+
+			public override List<(Item item, int count)> Components => new List<(Item item, int count)>
+			{
+				(new StoneBlock(), 1),
+				(new Loom.Gloves(), 1)
+			};
+		}
 	}
 }

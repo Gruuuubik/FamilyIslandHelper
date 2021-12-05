@@ -158,4 +158,9 @@ namespace FamilyIslandHelper.Models
 	{
 		public override string Name => "Янтарь";
 	}
+
+	public class Sunflower : ZeroCostResourceItem
+	{
+		public override string Name => "Подсолнечник";
+	}
 }
