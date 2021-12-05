@@ -82,7 +82,7 @@ namespace FamilyIslandHelper.Models.Abstract
 
 		public override string ToString()
 		{
-			return $"{Name}({ProduceTime.TotalMinutes} мин., {ProduceEnergyCost} энергии)";
+			return $"{Name}({ProduceTime}, {ProduceEnergyCost} энергии)";
 		}
 	}
 }
