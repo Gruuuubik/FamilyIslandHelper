@@ -108,5 +108,30 @@ namespace FamilyIslandHelper.Models.Buildings
 				(new Loom.Rope(), 3)
 			};
 		}
+
+		public class WoodenBeam : ProducableItem
+		{
+			public override string Name => "Деревянная балка";
+			public override TimeSpan ProduceTime => TimeSpan.FromMinutes(45 / GlobalSettings.ProduceRatio);
+
+			public override List<(Item item, int count)> Components => new List<(Item item, int count)>
+			{
+				(new Smelter.Resin(), 5),
+				(new Smelter.Nails(), 2),
+				(new Knocker.PalmBeams(), 2)
+			};
+		}
+
+		public class LeatherBall : ProducableItem
+		{
+			public override string Name => "Кожаный мяч";
+			public override TimeSpan ProduceTime => TimeSpan.FromMinutes(120 / GlobalSettings.ProduceRatio);
+
+			public override List<(Item item, int count)> Components => new List<(Item item, int count)>
+			{
+				(new Tannery.Papyrus(), 3),
+				(new Knocker.PalmBeams(), 4)
+			};
+		}
 	}
 }
