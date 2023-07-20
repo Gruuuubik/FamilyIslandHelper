@@ -1,6 +1,6 @@
 ﻿namespace FamilyIslandHelper
 {
-	partial class Form1
+	partial class MainForm
 	{
 		/// <summary>
 		/// Required designer variable.
@@ -112,7 +112,7 @@
 			this.rb_Ratio_1_5.UseVisualStyleBackColor = true;
 			this.rb_Ratio_1_5.CheckedChanged += new System.EventHandler(this.rb_Ratio_CheckedChanged);
 			// 
-			// Form1
+			// MainForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -126,7 +126,7 @@
 			this.Controls.Add(this.listBox1);
 			this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
 			this.Margin = new System.Windows.Forms.Padding(4);
-			this.Name = "Form1";
+			this.Name = "MainForm";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 			this.Text = "FamilyIslandHelper";
 			this.ResumeLayout(false);

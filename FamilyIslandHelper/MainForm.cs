@@ -9,13 +9,13 @@ using System.Windows.Forms;
 
 namespace FamilyIslandHelper
 {
-	public partial class Form1 : Form
+	public partial class MainForm : Form
 	{
 		private const string folderWithPictures = "Pictures";
 
 		private readonly Dictionary<string, int> dictImagesIndexes = new Dictionary<string, int>();
 
-		public Form1()
+		public MainForm()
 		{
 			InitializeComponent();
 
