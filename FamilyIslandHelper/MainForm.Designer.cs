@@ -32,10 +32,12 @@
 			this.pnl_Main = new System.Windows.Forms.Panel();
 			this.cb_Buildings = new System.Windows.Forms.ComboBox();
 			this.treeView1 = new System.Windows.Forms.TreeView();
-			this.rb_Ratio_1_0 = new System.Windows.Forms.RadioButton();
+			this.rb_Ratio_1 = new System.Windows.Forms.RadioButton();
 			this.rb_Ratio_1_2 = new System.Windows.Forms.RadioButton();
 			this.rb_Ratio_1_5 = new System.Windows.Forms.RadioButton();
 			this.cb_showListOfComponents = new System.Windows.Forms.CheckBox();
+			this.rb_Ratio_1_7 = new System.Windows.Forms.RadioButton();
+			this.rb_Ratio_2 = new System.Windows.Forms.RadioButton();
 			this.SuspendLayout();
 			// 
 			// listBox1
@@ -77,16 +79,16 @@
 			this.treeView1.TabIndex = 5;
 			this.treeView1.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeView1_AfterSelect);
 			// 
-			// rb_Ratio_1_0
+			// rb_Ratio_1
 			// 
-			this.rb_Ratio_1_0.AutoSize = true;
-			this.rb_Ratio_1_0.Location = new System.Drawing.Point(732, 15);
-			this.rb_Ratio_1_0.Name = "rb_Ratio_1_0";
-			this.rb_Ratio_1_0.Size = new System.Drawing.Size(43, 20);
-			this.rb_Ratio_1_0.TabIndex = 7;
-			this.rb_Ratio_1_0.Text = "1,0";
-			this.rb_Ratio_1_0.UseVisualStyleBackColor = true;
-			this.rb_Ratio_1_0.CheckedChanged += new System.EventHandler(this.rb_Ratio_CheckedChanged);
+			this.rb_Ratio_1.AutoSize = true;
+			this.rb_Ratio_1.Location = new System.Drawing.Point(747, 15);
+			this.rb_Ratio_1.Name = "rb_Ratio_1";
+			this.rb_Ratio_1.Size = new System.Drawing.Size(33, 20);
+			this.rb_Ratio_1.TabIndex = 7;
+			this.rb_Ratio_1.Text = "1";
+			this.rb_Ratio_1.UseVisualStyleBackColor = true;
+			this.rb_Ratio_1.CheckedChanged += new System.EventHandler(this.rb_Ratio_CheckedChanged);
 			// 
 			// rb_Ratio_1_2
 			// 
@@ -95,7 +97,6 @@
 			this.rb_Ratio_1_2.Name = "rb_Ratio_1_2";
 			this.rb_Ratio_1_2.Size = new System.Drawing.Size(43, 20);
 			this.rb_Ratio_1_2.TabIndex = 8;
-			this.rb_Ratio_1_2.TabStop = true;
 			this.rb_Ratio_1_2.Text = "1,2";
 			this.rb_Ratio_1_2.UseVisualStyleBackColor = true;
 			this.rb_Ratio_1_2.CheckedChanged += new System.EventHandler(this.rb_Ratio_CheckedChanged);
@@ -124,15 +125,39 @@
 			this.cb_showListOfComponents.UseVisualStyleBackColor = true;
 			this.cb_showListOfComponents.CheckedChanged += new System.EventHandler(this.cb_showListOfComponents_CheckedChanged);
 			// 
+			// rb_Ratio_1_7
+			// 
+			this.rb_Ratio_1_7.AutoSize = true;
+			this.rb_Ratio_1_7.Location = new System.Drawing.Point(903, 15);
+			this.rb_Ratio_1_7.Name = "rb_Ratio_1_7";
+			this.rb_Ratio_1_7.Size = new System.Drawing.Size(43, 20);
+			this.rb_Ratio_1_7.TabIndex = 11;
+			this.rb_Ratio_1_7.Text = "1,7";
+			this.rb_Ratio_1_7.UseVisualStyleBackColor = true;
+			this.rb_Ratio_1_7.CheckedChanged += new System.EventHandler(this.rb_Ratio_CheckedChanged);
+			// 
+			// rb_Ratio_2
+			// 
+			this.rb_Ratio_2.AutoSize = true;
+			this.rb_Ratio_2.Location = new System.Drawing.Point(952, 15);
+			this.rb_Ratio_2.Name = "rb_Ratio_2";
+			this.rb_Ratio_2.Size = new System.Drawing.Size(33, 20);
+			this.rb_Ratio_2.TabIndex = 12;
+			this.rb_Ratio_2.Text = "2";
+			this.rb_Ratio_2.UseVisualStyleBackColor = true;
+			this.rb_Ratio_2.CheckedChanged += new System.EventHandler(this.rb_Ratio_CheckedChanged);
+			// 
 			// MainForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(1184, 611);
+			this.Controls.Add(this.rb_Ratio_2);
+			this.Controls.Add(this.rb_Ratio_1_7);
 			this.Controls.Add(this.cb_showListOfComponents);
 			this.Controls.Add(this.rb_Ratio_1_5);
 			this.Controls.Add(this.rb_Ratio_1_2);
-			this.Controls.Add(this.rb_Ratio_1_0);
+			this.Controls.Add(this.rb_Ratio_1);
 			this.Controls.Add(this.treeView1);
 			this.Controls.Add(this.cb_Buildings);
 			this.Controls.Add(this.pnl_Main);
@@ -152,10 +177,12 @@
 		private System.Windows.Forms.Panel pnl_Main;
 		private System.Windows.Forms.ComboBox cb_Buildings;
 		private System.Windows.Forms.TreeView treeView1;
-		private System.Windows.Forms.RadioButton rb_Ratio_1_0;
+		private System.Windows.Forms.RadioButton rb_Ratio_1;
 		private System.Windows.Forms.RadioButton rb_Ratio_1_2;
 		private System.Windows.Forms.RadioButton rb_Ratio_1_5;
 		private System.Windows.Forms.CheckBox cb_showListOfComponents;
+		private System.Windows.Forms.RadioButton rb_Ratio_1_7;
+		private System.Windows.Forms.RadioButton rb_Ratio_2;
 	}
 }
 
