@@ -12,12 +12,15 @@ namespace FamilyIslandHelper
 	public partial class MainForm : Form
 	{
 		private const string folderWithPictures = "Pictures";
+		private bool ShowListOfComponents = false;
 
 		private readonly Dictionary<string, int> dictImagesIndexes = new Dictionary<string, int>();
 
 		public MainForm()
 		{
 			InitializeComponent();
+
+			cb_showListOfComponents.Checked = ShowListOfComponents;
 
 			InitBuildings();
 
@@ -83,12 +86,15 @@ namespace FamilyIslandHelper
 			{
 				var producableItem = item as ProducableItem;
 
-				listBox1.Items.Add("");
-				listBox1.Items.Add("Components:");
-
-				foreach (var componentInfo in producableItem.ComponentsInfo(0))
+				if (ShowListOfComponents)
 				{
-					listBox1.Items.Add(componentInfo);
+					listBox1.Items.Add("");
+					listBox1.Items.Add("Components:");
+
+					foreach (var componentInfo in producableItem.ComponentsInfo(0))
+					{
+						listBox1.Items.Add(componentInfo);
+					}
 				}
 
 				listBox1.Items.Add("");
@@ -234,6 +240,16 @@ namespace FamilyIslandHelper
 				{
 					AddInfoToListBox(treeView1.SelectedNode.Name);
 				}
+			}
+		}
+
+		private void cb_showListOfComponents_CheckedChanged(object sender, EventArgs e)
+		{
+			ShowListOfComponents = cb_showListOfComponents.Checked;
+
+			if (treeView1.SelectedNode != null)
+			{
+				AddInfoToListBox(treeView1.SelectedNode.Name);
 			}
 		}
 	}

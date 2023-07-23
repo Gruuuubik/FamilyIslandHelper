@@ -35,16 +35,17 @@
 			this.rb_Ratio_1_0 = new System.Windows.Forms.RadioButton();
 			this.rb_Ratio_1_2 = new System.Windows.Forms.RadioButton();
 			this.rb_Ratio_1_5 = new System.Windows.Forms.RadioButton();
+			this.cb_showListOfComponents = new System.Windows.Forms.CheckBox();
 			this.SuspendLayout();
 			// 
 			// listBox1
 			// 
 			this.listBox1.FormattingEnabled = true;
 			this.listBox1.ItemHeight = 16;
-			this.listBox1.Location = new System.Drawing.Point(489, 180);
+			this.listBox1.Location = new System.Drawing.Point(489, 212);
 			this.listBox1.Margin = new System.Windows.Forms.Padding(4);
 			this.listBox1.Name = "listBox1";
-			this.listBox1.Size = new System.Drawing.Size(664, 404);
+			this.listBox1.Size = new System.Drawing.Size(664, 372);
 			this.listBox1.TabIndex = 2;
 			// 
 			// pnl_Main
@@ -112,11 +113,23 @@
 			this.rb_Ratio_1_5.UseVisualStyleBackColor = true;
 			this.rb_Ratio_1_5.CheckedChanged += new System.EventHandler(this.rb_Ratio_CheckedChanged);
 			// 
+			// cb_showListOfComponents
+			// 
+			this.cb_showListOfComponents.AutoSize = true;
+			this.cb_showListOfComponents.Location = new System.Drawing.Point(489, 180);
+			this.cb_showListOfComponents.Name = "cb_showListOfComponents";
+			this.cb_showListOfComponents.Size = new System.Drawing.Size(169, 20);
+			this.cb_showListOfComponents.TabIndex = 10;
+			this.cb_showListOfComponents.Text = "ShowListOfComponents";
+			this.cb_showListOfComponents.UseVisualStyleBackColor = true;
+			this.cb_showListOfComponents.CheckedChanged += new System.EventHandler(this.cb_showListOfComponents_CheckedChanged);
+			// 
 			// MainForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(1184, 611);
+			this.Controls.Add(this.cb_showListOfComponents);
 			this.Controls.Add(this.rb_Ratio_1_5);
 			this.Controls.Add(this.rb_Ratio_1_2);
 			this.Controls.Add(this.rb_Ratio_1_0);
@@ -142,6 +155,7 @@
 		private System.Windows.Forms.RadioButton rb_Ratio_1_0;
 		private System.Windows.Forms.RadioButton rb_Ratio_1_2;
 		private System.Windows.Forms.RadioButton rb_Ratio_1_5;
+		private System.Windows.Forms.CheckBox cb_showListOfComponents;
 	}
 }
 
