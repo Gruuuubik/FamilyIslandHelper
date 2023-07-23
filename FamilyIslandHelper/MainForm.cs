@@ -33,7 +33,7 @@ namespace FamilyIslandHelper
 			cb_Buildings.DisplayMember = "Name";
 			cb_Buildings.ValueMember = "Value";
 
-			cb_Buildings.SelectedIndex = 0;
+			ShowListOfItemsForBuilding();
 		}
 
 		private List<BuildingInfo> GetBuildingsClasses()
@@ -157,6 +157,11 @@ namespace FamilyIslandHelper
 		}
 
 		private void cb_Buildings_SelectedIndexChanged(object sender, EventArgs e)
+		{
+			ShowListOfItemsForBuilding();
+		}
+
+		private void ShowListOfItemsForBuilding()
 		{
 			var currentBuildingName = cb_Buildings.SelectedValue.ToString();
 			listBox1.Items.Clear();
