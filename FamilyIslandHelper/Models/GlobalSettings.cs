@@ -2,6 +2,6 @@
 {
 	public static class GlobalSettings
 	{
-		public static double ProduceRatio = 1.2;
+		public static double ProduceRatio = 1.5;
 	}
 }
