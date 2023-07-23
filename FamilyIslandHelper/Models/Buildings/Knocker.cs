@@ -21,6 +21,19 @@ namespace FamilyIslandHelper.Models.Buildings
 			};
 		}
 
+		public class LimestoneBlock : ProducableItem
+		{
+			public override string Name => "Известняковый блок";
+			public override int LevelWhenAppears => 33;
+			public override TimeSpan ProduceTime => TimeSpan.FromMinutes(10 / GlobalSettings.ProduceRatio);
+
+			public override List<(Item item, int count)> Components => new List<(Item item, int count)>
+			{
+				(new Limestone(), 6),
+				(new Stone(), 5)
+			};
+		}
+
 		public class Beams : ProducableItem
 		{
 			public override string Name => "Брус";

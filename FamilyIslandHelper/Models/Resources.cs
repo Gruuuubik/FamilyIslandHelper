@@ -163,4 +163,36 @@ namespace FamilyIslandHelper.Models
 	{
 		public override string Name => "Подсолнечник";
 	}
+
+	public class Limestone : ResourceItem
+	{
+		public override string Name => "Известняк";
+
+		public override int EnergyCost => 8;
+	}
+
+	public class Pepper : ZeroCostResourceItem
+	{
+		public override string Name => "Перец";
+	}
+
+	public class Feather : ZeroCostResourceItem
+	{
+		public override string Name => "Перо";
+	}
+
+	public class Heather : ZeroCostResourceItem
+	{
+		public override string Name => "Вереск";
+	}
+
+	public class Carrot : ZeroCostResourceItem
+	{
+		public override string Name => "Морковь";
+	}
+
+	public class Candle : ZeroCostResourceItem
+	{
+		public override string Name => "Свеча";
+	}
 }

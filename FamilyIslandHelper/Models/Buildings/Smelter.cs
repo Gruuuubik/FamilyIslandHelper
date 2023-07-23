@@ -61,6 +61,19 @@ namespace FamilyIslandHelper.Models.Buildings
 			};
 		}
 
+		public class BurntBrick : ProducableItem
+		{
+			public override string Name => "Обожженный кирпич";
+			public override int LevelWhenAppears => 35;
+			public override TimeSpan ProduceTime => TimeSpan.FromMinutes(180 / GlobalSettings.ProduceRatio);
+
+			public override List<(Item item, int count)> Components => new List<(Item item, int count)>
+			{
+				(new Workshop.Brick(), 3),
+				(new Coal(), 1)
+			};
+		}
+
 		public class Nails : ProducableItem
 		{
 			public override string Name => "Гвозди";
@@ -72,19 +85,6 @@ namespace FamilyIslandHelper.Models.Buildings
 				(new CopperOre(), 7),
 				(new Workshop.Axe(), 1),
 				(new Poison(), 1)
-			};
-		}
-
-		public class BurntBrick : ProducableItem
-		{
-			public override string Name => "Обоженый кирпич";
-			public override int LevelWhenAppears => 35;
-			public override TimeSpan ProduceTime => TimeSpan.FromMinutes(180 / GlobalSettings.ProduceRatio);
-
-			public override List<(Item item, int count)> Components => new List<(Item item, int count)>
-			{
-				(new Coal(), 1),
-				(new Workshop.Brick(), 3)
 			};
 		}
 	}

@@ -46,5 +46,18 @@ namespace FamilyIslandHelper.Models.Buildings
 				(new Smelter.Resin(), 1)
 			};
 		}
+
+		public class Trough : ProducableItem
+		{
+			public override string Name => "Корыто";
+			public override int LevelWhenAppears => 52;
+			public override TimeSpan ProduceTime => TimeSpan.FromHours(3 / GlobalSettings.ProduceRatio);
+
+			public override List<(Item item, int count)> Components => new List<(Item item, int count)>
+			{
+				(new CarpentryWorkshop.WoodenBeam(), 2),
+				(new Tannery.WhitePaint(), 3)
+			};
+		}
 	}
 }

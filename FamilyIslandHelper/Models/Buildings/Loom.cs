@@ -97,5 +97,60 @@ namespace FamilyIslandHelper.Models.Buildings
 				(new CarpentryWorkshop.Needle(), 1)
 			};
 		}
+
+		public class PicnicBasket : ProducableItem
+		{
+			public override string Name => "Корзинка для пикника";
+			public override int LevelWhenAppears => 57;
+			public override TimeSpan ProduceTime => TimeSpan.FromMinutes(30 / GlobalSettings.ProduceRatio);
+
+			public override List<(Item item, int count)> Components => new List<(Item item, int count)>
+			{
+				(new WickerBasket(), 1),
+				(new Wheat(), 24),
+				(new Pepper(), 12)
+			};
+		}
+
+		public class WickerBasket : ProducableItem
+		{
+			public override string Name => "Плетеная корзинка";
+			public override int LevelWhenAppears => 57;
+			public override TimeSpan ProduceTime => TimeSpan.FromMinutes(30 / GlobalSettings.ProduceRatio);
+
+			public override List<(Item item, int count)> Components => new List<(Item item, int count)>
+			{
+				(new Wattle(), 3),
+				(new Stick(), 4),
+				(new Rope(), 5)
+			};
+		}
+
+		public class DreamСatcher : ProducableItem
+		{
+			public override string Name => "Ловец снов";
+			public override int LevelWhenAppears => 59;
+			public override TimeSpan ProduceTime => TimeSpan.FromHours(2 / GlobalSettings.ProduceRatio);
+
+			public override List<(Item item, int count)> Components => new List<(Item item, int count)>
+			{
+				(new Feather(), 10),
+				(new Amber(), 4),
+				(new CarpentryWorkshop.Needle(), 1)
+			};
+		}
+
+		public class DyedFabric : ProducableItem
+		{
+			public override string Name => "Окрашенная ткань";
+			public override int LevelWhenAppears => 61;
+			public override TimeSpan ProduceTime => TimeSpan.FromHours(4 / GlobalSettings.ProduceRatio);
+
+			public override List<(Item item, int count)> Components => new List<(Item item, int count)>
+			{
+				(new Cloth(), 2),
+				(new CarpentryWorkshop.Paints(), 1)
+			};
+		}
 	}
 }

@@ -53,7 +53,23 @@ namespace FamilyIslandHelper.Models.Buildings
 
 			public override List<(Item item, int count)> Components => new List<(Item item, int count)>
 			{
-				(new Jug(), 1)
+				(new Jug(), 1),
+				(new CarpentryWorkshop.Paints(), 1),
+				(new Smelter.Resin(), 1)
+			};
+		}
+
+		public class Flashlight : ProducableItem
+		{
+			public override string Name => "Фонарик";
+			public override int LevelWhenAppears => 58;
+			public override TimeSpan ProduceTime => TimeSpan.FromMinutes(60 / GlobalSettings.ProduceRatio);
+
+			public override List<(Item item, int count)> Components => new List<(Item item, int count)>
+			{
+				(new Candle(), 5),
+				(new Mill.SunflowerOil(), 7),
+				(new Smelter.Shingles(), 10)
 			};
 		}
 	}

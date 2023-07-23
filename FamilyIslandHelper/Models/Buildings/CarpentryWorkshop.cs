@@ -143,5 +143,20 @@ namespace FamilyIslandHelper.Models.Buildings
 				(new Knocker.PalmBeams(), 4)
 			};
 		}
+
+		public class Incense : ProducableItem
+		{
+			public override string Name => "Благовония";
+			public override int LevelWhenAppears => 60;
+			//ToDo: set true ProduceTime
+			public override TimeSpan ProduceTime => TimeSpan.FromMinutes(1000 / GlobalSettings.ProduceRatio);
+
+			public override List<(Item item, int count)> Components => new List<(Item item, int count)>
+			{
+				(new Stick(), 100),
+				(new Loom.Sackcloth(), 100),
+				//эфирное масло
+			};
+		}
 	}
 }

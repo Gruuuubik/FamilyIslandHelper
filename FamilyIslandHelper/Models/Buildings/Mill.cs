@@ -73,5 +73,32 @@ namespace FamilyIslandHelper.Models.Buildings
 				(new Knocker.Millstone(), 1)
 			};
 		}
+
+		public class Syrup : ProducableItem
+		{
+			public override string Name => "Сироп";
+			public override int LevelWhenAppears => 45;
+			public override TimeSpan ProduceTime => TimeSpan.FromMinutes(10 / GlobalSettings.ProduceRatio);
+
+			public override List<(Item item, int count)> Components => new List<(Item item, int count)>
+			{
+				(new Heather(), 5),
+				(new Workshop.Scraper(), 1)
+			};
+		}
+
+		public class CowFood : ProducableItem
+		{
+			public override string Name => "Корм для коровы";
+			public override int LevelWhenAppears => 50;
+			public override TimeSpan ProduceTime => TimeSpan.FromMinutes(60 / GlobalSettings.ProduceRatio);
+
+			public override List<(Item item, int count)> Components => new List<(Item item, int count)>
+			{
+				(new Carrot(), 8),
+				(new Grass(), 4),
+				(new Potherb(), 16)
+			};
+		}
 	}
 }
