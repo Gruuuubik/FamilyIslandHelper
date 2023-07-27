@@ -24,16 +24,24 @@ namespace FamilyIslandHelper
 
 			InitBuildings();
 
-			treeView1.ImageList = GetImageList();
+			ShowListOfItemsForBuildings();
+
+			tv_Components1.ImageList = GetImageList();
+			tv_Components2.ImageList = GetImageList();
 		}
 
 		private void InitBuildings()
 		{
-			cb_Buildings.DataSource = GetBuildingsClasses();
-			cb_Buildings.DisplayMember = "Name";
-			cb_Buildings.ValueMember = "Value";
+			cb_Buildings1.DataSource = GetBuildingsClasses();
+			cb_Buildings1.DisplayMember = "Name";
+			cb_Buildings1.ValueMember = "Value";
 
-			ShowListOfItemsForBuilding();
+			cb_Buildings2.DataSource = GetBuildingsClasses();
+			cb_Buildings2.DisplayMember = "Name";
+			cb_Buildings2.ValueMember = "Value";
+
+			cb_Buildings1.SelectedIndexChanged += new EventHandler(this.cb_Buildings_SelectedIndexChanged);
+			cb_Buildings2.SelectedIndexChanged += new EventHandler(this.cb_Buildings_SelectedIndexChanged);
 		}
 
 		private List<BuildingInfo> GetBuildingsClasses()
@@ -43,44 +51,16 @@ namespace FamilyIslandHelper
 			return buildingsClasses.Select(bc => new BuildingInfo { Value = bc.Name, Name = bc.GetFields()[0].GetValue(null).ToString() }).ToList();
 		}
 
-		private void InitPanels(List<string> itemsPathes)
-		{
-			var panels = new Control[itemsPathes.Count];
-
-			for (var i = 0; i < itemsPathes.Count; i++)
-			{
-				var panel = new Panel
-				{
-					Tag = GetItemNameByPath(itemsPathes[i]),
-					Size = new Size(60, 60),
-					BackgroundImage = Image.FromFile(itemsPathes[i]),
-					BackgroundImageLayout = ImageLayout.Stretch,
-					Cursor = Cursors.Hand
-				};
-
-				panel.MouseDown += new MouseEventHandler(pnl_Item_MouseDown);
-
-				panels[i] = panel;
-			}
-
-			panels = panels.OrderBy(p => ItemHelper.CreateProducableItem(cb_Buildings.SelectedValue.ToString(), p.Tag.ToString()).LevelWhenAppears)
-				.ThenBy(p => ItemHelper.CreateProducableItem(cb_Buildings.SelectedValue.ToString(), p.Tag.ToString()).TotalProduceTime).ToArray();
-
-			for (var i = 0; i < panels.Length; i++)
-			{
-				panels[i].Location = new Point(10 + 80 * i, 10);
-			}
-
-			pnl_Main.Controls.Clear();
-			pnl_Main.Controls.AddRange(panels);
-		}
-
 		private void AddInfoToListBox(string itemName)
 		{
 			var item = ItemHelper.FindItemByName(itemName);
+			
+			if (lb_Components.Items.Count > 0)
+			{
+				lb_Components.Items.Add("");
+			}
 
-			listBox1.Items.Clear();
-			listBox1.Items.Add(item.ToString());
+			lb_Components.Items.Add(item.ToString());
 
 			if (item is ProducableItem)
 			{
@@ -88,23 +68,23 @@ namespace FamilyIslandHelper
 
 				if (ShowListOfComponents)
 				{
-					listBox1.Items.Add("");
-					listBox1.Items.Add("Components:");
+					lb_Components.Items.Add("");
+					lb_Components.Items.Add("Components:");
 
 					foreach (var componentInfo in producableItem.ComponentsInfo(0))
 					{
-						listBox1.Items.Add(componentInfo);
+						lb_Components.Items.Add(componentInfo);
 					}
 				}
 
-				listBox1.Items.Add("");
-				listBox1.Items.Add("Итого времени на производство: " + producableItem.TotalProduceTime);
+				lb_Components.Items.Add("");
+				lb_Components.Items.Add("Итого времени на производство: " + producableItem.TotalProduceTime);
 			}
 		}
 
-		private void AddInfoToTreeView(Item item, string itemTypeString)
+		private void AddInfoToTreeView(TreeView tv_Components, Item item, string itemTypeString)
 		{
-			treeView1.Nodes.Clear();
+			tv_Components.Nodes.Clear();
 
 			var imageIndex = GetImageIndex(itemTypeString);
 			var treeNode = new TreeNode(item.Name, imageIndex, imageIndex)
@@ -112,13 +92,13 @@ namespace FamilyIslandHelper
 				Name = item.GetType().Name
 			};
 
-			treeView1.Nodes.Add(treeNode);
+			tv_Components.Nodes.Add(treeNode);
 
-			AddItemComponentsToItemNode(treeView1.Nodes[0], item);
+			AddItemComponentsToItemNode(tv_Components.Nodes[0], item);
 
-			treeView1.ExpandAll();
+			tv_Components.ExpandAll();
 
-			treeView1.SelectedNode = treeView1.Nodes[0];
+			tv_Components.SelectedNode = tv_Components.Nodes[0];
 		}
 
 		private void AddItemComponentsToItemNode(TreeNode parentTreeNode, Item item)
@@ -147,29 +127,93 @@ namespace FamilyIslandHelper
 
 		private void pnl_Item_MouseDown(object sender, MouseEventArgs e)
 		{
-			var itemTypeString = ((Panel) sender).Tag.ToString();
-			listBox1.Items.Clear();
+			var panelNumber = ((Panel)sender).Tag.ToString().Split('_')[1];
 
-			var currentBuildingName = cb_Buildings.SelectedValue.ToString();
+			if (panelNumber == "1")
+			{
+				ShowInfoForItem((Panel)sender, cb_Buildings1.SelectedValue.ToString(), tv_Components1);
+			}
+			else if (panelNumber == "2")
+			{
+				ShowInfoForItem((Panel)sender, cb_Buildings2.SelectedValue.ToString(), tv_Components2);
+			}
+		}
+
+		private void ShowInfoForItem(Panel itemPanel, string currentBuildingName, TreeView tv_Components)
+		{
+			var panelTag = itemPanel.Tag.ToString();
+			var panelInfo = panelTag.Split('_');
+			var itemTypeString = panelInfo[0];
+			lb_Components.Items.Clear();
+
 			var item = ItemHelper.CreateProducableItem(currentBuildingName, itemTypeString);
 
-			AddInfoToTreeView(item, itemTypeString);
+			AddInfoToTreeView(tv_Components, item, itemTypeString);
 		}
 
 		private void cb_Buildings_SelectedIndexChanged(object sender, EventArgs e)
 		{
-			ShowListOfItemsForBuilding();
+			var comboBox = ((ComboBox)sender);
+			ShowListOfItemsForBuilding(comboBox.SelectedValue.ToString(), int.Parse(comboBox.Tag.ToString()));
 		}
 
-		private void ShowListOfItemsForBuilding()
+		private void ShowListOfItemsForBuilding(string buildingName, int panelNumber)
 		{
-			var currentBuildingName = cb_Buildings.SelectedValue.ToString();
-			listBox1.Items.Clear();
-			treeView1.Nodes.Clear();
+			var itemsPathes = Directory.GetFiles($"{folderWithPictures}\\{buildingName}").ToList();
 
-			var itemsPathes = Directory.GetFiles($"{folderWithPictures}\\{currentBuildingName}").ToList();
+			if (panelNumber == 1)
+			{
+				tv_Components1.Nodes.Clear();
 
-			InitPanels(itemsPathes);
+				InitPanels(itemsPathes, panelNumber, pnl_Items1, buildingName);
+			}
+			else if (panelNumber == 2)
+			{
+				tv_Components2.Nodes.Clear();
+
+				InitPanels(itemsPathes, panelNumber, pnl_Items2, buildingName);
+			}
+		}
+
+		private void ShowListOfItemsForBuildings()
+		{
+			lb_Components.Items.Clear();
+
+			ShowListOfItemsForBuilding(cb_Buildings1.SelectedValue.ToString(), 1);
+			ShowListOfItemsForBuilding(cb_Buildings2.SelectedValue.ToString(), 2);
+		}
+
+		private void InitPanels(List<string> itemsPathes, int panelNumber, Panel pnl_Items, string buildingName)
+		{
+			var panels = new Control[itemsPathes.Count];
+			const int size = 40;
+
+			for (var i = 0; i < itemsPathes.Count; i++)
+			{
+				var panel = new Panel
+				{
+					Tag = GetItemNameByPath(itemsPathes[i]) + "_" + panelNumber,
+					Size = new Size(size, size),
+					BackgroundImage = Image.FromFile(itemsPathes[i]),
+					BackgroundImageLayout = ImageLayout.Stretch,
+					Cursor = Cursors.Hand
+				};
+
+				panel.MouseDown += new MouseEventHandler(pnl_Item_MouseDown);
+
+				panels[i] = panel;
+			}
+
+			ProducableItem getItem(Control p) => ItemHelper.CreateProducableItem(buildingName, p.Tag.ToString().Split('_')[0]);
+			panels = panels.OrderBy(p => getItem(p).LevelWhenAppears).ThenBy(p => getItem(p).TotalProduceTime).ToArray();
+
+			for (var i = 0; i < panels.Length; i++)
+			{
+				panels[i].Location = new Point(5 + (size + 5) * i, 10);
+			}
+
+			pnl_Items.Controls.Clear();
+			pnl_Items.Controls.AddRange(panels);
 		}
 
 		private ImageList GetImageList()
@@ -228,9 +272,24 @@ namespace FamilyIslandHelper
 			return itemPath.Split('.').First().Split('\\').Last();
 		}
 
-		private void treeView1_AfterSelect(object sender, TreeViewEventArgs e)
+		private void tv_Components_AfterSelect(object sender, TreeViewEventArgs e)
 		{
-			AddInfoToListBox(treeView1.SelectedNode.Name);
+			UpdateInfo();
+		}
+
+		private void UpdateInfo()
+		{
+			lb_Components.Items.Clear();
+
+			if (tv_Components1.SelectedNode != null)
+			{
+				AddInfoToListBox(tv_Components1.SelectedNode.Name);
+			}
+
+			if (tv_Components2.SelectedNode != null)
+			{
+				AddInfoToListBox(tv_Components2.SelectedNode.Name);
+			}
 		}
 
 		private void rb_Ratio_CheckedChanged(object sender, EventArgs e)
@@ -241,10 +300,7 @@ namespace FamilyIslandHelper
 			{
 				GlobalSettings.ProduceRatio = double.Parse(radioButton.Text);
 
-				if (treeView1.SelectedNode != null)
-				{
-					AddInfoToListBox(treeView1.SelectedNode.Name);
-				}
+				UpdateInfo();
 			}
 		}
 
@@ -252,10 +308,7 @@ namespace FamilyIslandHelper
 		{
 			ShowListOfComponents = cb_showListOfComponents.Checked;
 
-			if (treeView1.SelectedNode != null)
-			{
-				AddInfoToListBox(treeView1.SelectedNode.Name);
-			}
+			UpdateInfo();
 		}
 	}
 }
