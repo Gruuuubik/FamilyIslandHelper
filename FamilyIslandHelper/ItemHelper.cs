@@ -70,5 +70,64 @@ namespace FamilyIslandHelper
 
 			return itemsNames;
 		}
+
+		public static string CompareItems(Item item1, Item item2)
+		{
+			var cost1 = 0;
+			var cost2 = 0;
+
+			var time1 = TimeSpan.Zero;
+			var time2 = TimeSpan.Zero;
+
+			if (item1 is ResourceItem resourceItem1)
+			{
+				cost1 = resourceItem1.EnergyCost;
+			}
+			else if (item1 is ProducableItem producableItem1)
+			{
+				cost1 = producableItem1.ProduceEnergyCost;
+				time1 = producableItem1.TotalProduceTime;
+			}
+
+			if (item2 is ResourceItem resourceItem2)
+			{
+				cost2 = resourceItem2.EnergyCost;
+			}
+			else if (item2 is ProducableItem producableItem2)
+			{
+				cost2 = producableItem2.ProduceEnergyCost;
+				time2 = producableItem2.TotalProduceTime;
+			}
+
+			string result;
+
+			if (cost1 > cost2)
+			{
+				result = $"'{item1.Name}' выгоднее, чем '{item2.Name}' по энергии.";
+			}
+			else if (cost1 < cost2)
+			{
+				result = $"'{item2.Name}' выгоднее, чем '{item1.Name}' по энергии.";
+			}
+			else
+			{
+				result = $"'{item1.Name}' и '{item2.Name}' равны по энергии.";
+
+				if (time1 < time2)
+				{
+					result += $" '{item1.Name}' выгоднее, чем '{item2.Name}' по времени производства.";
+				}
+				else if (time1 > time2)
+				{
+					result += $" '{item2.Name}' выгоднее, чем '{item1.Name}' по времени производства.";
+				}
+				else
+				{
+					result += $" '{item1.Name}' и '{item2.Name}' равны по времени производства.";
+				}
+			}
+
+			return result;
+		}
 	}
 }

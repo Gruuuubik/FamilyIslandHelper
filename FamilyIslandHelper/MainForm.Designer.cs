@@ -159,6 +159,7 @@
 			// lb_Components
 			// 
 			this.lb_Components.FormattingEnabled = true;
+			this.lb_Components.HorizontalScrollbar = true;
 			this.lb_Components.ItemHeight = 16;
 			this.lb_Components.Location = new System.Drawing.Point(498, 230);
 			this.lb_Components.Margin = new System.Windows.Forms.Padding(4);

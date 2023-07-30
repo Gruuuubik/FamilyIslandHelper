@@ -1,4 +1,5 @@
 ﻿using FamilyIslandHelper.Models;
+using FamilyIslandHelper.Models.Abstract;
 using FamilyIslandHelper.Models.Buildings;
 using System;
 using System.Collections.Generic;
@@ -92,6 +93,24 @@ namespace FamilyIslandHelper.UnitTests
 			var actualItems = ItemHelper.GetItemsOfBuilding(buildingName);
 
 			Assert.Equal(expectedItems, actualItems);
+		}
+
+		public static IEnumerable<object[]> CompareItems_TestData()
+		{
+			yield return new object[] { new Loom.Lace(), new Loom.Lace(),
+				"'Шнурок' и 'Шнурок' равны по энергии. 'Шнурок' и 'Шнурок' равны по времени производства." };
+
+			yield return new object[] { new Loom.Rope(), new Loom.Wattle(),
+				"'Плетень' выгоднее, чем 'Верёвка' по энергии." };
+		}
+
+		[Theory]
+		[MemberData(nameof(CompareItems_TestData))]
+		public void When_Compate2Items_Then_ReturnCorrectValue(Item item1, Item item2, string expectedMessage)
+		{
+			var actualMessage = ItemHelper.CompareItems(item1, item2);
+
+			Assert.Equal(expectedMessage, actualMessage);
 		}
 	}
 }

@@ -14,6 +14,8 @@ namespace FamilyIslandHelper
 		private const string folderWithPictures = "Pictures";
 		private bool ShowListOfComponents = false;
 
+		private Item selectedItem1, selectedItem2;
+
 		private readonly Dictionary<string, int> dictImagesIndexes = new Dictionary<string, int>();
 
 		public MainForm()
@@ -127,26 +129,36 @@ namespace FamilyIslandHelper
 
 		private void pnl_Item_MouseDown(object sender, MouseEventArgs e)
 		{
-			var panelNumber = ((Panel)sender).Tag.ToString().Split('_')[1];
+			var itemPanel = sender as Panel;
+			var panelTag = itemPanel.Tag.ToString();
+			var panelNumber = int.Parse(panelTag.Split('_')[1]);
 
-			if (panelNumber == "1")
+			if (panelNumber == 1)
 			{
-				ShowInfoForItem((Panel)sender, cb_Buildings1.SelectedValue.ToString(), tv_Components1);
+				ShowInfoForItem(panelTag, cb_Buildings1.SelectedValue.ToString(), tv_Components1);
 			}
-			else if (panelNumber == "2")
+			else if (panelNumber == 2)
 			{
-				ShowInfoForItem((Panel)sender, cb_Buildings2.SelectedValue.ToString(), tv_Components2);
+				ShowInfoForItem(panelTag, cb_Buildings2.SelectedValue.ToString(), tv_Components2);
 			}
 		}
 
-		private void ShowInfoForItem(Panel itemPanel, string currentBuildingName, TreeView tv_Components)
+		private void ShowInfoForItem(string panelTag, string currentBuildingName, TreeView tv_Components)
 		{
-			var panelTag = itemPanel.Tag.ToString();
-			var panelInfo = panelTag.Split('_');
-			var itemTypeString = panelInfo[0];
+			var itemTypeString = panelTag.Split('_')[0];
+			var panelNumber = int.Parse(panelTag.Split('_')[1]);
 			lb_Components.Items.Clear();
 
 			var item = ItemHelper.CreateProducableItem(currentBuildingName, itemTypeString);
+
+			if (panelNumber == 1)
+			{
+				selectedItem1 = item;
+			}
+			else if (panelNumber == 2)
+			{
+				selectedItem2 = item;
+			}
 
 			AddInfoToTreeView(tv_Components, item, itemTypeString);
 		}
@@ -289,6 +301,12 @@ namespace FamilyIslandHelper
 			if (tv_Components2.SelectedNode != null)
 			{
 				AddInfoToListBox(tv_Components2.SelectedNode.Name);
+			}
+
+			if (selectedItem1 != null && selectedItem2 != null)
+			{
+				lb_Components.Items.Add("");
+				lb_Components.Items.Add(ItemHelper.CompareItems(selectedItem1, selectedItem2));
 			}
 		}
 

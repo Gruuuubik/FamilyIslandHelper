@@ -47,14 +47,12 @@ namespace FamilyIslandHelper.Models.Abstract
 
 				foreach (var (item, count) in Components)
 				{
-					if (item is ProducableItem)
+					if (item is ProducableItem producableItem)
 					{
-						var producableItem = item as ProducableItem;
 						totalEnergyCost += producableItem.ProduceEnergyCost * count;
 					}
-					else if (item is ResourceItem)
+					else if (item is ResourceItem resourceItem)
 					{
-						var resourceItem = item as ResourceItem;
 						totalEnergyCost += resourceItem.EnergyCost * count;
 					}
 				}
