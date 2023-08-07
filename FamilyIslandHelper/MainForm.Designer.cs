@@ -43,8 +43,12 @@
             this.tv_Components2 = new System.Windows.Forms.TreeView();
             this.pnl_Items2 = new System.Windows.Forms.Panel();
             this.cb_Buildings2 = new System.Windows.Forms.ComboBox();
+            this.num_Item1Count = new System.Windows.Forms.NumericUpDown();
+            this.num_Item2Count = new System.Windows.Forms.NumericUpDown();
             this.gb_Component1.SuspendLayout();
             this.gb_Component2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.num_Item1Count)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.num_Item2Count)).BeginInit();
             this.SuspendLayout();
             // 
             // cb_Buildings1
@@ -128,6 +132,7 @@
             // 
             // gb_Component1
             // 
+            this.gb_Component1.Controls.Add(this.num_Item1Count);
             this.gb_Component1.Controls.Add(this.tv_Components1);
             this.gb_Component1.Controls.Add(this.pnl_Items1);
             this.gb_Component1.Controls.Add(this.cb_Buildings1);
@@ -169,6 +174,7 @@
             // 
             // gb_Component2
             // 
+            this.gb_Component2.Controls.Add(this.num_Item2Count);
             this.gb_Component2.Controls.Add(this.tv_Components2);
             this.gb_Component2.Controls.Add(this.pnl_Items2);
             this.gb_Component2.Controls.Add(this.cb_Buildings2);
@@ -208,6 +214,50 @@
             this.cb_Buildings2.TabIndex = 4;
             this.cb_Buildings2.Tag = "2";
             // 
+            // num_Item1Count
+            // 
+            this.num_Item1Count.Location = new System.Drawing.Point(341, 36);
+            this.num_Item1Count.Maximum = new decimal(new int[] {
+            50,
+            0,
+            0,
+            0});
+            this.num_Item1Count.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.num_Item1Count.Name = "num_Item1Count";
+            this.num_Item1Count.Size = new System.Drawing.Size(120, 22);
+            this.num_Item1Count.TabIndex = 7;
+            this.num_Item1Count.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            // 
+            // num_Item2Count
+            // 
+            this.num_Item2Count.Location = new System.Drawing.Point(341, 36);
+            this.num_Item2Count.Maximum = new decimal(new int[] {
+            50,
+            0,
+            0,
+            0});
+            this.num_Item2Count.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.num_Item2Count.Name = "num_Item2Count";
+            this.num_Item2Count.Size = new System.Drawing.Size(120, 22);
+            this.num_Item2Count.TabIndex = 8;
+            this.num_Item2Count.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -229,6 +279,8 @@
             this.Text = "FamilyIslandHelper";
             this.gb_Component1.ResumeLayout(false);
             this.gb_Component2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.num_Item1Count)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.num_Item2Count)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -250,6 +302,8 @@
 		private System.Windows.Forms.TreeView tv_Components2;
 		private System.Windows.Forms.Panel pnl_Items2;
 		private System.Windows.Forms.ComboBox cb_Buildings2;
-	}
+        private System.Windows.Forms.NumericUpDown num_Item1Count;
+        private System.Windows.Forms.NumericUpDown num_Item2Count;
+    }
 }
 

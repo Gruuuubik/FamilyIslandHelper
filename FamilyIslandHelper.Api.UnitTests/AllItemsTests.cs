@@ -96,13 +96,31 @@ namespace FamilyIslandHelper.UnitTests
 			Assert.Equal(expectedItems, actualItems);
 		}
 
+		public static IEnumerable<object[]> CompareItemsWithDifferentCount_TestData()
+		{
+			yield return new object[] { new Loom.Lace(), 2, new Loom.Lace(), 2,
+				"2 'Шнурок' и 2 'Шнурок' равны по энергии. 2 'Шнурок' и 2 'Шнурок' равны по времени производства." };
+
+			yield return new object[] { new Loom.Rope(), 5, new Loom.Wattle(), 3,
+				"3 'Плетень' выгоднее, чем 5 'Верёвка' по энергии." };
+		}
+
+		[Theory]
+		[MemberData(nameof(CompareItemsWithDifferentCount_TestData))]
+		public void When_Compate2ItemsWithDifferentCount_Then_ReturnCorrectValue(Item item1, int count1, Item item2, int count2, string expectedMessage)
+		{
+			var actualMessage = ItemHelper.CompareItems(item1, count1, item2, count2);
+
+			Assert.Equal(expectedMessage, actualMessage);
+		}
+
 		public static IEnumerable<object[]> CompareItems_TestData()
 		{
 			yield return new object[] { new Loom.Lace(), new Loom.Lace(),
-				"'Шнурок' и 'Шнурок' равны по энергии. 'Шнурок' и 'Шнурок' равны по времени производства." };
+				"1 'Шнурок' и 1 'Шнурок' равны по энергии. 1 'Шнурок' и 1 'Шнурок' равны по времени производства." };
 
 			yield return new object[] { new Loom.Rope(), new Loom.Wattle(),
-				"'Плетень' выгоднее, чем 'Верёвка' по энергии." };
+				"1 'Верёвка' выгоднее, чем 1 'Плетень' по энергии." };
 		}
 
 		[Theory]

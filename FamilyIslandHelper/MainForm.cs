@@ -295,7 +295,7 @@ namespace FamilyIslandHelper
 			if (selectedItem1 != null && selectedItem2 != null)
 			{
 				lb_Components.Items.Add("");
-				lb_Components.Items.Add(ItemHelper.CompareItems(selectedItem1, selectedItem2));
+				lb_Components.Items.Add(ItemHelper.CompareItems(selectedItem1, Convert.ToInt32(num_Item1Count.Value), selectedItem2, Convert.ToInt32(num_Item2Count.Value)));
 			}
 		}
 
