@@ -1,16 +1,31 @@
-﻿using FamilyIslandHelper.Models.Abstract;
+﻿using FamilyIslandHelper.Api.Models;
+using FamilyIslandHelper.Api.Models.Abstract;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 
-namespace FamilyIslandHelper
+namespace FamilyIslandHelper.Api
 {
 	public static class ItemHelper
 	{
+		private static string MainNamespace = "FamilyIslandHelper.Api";
+
+		public static string GetItemNameByPath(string itemPath)
+		{
+			return itemPath.Split('.').First().Split('\\').Last();
+		}
+
+		public static List<BuildingInfo> GetBuildingsClasses()
+		{
+			var buildingsClasses = GetClasses($"{MainNamespace}.Models.Buildings", true).ToList();
+
+			return buildingsClasses.Select(bc => new BuildingInfo { Value = bc.Name, Name = bc.GetFields()[0].GetValue(null).ToString() }).ToList();
+		}
+
 		public static ProducableItem CreateProducableItem(string buildingName, string itemTypeString)
 		{
-			var buildingType = Type.GetType($"FamilyIslandHelper.Models.Buildings.{buildingName}", true);
+			var buildingType = Type.GetType($"{MainNamespace}.Models.Buildings.{buildingName}", true);
 			var itemType = buildingType.GetNestedType(itemTypeString);
 
 			return Activator.CreateInstance(itemType) as ProducableItem;
@@ -18,7 +33,7 @@ namespace FamilyIslandHelper
 
 		public static Item CreateResourceItem(string itemTypeString)
 		{
-			var resourcesClasses = GetClasses("FamilyIslandHelper.Models", false);
+			var resourcesClasses = GetClasses($"{MainNamespace}.Models", false);
 
 			var resourceItemType = resourcesClasses.FirstOrDefault(rc => rc.Name == itemTypeString);
 
@@ -27,7 +42,7 @@ namespace FamilyIslandHelper
 
 		public static IEnumerable<Type> GetClasses(string nameSpace, bool isStatic)
 		{
-			var assemblyName = nameSpace.Split('.').First();
+			var assemblyName = string.Join(".", nameSpace.Split('.').Take(2));
 			var assembly = Assembly.Load(assemblyName);
 
 			return assembly.GetTypes()
@@ -42,7 +57,7 @@ namespace FamilyIslandHelper
 		public static Item FindItemByName(string itemName)
 		{
 			Item item = null;
-			var buildingsClasses = GetClasses("FamilyIslandHelper.Models.Buildings", true);
+			var buildingsClasses = GetClasses($"{MainNamespace}.Models.Buildings", true);
 
 			foreach (var buildingClass in buildingsClasses)
 			{
@@ -65,7 +80,7 @@ namespace FamilyIslandHelper
 
 		public static IEnumerable<string> GetItemsOfBuilding(string buildingName)
 		{
-			var buildingType = Type.GetType($"FamilyIslandHelper.Models.Buildings.{buildingName}", true);
+			var buildingType = Type.GetType($"{MainNamespace}.Models.Buildings.{buildingName}", true);
 			var itemsNames = buildingType.GetNestedTypes().Where(t => t.IsClass).Select(t => t.Name).OrderBy(i => i);
 
 			return itemsNames;

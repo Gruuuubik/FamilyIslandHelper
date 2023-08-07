@@ -1,5 +1,6 @@
-﻿using FamilyIslandHelper.Models;
-using FamilyIslandHelper.Models.Abstract;
+﻿using FamilyIslandHelper.Api;
+using FamilyIslandHelper.Api.Models;
+using FamilyIslandHelper.Api.Models.Abstract;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -34,23 +35,16 @@ namespace FamilyIslandHelper
 
 		private void InitBuildings()
 		{
-			cb_Buildings1.DataSource = GetBuildingsClasses();
+			cb_Buildings1.DataSource = ItemHelper.GetBuildingsClasses();
 			cb_Buildings1.DisplayMember = "Name";
 			cb_Buildings1.ValueMember = "Value";
 
-			cb_Buildings2.DataSource = GetBuildingsClasses();
+			cb_Buildings2.DataSource = ItemHelper.GetBuildingsClasses();
 			cb_Buildings2.DisplayMember = "Name";
 			cb_Buildings2.ValueMember = "Value";
 
 			cb_Buildings1.SelectedIndexChanged += new EventHandler(this.cb_Buildings_SelectedIndexChanged);
 			cb_Buildings2.SelectedIndexChanged += new EventHandler(this.cb_Buildings_SelectedIndexChanged);
-		}
-
-		private List<BuildingInfo> GetBuildingsClasses()
-		{
-			var buildingsClasses = ItemHelper.GetClasses("FamilyIslandHelper.Models.Buildings", true).ToList();
-
-			return buildingsClasses.Select(bc => new BuildingInfo { Value = bc.Name, Name = bc.GetFields()[0].GetValue(null).ToString() }).ToList();
 		}
 
 		private void AddInfoToListBox(string itemName)
@@ -204,7 +198,7 @@ namespace FamilyIslandHelper
 			{
 				var panel = new Panel
 				{
-					Tag = GetItemNameByPath(itemsPathes[i]) + "_" + panelNumber,
+					Tag = ItemHelper.GetItemNameByPath(itemsPathes[i]) + "_" + panelNumber,
 					Size = new Size(size, size),
 					BackgroundImage = Image.FromFile(itemsPathes[i]),
 					BackgroundImageLayout = ImageLayout.Stretch,
@@ -237,11 +231,11 @@ namespace FamilyIslandHelper
 				ImageSize = new Size(30, 30)
 			};
 
-			var buildingsNames = ItemHelper.GetClassesNames("FamilyIslandHelper.Models.Buildings", true).ToArray();
+			var buildingsNames = ItemHelper.GetClassesNames("FamilyIslandHelper.Api.Models.Buildings", true).ToArray();
 
 			var counter = 0;
 			var itemPath = Directory.GetFiles(folderWithPictures).FirstOrDefault();
-			dictImagesIndexes.Add(GetItemNameByPath(itemPath), counter);
+			dictImagesIndexes.Add(ItemHelper.GetItemNameByPath(itemPath), counter);
 			imageList.Images.Add(Image.FromFile(itemPath));
 			counter++;
 
@@ -251,7 +245,7 @@ namespace FamilyIslandHelper
 
 				for (var i = 0; i < itemsPathes.Count; i++)
 				{
-					dictImagesIndexes.Add(GetItemNameByPath(itemsPathes[i]), counter);
+					dictImagesIndexes.Add(ItemHelper.GetItemNameByPath(itemsPathes[i]), counter);
 					imageList.Images.Add(Image.FromFile(itemsPathes[i]));
 					counter++;
 				}
@@ -261,7 +255,7 @@ namespace FamilyIslandHelper
 
 			for (var i = 0; i < resourcesPathes.Count; i++)
 			{
-				dictImagesIndexes.Add(GetItemNameByPath(resourcesPathes[i]), counter);
+				dictImagesIndexes.Add(ItemHelper.GetItemNameByPath(resourcesPathes[i]), counter);
 				imageList.Images.Add(Image.FromFile(resourcesPathes[i]));
 				counter++;
 			}
@@ -277,11 +271,6 @@ namespace FamilyIslandHelper
 			}
 
 			return dictImagesIndexes[itemName];
-		}
-
-		private string GetItemNameByPath(string itemPath)
-		{
-			return itemPath.Split('.').First().Split('\\').Last();
 		}
 
 		private void tv_Components_AfterSelect(object sender, TreeViewEventArgs e)

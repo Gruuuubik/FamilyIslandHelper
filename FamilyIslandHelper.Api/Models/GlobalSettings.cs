@@ -1,4 +1,4 @@
-﻿namespace FamilyIslandHelper.Models
+﻿namespace FamilyIslandHelper.Api.Models
 {
 	public static class GlobalSettings
 	{

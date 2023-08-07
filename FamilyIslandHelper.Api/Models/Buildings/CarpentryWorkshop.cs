@@ -1,8 +1,8 @@
-﻿using FamilyIslandHelper.Models.Abstract;
+﻿using FamilyIslandHelper.Api.Models.Abstract;
 using System;
 using System.Collections.Generic;
 
-namespace FamilyIslandHelper.Models.Buildings
+namespace FamilyIslandHelper.Api.Models.Buildings
 {
 	public static class CarpentryWorkshop
 	{

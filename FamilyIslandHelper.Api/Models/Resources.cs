@@ -1,6 +1,6 @@
-﻿using FamilyIslandHelper.Models.Abstract;
+﻿using FamilyIslandHelper.Api.Models.Abstract;
 
-namespace FamilyIslandHelper.Models
+namespace FamilyIslandHelper.Api.Models
 {
 	public class Clay : ResourceItem
 	{

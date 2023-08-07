@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace FamilyIslandHelper.Models.Abstract
+namespace FamilyIslandHelper.Api.Models.Abstract
 {
 	public abstract class ProducableItem : Item
 	{

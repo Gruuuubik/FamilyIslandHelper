@@ -1,11 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.31424.327
+# Visual Studio Version 17
+VisualStudioVersion = 17.6.33829.357
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FamilyIslandHelper", "FamilyIslandHelper\FamilyIslandHelper.csproj", "{A176C930-ACD3-437F-AB7D-EF132D668EC5}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FamilyIslandHelper.UnitTests", "FamilyIslandHelper.UnitTests\FamilyIslandHelper.UnitTests.csproj", "{D888CCC7-C009-4DBA-8F69-844C16EE3588}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FamilyIslandHelper.Api.UnitTests", "FamilyIslandHelper.Api.UnitTests\FamilyIslandHelper.Api.UnitTests.csproj", "{D888CCC7-C009-4DBA-8F69-844C16EE3588}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FamilyIslandHelper.Api", "FamilyIslandHelper.Api\FamilyIslandHelper.Api.csproj", "{700A438E-A124-4010-95B7-23E21249EC23}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{D888CCC7-C009-4DBA-8F69-844C16EE3588}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D888CCC7-C009-4DBA-8F69-844C16EE3588}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D888CCC7-C009-4DBA-8F69-844C16EE3588}.Release|Any CPU.Build.0 = Release|Any CPU
+		{700A438E-A124-4010-95B7-23E21249EC23}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{700A438E-A124-4010-95B7-23E21249EC23}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{700A438E-A124-4010-95B7-23E21249EC23}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{700A438E-A124-4010-95B7-23E21249EC23}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

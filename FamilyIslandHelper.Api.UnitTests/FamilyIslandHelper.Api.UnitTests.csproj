@@ -48,6 +48,6 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\FamilyIslandHelper\FamilyIslandHelper.csproj" />
+    <ProjectReference Include="..\FamilyIslandHelper.Api\FamilyIslandHelper.Api.csproj" />
   </ItemGroup>
 </Project>

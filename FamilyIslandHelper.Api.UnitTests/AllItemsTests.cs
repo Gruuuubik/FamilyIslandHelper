@@ -1,6 +1,7 @@
-﻿using FamilyIslandHelper.Models;
-using FamilyIslandHelper.Models.Abstract;
-using FamilyIslandHelper.Models.Buildings;
+﻿using FamilyIslandHelper.Api;
+using FamilyIslandHelper.Api.Models;
+using FamilyIslandHelper.Api.Models.Abstract;
+using FamilyIslandHelper.Api.Models.Buildings;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -12,7 +13,7 @@ namespace FamilyIslandHelper.UnitTests
 	public class AllItemsTests
 	{
 		private const string folderWithPictures = "Pictures";
-		private const string relativePathToBuildings = "FamilyIslandHelper.Models.Buildings";
+		private const string relativePathToBuildings = "FamilyIslandHelper.Api.Models.Buildings";
 
 		[Fact]
 		public void When_GetAllBuildingsNames_Then_AllBuildingsHaveFolders()
@@ -37,7 +38,7 @@ namespace FamilyIslandHelper.UnitTests
 		[Fact]
 		public void When_GetAllResources_Then_AllResourcesHaveImages()
 		{
-			var actualResourcesNames = ItemHelper.GetClassesNames("FamilyIslandHelper.Models", false)
+			var actualResourcesNames = ItemHelper.GetClassesNames("FamilyIslandHelper.Api.Models", false)
 				.Where(n => n != "BuildingInfo" && n != "GlobalSettings").OrderBy(i => i);
 
 			var resourcesPathes = Directory.GetFiles("Resources");
