@@ -284,12 +284,16 @@ namespace FamilyIslandHelper
 
 			if (tv_Components1.SelectedNode != null)
 			{
-				AddInfoToListBox(tv_Components1.SelectedNode.Name);
+				var itemName = tv_Components1.SelectedNode.Name;
+				selectedItem1 = ItemHelper.FindItemByName(itemName);
+				AddInfoToListBox(itemName);
 			}
 
 			if (tv_Components2.SelectedNode != null)
 			{
-				AddInfoToListBox(tv_Components2.SelectedNode.Name);
+				var itemName = tv_Components2.SelectedNode.Name;
+				selectedItem2 = ItemHelper.FindItemByName(itemName);
+				AddInfoToListBox(itemName);
 			}
 
 			if (selectedItem1 != null && selectedItem2 != null)
@@ -309,6 +313,16 @@ namespace FamilyIslandHelper
 
 				UpdateInfo();
 			}
+		}
+
+		private void num_Item1Count_ValueChanged(object sender, EventArgs e)
+		{
+			UpdateInfo();
+		}
+
+		private void num_Item2Count_ValueChanged(object sender, EventArgs e)
+		{
+			UpdateInfo();
 		}
 
 		private void cb_showListOfComponents_CheckedChanged(object sender, EventArgs e)
