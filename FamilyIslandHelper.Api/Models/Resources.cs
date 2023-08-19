@@ -195,4 +195,17 @@ namespace FamilyIslandHelper.Api.Models
 	{
 		public override string Name => "Свеча";
 	}
+
+	public class Iron : ResourceItem
+	{
+		public override string Name => "Железо";
+
+		//165 energy for 7
+		public override int EnergyCost => 24;
+	}
+
+	public class Lazurite : ZeroCostResourceItem
+	{
+		public override string Name => "Лазурит";
+	}
 }
