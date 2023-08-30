@@ -7,12 +7,13 @@ namespace FamilyIslandHelper.Api.Models.Buildings
 	public static class Workshop
 	{
 		public static string Name = "Мастерская";
+		private const double ProduceRatio = 1.5;
 
 		public class Scraper : ProducableItem
 		{
 			public override string Name => "Скребок";
 			public override int LevelWhenAppears => 3;
-			public override TimeSpan ProduceTime => TimeSpan.FromSeconds(4 * 60 / GlobalSettings.ProduceRatio);
+			public override TimeSpan ProduceTime => TimeSpan.FromSeconds(4 * 60 / ProduceRatio);
 
 			public override List<(Item item, int count)> Components => new List<(Item item, int count)>
 			{
@@ -24,7 +25,7 @@ namespace FamilyIslandHelper.Api.Models.Buildings
 		{
 			public override string Name => "Топор";
 			public override int LevelWhenAppears => 12;
-			public override TimeSpan ProduceTime => TimeSpan.FromMinutes(15 / GlobalSettings.ProduceRatio);
+			public override TimeSpan ProduceTime => TimeSpan.FromMinutes(15 / ProduceRatio);
 
 			public override List<(Item item, int count)> Components => new List<(Item item, int count)>
 			{
@@ -38,7 +39,7 @@ namespace FamilyIslandHelper.Api.Models.Buildings
 		{
 			public override string Name => "Нож";
 			public override int LevelWhenAppears => 16;
-			public override TimeSpan ProduceTime => TimeSpan.FromMinutes(30 / GlobalSettings.ProduceRatio);
+			public override TimeSpan ProduceTime => TimeSpan.FromMinutes(30 / ProduceRatio);
 
 			public override List<(Item item, int count)> Components => new List<(Item item, int count)>
 			{
@@ -52,7 +53,7 @@ namespace FamilyIslandHelper.Api.Models.Buildings
 		{
 			public override string Name => "Кирпич";
 			public override int LevelWhenAppears => 19;
-			public override TimeSpan ProduceTime => TimeSpan.FromMinutes(60 / GlobalSettings.ProduceRatio);
+			public override TimeSpan ProduceTime => TimeSpan.FromMinutes(60 / ProduceRatio);
 
 			public override List<(Item item, int count)> Components => new List<(Item item, int count)>
 			{

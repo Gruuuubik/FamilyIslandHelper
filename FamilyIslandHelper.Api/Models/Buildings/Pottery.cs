@@ -7,12 +7,13 @@ namespace FamilyIslandHelper.Api.Models.Buildings
 	public static class Pottery
 	{
 		public static string Name = "Гончарная";
+		private const double ProduceRatio = 1.5;
 
 		public class Bowl : ProducableItem
 		{
 			public override string Name => "Миска";
 			public override int LevelWhenAppears => 10;
-			public override TimeSpan ProduceTime => TimeSpan.FromMinutes(9 / GlobalSettings.ProduceRatio);
+			public override TimeSpan ProduceTime => TimeSpan.FromMinutes(9 / ProduceRatio);
 
 			public override List<(Item item, int count)> Components => new List<(Item item, int count)>
 			{
@@ -24,7 +25,7 @@ namespace FamilyIslandHelper.Api.Models.Buildings
 		{
 			public override string Name => "Горшок";
 			public override int LevelWhenAppears => 18;
-			public override TimeSpan ProduceTime => TimeSpan.FromMinutes(30 / GlobalSettings.ProduceRatio);
+			public override TimeSpan ProduceTime => TimeSpan.FromMinutes(30 / ProduceRatio);
 
 			public override List<(Item item, int count)> Components => new List<(Item item, int count)>
 			{
@@ -36,7 +37,7 @@ namespace FamilyIslandHelper.Api.Models.Buildings
 		{
 			public override string Name => "Кувшин";
 			public override int LevelWhenAppears => 27;
-			public override TimeSpan ProduceTime => TimeSpan.FromMinutes(90 / GlobalSettings.ProduceRatio);
+			public override TimeSpan ProduceTime => TimeSpan.FromMinutes(90 / ProduceRatio);
 
 			public override List<(Item item, int count)> Components => new List<(Item item, int count)>
 			{
@@ -49,7 +50,7 @@ namespace FamilyIslandHelper.Api.Models.Buildings
 		{
 			public override string Name => "Амфора";
 			public override int LevelWhenAppears => 39;
-			public override TimeSpan ProduceTime => TimeSpan.FromMinutes(180 / GlobalSettings.ProduceRatio);
+			public override TimeSpan ProduceTime => TimeSpan.FromMinutes(180 / ProduceRatio);
 
 			public override List<(Item item, int count)> Components => new List<(Item item, int count)>
 			{
@@ -63,7 +64,7 @@ namespace FamilyIslandHelper.Api.Models.Buildings
 		{
 			public override string Name => "Фонарик";
 			public override int LevelWhenAppears => 58;
-			public override TimeSpan ProduceTime => TimeSpan.FromMinutes(60 / GlobalSettings.ProduceRatio);
+			public override TimeSpan ProduceTime => TimeSpan.FromMinutes(60 / ProduceRatio);
 
 			public override List<(Item item, int count)> Components => new List<(Item item, int count)>
 			{

@@ -303,18 +303,6 @@ namespace FamilyIslandHelper
 			}
 		}
 
-		private void rb_Ratio_CheckedChanged(object sender, EventArgs e)
-		{
-			var radioButton = (RadioButton)sender;
-
-			if (radioButton.Checked)
-			{
-				GlobalSettings.ProduceRatio = double.Parse(radioButton.Text);
-
-				UpdateInfo();
-			}
-		}
-
 		private void num_Item1Count_ValueChanged(object sender, EventArgs e)
 		{
 			UpdateInfo();

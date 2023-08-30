@@ -7,12 +7,13 @@ namespace FamilyIslandHelper.Api.Models.Buildings
 	public static class MeteoriteForge
 	{
 		public static string Name = "Метеоритная кузница";
+		private const double ProduceRatio = 1.5;
 
 		public class IronIngot : ProducableItem
 		{
 			public override string Name => "Железный слиток";
 			public override int LevelWhenAppears => 45;
-			public override TimeSpan ProduceTime => TimeSpan.FromHours(1 / GlobalSettings.ProduceRatio);
+			public override TimeSpan ProduceTime => TimeSpan.FromHours(1 / ProduceRatio);
 
 			public override List<(Item item, int count)> Components => new List<(Item item, int count)>
 			{
@@ -25,7 +26,7 @@ namespace FamilyIslandHelper.Api.Models.Buildings
 		{
 			public override string Name => "Железная труба";
 			public override int LevelWhenAppears => 47;
-			public override TimeSpan ProduceTime => TimeSpan.FromMinutes(75 / GlobalSettings.ProduceRatio);
+			public override TimeSpan ProduceTime => TimeSpan.FromMinutes(75 / ProduceRatio);
 
 			public override List<(Item item, int count)> Components => new List<(Item item, int count)>
 			{
@@ -38,7 +39,7 @@ namespace FamilyIslandHelper.Api.Models.Buildings
 		{
 			public override string Name => "Железная пластина";
 			public override int LevelWhenAppears => 54;
-			public override TimeSpan ProduceTime => TimeSpan.FromHours(2 / GlobalSettings.ProduceRatio);
+			public override TimeSpan ProduceTime => TimeSpan.FromHours(2 / ProduceRatio);
 
 			public override List<(Item item, int count)> Components => new List<(Item item, int count)>
 			{
@@ -52,7 +53,7 @@ namespace FamilyIslandHelper.Api.Models.Buildings
 		{
 			public override string Name => "Молот";
 			public override int LevelWhenAppears => 67;
-			public override TimeSpan ProduceTime => TimeSpan.FromHours(5 / GlobalSettings.ProduceRatio);
+			public override TimeSpan ProduceTime => TimeSpan.FromHours(5 / ProduceRatio);
 
 			public override List<(Item item, int count)> Components => new List<(Item item, int count)>
 			{
