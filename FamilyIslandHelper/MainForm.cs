@@ -1,5 +1,4 @@
 ﻿using FamilyIslandHelper.Api;
-using FamilyIslandHelper.Api.Models;
 using FamilyIslandHelper.Api.Models.Abstract;
 using System;
 using System.Collections.Generic;
@@ -7,13 +6,14 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Windows.Forms;
+using FamilyIslandHelper.Api.Helpers;
 
 namespace FamilyIslandHelper
 {
 	public partial class MainForm : Form
 	{
-		private const string folderWithPictures = "Pictures";
-		private bool ShowListOfComponents = false;
+		private const string FolderWithPictures = "Pictures";
+		private bool showListOfComponents = false;
 
 		private Item selectedItem1, selectedItem2;
 
@@ -23,7 +23,7 @@ namespace FamilyIslandHelper
 		{
 			InitializeComponent();
 
-			cb_showListOfComponents.Checked = ShowListOfComponents;
+			cb_showListOfComponents.Checked = showListOfComponents;
 
 			InitBuildings();
 
@@ -35,16 +35,16 @@ namespace FamilyIslandHelper
 
 		private void InitBuildings()
 		{
-			cb_Buildings1.DataSource = ItemHelper.GetBuildingsClasses();
+			cb_Buildings1.DataSource = BuildingHelper.GetBuildingsClasses();
 			cb_Buildings1.DisplayMember = "Name";
 			cb_Buildings1.ValueMember = "Value";
 
-			cb_Buildings2.DataSource = ItemHelper.GetBuildingsClasses();
+			cb_Buildings2.DataSource = BuildingHelper.GetBuildingsClasses();
 			cb_Buildings2.DisplayMember = "Name";
 			cb_Buildings2.ValueMember = "Value";
 
-			cb_Buildings1.SelectedIndexChanged += new EventHandler(this.cb_Buildings_SelectedIndexChanged);
-			cb_Buildings2.SelectedIndexChanged += new EventHandler(this.cb_Buildings_SelectedIndexChanged);
+			cb_Buildings1.SelectedIndexChanged += this.cb_Buildings_SelectedIndexChanged;
+			cb_Buildings2.SelectedIndexChanged += this.cb_Buildings_SelectedIndexChanged;
 		}
 
 		private void AddInfoToListBox(string itemName)
@@ -58,29 +58,27 @@ namespace FamilyIslandHelper
 
 			lb_Components.Items.Add(item.ToString());
 
-			if (item is ProducableItem)
+			if (item is ProducibleItem producibleItem)
 			{
-				var producableItem = item as ProducableItem;
-
-				if (ShowListOfComponents)
+				if (showListOfComponents)
 				{
 					lb_Components.Items.Add("");
 					lb_Components.Items.Add("Components:");
 
-					foreach (var componentInfo in producableItem.ComponentsInfo(0))
+					foreach (var componentInfo in producibleItem.ComponentsInfo(0))
 					{
 						lb_Components.Items.Add(componentInfo);
 					}
 				}
 
 				lb_Components.Items.Add("");
-				lb_Components.Items.Add("Итого времени на производство: " + producableItem.TotalProduceTime);
+				lb_Components.Items.Add("Итого времени на производство: " + producibleItem.TotalProduceTime);
 			}
 		}
 
-		private void AddInfoToTreeView(TreeView tv_Components, Item item, string itemTypeString)
+		private void AddInfoToTreeView(TreeView tvComponents, Item item, string itemTypeString)
 		{
-			tv_Components.Nodes.Clear();
+			tvComponents.Nodes.Clear();
 
 			var imageIndex = GetImageIndex(itemTypeString);
 			var treeNode = new TreeNode(item.Name, imageIndex, imageIndex)
@@ -88,24 +86,22 @@ namespace FamilyIslandHelper
 				Name = item.GetType().Name
 			};
 
-			tv_Components.Nodes.Add(treeNode);
+			tvComponents.Nodes.Add(treeNode);
 
-			AddItemComponentsToItemNode(tv_Components.Nodes[0], item);
+			AddItemComponentsToItemNode(tvComponents.Nodes[0], item);
 
-			tv_Components.ExpandAll();
+			tvComponents.ExpandAll();
 
-			tv_Components.SelectedNode = tv_Components.Nodes[0];
+			tvComponents.SelectedNode = tvComponents.Nodes[0];
 		}
 
 		private void AddItemComponentsToItemNode(TreeNode parentTreeNode, Item item)
 		{
-			if (item is ProducableItem)
+			if (item is ProducibleItem producibleItem)
 			{
-				var producableItem = item as ProducableItem;
-
-				for (var i = 0; i < producableItem.Components.Count; i++)
+				for (var i = 0; i < producibleItem.Components.Count; i++)
 				{
-					var childComponent = producableItem.Components[i];
+					var childComponent = producibleItem.Components[i];
 					var childItem = childComponent.item;
 
 					var imageIndex = GetImageIndex(childItem.GetType().Name);
@@ -129,21 +125,21 @@ namespace FamilyIslandHelper
 
 			if (panelNumber == 1)
 			{
-				ShowInfoForItem(panelTag, cb_Buildings1.SelectedValue.ToString(), tv_Components1);
+				ShowInfoForItem(panelTag, tv_Components1);
 			}
 			else if (panelNumber == 2)
 			{
-				ShowInfoForItem(panelTag, cb_Buildings2.SelectedValue.ToString(), tv_Components2);
+				ShowInfoForItem(panelTag, tv_Components2);
 			}
 		}
 
-		private void ShowInfoForItem(string panelTag, string currentBuildingName, TreeView tv_Components)
+		private void ShowInfoForItem(string panelTag, TreeView tvComponents)
 		{
 			var itemTypeString = panelTag.Split('_')[0];
 			var panelNumber = int.Parse(panelTag.Split('_')[1]);
 			lb_Components.Items.Clear();
 
-			var item = ItemHelper.CreateProducableItem(currentBuildingName, itemTypeString);
+			var item = ItemHelper.CreateProducibleItem(itemTypeString);
 
 			if (panelNumber == 1)
 			{
@@ -154,7 +150,7 @@ namespace FamilyIslandHelper
 				selectedItem2 = item;
 			}
 
-			AddInfoToTreeView(tv_Components, item, itemTypeString);
+			AddInfoToTreeView(tvComponents, item, itemTypeString);
 		}
 
 		private void cb_Buildings_SelectedIndexChanged(object sender, EventArgs e)
@@ -165,19 +161,22 @@ namespace FamilyIslandHelper
 
 		private void ShowListOfItemsForBuilding(string buildingName, int panelNumber)
 		{
-			var itemsPathes = Directory.GetFiles($"{folderWithPictures}\\{buildingName}").ToList();
+			var itemsPaths = Directory.GetFiles($"{FolderWithPictures}\\{buildingName}").ToList();
+			var ratio = BuildingHelper.CreateBuilding(buildingName).ProduceRatio.ToString();
 
 			if (panelNumber == 1)
 			{
 				tv_Components1.Nodes.Clear();
+				lbl_Ratio1.Text = ratio;
 
-				InitPanels(itemsPathes, panelNumber, pnl_Items1, buildingName);
+				InitPanels(itemsPaths, panelNumber, pnl_Items1);
 			}
 			else if (panelNumber == 2)
 			{
 				tv_Components2.Nodes.Clear();
+				lbl_Ratio2.Text = ratio;
 
-				InitPanels(itemsPathes, panelNumber, pnl_Items2, buildingName);
+				InitPanels(itemsPaths, panelNumber, pnl_Items2);
 			}
 		}
 
@@ -189,37 +188,39 @@ namespace FamilyIslandHelper
 			ShowListOfItemsForBuilding(cb_Buildings2.SelectedValue.ToString(), 2);
 		}
 
-		private void InitPanels(List<string> itemsPathes, int panelNumber, Panel pnl_Items, string buildingName)
+		private void InitPanels(IReadOnlyList<string> itemsPaths, int panelNumber, Control pnlItems)
 		{
-			var panels = new Control[itemsPathes.Count];
+			var panels = new Control[itemsPaths.Count];
 			const int size = 40;
 
-			for (var i = 0; i < itemsPathes.Count; i++)
+			for (var i = 0; i < itemsPaths.Count; i++)
 			{
 				var panel = new Panel
 				{
-					Tag = ItemHelper.GetItemNameByPath(itemsPathes[i]) + "_" + panelNumber,
+					Tag = ItemHelper.GetItemNameByPath(itemsPaths[i]) + "_" + panelNumber,
 					Size = new Size(size, size),
-					BackgroundImage = Image.FromFile(itemsPathes[i]),
+					BackgroundImage = Image.FromFile(itemsPaths[i]),
 					BackgroundImageLayout = ImageLayout.Stretch,
 					Cursor = Cursors.Hand
 				};
 
-				panel.MouseDown += new MouseEventHandler(pnl_Item_MouseDown);
+				panel.MouseDown += pnl_Item_MouseDown;
 
 				panels[i] = panel;
 			}
 
-			ProducableItem getItem(Control p) => ItemHelper.CreateProducableItem(buildingName, p.Tag.ToString().Split('_')[0]);
-			panels = panels.OrderBy(p => getItem(p).LevelWhenAppears).ThenBy(p => getItem(p).TotalProduceTime).ToArray();
+			panels = panels.OrderBy(p => GetItem(p).LevelWhenAppears).ThenBy(p => GetItem(p).TotalProduceTime).ToArray();
 
 			for (var i = 0; i < panels.Length; i++)
 			{
 				panels[i].Location = new Point(5 + (size + 5) * i, 10);
 			}
 
-			pnl_Items.Controls.Clear();
-			pnl_Items.Controls.AddRange(panels);
+			pnlItems.Controls.Clear();
+			pnlItems.Controls.AddRange(panels);
+			return;
+
+			ProducibleItem GetItem(Control p) => ItemHelper.CreateProducibleItem(p.Tag.ToString().Split('_')[0]);
 		}
 
 		private ImageList GetImageList()
@@ -231,32 +232,32 @@ namespace FamilyIslandHelper
 				ImageSize = new Size(30, 30)
 			};
 
-			var buildingsNames = ItemHelper.GetClassesNames("FamilyIslandHelper.Api.Models.Buildings", true).ToArray();
+			var buildingsNames = BuildingHelper.GetBuildingsNames();
 
 			var counter = 0;
-			var itemPath = Directory.GetFiles(folderWithPictures).FirstOrDefault();
+			var itemPath = Directory.GetFiles(FolderWithPictures).FirstOrDefault();
 			dictImagesIndexes.Add(ItemHelper.GetItemNameByPath(itemPath), counter);
 			imageList.Images.Add(Image.FromFile(itemPath));
 			counter++;
 
 			foreach (var buildingName in buildingsNames)
 			{
-				var itemsPathes = Directory.GetFiles($"{folderWithPictures}\\{buildingName}").ToList();
+				var itemsPaths = Directory.GetFiles($"{FolderWithPictures}\\{buildingName}").ToList();
 
-				for (var i = 0; i < itemsPathes.Count; i++)
+				for (var i = 0; i < itemsPaths.Count; i++)
 				{
-					dictImagesIndexes.Add(ItemHelper.GetItemNameByPath(itemsPathes[i]), counter);
-					imageList.Images.Add(Image.FromFile(itemsPathes[i]));
+					dictImagesIndexes.Add(ItemHelper.GetItemNameByPath(itemsPaths[i]), counter);
+					imageList.Images.Add(Image.FromFile(itemsPaths[i]));
 					counter++;
 				}
 			}
 
-			var resourcesPathes = Directory.GetFiles("Resources").ToList();
+			var resourcesPaths = Directory.GetFiles("Resources").ToList();
 
-			for (var i = 0; i < resourcesPathes.Count; i++)
+			for (var i = 0; i < resourcesPaths.Count; i++)
 			{
-				dictImagesIndexes.Add(ItemHelper.GetItemNameByPath(resourcesPathes[i]), counter);
-				imageList.Images.Add(Image.FromFile(resourcesPathes[i]));
+				dictImagesIndexes.Add(ItemHelper.GetItemNameByPath(resourcesPaths[i]), counter);
+				imageList.Images.Add(Image.FromFile(resourcesPaths[i]));
 				counter++;
 			}
 
@@ -315,7 +316,7 @@ namespace FamilyIslandHelper
 
 		private void cb_showListOfComponents_CheckedChanged(object sender, EventArgs e)
 		{
-			ShowListOfComponents = cb_showListOfComponents.Checked;
+			showListOfComponents = cb_showListOfComponents.Checked;
 
 			UpdateInfo();
 		}

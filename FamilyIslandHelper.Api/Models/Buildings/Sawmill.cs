@@ -1,64 +1,19 @@
 ﻿using FamilyIslandHelper.Api.Models.Abstract;
-using System;
+using FamilyIslandHelper.Api.Models.Items;
 using System.Collections.Generic;
 
 namespace FamilyIslandHelper.Api.Models.Buildings
 {
-	public static class Sawmill
+	public class Sawmill : Building
 	{
-		public static string Name = "Лесопилка";
-		private const double ProduceRatio = 1.5;
-
-		public class Stakes : ProducableItem
+		public override string Name => "Лесопилка";
+		public override double ProduceRatio => 1.5;
+		public override List<ProducibleItem> Items => new List<ProducibleItem>
 		{
-			public override string Name => "Колья";
-			public override int LevelWhenAppears => 5;
-			public override TimeSpan ProduceTime => TimeSpan.FromMinutes(9 / ProduceRatio);
-
-			public override List<(Item item, int count)> Components => new List<(Item item, int count)>
-			{
-				(new Wood(), 2),
-				(new Workshop.Scraper(), 1)
-			};
-		}
-
-		public class UnedgedBoard : ProducableItem
-		{
-			public override string Name => "Доска необрезная";
-			public override int LevelWhenAppears => 8;
-			public override TimeSpan ProduceTime => TimeSpan.FromMinutes(15 / ProduceRatio);
-
-			public override List<(Item item, int count)> Components => new List<(Item item, int count)>
-			{
-				(new Wood(), 4),
-				(new Workshop.Scraper(), 1)
-			};
-		}
-
-		public class EdgedBoard : ProducableItem
-		{
-			public override string Name => "Доска обрезная";
-			public override int LevelWhenAppears => 20;
-			public override TimeSpan ProduceTime => TimeSpan.FromMinutes(60 / ProduceRatio);
-
-			public override List<(Item item, int count)> Components => new List<(Item item, int count)>
-			{
-				(new UnedgedBoard(), 2),
-				(new Smelter.Resin(), 1)
-			};
-		}
-
-		public class Trough : ProducableItem
-		{
-			public override string Name => "Корыто";
-			public override int LevelWhenAppears => 52;
-			public override TimeSpan ProduceTime => TimeSpan.FromHours(3 / ProduceRatio);
-
-			public override List<(Item item, int count)> Components => new List<(Item item, int count)>
-			{
-				(new CarpentryWorkshop.WoodenBeam(), 2),
-				(new Tannery.WhitePaint(), 3)
-			};
-		}
+			new Stakes(),
+			new UnedgedBoard(),
+			new EdgedBoard(),
+			new Trough()
+		};
 	}
 }

@@ -1,33 +1,34 @@
-﻿using FamilyIslandHelper.Api;
+﻿using FamilyIslandHelper.Api.Helpers;
 using FamilyIslandHelper.Api.Models;
 using FamilyIslandHelper.Api.Models.Abstract;
 using FamilyIslandHelper.Api.Models.Buildings;
+using FamilyIslandHelper.Api.Models.Items;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using Xunit;
 
-namespace FamilyIslandHelper.UnitTests
+namespace FamilyIslandHelper.Api.UnitTests
 {
 	public class AllItemsTests
 	{
-		private const string folderWithPictures = "Pictures";
-		private const string relativePathToBuildings = "FamilyIslandHelper.Api.Models.Buildings";
+		private const string FolderWithPictures = "Pictures";
 
 		[Fact]
 		public void When_GetAllBuildingsNames_Then_AllBuildingsHaveFolders()
 		{
-			var actualBuildingsNames = ItemHelper.GetClassesNames(relativePathToBuildings, true);
+			var actualBuildingsNames = BuildingHelper.GetBuildingsNames();
 
-			var buildingsDirectories = Directory.GetDirectories(folderWithPictures);
+			var buildingsDirectories = Directory.GetDirectories(FolderWithPictures);
 			var expectedBuildingsNames = buildingsDirectories.Select(b => b.Split('\\').Last());
 
 			Assert.Equal(expectedBuildingsNames, actualBuildingsNames);
 		}
 
 		[Theory]
-		[InlineData("Lace", typeof(Loom.Lace))]
+		[InlineData("Lace", typeof(Lace))]
+		[InlineData("Cone", typeof(Cone))]
 		public void When_FindItemByName_Then_ReturnCorrectItem(string itemName, Type expectedItemType)
 		{
 			var actualItem = ItemHelper.FindItemByName(itemName);
@@ -38,44 +39,51 @@ namespace FamilyIslandHelper.UnitTests
 		[Fact]
 		public void When_GetAllResources_Then_AllResourcesHaveImages()
 		{
-			var actualResourcesNames = ItemHelper.GetClassesNames("FamilyIslandHelper.Api.Models", false)
-				.Where(n => n != "BuildingInfo" && n != "GlobalSettings").OrderBy(i => i);
+			var actualResourcesNames = ClassHelper.GetClassesNames("FamilyIslandHelper.Api.Models")
+				.Where(n => n != "BuildingInfo").OrderBy(i => i);
 
-			var resourcesPathes = Directory.GetFiles("Resources");
-			var expectedResourcesNames = resourcesPathes.Select(r => r.Split('.').First().Split('\\').Last()).OrderBy(i => i);
+			var resourcesPaths = Directory.GetFiles("Resources");
+			var expectedResourcesNames = resourcesPaths.Select(r => r.Split('.').First().Split('\\').Last()).OrderBy(i => i);
 
 			Assert.Equal(expectedResourcesNames, actualResourcesNames);
 		}
 
-		public static IEnumerable<object[]> BuildingsClassesProvider
+		public static IEnumerable<object[]> GetAllItemsNames_TestData()
 		{
-			get
-			{
-				var buildingsClasses = ItemHelper.GetClasses(relativePathToBuildings, true);
-
-				return buildingsClasses.Select(b => new object[] { b });
-			}
+			yield return new object[] { new Pottery().GetType(), new[] { "Amphora", "Bowl", "Flashlight", "Jug", "Pot" } };
 		}
 
 		[Theory]
-		[MemberData(nameof(BuildingsClassesProvider))]
-		public void When_GetAllTemsNames_Then_AllItemsHavePictures(Type buildingClass)
+		[MemberData(nameof(GetAllItemsNames_TestData))]
+		public void When_GetAllItemsNames_Then_AllItemsHavePictures(Type buildingClass, IEnumerable<string> expectedItemsNames)
 		{
-			var expectedItemsNames = buildingClass.GetNestedTypes().Where(t => t.IsClass).Select(t => t.Name).OrderBy(i => i);
-
-			var itemsPathes = Directory.GetFiles($"{folderWithPictures}\\{buildingClass.Name}");
-			var actualItemsNames = itemsPathes.Select(ip => ip.Split('.').First().Split('\\').Last()).OrderBy(i => i);
+			var itemsPaths = Directory.GetFiles($"{FolderWithPictures}\\{buildingClass.Name}");
+			var actualItemsNames = itemsPaths.Select(ip => ip.Split('.').First().Split('\\').Last()).OrderBy(i => i);
 
 			Assert.Equal(expectedItemsNames, actualItemsNames);
 		}
 
 		[Theory]
-		[InlineData("Loom", "Lace", typeof(Loom.Lace))]
-		public void When_TryToCreateProducableItem_Then_ReturnCorrectProducableItem(string buildingName, string itemTypeString, Type expectedItemType)
+		[InlineData("Lace", typeof(Lace))]
+		public void When_TryToCreateProducibleItem_Then_ReturnCorrectProducibleItem(string itemTypeString, Type expectedItemType)
 		{
-			var item = ItemHelper.CreateProducableItem(buildingName, itemTypeString);
+			var item = ItemHelper.CreateProducibleItem(itemTypeString);
 
 			Assert.Equal(expectedItemType, item.GetType());
+		}
+
+		public static IEnumerable<object[]> GetProduceTime_TestData()
+		{
+			yield return new object[] { nameof(Sackcloth), TimeSpan.FromMinutes(40) };
+		}
+
+		[Theory]
+		[MemberData(nameof(GetProduceTime_TestData))]
+		public void When_GetProduceTime_Then_ReturnCorrectValue(string itemTypeString, TimeSpan expectedProduceTime)
+		{
+			var item = ItemHelper.CreateProducibleItem(itemTypeString);
+
+			Assert.Equal(expectedProduceTime, item.ProduceTime);
 		}
 
 		[Theory]
@@ -89,25 +97,25 @@ namespace FamilyIslandHelper.UnitTests
 
 		[Theory]
 		[InlineData("Mill", new[] { "ChickenFood", "CowFood", "Flour", "GoatFood", "Ocher", "SunflowerOil", "Syrup" })]
-		public void When_TryToGetItemsOfBuulding_Then_ReturnCorrectItems(string buildingName, IEnumerable<string> expectedItems)
+		public void When_TryToGetItemsOfBuilding_Then_ReturnCorrectItems(string buildingName, IEnumerable<string> expectedItems)
 		{
-			var actualItems = ItemHelper.GetItemsOfBuilding(buildingName);
+			var actualItems = BuildingHelper.GetItemsOfBuilding(buildingName);
 
 			Assert.Equal(expectedItems, actualItems);
 		}
 
 		public static IEnumerable<object[]> CompareItemsWithDifferentCount_TestData()
 		{
-			yield return new object[] { new Loom.Lace(), 2, new Loom.Lace(), 2,
+			yield return new object[] { new Lace(), 2, new Lace(), 2,
 				"2 'Шнурок' и 2 'Шнурок' равны по энергии. 2 'Шнурок' и 2 'Шнурок' равны по времени производства." };
 
-			yield return new object[] { new Loom.Rope(), 5, new Loom.Wattle(), 3,
+			yield return new object[] { new Rope(), 5, new Wattle(), 3,
 				"3 'Плетень' выгоднее, чем 5 'Верёвка' по энергии." };
 		}
 
 		[Theory]
 		[MemberData(nameof(CompareItemsWithDifferentCount_TestData))]
-		public void When_Compate2ItemsWithDifferentCount_Then_ReturnCorrectValue(Item item1, int count1, Item item2, int count2, string expectedMessage)
+		public void When_Compare2ItemsWithDifferentCount_Then_ReturnCorrectValue(Item item1, int count1, Item item2, int count2, string expectedMessage)
 		{
 			var actualMessage = ItemHelper.CompareItems(item1, count1, item2, count2);
 
@@ -116,16 +124,16 @@ namespace FamilyIslandHelper.UnitTests
 
 		public static IEnumerable<object[]> CompareItems_TestData()
 		{
-			yield return new object[] { new Loom.Lace(), new Loom.Lace(),
+			yield return new object[] { new Lace(), new Lace(),
 				"1 'Шнурок' и 1 'Шнурок' равны по энергии. 1 'Шнурок' и 1 'Шнурок' равны по времени производства." };
 
-			yield return new object[] { new Loom.Rope(), new Loom.Wattle(),
+			yield return new object[] { new Rope(), new Wattle(),
 				"1 'Верёвка' выгоднее, чем 1 'Плетень' по энергии." };
 		}
 
 		[Theory]
 		[MemberData(nameof(CompareItems_TestData))]
-		public void When_Compate2Items_Then_ReturnCorrectValue(Item item1, Item item2, string expectedMessage)
+		public void When_Compare2Items_Then_ReturnCorrectValue(Item item1, Item item2, string expectedMessage)
 		{
 			var actualMessage = ItemHelper.CompareItems(item1, item2);
 

@@ -1,15 +1,22 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
+
+[assembly: InternalsVisibleTo("FamilyIslandHelper.Api.UnitTests")]
 
 namespace FamilyIslandHelper.Api.Models.Abstract
 {
-	public abstract class ProducableItem : Item
+	public abstract class ProducibleItem : Item
 	{
-		public abstract TimeSpan ProduceTime { get; }
+		public abstract TimeSpan OriginalProduceTime { get; }
 
 		public abstract List<(Item item, int count)> Components { get; }
 
 		public abstract int LevelWhenAppears { get; }
+
+		public abstract Building BuildingToCreate { get; }
+
+		internal TimeSpan ProduceTime => TimeSpan.FromSeconds(OriginalProduceTime.TotalSeconds / BuildingToCreate.ProduceRatio);
 
 		public TimeSpan TotalProduceTime
 		{
@@ -19,10 +26,9 @@ namespace FamilyIslandHelper.Api.Models.Abstract
 
 				foreach (var (item, count) in Components)
 				{
-					if (item is ProducableItem)
+					if (item is ProducibleItem producibleItem)
 					{
-						var producableItem = item as ProducableItem;
-						totalProduceTime += TimeSpan.FromSeconds(producableItem.TotalProduceTime.TotalSeconds * count);
+						totalProduceTime += TimeSpan.FromSeconds(producibleItem.TotalProduceTime.TotalSeconds * count);
 					}
 				}
 
@@ -47,9 +53,9 @@ namespace FamilyIslandHelper.Api.Models.Abstract
 
 				foreach (var (item, count) in Components)
 				{
-					if (item is ProducableItem producableItem)
+					if (item is ProducibleItem producibleItem)
 					{
-						totalEnergyCost += producableItem.ProduceEnergyCost * count;
+						totalEnergyCost += producibleItem.ProduceEnergyCost * count;
 					}
 					else if (item is ResourceItem resourceItem)
 					{
@@ -63,17 +69,16 @@ namespace FamilyIslandHelper.Api.Models.Abstract
 
 		public List<string> ComponentsInfo(int tabsCount)
 		{
-			var componentsInfo = new List<string> { };
+			var componentsInfo = new List<string>();
 			var tabs = new string('\t', tabsCount + 1);
 
 			foreach (var (item, count) in Components)
 			{
 				componentsInfo.Add($"{tabs}{item} - {count} шт.");
 
-				if (item is ProducableItem)
+				if (item is ProducibleItem producibleItem)
 				{
-					var producableItem = item as ProducableItem;
-					componentsInfo.AddRange(producableItem.ComponentsInfo(tabsCount + 1));
+					componentsInfo.AddRange(producibleItem.ComponentsInfo(tabsCount + 1));
 				}
 			}
 

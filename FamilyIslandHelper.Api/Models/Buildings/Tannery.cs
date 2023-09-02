@@ -1,51 +1,18 @@
 ﻿using FamilyIslandHelper.Api.Models.Abstract;
-using System;
+using FamilyIslandHelper.Api.Models.Items;
 using System.Collections.Generic;
 
 namespace FamilyIslandHelper.Api.Models.Buildings
 {
-	public static class Tannery
+	public class Tannery : Building
 	{
-		public static string Name = "Кожевенная";
-		private const double ProduceRatio = 1.5;
-
-		public class Leather : ProducableItem
+		public override string Name => "Кожевенная";
+		public override double ProduceRatio => 1.5;
+		public override List<ProducibleItem> Items => new List<ProducibleItem>
 		{
-			public override string Name => "Кожа";
-			public override int LevelWhenAppears => 24;
-			public override TimeSpan ProduceTime => TimeSpan.FromMinutes(60 / ProduceRatio);
-
-			public override List<(Item item, int count)> Components => new List<(Item item, int count)>
-			{
-				(new Skin(), 2),
-				(new Mill.Ocher(), 1)
-			};
-		}
-
-		public class Papyrus : ProducableItem
-		{
-			public override string Name => "Папирус";
-			public override int LevelWhenAppears => 36;
-			public override TimeSpan ProduceTime => TimeSpan.FromHours(3 / ProduceRatio);
-
-			public override List<(Item item, int count)> Components => new List<(Item item, int count)>
-			{
-				(new Leather(), 2),
-				(new Mill.Ocher(), 1)
-			};
-		}
-
-		public class WhitePaint : ProducableItem
-		{
-			public override string Name => "Белая краска";
-			public override int LevelWhenAppears => 44;
-			public override TimeSpan ProduceTime => TimeSpan.FromHours(1 / ProduceRatio);
-
-			public override List<(Item item, int count)> Components => new List<(Item item, int count)>
-			{
-				(new Limestone(), 6),
-				(new Mill.SunflowerOil(), 3)
-			};
-		}
+			new Leather(),
+			new Papyrus(),
+			new WhitePaint()
+		};
 	}
 }
