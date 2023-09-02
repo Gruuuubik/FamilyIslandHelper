@@ -31,6 +31,7 @@
 			this.cb_Buildings1 = new System.Windows.Forms.ComboBox();
 			this.cb_showListOfComponents = new System.Windows.Forms.CheckBox();
 			this.gb_Component1 = new System.Windows.Forms.GroupBox();
+			this.lbl_Ratio1 = new System.Windows.Forms.Label();
 			this.num_Item1Count = new System.Windows.Forms.NumericUpDown();
 			this.tv_Components1 = new System.Windows.Forms.TreeView();
 			this.pnl_Items1 = new System.Windows.Forms.Panel();
@@ -40,6 +41,7 @@
 			this.tv_Components2 = new System.Windows.Forms.TreeView();
 			this.pnl_Items2 = new System.Windows.Forms.Panel();
 			this.cb_Buildings2 = new System.Windows.Forms.ComboBox();
+			this.lbl_Ratio2 = new System.Windows.Forms.Label();
 			this.gb_Component1.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.num_Item1Count)).BeginInit();
 			this.gb_Component2.SuspendLayout();
@@ -53,7 +55,7 @@
 			this.cb_Buildings1.FormattingEnabled = true;
 			this.cb_Buildings1.Location = new System.Drawing.Point(18, 33);
 			this.cb_Buildings1.Name = "cb_Buildings1";
-			this.cb_Buildings1.Size = new System.Drawing.Size(229, 32);
+			this.cb_Buildings1.Size = new System.Drawing.Size(229, 26);
 			this.cb_Buildings1.TabIndex = 4;
 			this.cb_Buildings1.Tag = "1";
 			// 
@@ -62,7 +64,7 @@
 			this.cb_showListOfComponents.AutoSize = true;
 			this.cb_showListOfComponents.Location = new System.Drawing.Point(281, 12);
 			this.cb_showListOfComponents.Name = "cb_showListOfComponents";
-			this.cb_showListOfComponents.Size = new System.Drawing.Size(212, 24);
+			this.cb_showListOfComponents.Size = new System.Drawing.Size(168, 20);
 			this.cb_showListOfComponents.TabIndex = 10;
 			this.cb_showListOfComponents.Text = "ShowListOfComponents";
 			this.cb_showListOfComponents.UseVisualStyleBackColor = true;
@@ -70,6 +72,7 @@
 			// 
 			// gb_Component1
 			// 
+			this.gb_Component1.Controls.Add(this.lbl_Ratio1);
 			this.gb_Component1.Controls.Add(this.num_Item1Count);
 			this.gb_Component1.Controls.Add(this.tv_Components1);
 			this.gb_Component1.Controls.Add(this.pnl_Items1);
@@ -81,9 +84,18 @@
 			this.gb_Component1.TabStop = false;
 			this.gb_Component1.Text = "Component1";
 			// 
+			// lbl_Ratio1
+			// 
+			this.lbl_Ratio1.AutoSize = true;
+			this.lbl_Ratio1.Location = new System.Drawing.Point(265, 39);
+			this.lbl_Ratio1.Name = "lbl_Ratio1";
+			this.lbl_Ratio1.Size = new System.Drawing.Size(62, 16);
+			this.lbl_Ratio1.TabIndex = 8;
+			this.lbl_Ratio1.Text = "Ratio: 1.5";
+			// 
 			// num_Item1Count
 			// 
-			this.num_Item1Count.Location = new System.Drawing.Point(341, 36);
+			this.num_Item1Count.Location = new System.Drawing.Point(359, 36);
 			this.num_Item1Count.Maximum = new decimal(new int[] {
             50,
             0,
@@ -95,7 +107,7 @@
             0,
             0});
 			this.num_Item1Count.Name = "num_Item1Count";
-			this.num_Item1Count.Size = new System.Drawing.Size(120, 26);
+			this.num_Item1Count.Size = new System.Drawing.Size(102, 22);
 			this.num_Item1Count.TabIndex = 7;
 			this.num_Item1Count.Value = new decimal(new int[] {
             1,
@@ -126,7 +138,7 @@
 			// 
 			this.lb_Components.FormattingEnabled = true;
 			this.lb_Components.HorizontalScrollbar = true;
-			this.lb_Components.ItemHeight = 20;
+			this.lb_Components.ItemHeight = 16;
 			this.lb_Components.Location = new System.Drawing.Point(497, 37);
 			this.lb_Components.Margin = new System.Windows.Forms.Padding(4);
 			this.lb_Components.Name = "lb_Components";
@@ -135,6 +147,7 @@
 			// 
 			// gb_Component2
 			// 
+			this.gb_Component2.Controls.Add(this.lbl_Ratio2);
 			this.gb_Component2.Controls.Add(this.num_Item2Count);
 			this.gb_Component2.Controls.Add(this.tv_Components2);
 			this.gb_Component2.Controls.Add(this.pnl_Items2);
@@ -148,7 +161,7 @@
 			// 
 			// num_Item2Count
 			// 
-			this.num_Item2Count.Location = new System.Drawing.Point(341, 36);
+			this.num_Item2Count.Location = new System.Drawing.Point(362, 36);
 			this.num_Item2Count.Maximum = new decimal(new int[] {
             50,
             0,
@@ -160,7 +173,7 @@
             0,
             0});
 			this.num_Item2Count.Name = "num_Item2Count";
-			this.num_Item2Count.Size = new System.Drawing.Size(120, 26);
+			this.num_Item2Count.Size = new System.Drawing.Size(99, 22);
 			this.num_Item2Count.TabIndex = 8;
 			this.num_Item2Count.Value = new decimal(new int[] {
             1,
@@ -194,13 +207,22 @@
 			this.cb_Buildings2.FormattingEnabled = true;
 			this.cb_Buildings2.Location = new System.Drawing.Point(18, 33);
 			this.cb_Buildings2.Name = "cb_Buildings2";
-			this.cb_Buildings2.Size = new System.Drawing.Size(229, 32);
+			this.cb_Buildings2.Size = new System.Drawing.Size(229, 26);
 			this.cb_Buildings2.TabIndex = 4;
 			this.cb_Buildings2.Tag = "2";
 			// 
+			// lbl_Ratio2
+			// 
+			this.lbl_Ratio2.AutoSize = true;
+			this.lbl_Ratio2.Location = new System.Drawing.Point(265, 38);
+			this.lbl_Ratio2.Name = "lbl_Ratio2";
+			this.lbl_Ratio2.Size = new System.Drawing.Size(62, 16);
+			this.lbl_Ratio2.TabIndex = 9;
+			this.lbl_Ratio2.Text = "Ratio: 1.5";
+			// 
 			// MainForm
 			// 
-			this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+			this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(1334, 711);
 			this.Controls.Add(this.gb_Component2);
@@ -213,8 +235,10 @@
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 			this.Text = "FamilyIslandHelper";
 			this.gb_Component1.ResumeLayout(false);
+			this.gb_Component1.PerformLayout();
 			((System.ComponentModel.ISupportInitialize)(this.num_Item1Count)).EndInit();
 			this.gb_Component2.ResumeLayout(false);
+			this.gb_Component2.PerformLayout();
 			((System.ComponentModel.ISupportInitialize)(this.num_Item2Count)).EndInit();
 			this.ResumeLayout(false);
 			this.PerformLayout();
@@ -234,6 +258,8 @@
 		private System.Windows.Forms.ComboBox cb_Buildings2;
         private System.Windows.Forms.NumericUpDown num_Item1Count;
         private System.Windows.Forms.NumericUpDown num_Item2Count;
-    }
+		private System.Windows.Forms.Label lbl_Ratio1;
+		private System.Windows.Forms.Label lbl_Ratio2;
+	}
 }
 
