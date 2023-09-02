@@ -7,7 +7,7 @@ namespace FamilyIslandHelper.Api.Models.Buildings
 	public class Knocker : Building
 	{
 		public override string Name => "Стучалка";
-		public override double ProduceRatio => 1.5;
+		public override double ProduceRatio => 2;
 		public override List<ProducibleItem> Items => new List<ProducibleItem>
 		{
 			new StoneBlock(),
