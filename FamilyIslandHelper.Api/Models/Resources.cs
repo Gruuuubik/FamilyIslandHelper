@@ -208,4 +208,29 @@ namespace FamilyIslandHelper.Api.Models
 	{
 		public override string Name => "Лазурит";
 	}
+
+	public class Silverine : ZeroCostResourceItem
+	{
+		public override string Name => "Сильверин";
+	}
+
+	public class Sapphire : ZeroCostResourceItem
+	{
+		public override string Name => "Сапфир";
+	}
+
+	public class Gem : ZeroCostResourceItem
+	{
+		public override string Name => "Самоцвет";
+	}
+
+	public class Amethyst : ZeroCostResourceItem
+	{
+		public override string Name => "Аметист";
+	}
+
+	public class Pearl : ZeroCostResourceItem
+	{
+		public override string Name => "Жемчужина";
+	}
 }

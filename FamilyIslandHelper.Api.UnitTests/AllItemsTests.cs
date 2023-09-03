@@ -40,7 +40,7 @@ namespace FamilyIslandHelper.Api.UnitTests
 		public void When_GetAllResources_Then_AllResourcesHaveImages()
 		{
 			var actualResourcesNames = ClassHelper.GetClassesNames("FamilyIslandHelper.Api.Models")
-				.Where(n => n != "BuildingInfo").OrderBy(i => i);
+				.Where(n => n != nameof(BuildingInfo)).OrderBy(i => i);
 
 			var resourcesPaths = Directory.GetFiles("Resources");
 			var expectedResourcesNames = resourcesPaths.Select(r => r.Split('.').First().Split('\\').Last()).OrderBy(i => i);
