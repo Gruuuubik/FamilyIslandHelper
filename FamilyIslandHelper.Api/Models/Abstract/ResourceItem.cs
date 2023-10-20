@@ -6,7 +6,12 @@
 
 		public override string ToString()
 		{
-			return $"{Name}({EnergyCost} энергии)";
+			return ToString(1);
+		}
+
+		public override string ToString(int itemCount)
+		{
+			return $"{Name}({EnergyCost * itemCount} энергии)";
 		}
 	}
 
@@ -15,5 +20,10 @@
 		public override int EnergyCost => 0;
 
 		public override string ToString() => Name;
+
+		public override string ToString(int itemCount)
+		{
+			return Name;
+		}
 	}
 }

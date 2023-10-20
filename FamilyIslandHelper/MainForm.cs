@@ -1,4 +1,4 @@
-﻿using FamilyIslandHelper.Api;
+﻿using FamilyIslandHelper.Api.Helpers;
 using FamilyIslandHelper.Api.Models.Abstract;
 using System;
 using System.Collections.Generic;
@@ -6,7 +6,6 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Windows.Forms;
-using FamilyIslandHelper.Api.Helpers;
 
 namespace FamilyIslandHelper
 {
@@ -47,7 +46,7 @@ namespace FamilyIslandHelper
 			cb_Buildings2.SelectedIndexChanged += this.cb_Buildings_SelectedIndexChanged;
 		}
 
-		private void AddInfoToListBox(string itemName)
+		private void AddInfoToListBox(string itemName, int itemCount)
 		{
 			var item = ItemHelper.FindItemByName(itemName);
 			
@@ -56,7 +55,7 @@ namespace FamilyIslandHelper
 				lb_Components.Items.Add("");
 			}
 
-			lb_Components.Items.Add(item.ToString());
+			lb_Components.Items.Add(item.ToString(itemCount));
 
 			if (item is ProducibleItem producibleItem)
 			{
@@ -65,14 +64,14 @@ namespace FamilyIslandHelper
 					lb_Components.Items.Add("");
 					lb_Components.Items.Add("Components:");
 
-					foreach (var componentInfo in producibleItem.ComponentsInfo(0))
+					foreach (var componentInfo in producibleItem.ComponentsInfo(0, itemCount))
 					{
 						lb_Components.Items.Add(componentInfo);
 					}
 				}
 
 				lb_Components.Items.Add("");
-				lb_Components.Items.Add("Итого времени на производство: " + producibleItem.TotalProduceTime);
+				lb_Components.Items.Add("Итого времени на производство: " + TimeSpan.FromSeconds(producibleItem.TotalProduceTime.TotalSeconds * itemCount));
 			}
 		}
 
@@ -287,14 +286,14 @@ namespace FamilyIslandHelper
 			{
 				var itemName = tv_Components1.SelectedNode.Name;
 				selectedItem1 = ItemHelper.FindItemByName(itemName);
-				AddInfoToListBox(itemName);
+				AddInfoToListBox(itemName, Convert.ToInt32(num_Item1Count.Value));
 			}
 
 			if (tv_Components2.SelectedNode != null)
 			{
 				var itemName = tv_Components2.SelectedNode.Name;
 				selectedItem2 = ItemHelper.FindItemByName(itemName);
-				AddInfoToListBox(itemName);
+				AddInfoToListBox(itemName, Convert.ToInt32(num_Item2Count.Value));
 			}
 
 			if (selectedItem1 != null && selectedItem2 != null)

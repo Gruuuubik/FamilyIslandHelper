@@ -67,22 +67,27 @@ namespace FamilyIslandHelper.Api.Models.Abstract
 			}
 		}
 
-		public List<string> ComponentsInfo(int tabsCount)
+		public List<string> ComponentsInfo(int tabsCount, int itemCount)
 		{
 			var componentsInfo = new List<string>();
 			var tabs = new string('\t', tabsCount + 1);
 
 			foreach (var (item, count) in Components)
 			{
-				componentsInfo.Add($"{tabs}{item} - {count} шт.");
+				componentsInfo.Add($"{tabs}{item.ToString(itemCount)} - {count * itemCount} шт.");
 
 				if (item is ProducibleItem producibleItem)
 				{
-					componentsInfo.AddRange(producibleItem.ComponentsInfo(tabsCount + 1));
+					componentsInfo.AddRange(producibleItem.ComponentsInfo(tabsCount + 1, itemCount * count));
 				}
 			}
 
 			return componentsInfo;
+		}
+
+		public override string ToString(int itemCount)
+		{
+			return $"{Name}({TimeSpan.FromSeconds(ProduceTime.TotalSeconds * itemCount)}, {ProduceEnergyCost * itemCount} энергии)";
 		}
 
 		public override string ToString()
