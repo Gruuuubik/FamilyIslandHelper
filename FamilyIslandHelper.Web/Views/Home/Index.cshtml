@@ -1,0 +1,39 @@
+﻿@using FamilyIslandHelper.Api;
+@using System.Collections;
+@using FamilyIslandHelper.Api.Models.Abstract;
+@model ViewModel
+
+@{
+	ViewData["Title"] = "Details Page";
+}
+
+<body>
+	<form id="mainForm" method="post" action="~/Home/Index">
+		<div id="CommonSettings" class="commonSettings">
+			@Html.CheckBoxFor(m => m.ShowListOfComponents)
+			@Html.LabelFor(m => m.ShowListOfComponents)
+			<input type="submit" value="GetInfo" class="submit">
+		</div>
+
+		<div class="component">
+			<div>
+				@Html.LabelFor(m => m.BuildingName, "Buildings:")
+				@Html.DropDownListFor(m => m.BuildingName, new SelectList(@Model.BuildingsNames))
+			</div>
+			<div>
+				<label>Produce ratio: </label>@Html.DisplayFor(m => m.BuildingProduceRatio)
+			</div>
+			<div>
+				@Html.LabelFor(m => m.ItemName, "Items:")
+				@Html.DropDownListFor(m => m.ItemName, new SelectList(@Model.Items))
+			</div>
+			<div>
+				@Html.LabelFor(m => m.ItemCount, "Item count:")
+				<input type="number" id="ItemCount" name="ItemCount" min="1" max="20" value="@Model.ItemCount" />
+			</div>
+			<div>
+				<textarea id="ItemInfo" name="ItemInfo">@Model.ItemInfo</textarea>
+			</div>
+		</div>
+	</form>
+</body>

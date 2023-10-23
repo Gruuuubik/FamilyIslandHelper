@@ -1,0 +1,111 @@
+﻿@import "https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css";
+@import "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css";
+ul.tree {
+  margin: 0;
+  padding: 2px 20px;
+  li {
+    list-style: none;
+    margin-left: -15px;
+    position: relative;
+
+    input {
+      cursor: pointer;
+      height: 1em;
+      left: 0;
+      margin-left: 0;
+      opacity: 0;
+      position: absolute;
+      top: 0;
+      width: 2em;
+      z-index: 2;
+      &:checked + ul {
+        height: auto;
+        margin: 0px 0px 0px -19px;
+        &:before {
+          content: "\f068"; //MINUS
+          font-family: Fontawesome;
+          font-size: 15px;
+          left: 0;
+          margin-right: 5px;
+          position: absolute;
+          top: 0;
+        }
+      }
+      &:checked + ul > li {
+        display: block;
+        left: -3px;
+        margin: 0 0 3px;
+        last-child {
+          margin: 0 0 0.063em;
+        }
+      }
+    }
+    input + ul {
+      padding: 0 0 0 39px;
+      &:before {
+        content: "\f067"; //PLUS
+        font-family: Fontawesome;
+        font-size: 15px;
+        left: 0;
+        margin-right: 5px;
+        position: absolute;
+        top: 0;
+      }
+    }
+    input + ul > li {
+      display: none;
+      margin-left: -10px;
+      padding-left: 1px;
+    }
+    label {
+      cursor: pointer;
+      margin-bottom: 0;
+      margin-left: 17px;
+    }
+  }
+}
+ul.tree > li {
+  margin-left: -1px !important;
+  a {
+    color: #606061;
+    display: block;
+    text-decoration: none;
+    &:before {
+      content: ""; //HAMBURGER \f0c9
+      display: block;
+      float: left;
+      font-family: Fontawesome;
+      font-size: 15px;
+      margin-right: 5px;
+    }
+  }
+}
+ul.tree > li {
+  & > a:before {
+    content: "\f0c9"; //HAMBURGER \f0c9
+    display: block;
+    float: left;
+    font-family: Fontawesome;
+    font-size: 15px;
+    margin-right: 5px;
+  }
+}
+
+ul.tree {
+  & > li > a > label {
+    margin-left: 0;
+  }
+}
+
+ul.tree {
+  & > li > ul > li > a > label:before,
+  & > li > ul > li > ul > li > a > label:before {
+    content: "\f0c9"; //HAMBURGER \f0c9
+    display: block;
+    position: absolute;
+    font-family: Fontawesome;
+    font-size: 15px;
+    margin-right: 5px;
+    left: 0px;
+  }
+}

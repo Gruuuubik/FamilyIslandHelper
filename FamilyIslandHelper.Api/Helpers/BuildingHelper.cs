@@ -24,6 +24,11 @@ namespace FamilyIslandHelper.Api.Helpers
 
 		public static Building CreateBuilding(string buildingName)
 		{
+			if (buildingName == null)
+			{
+				throw new ArgumentNullException(nameof(buildingName));
+			}
+
 			var buildingType = Type.GetType($"{BuildingsNamespace}.{buildingName}", true);
 			return Activator.CreateInstance(buildingType) as Building;
 		}

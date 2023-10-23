@@ -9,6 +9,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FamilyIslandHelper.Api.Unit
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FamilyIslandHelper.Api", "FamilyIslandHelper.Api\FamilyIslandHelper.Api.csproj", "{700A438E-A124-4010-95B7-23E21249EC23}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FamilyIslandHelper.Web", "FamilyIslandHelper.Web\FamilyIslandHelper.Web.csproj", "{3857B150-5BCF-498D-B531-9EC5AE17F380}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{700A438E-A124-4010-95B7-23E21249EC23}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{700A438E-A124-4010-95B7-23E21249EC23}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{700A438E-A124-4010-95B7-23E21249EC23}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3857B150-5BCF-498D-B531-9EC5AE17F380}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3857B150-5BCF-498D-B531-9EC5AE17F380}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3857B150-5BCF-498D-B531-9EC5AE17F380}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3857B150-5BCF-498D-B531-9EC5AE17F380}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
