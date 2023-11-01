@@ -1,0 +1,10 @@
+{
+  "solution": {
+    "path": "FamilyIslandHelper.sln",
+    "projects": [
+      "FamilyIslandHelper.Api.UnitTests\\FamilyIslandHelper.Api.UnitTests.csproj",
+      "FamilyIslandHelper.Api\\FamilyIslandHelper.Api.csproj",
+      "FamilyIslandHelper\\FamilyIslandHelper.csproj"
+    ]
+  }
+}
