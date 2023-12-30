@@ -10,7 +10,8 @@ namespace FamilyIslandHelper.Api.Models.Buildings
 		public override double ProduceRatio => 1;
 		public override List<ProducibleItem> Items => new List<ProducibleItem>
 		{
-			new SapphireBracelet()
+			new SapphireBracelet(),
+			new RuneStone()
 		};
 	}
 }
