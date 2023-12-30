@@ -22,6 +22,7 @@ namespace FamilyIslandHelper.Api.Models.Abstract
 	{
 		public override int EnergyCost => 0;
 
+		[ExcludeFromCodeCoverage]
 		public override string ToString() => Name;
 
 		public override string ToString(int itemCount)

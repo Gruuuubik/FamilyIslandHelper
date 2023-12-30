@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 
 namespace FamilyIslandHelper.Api.Models.Abstract
 {
@@ -8,6 +9,7 @@ namespace FamilyIslandHelper.Api.Models.Abstract
 		public abstract double ProduceRatio { get; }
 		public abstract List<ProducibleItem> Items { get; }
 
+		[ExcludeFromCodeCoverage]
 		public override string ToString() => Name;
 	}
 }
