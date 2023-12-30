@@ -19,7 +19,8 @@ namespace FamilyIslandHelper.Api.Models.Buildings
 			new Tambourine(),
 			new Barrel(),
 			new WoodenBeam(),
-			new LeatherBall()
+			new LeatherBall(),
+			new Incense()
 		};
 	}
 }
