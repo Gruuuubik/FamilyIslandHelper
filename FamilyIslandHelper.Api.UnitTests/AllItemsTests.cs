@@ -15,6 +15,16 @@ namespace FamilyIslandHelper.Api.UnitTests
 	{
 		private const string FolderWithPictures = "Pictures";
 
+		[Theory]
+		[InlineData(13)]
+		public void When_GetBuildingsClasses_Then_ReturnCorrectCollection(int expectedCount)
+		{
+			var actualBuildingsClasses = BuildingHelper.GetBuildingsClasses();
+
+			Assert.Equal(expectedCount, actualBuildingsClasses.Count);
+			Assert.All(actualBuildingsClasses, (bc) => Assert.NotNull(bc));
+		}
+
 		[Fact]
 		public void When_GetAllBuildingsNames_Then_AllBuildingsHaveFolders()
 		{
