@@ -1,9 +1,12 @@
-﻿namespace FamilyIslandHelper.Api.Models.Abstract
+﻿using System.Diagnostics.CodeAnalysis;
+
+namespace FamilyIslandHelper.Api.Models.Abstract
 {
 	public abstract class ResourceItem : Item
 	{
 		public abstract int EnergyCost { get; }
 
+		[ExcludeFromCodeCoverage]
 		public override string ToString()
 		{
 			return ToString(1);
