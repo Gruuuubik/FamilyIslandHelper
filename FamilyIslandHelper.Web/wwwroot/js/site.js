@@ -21,7 +21,7 @@ if (BuildingName != null) {
 }
 
 var allBuildings = {
-	"CarpentryWorkshop": ["Needle", "Stairs", "Crest", "Stool", "Paints", "Pipe", "Tambourine", "Barrel", "WoodenBeam", "LeatherBall"],
+	"CarpentryWorkshop": ["Needle", "Stairs", "Crest", "Stool", "Paints", "Pipe", "Tambourine", "Barrel", "WoodenBeam", "LeatherBall", "Incense"],
 	"JewelryWorkshop": ["SapphireBracelet", "GemNecklace", "AmethystPendant", "EmeraldRing", "PearlEarrings", "CrystalLotus"],
 	"Knocker": ["StoneBlock", "LimestoneBlock", "Beams", "PalmBeams", "Millstone"],
 	"Loom": ["Lace", "Wattle", "Rope", "Gloves", "Sackcloth", "Cloth", "Necklace", "PicnicBasket", "WickerBasket", "DreamСatcher", "DyedFabric"],
@@ -29,7 +29,11 @@ var allBuildings = {
 	"Mill": ["GoatFood", "ChickenFood", "Ocher", "Flour", "SunflowerOil", "Syrup", "CowFood"],
 	"Mixer": ["Soap", "Butter", "Cheese", "BluePaint"],
 	"Pottery": ["Bowl", "Potp", "Jugp", "Amphorap", "Flashlight"],
-	"Sawmill": ["Stakes", "UnedgedBoard", "EdgedBoard", "Trough"]
+	"Sawmill": ["Stakes", "UnedgedBoard", "EdgedBoard", "Trough"],
+	"ShamanWorkshop": ["SapphireBracelet", "RuneStone"],
+	"Smelter": ["Resin", "Coal", "Gold", "Shingles", "BurntBrick", "Nails"],
+	"Tannery": ["Leather", "Papyrus", "WhitePaint"],
+	"Workshop": ["Scraper", "Axe", "Knife", "Brick"]
 };
 
 function updateItems(buildingNameId, itemNameId) {
