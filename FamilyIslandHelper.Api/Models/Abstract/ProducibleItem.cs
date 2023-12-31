@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 
 [assembly: InternalsVisibleTo("FamilyIslandHelper.Api.UnitTests")]
+[assembly: InternalsVisibleTo("FamilyIslandHelper.Api.Net6.UnitTests")]
 
 namespace FamilyIslandHelper.Api.Models.Abstract
 {
