@@ -122,7 +122,7 @@
             0,
             0,
             0});
-			this.num_Item1Count.ValueChanged += new System.EventHandler(this.num_Item1Count_ValueChanged);
+			this.num_Item1Count.ValueChanged += new System.EventHandler(this.num_ItemCount_ValueChanged);
 			// 
 			// tv_Components1
 			// 
@@ -225,7 +225,7 @@
             0,
             0,
             0});
-			this.num_Item2Count.ValueChanged += new System.EventHandler(this.num_Item2Count_ValueChanged);
+			this.num_Item2Count.ValueChanged += new System.EventHandler(this.num_ItemCount_ValueChanged);
 			// 
 			// tv_Components2
 			// 

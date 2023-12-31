@@ -303,12 +303,7 @@ namespace FamilyIslandHelper
 			}
 		}
 
-		private void num_Item1Count_ValueChanged(object sender, EventArgs e)
-		{
-			UpdateInfo();
-		}
-
-		private void num_Item2Count_ValueChanged(object sender, EventArgs e)
+		private void num_ItemCount_ValueChanged(object sender, EventArgs e)
 		{
 			UpdateInfo();
 		}
