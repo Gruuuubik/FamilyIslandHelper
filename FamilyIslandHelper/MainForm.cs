@@ -48,31 +48,16 @@ namespace FamilyIslandHelper
 
 		private void AddInfoToListBox(string itemName, int itemCount)
 		{
-			var item = ItemHelper.FindItemByName(itemName);
-			
+			var info = ItemHelper.GetInfoAboutItem(itemName, itemCount, showListOfComponents);
+
 			if (lb_Components.Items.Count > 0)
 			{
 				lb_Components.Items.Add("");
 			}
 
-			lb_Components.Items.Add(item.ToString(itemCount));
+			var item = ItemHelper.FindItemByName(itemName);
 
-			if (item is ProducibleItem producibleItem)
-			{
-				if (showListOfComponents)
-				{
-					lb_Components.Items.Add("");
-					lb_Components.Items.Add("Components:");
-
-					foreach (var componentInfo in producibleItem.ComponentsInfo(0, itemCount))
-					{
-						lb_Components.Items.Add(componentInfo);
-					}
-				}
-
-				lb_Components.Items.Add("");
-				lb_Components.Items.Add("Итого времени на производство: " + TimeSpan.FromSeconds(producibleItem.TotalProduceTime.TotalSeconds * itemCount));
-			}
+			info.ForEach(i => lb_Components.Items.Add(i));
 		}
 
 		private void AddInfoToTreeView(TreeView tvComponents, Item item, string itemTypeString)

@@ -1,5 +1,4 @@
 ﻿using FamilyIslandHelper.Api.Helpers;
-using FamilyIslandHelper.Api.Models.Abstract;
 using FamilyIslandHelper.Web.Models;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -74,33 +73,7 @@ namespace FamilyIslandHelper.Web.Controllers
 
 		private static string GetInfoAboutItem(string itemName, int itemCount, bool showListOfComponents)
 		{
-			if (itemName == null)
-			{
-				throw new ArgumentNullException(nameof(itemName));
-			}
-
-			var item = ItemHelper.FindItemByName(itemName);
-
-			var info = item.ToString(itemCount);
-
-			if (item is ProducibleItem producibleItem)
-			{
-				if (showListOfComponents)
-				{
-					info += "\n";
-					info += "Components:\n";
-
-					foreach (var componentInfo in producibleItem.ComponentsInfo(0, itemCount))
-					{
-						info += componentInfo + "\n";
-					}
-				}
-
-				info += "\n";
-				info += "Итого времени на производство: " + TimeSpan.FromSeconds(producibleItem.TotalProduceTime.TotalSeconds * itemCount) + "\n";
-			}
-
-			return info;
+			return string.Join("\n", ItemHelper.GetInfoAboutItem(itemName, itemCount, showListOfComponents));
 		}
 	}
 }

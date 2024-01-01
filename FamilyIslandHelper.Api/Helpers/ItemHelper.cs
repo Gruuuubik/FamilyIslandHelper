@@ -1,5 +1,6 @@
 ﻿using FamilyIslandHelper.Api.Models.Abstract;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace FamilyIslandHelper.Api.Helpers
@@ -30,6 +31,11 @@ namespace FamilyIslandHelper.Api.Helpers
 
 		public static Item FindItemByName(string itemName)
 		{
+			if (itemName == null)
+			{
+				throw new ArgumentNullException(nameof(itemName));
+			}
+
 			var itemType = ClassHelper.GetClasses(ItemsNamespace).FirstOrDefault(t => t.Name == itemName);
 
 			if (itemType != null)
@@ -114,6 +120,31 @@ namespace FamilyIslandHelper.Api.Helpers
 			}
 
 			return result;
+		}
+
+		public static List<string> GetInfoAboutItem(string itemName, int itemCount, bool showListOfComponents)
+		{
+			var info = new List<string>();
+
+			var item = FindItemByName(itemName);
+
+			info.Add(item.ToString(itemCount));
+
+			if (item is ProducibleItem producibleItem)
+			{
+				if (showListOfComponents)
+				{
+					info.Add(string.Empty);
+					info.Add("Components:");
+
+					info.AddRange(producibleItem.ComponentsInfo(0, itemCount));
+				}
+
+				info.Add(string.Empty);
+				info.Add("Итого времени на производство: " + TimeSpan.FromSeconds(producibleItem.TotalProduceTime.TotalSeconds * itemCount));
+			}
+
+			return info;
 		}
 	}
 }

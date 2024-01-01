@@ -20,6 +20,15 @@ namespace FamilyIslandHelper.Api.Net6.UnitTests
 		}
 
 		[Theory]
+		[InlineData("itemName")]
+		public void When_FindItemByNameWithNullParameter_Then_ThrowsException(string expectedParamName)
+		{
+			var exception = Assert.Throws<ArgumentNullException>(() => ItemHelper.FindItemByName(null));
+
+			Assert.Equal(expectedParamName, exception.ParamName);
+		}
+
+		[Theory]
 		[InlineData("Lace", typeof(Lace))]
 		[InlineData("Cone", typeof(Cone))]
 		public void When_FindItemByName_Then_ReturnCorrectItem(string itemName, Type expectedItemType)
@@ -113,6 +122,38 @@ namespace FamilyIslandHelper.Api.Net6.UnitTests
 			var actualMessage = ItemHelper.CompareItems(item1, item2);
 
 			Assert.Equal(expectedMessage, actualMessage);
+		}
+
+		public static IEnumerable<object[]> GetInfoAboutItem_TestData()
+		{
+			yield return new object[] { "Lace", 1, false,
+				new List<string>
+				{
+					"Шнурок(00:01:40, 4 энергии)",
+					"",
+					"Итого времени на производство: 00:01:40"
+				}
+			};
+
+			yield return new object[] { "Lace", 1, true,
+				new List<string>
+				{
+					"Шнурок(00:01:40, 4 энергии)",
+					"",
+					"Components:", "\tТрава(2 энергии) - 2 шт.",
+					"",
+					"Итого времени на производство: 00:01:40"
+				}
+			};
+		}
+
+		[Theory]
+		[MemberData(nameof(GetInfoAboutItem_TestData))]
+		public void When_GetInfoAboutItem_Then_ReturnCorrectValue(string itemName, int itemCount, bool showListOfComponents, List<string> expectedInfo)
+		{
+			var actualInfo = ItemHelper.GetInfoAboutItem(itemName, itemCount, showListOfComponents);
+
+			Assert.Equal(expectedInfo, actualInfo);
 		}
 	}
 }
