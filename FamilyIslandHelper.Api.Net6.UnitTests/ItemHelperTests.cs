@@ -6,15 +6,15 @@ using Xunit;
 
 namespace FamilyIslandHelper.Api.Net6.UnitTests
 {
-	public class ItemHelperTests
+	public class ItemHelperTests : BaseTest
 	{
 		private const string FolderWithPictures = "Pictures";
 
 		[Theory]
-		[InlineData("Pictures\\\\CarpentryWorkshop\\\\Barrel.png", "Barrel")]
-		public void When_GetItemNameByPath_Then_ReturnCorrectItemName(string itemPath, string expectedIteName)
+		[InlineData(new[] { "Pictures", "CarpentryWorkshop", "Barrel.png" }, "Barrel")]
+		public void When_GetItemNameByPath_Then_ReturnCorrectItemName(string[] itemPath, string expectedIteName)
 		{
-			var actualItemName = ItemHelper.GetItemNameByPath(itemPath);
+			var actualItemName = ItemHelper.GetItemNameByPath(Path.Combine(itemPath));
 
 			Assert.Equal(expectedIteName, actualItemName);
 		}

@@ -5,7 +5,7 @@ using Xunit;
 
 namespace FamilyIslandHelper.Api.Net6.UnitTests
 {
-	public class ProducibleItemTests
+	public class ProducibleItemTests : BaseTest
 	{
 		public static IEnumerable<object[]> TotalProduceTime_TestData()
 		{

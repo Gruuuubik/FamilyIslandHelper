@@ -3,7 +3,7 @@ using Xunit;
 
 namespace FamilyIslandHelper.Api.Net6.UnitTests
 {
-	public class BuildingHelperTests
+	public class BuildingHelperTests : BaseTest
 	{
 		private const string FolderWithPictures = "Pictures";
 
@@ -23,7 +23,7 @@ namespace FamilyIslandHelper.Api.Net6.UnitTests
 			var actualBuildingsNames = BuildingHelper.GetBuildingsNames();
 
 			var buildingsDirectories = Directory.GetDirectories(FolderWithPictures);
-			var expectedBuildingsNames = buildingsDirectories.Select(b => b.Split('\\').Last());
+			var expectedBuildingsNames = buildingsDirectories.Select(b => b.Split(pathSeparator).Last());
 
 			Assert.Equal(expectedBuildingsNames, actualBuildingsNames);
 		}
