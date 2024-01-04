@@ -12,7 +12,12 @@ namespace FamilyIslandHelper.Api.Helpers
 
 		public static string GetItemNameByPath(string itemPath)
 		{
-			return itemPath.Split('.').First().Split('\\').Last();
+#if LINUX
+			var pathSeparator = '/';
+#else
+			var pathSeparator = '\\';
+#endif
+			return itemPath.Split('.').First().Split(pathSeparator).Last();
 		}
 
 		public static ProducibleItem CreateProducibleItem(string itemTypeString)

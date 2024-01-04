@@ -139,13 +139,13 @@ namespace FamilyIslandHelper
 
 		private void cb_Buildings_SelectedIndexChanged(object sender, EventArgs e)
 		{
-			var comboBox = ((ComboBox)sender);
+			var comboBox = (ComboBox)sender;
 			ShowListOfItemsForBuilding(comboBox.SelectedValue.ToString(), int.Parse(comboBox.Tag.ToString()));
 		}
 
 		private void ShowListOfItemsForBuilding(string buildingName, int panelNumber)
 		{
-			var itemsPaths = Directory.GetFiles($"{FolderWithPictures}\\{buildingName}").ToList();
+			var itemsPaths = Directory.GetFiles(Path.Combine(FolderWithPictures, buildingName)).ToList();
 			var ratio = BuildingHelper.CreateBuilding(buildingName).ProduceRatio.ToString();
 
 			if (panelNumber == 1)
@@ -226,7 +226,7 @@ namespace FamilyIslandHelper
 
 			foreach (var buildingName in buildingsNames)
 			{
-				var itemsPaths = Directory.GetFiles($"{FolderWithPictures}\\{buildingName}").ToList();
+				var itemsPaths = Directory.GetFiles(Path.Combine(FolderWithPictures, buildingName)).ToList();
 
 				for (var i = 0; i < itemsPaths.Count; i++)
 				{
