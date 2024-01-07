@@ -13,7 +13,8 @@ namespace FamilyIslandHelper.Api.Models.Buildings
 			new Soap(),
 			new Butter(),
 			new Cheese(),
-			new BluePaint()
+			new BluePaint(),
+			new LemonOil()
 		};
 	}
 }

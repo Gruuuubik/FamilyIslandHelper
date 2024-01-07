@@ -27,7 +27,7 @@ var allBuildings = {
 	"Loom": ["Lace", "Wattle", "Rope", "Gloves", "Sackcloth", "Cloth", "Necklace", "PicnicBasket", "WickerBasket", "DreamСatcher", "DyedFabric"],
 	"MeteoriteForge": ["IronIngot", "IronPipe", "IronPlate", "Hammer"],
 	"Mill": ["GoatFood", "ChickenFood", "Ocher", "Flour", "SunflowerOil", "Syrup", "CowFood"],
-	"Mixer": ["Soap", "Butter", "Cheese", "BluePaint"],
+	"Mixer": ["Soap", "Butter", "Cheese", "BluePaint", "LemonOil"],
 	"Pottery": ["Bowl", "Potp", "Jugp", "Amphorap", "Flashlight"],
 	"Sawmill": ["Stakes", "UnedgedBoard", "EdgedBoard", "Trough"],
 	"ShamanWorkshop": ["SapphireBracelet", "RuneStone"],

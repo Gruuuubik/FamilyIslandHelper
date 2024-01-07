@@ -60,4 +60,20 @@ namespace FamilyIslandHelper.Api.Models.Items
 			(new Resin(), 1)
 		};
 	}
+
+	public class LemonOil : ProducibleItem
+	{
+		//Эфирное масло
+		public override string Name => "Лимонное масло";
+		public override int LevelWhenAppears => 60;
+		public override TimeSpan OriginalProduceTime => TimeSpan.FromHours(2);
+		public override Building BuildingToCreate => new Mixer();
+
+		public override List<(Item item, int count)> Components => new List<(Item item, int count)>
+		{
+			(new SunflowerOil(), 5),
+			(new Lemon(), 10),
+			(new Amphora(), 2)
+		};
+	}
 }

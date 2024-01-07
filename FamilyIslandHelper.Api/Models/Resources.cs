@@ -274,4 +274,10 @@ namespace FamilyIslandHelper.Api.Models
 	{
 		public override string Name => "Жемчужина";
 	}
+
+	[ExcludeFromCodeCoverage]
+	public class Lemon : ZeroCostResourceItem
+	{
+		public override string Name => "Лимон";
+	}
 }
