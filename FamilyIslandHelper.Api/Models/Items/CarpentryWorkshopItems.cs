@@ -155,15 +155,14 @@ namespace FamilyIslandHelper.Api.Models.Items
 	{
 		public override string Name => "Благовония";
 		public override int LevelWhenAppears => 60;
-		//ToDo: set true ProduceTime
-		public override TimeSpan OriginalProduceTime => TimeSpan.FromMinutes(1000);
+		public override TimeSpan OriginalProduceTime => TimeSpan.FromHours(3);
 		public override Building BuildingToCreate => new CarpentryWorkshop();
 
 		public override List<(Item item, int count)> Components => new List<(Item item, int count)>
 			{
-				(new Stick(), 100),
-				(new Sackcloth(), 100),
-				//эфирное масло
+				(new LemonOil(), 2),
+				(new Stick(), 30),
+				(new Sackcloth(), 3)
 			};
 	}
 }
