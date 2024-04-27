@@ -132,7 +132,7 @@ namespace FamilyIslandHelper.Api.Models.Items
 			};
 	}
 
-	public class DreamСatcher : ProducibleItem
+	public class DreamCatcher : ProducibleItem
 	{
 		public override string Name => "Ловец снов";
 		public override int LevelWhenAppears => 59;

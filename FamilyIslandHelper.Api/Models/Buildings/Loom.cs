@@ -19,7 +19,7 @@ namespace FamilyIslandHelper.Api.Models.Buildings
 			new Necklace(),
 			new PicnicBasket(),
 			new WickerBasket(),
-			new DreamСatcher(),
+			new DreamCatcher(),
 			new DyedFabric()
 		};
 	}
