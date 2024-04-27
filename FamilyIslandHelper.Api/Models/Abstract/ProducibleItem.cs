@@ -17,8 +17,6 @@ namespace FamilyIslandHelper.Api.Models.Abstract
 
 		public abstract Building BuildingToCreate { get; }
 
-		internal TimeSpan ProduceTime => TimeSpan.FromSeconds(OriginalProduceTime.TotalSeconds / BuildingToCreate.ProduceRatio);
-
 		public TimeSpan TotalProduceTime
 		{
 			get
@@ -67,6 +65,8 @@ namespace FamilyIslandHelper.Api.Models.Abstract
 				return totalEnergyCost;
 			}
 		}
+
+		internal TimeSpan ProduceTime => TimeSpan.FromSeconds(OriginalProduceTime.TotalSeconds / BuildingToCreate.ProduceRatio);
 
 		public List<string> ComponentsInfo(int tabsCount, int itemCount)
 		{

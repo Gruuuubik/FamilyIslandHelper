@@ -9,7 +9,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FamilyIslandHelper.Api", "F
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FamilyIslandHelper.Web", "FamilyIslandHelper.Web\FamilyIslandHelper.Web.csproj", "{3857B150-5BCF-498D-B531-9EC5AE17F380}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FamilyIslandHelper.Api.Net6.UnitTests", "FamilyIslandHelper.Api.Net6.UnitTests\FamilyIslandHelper.Api.Net6.UnitTests.csproj", "{BCAD7E07-67BE-41EE-A9A0-257741D2E8C1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FamilyIslandHelper.Api.Net6.UnitTests", "FamilyIslandHelper.Api.Net6.UnitTests\FamilyIslandHelper.Api.Net6.UnitTests.csproj", "{BCAD7E07-67BE-41EE-A9A0-257741D2E8C1}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{8E3CC864-ED62-4A0C-92E2-659492342197}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+		stylecop.json = stylecop.json
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

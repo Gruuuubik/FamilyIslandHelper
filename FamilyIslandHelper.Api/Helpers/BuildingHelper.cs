@@ -8,8 +8,8 @@ namespace FamilyIslandHelper.Api.Helpers
 {
 	public static class BuildingHelper
 	{
-		private const string MainNamespace = "FamilyIslandHelper.Api";
 		public static readonly string BuildingsNamespace = $"{MainNamespace}.Models.Buildings";
+		private const string MainNamespace = "FamilyIslandHelper.Api";
 
 		public static List<BuildingInfo> GetBuildingsClasses()
 		{

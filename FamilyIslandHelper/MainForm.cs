@@ -12,11 +12,12 @@ namespace FamilyIslandHelper
 	public partial class MainForm : Form
 	{
 		private const string FolderWithPictures = "Pictures";
+
+		private readonly Dictionary<string, int> dictImagesIndexes = new Dictionary<string, int>();
+
 		private bool showListOfComponents = false;
 
 		private Item selectedItem1, selectedItem2;
-
-		private readonly Dictionary<string, int> dictImagesIndexes = new Dictionary<string, int>();
 
 		public MainForm()
 		{
@@ -52,7 +53,7 @@ namespace FamilyIslandHelper
 
 			if (lb_Components.Items.Count > 0)
 			{
-				lb_Components.Items.Add("");
+				lb_Components.Items.Add(string.Empty);
 			}
 
 			var item = ItemHelper.FindItemByName(itemName);
@@ -197,7 +198,7 @@ namespace FamilyIslandHelper
 
 			for (var i = 0; i < panels.Length; i++)
 			{
-				panels[i].Location = new Point(5 + (size + 5) * i, 10);
+				panels[i].Location = new Point(5 + ((size + 5) * i), 10);
 			}
 
 			pnlItems.Controls.Clear();
@@ -283,7 +284,7 @@ namespace FamilyIslandHelper
 
 			if (selectedItem1 != null && selectedItem2 != null)
 			{
-				lb_Components.Items.Add("");
+				lb_Components.Items.Add(string.Empty);
 				lb_Components.Items.Add(ItemHelper.CompareItems(selectedItem1, Convert.ToInt32(num_Item1Count.Value), selectedItem2, Convert.ToInt32(num_Item2Count.Value)));
 			}
 		}

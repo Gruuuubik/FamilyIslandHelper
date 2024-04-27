@@ -3,7 +3,6 @@ using FamilyIslandHelper.Api.Models.Buildings;
 using System;
 using System.Collections.Generic;
 
-
 namespace FamilyIslandHelper.Api.Models.Items
 {
 	public class GoatFood : ProducibleItem
