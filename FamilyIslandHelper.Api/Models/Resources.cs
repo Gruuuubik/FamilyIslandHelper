@@ -280,4 +280,16 @@ namespace FamilyIslandHelper.Api.Models
 	{
 		public override string Name => "Лимон";
 	}
+
+	[ExcludeFromCodeCoverage]
+	public class MeadowGrass : ZeroCostResourceItem
+	{
+		public override string Name => "Луговые травы";
+	}
+
+	[ExcludeFromCodeCoverage]
+	public class LotusFlower : ZeroCostResourceItem
+	{
+		public override string Name => "Цветок лотоса";
+	}
 }
