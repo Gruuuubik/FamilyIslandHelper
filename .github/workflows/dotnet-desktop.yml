@@ -1,4 +1,4 @@
-name: .NET Desktop
+name: FamilyIslandHelper.Desktop
 
 on:
   workflow_dispatch:
@@ -9,40 +9,39 @@ on:
     branches: [ "main" ]
 
 jobs:
-
   build:
-
     strategy:
       matrix:
         dotnet-version: [ '6.0.X' ]
         configuration: [Release]
 
+    name: Windows Build
     runs-on: windows-latest
 
     steps:
-    - name: Checkout
+    - name: ⤵️ Checkout Source
       uses: actions/checkout@v4
       with:
         fetch-depth: 0
 
-    - name: Setup .NET SDK ${{ matrix.dotnet-version }}
+    - name: 🛠️ Setup .NET SDK ${{ matrix.dotnet-version }}
       uses: actions/setup-dotnet@v4
       with:
         dotnet-version: ${{ matrix.dotnet-version }}
 
-    - name: Install dependencies
+    - name: 🛠️ Install dependencies
       run: dotnet restore
 
-    - name: Build
+    - name: 🔨 Build
       run: dotnet build --configuration ${{ matrix.configuration }} --no-restore
 
-    - name: Install dotnet-coverage
+    - name: 🛠️ Install dotnet-coverage
       run: dotnet tool install -g dotnet-coverage
 
-    - name: Execute unit tests
+    - name: 🔨 Execute unit tests
       run: dotnet test --no-restore --verbosity normal --collect "Code Coverage;Format=cobertura"
 
-    - name: ReportGenerator
+    - name: 💾 ReportGenerator
       uses: danielpalme/ReportGenerator-GitHub-Action@5.2.0
       with:
         reports: './**/TestResults/**/*.cobertura.xml' # REQUIRED # The coverage reports that should be parsed (separated by semicolon). Globbing is supported.
@@ -61,12 +60,12 @@ jobs:
         customSettings: '' # Optional custom settings (separated by semicolon). See: https://github.com/danielpalme/ReportGenerator/wiki/Settings.
         toolpath: 'reportgeneratortool' # Default directory for installing the dotnet tool.
 
-    - name: Archive code coverage results
+    - name: 💾 Archive code coverage results
       uses: actions/upload-artifact@v4
       with:
         name: CoverageReport
         path: '${{ github.workspace }}/coveragereport' # Directory containing files to upload
 
-    - name: Upload coverage into summary
+    - name: 💾 Upload coverage into summary
       run: cat $GITHUB_WORKSPACE/coveragereport/SummaryGithub.md >> $GITHUB_STEP_SUMMARY
       shell: bash
