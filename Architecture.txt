@@ -1,9 +1,0 @@
-Item
-	-Name
-
-ProducableItem : Item
-	-ProduceTime
-
-
-ResourceItem : Item
-	
