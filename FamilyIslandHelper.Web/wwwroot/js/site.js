@@ -30,7 +30,7 @@ var allBuildings = {
 	"Mixer": ["Soap", "Butter", "Cheese", "BluePaint", "LemonOil"],
 	"Pottery": ["Bowl", "Potp", "Jugp", "Amphorap", "Flashlight"],
 	"Sawmill": ["Stakes", "UnedgedBoard", "EdgedBoard", "Trough"],
-	"ShamanWorkshop": ["SapphireBracelet", "RuneStone"],
+	"ShamanWorkshop": ["RuneStone", "FlowerWreath", "FragrantBouquet"],
 	"Smelter": ["Resin", "Coal", "Gold", "Shingles", "BurntBrick", "Nails"],
 	"Tannery": ["Leather", "Papyrus", "WhitePaint"],
 	"Workshop": ["Scraper", "Axe", "Knife", "Brick"]
