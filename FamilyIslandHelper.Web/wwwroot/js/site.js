@@ -24,7 +24,7 @@ var allBuildings = {
 	"CarpentryWorkshop": ["Needle", "Stairs", "Crest", "Stool", "Paints", "Pipe", "Tambourine", "Barrel", "WoodenBeam", "LeatherBall", "Incense"],
 	"JewelryWorkshop": ["SapphireBracelet", "GemNecklace", "AmethystPendant", "EmeraldRing", "PearlEarrings", "CrystalLotus"],
 	"Knocker": ["StoneBlock", "LimestoneBlock", "Beams", "PalmBeams", "Millstone"],
-	"Loom": ["Lace", "Wattle", "Rope", "Gloves", "Sackcloth", "Cloth", "Necklace", "PicnicBasket", "WickerBasket", "DreamСatcher", "DyedFabric"],
+	"Loom": ["Lace", "Wattle", "Rope", "Gloves", "Sackcloth", "Cloth", "Necklace", "PicnicBasket", "WickerBasket", "DreamCatcher", "DyedFabric"],
 	"MeteoriteForge": ["IronIngot", "IronPipe", "IronPlate", "Hammer"],
 	"Mill": ["GoatFood", "ChickenFood", "Ocher", "Flour", "SunflowerOil", "Syrup", "CowFood"],
 	"Mixer": ["Soap", "Butter", "Cheese", "BluePaint", "LemonOil", "WhippedCream"],
