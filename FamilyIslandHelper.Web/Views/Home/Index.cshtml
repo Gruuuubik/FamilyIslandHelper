@@ -12,7 +12,6 @@
 		<div id="CommonSettings" class="commonSettings">
 			@Html.CheckBoxFor(m => m.ShowListOfComponents)
 			@Html.LabelFor(m => m.ShowListOfComponents)
-			<input type="submit" value="GetInfo" class="submit">
 		</div>
 
 		<div class="component">
@@ -23,9 +22,13 @@
 			<div>
 				<label>Produce ratio: </label>@Html.DisplayFor(m => m.BuildingProduceRatio)
 			</div>
-			<div>
-				@Html.LabelFor(m => m.ItemName, "Items:")
-				@Html.DropDownListFor(m => m.ItemName, new SelectList(@Model.Items))
+			<div id="ItemsImages">
+				@foreach (var itemName in @Model.Items)
+				{
+					var itemNameImageName = itemName + ".png";
+					<img class="itemNameImage" id="@itemName" width="50" onclick="setItemName(event);" src="/images/Pictures/@Model.BuildingName/@itemNameImageName" alt="@itemName">
+				}
+				<input type="hidden" name="ItemName" id="ItemName" value="@Model.ItemName" />
 			</div>
 			<div>
 				@Html.LabelFor(m => m.ItemCount, "Item count:")
