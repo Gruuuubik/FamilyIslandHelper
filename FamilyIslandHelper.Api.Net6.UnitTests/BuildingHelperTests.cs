@@ -29,7 +29,7 @@ namespace FamilyIslandHelper.Api.Net6.UnitTests
 		}
 
 		[Theory]
-		[InlineData("Mill", new[] { "ChickenFood", "CowFood", "Flour", "GoatFood", "Ocher", "SunflowerOil", "Syrup" })]
+		[InlineData("Mill", new[] { "GoatFood", "ChickenFood", "Ocher", "Flour", "SunflowerOil", "Syrup", "CowFood" })]
 		public void When_TryToGetItemsOfBuilding_Then_ReturnCorrectItems(string buildingName, IEnumerable<string> expectedItems)
 		{
 			var actualItems = BuildingHelper.GetItemsOfBuilding(buildingName);

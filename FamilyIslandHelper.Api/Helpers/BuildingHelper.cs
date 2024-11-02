@@ -42,7 +42,7 @@ namespace FamilyIslandHelper.Api.Helpers
 		{
 			var building = CreateBuilding(buildingName);
 
-			return building.Items.Select(i => i.GetType().Name).OrderBy(i => i);
+			return building.Items.OrderBy(i => i.LevelWhenAppears).ThenBy(i => i.TotalProduceTime).Select(i => i.GetType().Name);
 		}
 	}
 }
