@@ -46,11 +46,17 @@ namespace FamilyIslandHelper.Web.Net46.Controllers
 				throw new ArgumentNullException(nameof(viewModel));
 			}
 
-			var items1 = BuildingHelper.GetItemsOfBuilding(viewModel.BuildingName).ToList();
+			var items = BuildingHelper.GetItemsOfBuilding(viewModel.BuildingName).ToList();
 
 			viewModel.BuildingsNames = buildingsNames;
+
+			if (!items.Contains(viewModel.ItemName))
+			{
+				viewModel.ItemName = items.FirstOrDefault();
+			}
+
 			viewModel.ItemInfo = GetInfoAboutItem(viewModel.ItemName, viewModel.ItemCount, viewModel.ShowListOfComponents);
-			viewModel.Items = items1;
+			viewModel.Items = items;
 			viewModel.BuildingProduceRatio = BuildingHelper.CreateBuilding(viewModel.BuildingName).ProduceRatio;
 
 			return View(viewModel);

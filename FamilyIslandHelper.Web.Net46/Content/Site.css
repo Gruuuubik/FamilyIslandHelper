@@ -34,3 +34,7 @@ input.submit {
     margin: 0px 50px 0px 50px;
     width: 120px;
 }
+
+img:hover {
+    opacity: 0.7;
+}

@@ -7,31 +7,36 @@
     ViewData["Title"] = "Details Page";
 }
 
-<form id="mainForm" method="post" action="~/Home/Index">
-    <div id="CommonSettings" class="commonSettings">
-        @Html.CheckBoxFor(m => m.ShowListOfComponents)
-        @Html.LabelFor(m => m.ShowListOfComponents)
-        <input type="submit" value="GetInfo" class="submit">
-    </div>
+<body>
+    <form id="mainForm" method="post" action="~/Home/Index">
+        <div id="CommonSettings" class="commonSettings">
+            @Html.CheckBoxFor(m => m.ShowListOfComponents)
+            @Html.LabelFor(m => m.ShowListOfComponents)
+        </div>
 
-    <div class="component">
-        <div>
-            @Html.LabelFor(m => m.BuildingName, "Buildings:")
-            @Html.DropDownListFor(m => m.BuildingName, new SelectList(@Model.BuildingsNames))
+        <div class="component">
+            <div>
+                @Html.LabelFor(m => m.BuildingName, "Buildings:")
+                @Html.DropDownListFor(m => m.BuildingName, new SelectList(@Model.BuildingsNames))
+            </div>
+            <div>
+                <label>Produce ratio: </label>@Html.DisplayFor(m => m.BuildingProduceRatio)
+            </div>
+            <div id="ItemsImages">
+                @foreach (var itemName in @Model.Items)
+                {
+                    var itemNameImageName = itemName + ".png";
+                    <img class="itemNameImage" id="@itemName" width="50" onclick="setItemName(event);" src="/Content/images/Pictures/@Model.BuildingName/@itemNameImageName" alt="@itemName">
+                }
+                <input type="hidden" name="ItemName" id="ItemName" value="@Model.ItemName" />
+            </div>
+            <div>
+                @Html.LabelFor(m => m.ItemCount, "Item count:")
+                <input type="number" id="ItemCount" name="ItemCount" min="1" max="20" value="@Model.ItemCount" onchange="document.getElementById('mainForm').submit();" />
+            </div>
+            <div>
+                <textarea id="ItemInfo" name="ItemInfo">@Model.ItemInfo</textarea>
+            </div>
         </div>
-        <div>
-            <label>Produce ratio: </label>@Html.DisplayFor(m => m.BuildingProduceRatio)
-        </div>
-        <div>
-            @Html.LabelFor(m => m.ItemName, "Items:")
-            @Html.DropDownListFor(m => m.ItemName, new SelectList(@Model.Items))
-        </div>
-        <div>
-            @Html.LabelFor(m => m.ItemCount, "Item count:")
-            <input type="number" id="ItemCount" name="ItemCount" min="1" max="20" value="@Model.ItemCount" />
-        </div>
-        <div>
-            <textarea id="ItemInfo" name="ItemInfo">@Model.ItemInfo</textarea>
-        </div>
-    </div>
-</form>
+    </form>
+</body>
