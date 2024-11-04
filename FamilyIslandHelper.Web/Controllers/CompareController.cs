@@ -1,4 +1,5 @@
 ﻿using FamilyIslandHelper.Api.Helpers;
+using FamilyIslandHelper.Api.Models.Abstract;
 using FamilyIslandHelper.Web.Models;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -32,7 +33,7 @@ namespace FamilyIslandHelper.Web.Controllers
 				Building2ProduceRatio = BuildingHelper.CreateBuilding(buildingName2).ProduceRatio,
 				BuildingName1 = buildingName1,
 				BuildingName2 = buildingName2,
-				ShowListOfComponents = false,
+				ShowListOfComponentsForAll = false,
 				Items1 = items1,
 				ItemName1 = itemName1,
 				ItemCount1 = 1,
@@ -59,8 +60,18 @@ namespace FamilyIslandHelper.Web.Controllers
 			var items1 = BuildingHelper.GetItemsOfBuilding(compareViewModel.BuildingName1).ToList();
 			var items2 = BuildingHelper.GetItemsOfBuilding(compareViewModel.BuildingName2).ToList();
 
-			compareViewModel.ItemInfo1 = GetInfoAboutItem(compareViewModel.ItemName1, compareViewModel.ItemCount1, compareViewModel.ShowListOfComponents);
-			compareViewModel.ItemInfo2 = GetInfoAboutItem(compareViewModel.ItemName2, compareViewModel.ItemCount2, compareViewModel.ShowListOfComponents);
+			if (!items1.Contains(compareViewModel.ItemName1))
+			{
+				compareViewModel.ItemName1 = items1.FirstOrDefault();
+			}
+
+			if (!items2.Contains(compareViewModel.ItemName2))
+			{
+				compareViewModel.ItemName2 = items2.FirstOrDefault();
+			}
+
+			compareViewModel.ItemInfo1 = GetInfoAboutItem(compareViewModel.ItemName1, compareViewModel.ItemCount1, compareViewModel.ShowListOfComponentsForAll);
+			compareViewModel.ItemInfo2 = GetInfoAboutItem(compareViewModel.ItemName2, compareViewModel.ItemCount2, compareViewModel.ShowListOfComponentsForAll);
 
 			compareViewModel.Items1 = items1;
 			compareViewModel.Items2 = items2;
@@ -73,7 +84,29 @@ namespace FamilyIslandHelper.Web.Controllers
 
 		private static string GetInfoAboutItem(string itemName, int itemCount, bool showListOfComponents)
 		{
-			return string.Join("\n", ItemHelper.GetInfoAboutItem(itemName, itemCount, showListOfComponents));
+			if (itemName == null)
+			{
+				throw new ArgumentNullException(nameof(itemName));
+			}
+
+			var item = ItemHelper.FindItemByName(itemName);
+			
+			var info = item.ToString(itemCount);
+			if (item is ProducibleItem producibleItem)
+			{
+				if (showListOfComponents)
+				{
+					info += "\n";
+					info += "Components:\n";
+					foreach (var componentInfo in producibleItem.ComponentsInfo(0, itemCount))
+					{
+						info += componentInfo + "\n";
+					}
+				}
+				info += "\n";
+				info += "Итого времени на производство: " + TimeSpan.FromSeconds(producibleItem.TotalProduceTime.TotalSeconds * itemCount) + "\n";
+			}
+			return info;
 		}
 	}
 }

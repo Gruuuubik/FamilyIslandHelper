@@ -8,56 +8,71 @@
 }
 
 <body>
-	<form id="mainForm" method="post" action="~/Compare/Index">
+	<form id="mainFormCompare" method="post" action="~/Compare/Index">
 		<div id="CommonSettings" class="commonSettings">
-			@Html.CheckBoxFor(m => m.ShowListOfComponents)
-			@Html.LabelFor(m => m.ShowListOfComponents)
+			@Html.CheckBoxFor(m => m.ShowListOfComponentsForAll)
+			@Html.LabelFor(m => m.ShowListOfComponentsForAll)
+
 			<input type="submit" value="Compare" class="submit">
 		</div>
 
-		<div id="Component1" class="component">
-			<p>Component1</p>
+		<div class="float-container">
+			<div class="float-child">
+				<div id="Component1" class="component">
+					<p>Component1</p>
 
-			<div>
-				@Html.LabelFor(m => m.BuildingName1, "Buildings:")
-				@Html.DropDownListFor(m => m.BuildingName1, new SelectList(@Model.BuildingsNames))
+					<div>
+						@Html.LabelFor(m => m.BuildingName1, "Buildings:")
+						@Html.DropDownListFor(m => m.BuildingName1, new SelectList(@Model.BuildingsNames))
+					</div>
+					<div>
+						<label>Produce ratio: </label>@Html.DisplayFor(m => m.Building1ProduceRatio)
+					</div>
+					<div id="ItemsImages1">
+						@foreach (var itemName1 in @Model.Items1)
+						{
+							var itemNameImageName1 = itemName1 + ".png";
+							<img class="itemNameImage" id="@itemName1" width="50" onclick="setItemName(event, 'ItemName1', 'mainFormCompare');" src="/images/Pictures/@Model.BuildingName1/@itemNameImageName1" alt="@itemName1">
+						}
+						<input type="hidden" name="ItemName1" id="ItemName1" value="@Model.ItemName1" />
+					</div>
+					<div>
+						@Html.LabelFor(m => m.ItemCount1, "Item count:")
+						<input type="number" class="itemCount" id="ItemCount1" name="ItemCount1" min="1" max="20" value="@Model.ItemCount1" />
+					</div>
+					<div>
+						<textarea id="ItemInfo1" name="ItemInfo1">@Model.ItemInfo1</textarea>
+					</div>
+				</div>
 			</div>
-			<div>
-				<label>Produce ratio: </label>@Html.DisplayFor(m => m.Building1ProduceRatio)
-			</div>
-			<div>
-				@Html.LabelFor(m => m.ItemName1, "Items:")
-				@Html.DropDownListFor(m => m.ItemName1, new SelectList(@Model.Items1))
-			</div>
-			<div>
-				@Html.LabelFor(m => m.ItemCount1, "Item count:")
-				@Html.TextBoxFor(m => m.ItemCount1)
-			</div>
-			<div>
-				<textarea id="ItemInfo1" name="ItemInfo1">@Model.ItemInfo1</textarea>
-			</div>
-		</div>
 
-		<div id="Component2" class="component">
-			<p>Component2</p>
+			<div class="float-child">
+				<div id="Component2" class="component">
+					<p>Component2</p>
 
-			<div>
-				@Html.LabelFor(m => m.BuildingName2, "Buildings:")
-				@Html.DropDownListFor(m => m.BuildingName2, new SelectList(@Model.BuildingsNames))
-			</div>
-			<div>
-				<label>Produce ratio: </label>@Html.DisplayFor(m => m.Building2ProduceRatio)
-			</div>
-			<div>
-				@Html.LabelFor(m => m.ItemName2, "Items:")
-				@Html.DropDownListFor(m => m.ItemName2, new SelectList(@Model.Items2))
-			</div>
-			<div>
-				@Html.LabelFor(m => m.ItemCount2, "Item count:")
-				@Html.TextBoxFor(m => m.ItemCount2)
-			</div>
-			<div>
-				<textarea id="ItemInfo2" name="ItemInfo2">@Model.ItemInfo2</textarea>
+					<div>
+						@Html.LabelFor(m => m.BuildingName2, "Buildings:")
+						@Html.DropDownListFor(m => m.BuildingName2, new SelectList(@Model.BuildingsNames))
+					</div>
+					<div>
+						<label>Produce ratio: </label>@Html.DisplayFor(m => m.Building2ProduceRatio)
+					</div>
+					<div id="ItemsImages2">
+						@foreach (var itemName2 in @Model.Items2)
+						{
+							var itemNameImageName2 = itemName2 + ".png";
+							<img class="itemNameImage" id="@itemName2" width="50" onclick="setItemName(event, 'ItemName2', 'mainFormCompare');" src="/images/Pictures/@Model.BuildingName2/@itemNameImageName2" alt="@itemName2">
+						}
+						<input type="hidden" name="ItemName2" id="ItemName2" value="@Model.ItemName2" />
+					</div>
+					<div>
+						@Html.LabelFor(m => m.ItemCount2, "Item count:")
+						<input type="number" class="itemCount" id="ItemCount2" name="ItemCount2" min="1" max="20" value="@Model.ItemCount2" />
+					</div>
+					<div>
+						<textarea id="ItemInfo2" name="ItemInfo2">@Model.ItemInfo2</textarea>
+					</div>
+				</div>
 			</div>
 		</div>
 	</form>

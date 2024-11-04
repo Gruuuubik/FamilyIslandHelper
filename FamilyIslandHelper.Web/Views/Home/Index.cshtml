@@ -26,13 +26,13 @@
 				@foreach (var itemName in @Model.Items)
 				{
 					var itemNameImageName = itemName + ".png";
-					<img class="itemNameImage" id="@itemName" width="50" onclick="setItemName(event);" src="/images/Pictures/@Model.BuildingName/@itemNameImageName" alt="@itemName">
+					<img class="itemNameImage" id="@itemName" width="50" onclick="setItemName(event, 'ItemName', 'mainForm');" src="/images/Pictures/@Model.BuildingName/@itemNameImageName" alt="@itemName">
 				}
 				<input type="hidden" name="ItemName" id="ItemName" value="@Model.ItemName" />
 			</div>
 			<div>
 				@Html.LabelFor(m => m.ItemCount, "Item count:")
-				<input type="number" id="ItemCount" name="ItemCount" min="1" max="20" value="@Model.ItemCount" />
+				<input type="number" class="itemCount" id="ItemCount" name="ItemCount" min="1" max="20" value="@Model.ItemCount" />
 			</div>
 			<div>
 				<textarea id="ItemInfo" name="ItemInfo">@Model.ItemInfo</textarea>
