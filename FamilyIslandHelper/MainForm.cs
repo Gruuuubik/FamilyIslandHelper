@@ -110,12 +110,24 @@ namespace FamilyIslandHelper
 
 			if (panelNumber == 1)
 			{
+				foreach (Panel itemPanel1 in pnl_Items1.Controls)
+				{
+					itemPanel1.BorderStyle = BorderStyle.None;
+				}
+
 				ShowInfoForItem(panelTag, tv_Components1);
 			}
 			else if (panelNumber == 2)
 			{
+				foreach (Panel itemPanel2 in pnl_Items2.Controls)
+				{
+					itemPanel2.BorderStyle = BorderStyle.None;
+				}
+
 				ShowInfoForItem(panelTag, tv_Components2);
 			}
+
+			itemPanel.BorderStyle = BorderStyle.FixedSingle;
 		}
 
 		private void ShowInfoForItem(string panelTag, TreeView tvComponents)
