@@ -12,6 +12,7 @@ namespace FamilyIslandHelper
 	public partial class MainForm : Form
 	{
 		private const string FolderWithPictures = "Pictures";
+		private const string FolderWithBuildingsPictures = "Buildings";
 
 		private readonly Dictionary<string, int> dictImagesIndexes = new Dictionary<string, int>();
 
@@ -35,16 +36,9 @@ namespace FamilyIslandHelper
 
 		private void InitBuildings()
 		{
-			cb_Buildings1.DataSource = BuildingHelper.GetBuildingsClasses();
-			cb_Buildings1.DisplayMember = "Name";
-			cb_Buildings1.ValueMember = "Value";
-
-			cb_Buildings2.DataSource = BuildingHelper.GetBuildingsClasses();
-			cb_Buildings2.DisplayMember = "Name";
-			cb_Buildings2.ValueMember = "Value";
-
-			cb_Buildings1.SelectedIndexChanged += this.cb_Buildings_SelectedIndexChanged;
-			cb_Buildings2.SelectedIndexChanged += this.cb_Buildings_SelectedIndexChanged;
+			var buildingsImagesPaths = Directory.GetFiles(FolderWithBuildingsPictures).ToList();
+			InitBuildingsPanels(buildingsImagesPaths, 1, pnl_Buildings1);
+			InitBuildingsPanels(buildingsImagesPaths, 2, pnl_Buildings2);
 		}
 
 		private void AddInfoToListBox(string itemName, int itemCount)
@@ -130,6 +124,32 @@ namespace FamilyIslandHelper
 			itemPanel.BorderStyle = BorderStyle.FixedSingle;
 		}
 
+		private void pnl_Building_MouseDown(object sender, MouseEventArgs e)
+		{
+			var buildingPanel = sender as Panel;
+			var panelTag = buildingPanel.Tag.ToString();
+			var panelNumber = int.Parse(panelTag.Split('_')[1]);
+
+			if (panelNumber == 1)
+			{
+				foreach (Panel buildingsPanel1 in pnl_Buildings1.Controls)
+				{
+					buildingsPanel1.BorderStyle = BorderStyle.None;
+				}
+			}
+			else if (panelNumber == 2)
+			{
+				foreach (Panel buildingsPanel2 in pnl_Buildings2.Controls)
+				{
+					buildingsPanel2.BorderStyle = BorderStyle.None;
+				}
+			}
+
+			ShowListOfItemsForBuilding(panelTag.Split('_')[0], panelNumber);
+
+			buildingPanel.BorderStyle = BorderStyle.FixedSingle;
+		}
+
 		private void ShowInfoForItem(string panelTag, TreeView tvComponents)
 		{
 			var itemTypeString = panelTag.Split('_')[0];
@@ -164,16 +184,16 @@ namespace FamilyIslandHelper
 			if (panelNumber == 1)
 			{
 				tv_Components1.Nodes.Clear();
-				lbl_Ratio1.Text = ratio;
+				lbl_Ratio1.Text = "Ratio: " + ratio;
 
-				InitPanels(itemsPaths, panelNumber, pnl_Items1);
+				InitItemsPanels(itemsPaths, panelNumber, pnl_Items1);
 			}
 			else if (panelNumber == 2)
 			{
 				tv_Components2.Nodes.Clear();
-				lbl_Ratio2.Text = ratio;
+				lbl_Ratio2.Text = "Ratio: " + ratio;
 
-				InitPanels(itemsPaths, panelNumber, pnl_Items2);
+				InitItemsPanels(itemsPaths, panelNumber, pnl_Items2);
 			}
 		}
 
@@ -181,20 +201,28 @@ namespace FamilyIslandHelper
 		{
 			lb_Components.Items.Clear();
 
-			ShowListOfItemsForBuilding(cb_Buildings1.SelectedValue.ToString(), 1);
-			ShowListOfItemsForBuilding(cb_Buildings2.SelectedValue.ToString(), 2);
+			var buildingsImagesPaths = Directory.GetFiles(FolderWithBuildingsPictures).ToList();
+			var buildingName = BuildingHelper.GetBuildingNameByPath(buildingsImagesPaths.FirstOrDefault());
+
+			(pnl_Buildings1.Controls[0] as Panel).BorderStyle = BorderStyle.FixedSingle;
+			(pnl_Buildings2.Controls[0] as Panel).BorderStyle = BorderStyle.FixedSingle;
+
+			ShowListOfItemsForBuilding(buildingName, 1);
+			ShowListOfItemsForBuilding(buildingName, 2);
 		}
 
-		private void InitPanels(IReadOnlyList<string> itemsPaths, int panelNumber, Control pnlItems)
+		private void InitItemsPanels(IReadOnlyList<string> itemsPaths, int panelNumber, Control pnlItems)
 		{
 			var panels = new Control[itemsPaths.Count];
-			const int size = 40;
+			const int size = 50;
 
 			for (var i = 0; i < itemsPaths.Count; i++)
 			{
+				var itemName = ItemHelper.GetItemNameByPath(itemsPaths[i]);
+
 				var panel = new Panel
 				{
-					Tag = ItemHelper.GetItemNameByPath(itemsPaths[i]) + "_" + panelNumber,
+					Tag = itemName + "_" + panelNumber,
 					Size = new Size(size, size),
 					BackgroundImage = Image.FromFile(itemsPaths[i]),
 					BackgroundImageLayout = ImageLayout.Stretch,
@@ -202,6 +230,8 @@ namespace FamilyIslandHelper
 				};
 
 				panel.MouseDown += pnl_Item_MouseDown;
+
+				new ToolTip().SetToolTip(panel, ItemHelper.CreateProducibleItem(itemName).Name);
 
 				panels[i] = panel;
 			}
@@ -218,6 +248,42 @@ namespace FamilyIslandHelper
 			return;
 
 			ProducibleItem GetItem(Control p) => ItemHelper.CreateProducibleItem(p.Tag.ToString().Split('_')[0]);
+		}
+
+		private void InitBuildingsPanels(IReadOnlyList<string> buildingsPaths, int panelNumber, Control pnlItems)
+		{
+			var panels = new Control[buildingsPaths.Count];
+			const int size = 55;
+			const int padding = 5;
+
+			for (var i = 0; i < buildingsPaths.Count; i++)
+			{
+				var buildingName = BuildingHelper.GetBuildingNameByPath(buildingsPaths[i]);
+
+				var panel = new Panel
+				{
+					Tag = buildingName + "_" + panelNumber,
+					Size = new Size(size, size),
+					BackgroundImage = Image.FromFile(buildingsPaths[i]),
+					BackgroundImageLayout = ImageLayout.Stretch,
+					Cursor = Cursors.Hand
+				};
+
+				panel.MouseDown += pnl_Building_MouseDown;
+
+				new ToolTip().SetToolTip(panel, BuildingHelper.CreateBuilding(buildingName).Name);
+
+				panels[i] = panel;
+			}
+
+			for (var i = 0; i < panels.Length; i++)
+			{
+				panels[i].Location = new Point(padding + ((size + padding) * i), 10);
+			}
+
+			pnlItems.Controls.Clear();
+			pnlItems.Controls.AddRange(panels);
+			return;
 		}
 
 		private ImageList GetImageList()
