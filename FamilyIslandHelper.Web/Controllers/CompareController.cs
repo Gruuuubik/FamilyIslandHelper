@@ -73,6 +73,8 @@ namespace FamilyIslandHelper.Web.Controllers
 			compareViewModel.ItemInfo1 = GetInfoAboutItem(compareViewModel.ItemName1, compareViewModel.ItemCount1, compareViewModel.ShowListOfComponentsForAll);
 			compareViewModel.ItemInfo2 = GetInfoAboutItem(compareViewModel.ItemName2, compareViewModel.ItemCount2, compareViewModel.ShowListOfComponentsForAll);
 
+			compareViewModel.ItemCompareInfo = ItemHelper.CompareItems(ItemHelper.FindItemByName(compareViewModel.ItemName1), compareViewModel.ItemCount1, ItemHelper.FindItemByName(compareViewModel.ItemName2), compareViewModel.ItemCount2);
+
 			compareViewModel.Items1 = items1;
 			compareViewModel.Items2 = items2;
 

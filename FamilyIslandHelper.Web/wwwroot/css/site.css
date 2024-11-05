@@ -19,6 +19,11 @@ body {
 
 textarea {
     width: 100%;
+    height: 50px;
+}
+
+textarea.personal {
+    width: 100%;
     height: 300px;
 }
 
@@ -27,7 +32,7 @@ input.itemCount {
 }
 
 div.commonSettings, div.component {
-    margin: 10px 10px 10px 10px;
+    margin: 5px 10px 5px 10px;
 }
 
 input.submit {
@@ -40,7 +45,7 @@ img:hover {
 }
 
 .float-container {
-    padding: 5px;
+    padding: 1px 5px 1px 5px;
 }
 
 .float-child {

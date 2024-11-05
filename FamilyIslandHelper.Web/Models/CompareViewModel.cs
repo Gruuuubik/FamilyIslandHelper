@@ -19,5 +19,7 @@ namespace FamilyIslandHelper.Web.Models
 		public int ItemCount2 { get; set; }
 		public string ItemName2 { get; set; }
 		public string ItemInfo2 { get; set; }
+
+		public string ItemCompareInfo { get; set; }
 	}
 }

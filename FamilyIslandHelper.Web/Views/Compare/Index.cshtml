@@ -10,19 +10,17 @@
 <body>
 	<form id="mainFormCompare" method="post" action="~/Compare/Index">
 		<div id="CommonSettings" class="commonSettings">
+			<textarea id="ItemCompareInfo" name="ItemCompareInfo">@Model.ItemCompareInfo</textarea>
+
 			<div class="checkbox-wrapper-14">
 				@Html.CheckBoxFor(m => m.ShowListOfComponentsForAll, new { @class = "switch" })
 				@Html.LabelFor(m => m.ShowListOfComponentsForAll)
 			</div>
-
-			<input type="submit" value="Compare" class="submit">
 		</div>
 
 		<div class="float-container">
 			<div class="float-child">
 				<div id="Component1" class="component">
-					<p>Component1</p>
-
 					<div>
 						@Html.LabelFor(m => m.BuildingName1, "Buildings:")
 						@Html.DropDownListFor(m => m.BuildingName1, new SelectList(@Model.BuildingsNames))
@@ -43,15 +41,13 @@
 						<input type="number" class="itemCount" id="ItemCount1" name="ItemCount1" min="1" max="20" value="@Model.ItemCount1" />
 					</div>
 					<div>
-						<textarea id="ItemInfo1" name="ItemInfo1">@Model.ItemInfo1</textarea>
+						<textarea id="ItemInfo1" name="ItemInfo1" class="personal">@Model.ItemInfo1</textarea>
 					</div>
 				</div>
 			</div>
 
 			<div class="float-child">
 				<div id="Component2" class="component">
-					<p>Component2</p>
-
 					<div>
 						@Html.LabelFor(m => m.BuildingName2, "Buildings:")
 						@Html.DropDownListFor(m => m.BuildingName2, new SelectList(@Model.BuildingsNames))
@@ -72,7 +68,7 @@
 						<input type="number" class="itemCount" id="ItemCount2" name="ItemCount2" min="1" max="20" value="@Model.ItemCount2" />
 					</div>
 					<div>
-						<textarea id="ItemInfo2" name="ItemInfo2">@Model.ItemInfo2</textarea>
+						<textarea id="ItemInfo2" name="ItemInfo2" class="personal">@Model.ItemInfo2</textarea>
 					</div>
 				</div>
 			</div>
