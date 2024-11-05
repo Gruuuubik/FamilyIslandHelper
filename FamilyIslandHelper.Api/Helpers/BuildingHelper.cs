@@ -11,6 +11,16 @@ namespace FamilyIslandHelper.Api.Helpers
 		public static readonly string BuildingsNamespace = $"{MainNamespace}.Models.Buildings";
 		private const string MainNamespace = "FamilyIslandHelper.Api";
 
+		public static string GetBuildingNameByPath(string itemPath)
+		{
+#if LINUX
+			var pathSeparator = '/';
+#else
+			var pathSeparator = '\\';
+#endif
+			return itemPath.Split('.').First().Split(pathSeparator).Last();
+		}
+
 		public static List<BuildingInfo> GetBuildingsClasses()
 		{
 			var buildingsClasses = ClassHelper.GetClasses(BuildingsNamespace);

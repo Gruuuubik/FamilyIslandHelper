@@ -8,6 +8,15 @@ namespace FamilyIslandHelper.Api.Net6.UnitTests
 		private const string FolderWithPictures = "Pictures";
 
 		[Theory]
+		[InlineData(new[] { "Buildings", "CarpentryWorkshop.png" }, "CarpentryWorkshop")]
+		public void When_GetBuildingNameByPath_Then_ReturnCorrectBuildingName(string[] itemPath, string expectedIteName)
+		{
+			var actualItemName = BuildingHelper.GetBuildingNameByPath(Path.Combine(itemPath));
+
+			Assert.Equal(expectedIteName, actualItemName);
+		}
+
+		[Theory]
 		[InlineData(13)]
 		public void When_GetBuildingsClasses_Then_ReturnCorrectCollection(int expectedCount)
 		{
