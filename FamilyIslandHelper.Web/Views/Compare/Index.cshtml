@@ -10,8 +10,10 @@
 <body>
 	<form id="mainFormCompare" method="post" action="~/Compare/Index">
 		<div id="CommonSettings" class="commonSettings">
-			@Html.CheckBoxFor(m => m.ShowListOfComponentsForAll)
-			@Html.LabelFor(m => m.ShowListOfComponentsForAll)
+			<div class="checkbox-wrapper-14">
+				@Html.CheckBoxFor(m => m.ShowListOfComponentsForAll, new { @class = "switch" })
+				@Html.LabelFor(m => m.ShowListOfComponentsForAll)
+			</div>
 
 			<input type="submit" value="Compare" class="submit">
 		</div>

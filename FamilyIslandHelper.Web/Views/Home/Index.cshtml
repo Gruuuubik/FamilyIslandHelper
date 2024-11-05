@@ -10,8 +10,10 @@
 <body>
 	<form id="mainForm" method="post" action="~/Home/Index">
 		<div id="CommonSettings" class="commonSettings">
-			@Html.CheckBoxFor(m => m.ShowListOfComponents)
-			@Html.LabelFor(m => m.ShowListOfComponents)
+			<div class="checkbox-wrapper-14">
+				@Html.CheckBoxFor(m => m.ShowListOfComponents, new { @class = "switch" })
+				@Html.LabelFor(m => m.ShowListOfComponents)
+			</div>
 		</div>
 
 		<div class="component">
