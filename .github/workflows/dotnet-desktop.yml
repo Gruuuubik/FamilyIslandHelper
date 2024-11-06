@@ -6,6 +6,9 @@ on:
   push:
   pull_request:
 
+env:
+  NuGetDirectory: ${{ github.workspace}}/nuget
+
 jobs:
   build:
     strategy:
@@ -67,3 +70,12 @@ jobs:
     - name: 💾 Upload coverage into summary
       run: cat $GITHUB_WORKSPACE/coveragereport/SummaryGithub.md >> $GITHUB_STEP_SUMMARY
       shell: bash
+
+    - name: 🛠️ Create nuget package for API
+      run: dotnet pack .\FamilyIslandHelper.Api\FamilyIslandHelper.Api.csproj -c ${{ matrix.configuration }} --no-build -o ${{ env.NuGetDirectory }}
+
+    - name: 💾 Archive nuget package with API
+      uses: actions/upload-artifact@v4
+      with:
+        name: FamilyIslandHelper.Api.nuget
+        path: ${{ env.NuGetDirectory }}/*.nupkg
