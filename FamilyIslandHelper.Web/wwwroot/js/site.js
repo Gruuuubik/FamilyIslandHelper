@@ -70,10 +70,10 @@ function setItemName(event, itemNameId, formId) {
 	var itemNameImages = form.getElementsByClassName('itemNameImage');
 
 	for (let i = 0; i < itemNameImages.length; i++) {
-		itemNameImages[i].style.border = "none grey";
+		itemNameImages[i].classList.remove("selectedImage");
 	}
 
-	event.currentTarget.style.border = "solid grey";
+	event.currentTarget.classList.add("selectedImage");
 }
 
 function setBuildingName(event, buildingNameId, formId) {
@@ -85,8 +85,8 @@ function setBuildingName(event, buildingNameId, formId) {
 	var buildingNameImages = form.getElementsByClassName('buildingNameImage');
 
 	for (let i = 0; i < buildingNameImages.length; i++) {
-		buildingNameImages[i].style.border = "none grey";
+		buildingNameImages[i].classList.remove("selectedImage");
 	}
 
-	event.currentTarget.style.border = "solid grey";
+	event.currentTarget.classList.add("selectedImage");
 }
