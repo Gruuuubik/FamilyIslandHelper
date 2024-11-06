@@ -75,3 +75,18 @@ function setItemName(event, itemNameId, formId) {
 
 	event.currentTarget.style.border = "solid grey";
 }
+
+function setBuildingName(event, buildingNameId, formId) {
+	document.getElementById(buildingNameId).value = event.currentTarget.id;
+
+	var form = document.getElementById(formId);
+	form.submit();
+
+	var buildingNameImages = form.getElementsByClassName('buildingNameImage');
+
+	for (let i = 0; i < buildingNameImages.length; i++) {
+		buildingNameImages[i].style.border = "none grey";
+	}
+
+	event.currentTarget.style.border = "solid grey";
+}
