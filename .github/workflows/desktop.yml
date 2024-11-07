@@ -1,0 +1,83 @@
+name: Desktop
+
+on:
+  workflow_dispatch:
+
+  push:
+    branches:
+      - main
+  pull_request:
+
+env:
+  NuGetDirectory: ${{ github.workspace}}/nuget
+
+jobs:
+  build:
+    strategy:
+      matrix:
+        dotnet-version: [ '6.0.X' ]
+        configuration: [Release]
+
+    name: Windows Build
+    runs-on: windows-latest
+
+    steps:
+    - name: ⤵️ Checkout Source
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
+
+    - name: 🛠️ Setup .NET SDK ${{ matrix.dotnet-version }}
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: ${{ matrix.dotnet-version }}
+
+    - name: 🛠️ Install dependencies
+      run: dotnet restore
+
+    - name: 🔨 Build
+      run: dotnet build --configuration ${{ matrix.configuration }} --no-restore
+
+    - name: 🛠️ Install dotnet-coverage
+      run: dotnet tool install -g dotnet-coverage
+
+    - name: 🔨 Execute unit tests
+      run: dotnet test --no-restore --verbosity normal --collect "Code Coverage;Format=cobertura"
+
+    - name: 💾 ReportGenerator
+      uses: danielpalme/ReportGenerator-GitHub-Action@5.2.0
+      with:
+        reports: './**/TestResults/**/*.cobertura.xml' # REQUIRED # The coverage reports that should be parsed (separated by semicolon). Globbing is supported.
+        targetdir: '${{ github.workspace }}/coveragereport' # REQUIRED # The directory where the generated report should be saved.
+        reporttypes: 'HtmlInline;Cobertura;MarkdownSummaryGithub' # The output formats and scope (separated by semicolon) Values: Badges, Clover, Cobertura, OpenCover, CsvSummary, Html, Html_Dark, Html_Light, Html_BlueRed, HtmlChart, HtmlInline, HtmlInline_AzurePipelines, HtmlInline_AzurePipelines_Dark, HtmlInline_AzurePipelines_Light, HtmlSummary, Html_BlueRed_Summary, JsonSummary, Latex, LatexSummary, lcov, MarkdownSummary, MarkdownSummaryGithub, MarkdownDeltaSummary, MHtml, SvgChart, SonarQube, TeamCitySummary, TextSummary, TextDeltaSummary, Xml, XmlSummary
+        sourcedirs: '' # Optional directories which contain the corresponding source code (separated by semicolon). The source directories are used if coverage report contains classes without path information.
+        historydir: '' # Optional directory for storing persistent coverage information. Can be used in future reports to show coverage evolution.
+        plugins: '' # Optional plugin files for custom reports or custom history storage (separated by semicolon).
+        assemblyfilters: '+*' # Optional list of assemblies that should be included or excluded in the report. Exclusion filters take precedence over inclusion filters. Wildcards are allowed.
+        classfilters: '+*' # Optional list of classes that should be included or excluded in the report. Exclusion filters take precedence over inclusion filters. Wildcards are allowed.
+        filefilters: '+*' # Optional list of files that should be included or excluded in the report. Exclusion filters take precedence over inclusion filters. Wildcards are allowed.
+        verbosity: 'Info' # The verbosity level of the log messages. Values: Verbose, Info, Warning, Error, Off
+        title: '' # Optional title.
+        tag: '${{ github.run_number }}_${{ github.run_id }}' # Optional tag or build version.
+        license: '' # Optional license for PRO version. Get your license here: https://reportgenerator.io/pro
+        customSettings: '' # Optional custom settings (separated by semicolon). See: https://github.com/danielpalme/ReportGenerator/wiki/Settings.
+        toolpath: 'reportgeneratortool' # Default directory for installing the dotnet tool.
+
+    - name: 💾 Archive code coverage results
+      uses: actions/upload-artifact@v4
+      with:
+        name: CoverageReport
+        path: '${{ github.workspace }}/coveragereport' # Directory containing files to upload
+
+    - name: 💾 Upload coverage into summary
+      run: cat $GITHUB_WORKSPACE/coveragereport/SummaryGithub.md >> $GITHUB_STEP_SUMMARY
+      shell: bash
+
+    - name: 🛠️ Create nuget package for API
+      run: dotnet pack .\FamilyIslandHelper.Api\FamilyIslandHelper.Api.csproj -c ${{ matrix.configuration }} --no-build -o ${{ env.NuGetDirectory }}
+
+    - name: 💾 Archive nuget package with API
+      uses: actions/upload-artifact@v4
+      with:
+        name: FamilyIslandHelper.Api.nuget
+        path: ${{ env.NuGetDirectory }}/*.nupkg
