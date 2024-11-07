@@ -1,9 +1,11 @@
-name: FamilyIslandHelper.Desktop
+name: Web
 
 on:
   workflow_dispatch:
 
   push:
+    branches:
+      - web
   pull_request:
 
 env:
