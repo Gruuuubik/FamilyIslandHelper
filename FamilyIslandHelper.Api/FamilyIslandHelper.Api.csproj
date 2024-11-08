@@ -12,6 +12,7 @@
     <Authors>Pavel Zhuraulevich</Authors>
     <Description>It is an API for game FamilyIsland</Description>
     <PackageTags>familyIsland, library</PackageTags>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
     <PublishRepositoryUrl>true</PublishRepositoryUrl>
     <!-- Embed source files that are not tracked by the source control manager in the PDB -->
     <EmbedUntrackedSources>true</EmbedUntrackedSources>
@@ -30,6 +31,7 @@
     <Content Include="Buildings\*.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <None Include="README.md" Pack="true" PackagePath="\"/>
   </ItemGroup>
 
   <ItemGroup>
