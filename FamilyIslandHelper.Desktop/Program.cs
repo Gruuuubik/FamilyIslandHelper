@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 
-namespace FamilyIslandHelper
+namespace FamilyIslandHelper.Desktop
 {
 	internal static class Program
 	{
