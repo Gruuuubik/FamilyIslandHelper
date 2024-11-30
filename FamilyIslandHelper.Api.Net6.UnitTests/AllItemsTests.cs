@@ -15,7 +15,7 @@ namespace FamilyIslandHelper.Api.Net6.UnitTests
 			var actualResourcesNames = ClassHelper.GetClassesNames("FamilyIslandHelper.Api.Models")
 				.Where(n => n != nameof(BuildingInfo)).OrderBy(i => i);
 
-			var resourcesPaths = Directory.GetFiles("Resources");
+			var resourcesPaths = Directory.GetFiles(Path.Combine(FolderWithPictures, "Resources"));
 			var expectedResourcesNames = resourcesPaths.Select(r => r.Split('.').First().Split(pathSeparator).Last()).OrderBy(i => i);
 
 			Assert.Equal(expectedResourcesNames, actualResourcesNames);
@@ -30,7 +30,7 @@ namespace FamilyIslandHelper.Api.Net6.UnitTests
 		[MemberData(nameof(GetAllItemsNames_TestData))]
 		public void When_GetAllItemsNames_Then_AllItemsHavePictures(Type buildingClass, IEnumerable<string> expectedItemsNames)
 		{
-			var itemsPaths = Directory.GetFiles(Path.Combine(FolderWithPictures, buildingClass.Name));
+			var itemsPaths = Directory.GetFiles(Path.Combine(Path.Combine(FolderWithPictures, "Items"), buildingClass.Name));
 			var actualItemsNames = itemsPaths.Select(ip => ip.Split('.').First().Split(pathSeparator).Last()).OrderBy(i => i);
 
 			Assert.Equal(expectedItemsNames, actualItemsNames);

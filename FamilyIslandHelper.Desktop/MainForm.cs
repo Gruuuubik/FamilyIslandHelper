@@ -12,7 +12,8 @@ namespace FamilyIslandHelper.Desktop
 	public partial class MainForm : Form
 	{
 		private const string FolderWithPictures = "Pictures";
-		private const string FolderWithBuildingsPictures = "Buildings";
+		private readonly string folderWithItemsPictures = Path.Combine(FolderWithPictures, "Items");
+		private readonly string folderWithBuildingsPictures = Path.Combine(FolderWithPictures, "Buildings");
 
 		private readonly Dictionary<string, int> dictImagesIndexes = new Dictionary<string, int>();
 
@@ -36,7 +37,7 @@ namespace FamilyIslandHelper.Desktop
 
 		private void InitBuildings()
 		{
-			var buildingsImagesPaths = Directory.GetFiles(FolderWithBuildingsPictures).ToList();
+			var buildingsImagesPaths = Directory.GetFiles(folderWithBuildingsPictures).ToList();
 			InitBuildingsPanels(buildingsImagesPaths, 1, pnl_Buildings1);
 			InitBuildingsPanels(buildingsImagesPaths, 2, pnl_Buildings2);
 		}
@@ -178,7 +179,7 @@ namespace FamilyIslandHelper.Desktop
 
 		private void ShowListOfItemsForBuilding(string buildingName, int panelNumber)
 		{
-			var itemsPaths = Directory.GetFiles(Path.Combine(FolderWithPictures, buildingName)).ToList();
+			var itemsPaths = Directory.GetFiles(Path.Combine(folderWithItemsPictures, buildingName)).ToList();
 			var ratio = BuildingHelper.CreateBuilding(buildingName).ProduceRatio.ToString();
 
 			if (panelNumber == 1)
@@ -201,7 +202,7 @@ namespace FamilyIslandHelper.Desktop
 		{
 			lb_Components.Items.Clear();
 
-			var buildingsImagesPaths = Directory.GetFiles(FolderWithBuildingsPictures).ToList();
+			var buildingsImagesPaths = Directory.GetFiles(folderWithBuildingsPictures).ToList();
 			var buildingName = BuildingHelper.GetBuildingNameByPath(buildingsImagesPaths.FirstOrDefault());
 
 			(pnl_Buildings1.Controls[0] as Panel).BorderStyle = BorderStyle.FixedSingle;
@@ -298,14 +299,14 @@ namespace FamilyIslandHelper.Desktop
 			var buildingsNames = BuildingHelper.GetBuildingsNames();
 
 			var counter = 0;
-			var itemPath = Directory.GetFiles(FolderWithPictures).FirstOrDefault();
+			var itemPath = Directory.GetFiles(folderWithItemsPictures).FirstOrDefault();
 			dictImagesIndexes.Add(ItemHelper.GetItemNameByPath(itemPath), counter);
 			imageList.Images.Add(Image.FromFile(itemPath));
 			counter++;
 
 			foreach (var buildingName in buildingsNames)
 			{
-				var itemsPaths = Directory.GetFiles(Path.Combine(FolderWithPictures, buildingName)).ToList();
+				var itemsPaths = Directory.GetFiles(Path.Combine(folderWithItemsPictures, buildingName)).ToList();
 
 				for (var i = 0; i < itemsPaths.Count; i++)
 				{
@@ -315,7 +316,7 @@ namespace FamilyIslandHelper.Desktop
 				}
 			}
 
-			var resourcesPaths = Directory.GetFiles("Resources").ToList();
+			var resourcesPaths = Directory.GetFiles(Path.Combine(FolderWithPictures, "Resources")).ToList();
 
 			for (var i = 0; i < resourcesPaths.Count; i++)
 			{
