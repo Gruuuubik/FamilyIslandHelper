@@ -1,4 +1,4 @@
-﻿namespace FamilyIslandHelper
+﻿namespace FamilyIslandHelper.Desktop
 {
 	partial class MainForm
 	{

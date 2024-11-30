@@ -7,7 +7,7 @@ using System.IO;
 using System.Linq;
 using System.Windows.Forms;
 
-namespace FamilyIslandHelper
+namespace FamilyIslandHelper.Desktop
 {
 	public partial class MainForm : Form
 	{
