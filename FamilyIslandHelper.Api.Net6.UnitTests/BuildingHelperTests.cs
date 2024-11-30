@@ -5,7 +5,7 @@ namespace FamilyIslandHelper.Api.Net6.UnitTests
 {
 	public class BuildingHelperTests : BaseTest
 	{
-		private const string FolderWithPictures = "Pictures";
+		private readonly string FolderWithPictures = Path.Combine("Pictures", "Items");
 
 		[Theory]
 		[InlineData(new[] { "Buildings", "CarpentryWorkshop.png" }, "CarpentryWorkshop")]
