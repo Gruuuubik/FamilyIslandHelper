@@ -37,11 +37,14 @@
 			this.pnl_Items1 = new System.Windows.Forms.Panel();
 			this.splitContainer_second = new System.Windows.Forms.SplitContainer();
 			this.lb_Components = new System.Windows.Forms.ListBox();
+			this.pnl_Buildings2 = new System.Windows.Forms.Panel();
 			this.lbl_Ratio2 = new System.Windows.Forms.Label();
 			this.num_Item2Count = new System.Windows.Forms.NumericUpDown();
 			this.tv_Components2 = new System.Windows.Forms.TreeView();
 			this.pnl_Items2 = new System.Windows.Forms.Panel();
-			this.pnl_Buildings2 = new System.Windows.Forms.Panel();
+			this.rb_v1 = new System.Windows.Forms.RadioButton();
+			this.lbl_ApiVersion = new System.Windows.Forms.Label();
+			this.rb_v2 = new System.Windows.Forms.RadioButton();
 			((System.ComponentModel.ISupportInitialize)(this.splitContainer_main)).BeginInit();
 			this.splitContainer_main.Panel1.SuspendLayout();
 			this.splitContainer_main.Panel2.SuspendLayout();
@@ -57,7 +60,7 @@
 			// cb_showListOfComponents
 			// 
 			this.cb_showListOfComponents.AutoSize = true;
-			this.cb_showListOfComponents.Location = new System.Drawing.Point(281, 12);
+			this.cb_showListOfComponents.Location = new System.Drawing.Point(350, 12);
 			this.cb_showListOfComponents.Name = "cb_showListOfComponents";
 			this.cb_showListOfComponents.Size = new System.Drawing.Size(212, 24);
 			this.cb_showListOfComponents.TabIndex = 10;
@@ -194,6 +197,16 @@
 			this.lb_Components.Size = new System.Drawing.Size(428, 659);
 			this.lb_Components.TabIndex = 16;
 			// 
+			// pnl_Buildings2
+			// 
+			this.pnl_Buildings2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+			this.pnl_Buildings2.AutoScroll = true;
+			this.pnl_Buildings2.Location = new System.Drawing.Point(15, 55);
+			this.pnl_Buildings2.Name = "pnl_Buildings2";
+			this.pnl_Buildings2.Size = new System.Drawing.Size(437, 85);
+			this.pnl_Buildings2.TabIndex = 15;
+			// 
 			// lbl_Ratio2
 			// 
 			this.lbl_Ratio2.AutoSize = true;
@@ -235,7 +248,7 @@
 			this.tv_Components2.ItemHeight = 30;
 			this.tv_Components2.Location = new System.Drawing.Point(15, 250);
 			this.tv_Components2.Name = "tv_Components2";
-			this.tv_Components2.Size = new System.Drawing.Size(425, 394);
+			this.tv_Components2.Size = new System.Drawing.Size(419, 394);
 			this.tv_Components2.TabIndex = 12;
 			this.tv_Components2.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.tv_Components_AfterSelect);
 			// 
@@ -246,24 +259,50 @@
 			this.pnl_Items2.AutoScroll = true;
 			this.pnl_Items2.Location = new System.Drawing.Point(15, 150);
 			this.pnl_Items2.Name = "pnl_Items2";
-			this.pnl_Items2.Size = new System.Drawing.Size(425, 90);
+			this.pnl_Items2.Size = new System.Drawing.Size(419, 90);
 			this.pnl_Items2.TabIndex = 11;
 			// 
-			// pnl_Buildings2
+			// rb_v1
 			// 
-			this.pnl_Buildings2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-			this.pnl_Buildings2.AutoScroll = true;
-			this.pnl_Buildings2.Location = new System.Drawing.Point(15, 55);
-			this.pnl_Buildings2.Name = "pnl_Buildings2";
-			this.pnl_Buildings2.Size = new System.Drawing.Size(443, 85);
-			this.pnl_Buildings2.TabIndex = 15;
+			this.rb_v1.AutoSize = true;
+			this.rb_v1.Checked = true;
+			this.rb_v1.Location = new System.Drawing.Point(128, 9);
+			this.rb_v1.Name = "rb_v1";
+			this.rb_v1.Size = new System.Drawing.Size(47, 24);
+			this.rb_v1.TabIndex = 16;
+			this.rb_v1.TabStop = true;
+			this.rb_v1.Text = "v1";
+			this.rb_v1.UseVisualStyleBackColor = true;
+			this.rb_v1.CheckedChanged += new System.EventHandler(this.rb_v1_CheckedChanged);
+			// 
+			// lbl_ApiVersion
+			// 
+			this.lbl_ApiVersion.AutoSize = true;
+			this.lbl_ApiVersion.Location = new System.Drawing.Point(28, 10);
+			this.lbl_ApiVersion.Name = "lbl_ApiVersion";
+			this.lbl_ApiVersion.Size = new System.Drawing.Size(99, 20);
+			this.lbl_ApiVersion.TabIndex = 14;
+			this.lbl_ApiVersion.Text = "API version:";
+			// 
+			// rb_v2
+			// 
+			this.rb_v2.AutoSize = true;
+			this.rb_v2.Location = new System.Drawing.Point(179, 9);
+			this.rb_v2.Name = "rb_v2";
+			this.rb_v2.Size = new System.Drawing.Size(47, 24);
+			this.rb_v2.TabIndex = 17;
+			this.rb_v2.Text = "v2";
+			this.rb_v2.UseVisualStyleBackColor = true;
+			this.rb_v2.CheckedChanged += new System.EventHandler(this.rb_v2_CheckedChanged);
 			// 
 			// MainForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(1434, 711);
+			this.Controls.Add(this.rb_v2);
+			this.Controls.Add(this.lbl_ApiVersion);
+			this.Controls.Add(this.rb_v1);
 			this.Controls.Add(this.splitContainer_main);
 			this.Controls.Add(this.cb_showListOfComponents);
 			this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
@@ -303,6 +342,9 @@
 		private System.Windows.Forms.Panel pnl_Items2;
 		private System.Windows.Forms.Panel pnl_Buildings1;
 		private System.Windows.Forms.Panel pnl_Buildings2;
+		private System.Windows.Forms.RadioButton rb_v1;
+		private System.Windows.Forms.Label lbl_ApiVersion;
+		private System.Windows.Forms.RadioButton rb_v2;
 	}
 }
 

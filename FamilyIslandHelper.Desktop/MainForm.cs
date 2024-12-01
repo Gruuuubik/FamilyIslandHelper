@@ -1,4 +1,5 @@
-﻿using FamilyIslandHelper.Api.Helpers;
+﻿using FamilyIslandHelper.Api;
+using FamilyIslandHelper.Api.Helpers;
 using FamilyIslandHelper.Api.Models.Abstract;
 using System;
 using System.Collections.Generic;
@@ -14,6 +15,7 @@ namespace FamilyIslandHelper.Desktop
 		private readonly Dictionary<string, int> dictImagesIndexes = new Dictionary<string, int>();
 
 		private bool showListOfComponents = false;
+		private ApiVersion apiVersion = ApiVersion.v1;
 
 		private Item selectedItem1, selectedItem2;
 
@@ -367,6 +369,16 @@ namespace FamilyIslandHelper.Desktop
 		private void num_ItemCount_ValueChanged(object sender, EventArgs e)
 		{
 			UpdateInfo();
+		}
+
+		private void rb_v1_CheckedChanged(object sender, EventArgs e)
+		{
+			apiVersion = ApiVersion.v1;
+		}
+
+		private void rb_v2_CheckedChanged(object sender, EventArgs e)
+		{
+			apiVersion = ApiVersion.v2;
 		}
 
 		private void cb_showListOfComponents_CheckedChanged(object sender, EventArgs e)
