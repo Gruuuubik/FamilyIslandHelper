@@ -299,10 +299,6 @@ namespace FamilyIslandHelper.Desktop
 			var buildingsNames = BuildingHelper.GetBuildingsNames();
 
 			var counter = 0;
-			var itemPath = Directory.GetFiles(folderWithItemsPictures).FirstOrDefault();
-			dictImagesIndexes.Add(ItemHelper.GetItemNameByPath(itemPath), counter);
-			imageList.Images.Add(Image.FromFile(itemPath));
-			counter++;
 
 			foreach (var buildingName in buildingsNames)
 			{
