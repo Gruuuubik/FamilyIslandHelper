@@ -1,5 +1,6 @@
 ﻿using FamilyIslandHelper.Api.Models.Abstract;
 using FamilyIslandHelper.Api.Models.Buildings;
+using FamilyIslandHelper.Api.Models.Resources;
 using System;
 using System.Collections.Generic;
 

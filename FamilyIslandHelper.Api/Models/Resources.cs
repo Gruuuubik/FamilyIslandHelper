@@ -1,7 +1,7 @@
 ﻿using FamilyIslandHelper.Api.Models.Abstract;
 using System.Diagnostics.CodeAnalysis;
 
-namespace FamilyIslandHelper.Api.Models
+namespace FamilyIslandHelper.Api.Models.Resources
 {
 	[ExcludeFromCodeCoverage]
 	public class Clay : ResourceItem

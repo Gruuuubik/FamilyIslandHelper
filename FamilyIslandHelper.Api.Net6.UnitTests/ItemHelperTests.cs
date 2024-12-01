@@ -1,24 +1,13 @@
 ﻿using FamilyIslandHelper.Api.Helpers;
-using FamilyIslandHelper.Api.Models;
 using FamilyIslandHelper.Api.Models.Abstract;
 using FamilyIslandHelper.Api.Models.Items;
+using FamilyIslandHelper.Api.Models.Resources;
 using Xunit;
 
 namespace FamilyIslandHelper.Api.Net6.UnitTests
 {
 	public class ItemHelperTests : BaseTest
 	{
-		private const string FolderWithPictures = "Pictures";
-
-		[Theory]
-		[InlineData(new[] { "Pictures", "CarpentryWorkshop", "Barrel.png" }, "Barrel")]
-		public void When_GetItemNameByPath_Then_ReturnCorrectItemName(string[] itemPath, string expectedIteName)
-		{
-			var actualItemName = ItemHelper.GetItemNameByPath(Path.Combine(itemPath));
-
-			Assert.Equal(expectedIteName, actualItemName);
-		}
-
 		[Theory]
 		[InlineData("itemName")]
 		public void When_FindItemByNameWithNullParameter_Then_ThrowsException(string expectedParamName)
@@ -154,6 +143,33 @@ namespace FamilyIslandHelper.Api.Net6.UnitTests
 			var actualInfo = ItemHelper.GetInfoAboutItem(itemName, itemCount, showListOfComponents);
 
 			Assert.Equal(expectedInfo, actualInfo);
+		}
+
+		[Theory]
+		[InlineData("Loom", "Lace", new[] { "Pictures", "Items", "Loom", "Lace.png" })]
+		public void When_GetBuildingImagePathByName_Then_ReturnCorrectValue(string buildingName, string itemName, string[] expectedPath)
+		{
+			var actualPath = ItemHelper.GetItemImagePathByName(buildingName, itemName);
+
+			Assert.Equal(Path.Combine(expectedPath), actualPath);
+		}
+
+		[Theory]
+		[InlineData(43)]
+		public void When_GetResourcesNames_Then_ReturnCorrectValue(int expectedNamesCount)
+		{
+			var actualNames = ItemHelper.GetResourcesNames();
+
+			Assert.Equal(expectedNamesCount, actualNames.Count);
+		}
+
+		[Theory]
+		[InlineData("Feather", new[] { "Pictures", "Resources", "Feather.png" })]
+		public void When_GetResourceImagePathByName_Then_ReturnCorrectValue(string resourceName, string[] expectedPath)
+		{
+			var actualPath = ItemHelper.GetResourceImagePathByName(resourceName);
+
+			Assert.Equal(Path.Combine(expectedPath), actualPath);
 		}
 	}
 }

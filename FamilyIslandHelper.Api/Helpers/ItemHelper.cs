@@ -1,24 +1,18 @@
 ﻿using FamilyIslandHelper.Api.Models.Abstract;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 
 namespace FamilyIslandHelper.Api.Helpers
 {
-	public static class ItemHelper
+	public class ItemHelper : BaseHelper
 	{
-		private const string MainNamespace = "FamilyIslandHelper.Api";
-		private static readonly string ItemsNamespace = $"{MainNamespace}.Models.Items";
+		public static readonly string FolderWithItemsPictures = Path.Combine(FolderWithPictures, "Items");
+		public static readonly string ResourcesNamespace = $"{MainNamespace}.Models.Resources";
 
-		public static string GetItemNameByPath(string itemPath)
-		{
-#if LINUX
-			var pathSeparator = '/';
-#else
-			var pathSeparator = '\\';
-#endif
-			return itemPath.Split('.').First().Split(pathSeparator).Last();
-		}
+		private static readonly string ItemsNamespace = $"{MainNamespace}.Models.Items";
+		private static readonly string FolderWithResourcesPictures = Path.Combine(FolderWithPictures, "Resources");
 
 		public static ProducibleItem CreateProducibleItem(string itemTypeString)
 		{
@@ -29,7 +23,7 @@ namespace FamilyIslandHelper.Api.Helpers
 
 		public static ResourceItem CreateResourceItem(string itemTypeString)
 		{
-			var resourceItemType = Type.GetType($"{MainNamespace}.Models.{itemTypeString}", true);
+			var resourceItemType = Type.GetType($"{MainNamespace}.Models.Resources.{itemTypeString}", true);
 
 			return Activator.CreateInstance(resourceItemType) as ResourceItem;
 		}
@@ -48,7 +42,7 @@ namespace FamilyIslandHelper.Api.Helpers
 				return CreateProducibleItem(itemType.Name);
 			}
 
-			itemType = ClassHelper.GetClasses($"{MainNamespace}.Models").FirstOrDefault(t => t.Name == itemName);
+			itemType = ClassHelper.GetClasses($"{MainNamespace}.Models.Resources").FirstOrDefault(t => t.Name == itemName);
 
 			if (itemType != null)
 			{
@@ -150,6 +144,21 @@ namespace FamilyIslandHelper.Api.Helpers
 			}
 
 			return info;
+		}
+
+		public static string GetItemImagePathByName(string buildingName, string itemName)
+		{
+			return Path.Combine(FolderWithItemsPictures, buildingName, itemName + ImageExtension);
+		}
+
+		public static List<string> GetResourcesNames()
+		{
+			return ClassHelper.GetClassesNames(ResourcesNamespace).ToList();
+		}
+
+		public static string GetResourceImagePathByName(string resourceName)
+		{
+			return Path.Combine(FolderWithResourcesPictures, resourceName + ImageExtension);
 		}
 	}
 }

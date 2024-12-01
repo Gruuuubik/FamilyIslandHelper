@@ -5,10 +5,8 @@ using System.Reflection;
 
 namespace FamilyIslandHelper.Api.Helpers
 {
-	public static class ClassHelper
+	public class ClassHelper : BaseHelper
 	{
-		private const string MainNamespace = "FamilyIslandHelper.Api";
-
 		internal static IEnumerable<Type> GetClasses(string nameSpace)
 		{
 			var assembly = Assembly.Load(MainNamespace);

@@ -2,24 +2,16 @@
 using FamilyIslandHelper.Api.Models.Abstract;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 
 namespace FamilyIslandHelper.Api.Helpers
 {
-	public static class BuildingHelper
+	public class BuildingHelper : BaseHelper
 	{
 		public static readonly string BuildingsNamespace = $"{MainNamespace}.Models.Buildings";
-		private const string MainNamespace = "FamilyIslandHelper.Api";
 
-		public static string GetBuildingNameByPath(string itemPath)
-		{
-#if LINUX
-			var pathSeparator = '/';
-#else
-			var pathSeparator = '\\';
-#endif
-			return itemPath.Split('.').First().Split(pathSeparator).Last();
-		}
+		private static readonly string FolderWithBuildingsPictures = Path.Combine(FolderWithPictures, "Buildings");
 
 		public static List<BuildingInfo> GetBuildingsClasses()
 		{
@@ -43,16 +35,21 @@ namespace FamilyIslandHelper.Api.Helpers
 			return Activator.CreateInstance(buildingType) as Building;
 		}
 
-		public static IEnumerable<string> GetBuildingsNames()
+		public static List<string> GetBuildingsNames()
 		{
-			return ClassHelper.GetClassesNames(BuildingsNamespace);
+			return ClassHelper.GetClassesNames(BuildingsNamespace).ToList();
 		}
 
-		public static IEnumerable<string> GetItemsOfBuilding(string buildingName)
+		public static List<string> GetItemsOfBuilding(string buildingName)
 		{
 			var building = CreateBuilding(buildingName);
 
-			return building.Items.OrderBy(i => i.LevelWhenAppears).ThenBy(i => i.TotalProduceTime).Select(i => i.GetType().Name);
+			return building.Items.OrderBy(i => i.LevelWhenAppears).ThenBy(i => i.TotalProduceTime).Select(i => i.GetType().Name).ToList();
+		}
+
+		public static string GetBuildingImagePathByName(string buildingName)
+		{
+			return Path.Combine(FolderWithBuildingsPictures, buildingName + ImageExtension);
 		}
 	}
 }
