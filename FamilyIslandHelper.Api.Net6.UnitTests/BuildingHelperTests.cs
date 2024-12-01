@@ -5,17 +5,6 @@ namespace FamilyIslandHelper.Api.Net6.UnitTests
 {
 	public class BuildingHelperTests : BaseTest
 	{
-		private readonly string FolderWithPictures = Path.Combine("Pictures", "Items");
-
-		[Theory]
-		[InlineData(new[] { "Buildings", "CarpentryWorkshop.png" }, "CarpentryWorkshop")]
-		public void When_GetBuildingNameByPath_Then_ReturnCorrectBuildingName(string[] itemPath, string expectedIteName)
-		{
-			var actualItemName = BuildingHelper.GetBuildingNameByPath(Path.Combine(itemPath));
-
-			Assert.Equal(expectedIteName, actualItemName);
-		}
-
 		[Theory]
 		[InlineData(13)]
 		public void When_GetBuildingsClasses_Then_ReturnCorrectCollection(int expectedCount)
@@ -31,7 +20,7 @@ namespace FamilyIslandHelper.Api.Net6.UnitTests
 		{
 			var actualBuildingsNames = BuildingHelper.GetBuildingsNames();
 
-			var buildingsDirectories = Directory.GetDirectories(FolderWithPictures);
+			var buildingsDirectories = Directory.GetDirectories(ItemHelper.FolderWithItemsPictures);
 			var expectedBuildingsNames = buildingsDirectories.Select(b => b.Split(pathSeparator).Last());
 
 			Assert.Equal(expectedBuildingsNames, actualBuildingsNames);
@@ -53,6 +42,15 @@ namespace FamilyIslandHelper.Api.Net6.UnitTests
 			var exception = Assert.Throws<ArgumentNullException>(() => BuildingHelper.CreateBuilding(null));
 
 			Assert.Equal(expectedParamName, exception.ParamName);
+		}
+
+		[Theory]
+		[InlineData("Knocker", new[] { "Pictures", "Buildings", "Knocker.png" })]
+		public void When_GetBuildingImagePathByName_Then_ReturnCorrectValue(string buildingName, string[] expectedPath)
+		{
+			var actualPath = BuildingHelper.GetBuildingImagePathByName(buildingName);
+
+			Assert.Equal(Path.Combine(expectedPath), actualPath);
 		}
 	}
 }
