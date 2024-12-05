@@ -86,6 +86,24 @@ namespace FamilyIslandHelper.Api.Net6.UnitTests
 			yield return new object[] { new Smelter().Items };
 			yield return new object[] { new Tannery().Items };
 			yield return new object[] { new Workshop().Items };
+
+			yield return new object[] { new Models.Buildings_v2.AlchemistLaboratory().Items };
+			yield return new object[] { new Models.Buildings_v2.Bench().Items };
+			yield return new object[] { new Models.Buildings_v2.CarpentryWorkshop().Items };
+			yield return new object[] { new Models.Buildings_v2.Forge().Items };
+			yield return new object[] { new Models.Buildings_v2.JewelryWorkshop().Items };
+			yield return new object[] { new Models.Buildings_v2.Kiln().Items };
+			yield return new object[] { new Models.Buildings_v2.Knocker().Items };
+			yield return new object[] { new Models.Buildings_v2.Loom().Items };
+			yield return new object[] { new Models.Buildings_v2.MeteoriteForge().Items };
+			yield return new object[] { new Models.Buildings_v2.Mill().Items };
+			yield return new object[] { new Models.Buildings_v2.Mixer().Items };
+			yield return new object[] { new Models.Buildings_v2.Pottery().Items };
+			yield return new object[] { new Models.Buildings_v2.Sawmill().Items };
+			yield return new object[] { new Models.Buildings_v2.SewingWorkshop().Items };
+			yield return new object[] { new Models.Buildings_v2.Smelter().Items };
+			yield return new object[] { new Models.Buildings_v2.Tannery().Items };
+			yield return new object[] { new Models.Buildings_v2.Workshop().Items };
 		}
 
 		[Theory]

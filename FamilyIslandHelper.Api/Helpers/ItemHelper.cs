@@ -8,41 +8,50 @@ namespace FamilyIslandHelper.Api.Helpers
 {
 	public class ItemHelper : BaseHelper
 	{
-		public static readonly string FolderWithItemsPictures = Path.Combine(FolderWithPictures, "Items");
-		public static readonly string ResourcesNamespace = $"{MainNamespace}.Models.Resources";
+		private readonly string itemsNamespace;
 
-		private static readonly string ItemsNamespace = $"{MainNamespace}.Models.Items";
-		private static readonly string FolderWithResourcesPictures = Path.Combine(FolderWithPictures, "Resources");
-
-		public static ProducibleItem CreateProducibleItem(string itemTypeString)
+		public ItemHelper(ApiVersion apiVersion) : base(apiVersion)
 		{
-			var itemType = Type.GetType($"{ItemsNamespace}.{itemTypeString}", true);
+			itemsNamespace = $"{MainNamespace}.Models.Items{Prefix}";
+
+			FolderWithResourcesPictures = Path.Combine(FolderWithPictures, "Resources");
+			FolderWithItemsPictures = Path.Combine(FolderWithPictures, "Items");
+			ResourcesNamespace = $"{MainNamespace}.Models.Resources{Prefix}";
+		}
+
+		public string FolderWithResourcesPictures { get; }
+		public string FolderWithItemsPictures { get; }
+		public string ResourcesNamespace { get; }
+
+		public ProducibleItem CreateProducibleItem(string itemTypeString)
+		{
+			var itemType = Type.GetType($"{itemsNamespace}.{itemTypeString}", true);
 
 			return Activator.CreateInstance(itemType) as ProducibleItem;
 		}
 
-		public static ResourceItem CreateResourceItem(string itemTypeString)
+		public ResourceItem CreateResourceItem(string itemTypeString)
 		{
-			var resourceItemType = Type.GetType($"{MainNamespace}.Models.Resources.{itemTypeString}", true);
+			var resourceItemType = Type.GetType($"{ResourcesNamespace}.{itemTypeString}", true);
 
 			return Activator.CreateInstance(resourceItemType) as ResourceItem;
 		}
 
-		public static Item FindItemByName(string itemName)
+		public Item FindItemByName(string itemName)
 		{
 			if (itemName == null)
 			{
 				throw new ArgumentNullException(nameof(itemName));
 			}
 
-			var itemType = ClassHelper.GetClasses(ItemsNamespace).FirstOrDefault(t => t.Name == itemName);
+			var itemType = ClassHelper.GetClasses(itemsNamespace).FirstOrDefault(t => t.Name == itemName);
 
 			if (itemType != null)
 			{
 				return CreateProducibleItem(itemType.Name);
 			}
 
-			itemType = ClassHelper.GetClasses($"{MainNamespace}.Models.Resources").FirstOrDefault(t => t.Name == itemName);
+			itemType = ClassHelper.GetClasses(ResourcesNamespace).FirstOrDefault(t => t.Name == itemName);
 
 			if (itemType != null)
 			{
@@ -121,7 +130,7 @@ namespace FamilyIslandHelper.Api.Helpers
 			return result;
 		}
 
-		public static List<string> GetInfoAboutItem(string itemName, int itemCount, bool showListOfComponents)
+		public List<string> GetInfoAboutItem(string itemName, int itemCount, bool showListOfComponents)
 		{
 			var info = new List<string>();
 
@@ -146,17 +155,17 @@ namespace FamilyIslandHelper.Api.Helpers
 			return info;
 		}
 
-		public static string GetItemImagePathByName(string buildingName, string itemName)
+		public string GetItemImagePathByName(string buildingName, string itemName)
 		{
 			return Path.Combine(FolderWithItemsPictures, buildingName, itemName + ImageExtension);
 		}
 
-		public static List<string> GetResourcesNames()
+		public List<string> GetResourcesNames()
 		{
 			return ClassHelper.GetClassesNames(ResourcesNamespace).ToList();
 		}
 
-		public static string GetResourceImagePathByName(string resourceName)
+		public string GetResourceImagePathByName(string resourceName)
 		{
 			return Path.Combine(FolderWithResourcesPictures, resourceName + ImageExtension);
 		}

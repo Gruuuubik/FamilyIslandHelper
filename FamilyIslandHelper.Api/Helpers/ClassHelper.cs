@@ -5,11 +5,11 @@ using System.Reflection;
 
 namespace FamilyIslandHelper.Api.Helpers
 {
-	public class ClassHelper : BaseHelper
+	public class ClassHelper
 	{
 		internal static IEnumerable<Type> GetClasses(string nameSpace)
 		{
-			var assembly = Assembly.Load(MainNamespace);
+			var assembly = Assembly.Load("FamilyIslandHelper.Api");
 
 			return assembly.GetTypes().Where(type => type.Namespace == nameSpace);
 		}

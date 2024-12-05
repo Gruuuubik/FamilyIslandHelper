@@ -15,9 +15,11 @@ namespace FamilyIslandHelper.Desktop
 		private readonly Dictionary<string, int> dictImagesIndexes = new Dictionary<string, int>();
 
 		private bool showListOfComponents = false;
-		private ApiVersion apiVersion = ApiVersion.v1;
 
 		private Item selectedItem1, selectedItem2;
+
+		private BuildingHelper buildingHelper;
+		private ItemHelper itemHelper;
 
 		public MainForm()
 		{
@@ -25,7 +27,17 @@ namespace FamilyIslandHelper.Desktop
 
 			cb_showListOfComponents.Checked = showListOfComponents;
 
-			InitBuildings();
+			InitBuildingAndItems(ApiVersion.v2);
+		}
+
+		private void InitBuildingAndItems(ApiVersion apiVersion)
+		{
+			buildingHelper = new BuildingHelper(apiVersion);
+			itemHelper = new ItemHelper(apiVersion);
+
+			var buildingsNames = buildingHelper.GetBuildingsNames();
+			InitBuildingsPanels(buildingsNames, 1, pnl_Buildings1);
+			InitBuildingsPanels(buildingsNames, 2, pnl_Buildings2);
 
 			ShowListOfItemsForBuildings();
 
@@ -33,23 +45,16 @@ namespace FamilyIslandHelper.Desktop
 			tv_Components2.ImageList = GetImageList();
 		}
 
-		private void InitBuildings()
-		{
-			var buildingsNames = BuildingHelper.GetBuildingsNames();
-			InitBuildingsPanels(buildingsNames, 1, pnl_Buildings1);
-			InitBuildingsPanels(buildingsNames, 2, pnl_Buildings2);
-		}
-
 		private void AddInfoToListBox(string itemName, int itemCount)
 		{
-			var info = ItemHelper.GetInfoAboutItem(itemName, itemCount, showListOfComponents);
+			var info = itemHelper.GetInfoAboutItem(itemName, itemCount, showListOfComponents);
 
 			if (lb_Components.Items.Count > 0)
 			{
 				lb_Components.Items.Add(string.Empty);
 			}
 
-			var item = ItemHelper.FindItemByName(itemName);
+			var item = itemHelper.FindItemByName(itemName);
 
 			info.ForEach(i => lb_Components.Items.Add(i));
 		}
@@ -155,7 +160,7 @@ namespace FamilyIslandHelper.Desktop
 			var panelNumber = int.Parse(panelTag.Split('_')[1]);
 			lb_Components.Items.Clear();
 
-			var item = ItemHelper.CreateProducibleItem(itemTypeString);
+			var item = itemHelper.CreateProducibleItem(itemTypeString);
 
 			if (panelNumber == 1)
 			{
@@ -177,8 +182,8 @@ namespace FamilyIslandHelper.Desktop
 
 		private void ShowListOfItemsForBuilding(string buildingName, int panelNumber)
 		{
-			var itemsNames = BuildingHelper.GetItemsOfBuilding(buildingName);
-			var ratio = BuildingHelper.CreateBuilding(buildingName).ProduceRatio.ToString();
+			var itemsNames = buildingHelper.GetItemsOfBuilding(buildingName);
+			var ratio = buildingHelper.CreateBuilding(buildingName).ProduceRatio.ToString();
 
 			if (panelNumber == 1)
 			{
@@ -200,7 +205,7 @@ namespace FamilyIslandHelper.Desktop
 		{
 			lb_Components.Items.Clear();
 
-			var buildingName = BuildingHelper.GetBuildingsNames().FirstOrDefault();
+			var buildingName = buildingHelper.GetBuildingsNames().FirstOrDefault();
 
 			(pnl_Buildings1.Controls[0] as Panel).BorderStyle = BorderStyle.FixedSingle;
 			(pnl_Buildings2.Controls[0] as Panel).BorderStyle = BorderStyle.FixedSingle;
@@ -216,7 +221,7 @@ namespace FamilyIslandHelper.Desktop
 
 			for (var i = 0; i < itemsNames.Count; i++)
 			{
-				var itemPath = ItemHelper.GetItemImagePathByName(buildingName, itemsNames[i]);
+				var itemPath = itemHelper.GetItemImagePathByName(buildingName, itemsNames[i]);
 
 				var panel = new Panel
 				{
@@ -229,7 +234,7 @@ namespace FamilyIslandHelper.Desktop
 
 				panel.MouseDown += pnl_Item_MouseDown;
 
-				new ToolTip().SetToolTip(panel, ItemHelper.CreateProducibleItem(itemsNames[i]).Name);
+				new ToolTip().SetToolTip(panel, itemHelper.CreateProducibleItem(itemsNames[i]).Name);
 
 				panels[i] = panel;
 			}
@@ -245,7 +250,7 @@ namespace FamilyIslandHelper.Desktop
 			pnlItems.Controls.AddRange(panels);
 			return;
 
-			ProducibleItem GetItem(Control p) => ItemHelper.CreateProducibleItem(p.Tag.ToString().Split('_')[0]);
+			ProducibleItem GetItem(Control p) => itemHelper.CreateProducibleItem(p.Tag.ToString().Split('_')[0]);
 		}
 
 		private void InitBuildingsPanels(IReadOnlyList<string> buildingsNames, int panelNumber, Control pnlItems)
@@ -254,20 +259,22 @@ namespace FamilyIslandHelper.Desktop
 			const int size = 55;
 			const int padding = 5;
 
+			pnlItems.Controls.Clear();
+
 			for (var i = 0; i < buildingsNames.Count; i++)
 			{
 				var panel = new Panel
 				{
 					Tag = buildingsNames[i] + "_" + panelNumber,
 					Size = new Size(size, size),
-					BackgroundImage = Image.FromFile(BuildingHelper.GetBuildingImagePathByName(buildingsNames[i])),
+					BackgroundImage = Image.FromFile(buildingHelper.GetBuildingImagePathByName(buildingsNames[i])),
 					BackgroundImageLayout = ImageLayout.Stretch,
 					Cursor = Cursors.Hand
 				};
 
 				panel.MouseDown += pnl_Building_MouseDown;
 
-				new ToolTip().SetToolTip(panel, BuildingHelper.CreateBuilding(buildingsNames[i]).Name);
+				new ToolTip().SetToolTip(panel, buildingHelper.CreateBuilding(buildingsNames[i]).Name);
 
 				panels[i] = panel;
 			}
@@ -277,7 +284,6 @@ namespace FamilyIslandHelper.Desktop
 				panels[i].Location = new Point(padding + ((size + padding) * i), 10);
 			}
 
-			pnlItems.Controls.Clear();
 			pnlItems.Controls.AddRange(panels);
 			return;
 		}
@@ -291,17 +297,17 @@ namespace FamilyIslandHelper.Desktop
 				ImageSize = new Size(30, 30)
 			};
 
-			var buildingsNames = BuildingHelper.GetBuildingsNames();
+			var buildingsNames = buildingHelper.GetBuildingsNames();
 
 			var counter = 0;
 
 			foreach (var buildingName in buildingsNames)
 			{
-				var itemsNames = BuildingHelper.GetItemsOfBuilding(buildingName);
+				var itemsNames = buildingHelper.GetItemsOfBuilding(buildingName);
 
 				for (var i = 0; i < itemsNames.Count; i++)
 				{
-					var itemPath = ItemHelper.GetItemImagePathByName(buildingName, itemsNames[i]);
+					var itemPath = itemHelper.GetItemImagePathByName(buildingName, itemsNames[i]);
 
 					dictImagesIndexes.Add(itemsNames[i], counter);
 
@@ -314,12 +320,12 @@ namespace FamilyIslandHelper.Desktop
 				}
 			}
 
-			var resourcesNames = ItemHelper.GetResourcesNames();
+			var resourcesNames = itemHelper.GetResourcesNames();
 
 			for (var i = 0; i < resourcesNames.Count; i++)
 			{
 				dictImagesIndexes.Add(resourcesNames[i], counter);
-				imageList.Images.Add(Image.FromFile(ItemHelper.GetResourceImagePathByName(resourcesNames[i])));
+				imageList.Images.Add(Image.FromFile(itemHelper.GetResourceImagePathByName(resourcesNames[i])));
 				counter++;
 			}
 
@@ -348,14 +354,14 @@ namespace FamilyIslandHelper.Desktop
 			if (tv_Components1.SelectedNode != null)
 			{
 				var itemName = tv_Components1.SelectedNode.Name;
-				selectedItem1 = ItemHelper.FindItemByName(itemName);
+				selectedItem1 = itemHelper.FindItemByName(itemName);
 				AddInfoToListBox(itemName, Convert.ToInt32(num_Item1Count.Value));
 			}
 
 			if (tv_Components2.SelectedNode != null)
 			{
 				var itemName = tv_Components2.SelectedNode.Name;
-				selectedItem2 = ItemHelper.FindItemByName(itemName);
+				selectedItem2 = itemHelper.FindItemByName(itemName);
 				AddInfoToListBox(itemName, Convert.ToInt32(num_Item2Count.Value));
 			}
 
@@ -373,12 +379,12 @@ namespace FamilyIslandHelper.Desktop
 
 		private void rb_v1_CheckedChanged(object sender, EventArgs e)
 		{
-			apiVersion = ApiVersion.v1;
+			InitBuildingAndItems(ApiVersion.v1);
 		}
 
 		private void rb_v2_CheckedChanged(object sender, EventArgs e)
 		{
-			apiVersion = ApiVersion.v2;
+			InitBuildingAndItems(ApiVersion.v2);
 		}
 
 		private void cb_showListOfComponents_CheckedChanged(object sender, EventArgs e)

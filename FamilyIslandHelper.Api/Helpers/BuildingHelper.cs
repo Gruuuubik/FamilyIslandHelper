@@ -9,13 +9,18 @@ namespace FamilyIslandHelper.Api.Helpers
 {
 	public class BuildingHelper : BaseHelper
 	{
-		public static readonly string BuildingsNamespace = $"{MainNamespace}.Models.Buildings";
+		private readonly string buildingsNamespace;
+		private readonly string folderWithBuildingsPictures;
 
-		private static readonly string FolderWithBuildingsPictures = Path.Combine(FolderWithPictures, "Buildings");
-
-		public static List<BuildingInfo> GetBuildingsClasses()
+		public BuildingHelper(ApiVersion apiVersion) : base(apiVersion)
 		{
-			var buildingsClasses = ClassHelper.GetClasses(BuildingsNamespace);
+			buildingsNamespace = $"{MainNamespace}.Models.Buildings{Prefix}";
+			folderWithBuildingsPictures = Path.Combine(FolderWithPictures, "Buildings");
+		}
+
+		public List<BuildingInfo> GetBuildingsClasses()
+		{
+			var buildingsClasses = ClassHelper.GetClasses(buildingsNamespace);
 
 			return buildingsClasses.Select(bc => new BuildingInfo
 			{
@@ -24,32 +29,32 @@ namespace FamilyIslandHelper.Api.Helpers
 			}).ToList();
 		}
 
-		public static Building CreateBuilding(string buildingName)
+		public Building CreateBuilding(string buildingName)
 		{
 			if (buildingName == null)
 			{
 				throw new ArgumentNullException(nameof(buildingName));
 			}
 
-			var buildingType = Type.GetType($"{BuildingsNamespace}.{buildingName}", true);
+			var buildingType = Type.GetType($"{buildingsNamespace}.{buildingName}", true);
 			return Activator.CreateInstance(buildingType) as Building;
 		}
 
-		public static List<string> GetBuildingsNames()
+		public List<string> GetBuildingsNames()
 		{
-			return ClassHelper.GetClassesNames(BuildingsNamespace).ToList();
+			return ClassHelper.GetClassesNames(buildingsNamespace).ToList();
 		}
 
-		public static List<string> GetItemsOfBuilding(string buildingName)
+		public List<string> GetItemsOfBuilding(string buildingName)
 		{
 			var building = CreateBuilding(buildingName);
 
 			return building.Items.OrderBy(i => i.LevelWhenAppears).ThenBy(i => i.TotalProduceTime).Select(i => i.GetType().Name).ToList();
 		}
 
-		public static string GetBuildingImagePathByName(string buildingName)
+		public string GetBuildingImagePathByName(string buildingName)
 		{
-			return Path.Combine(FolderWithBuildingsPictures, buildingName + ImageExtension);
+			return Path.Combine(folderWithBuildingsPictures, buildingName + ImageExtension);
 		}
 	}
 }
