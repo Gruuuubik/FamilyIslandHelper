@@ -25,6 +25,9 @@
     <Content Include="Pictures\**\*.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Pictures_v2\**\*.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <None Include="README.md" Pack="true" PackagePath="\" />
   </ItemGroup>
 
