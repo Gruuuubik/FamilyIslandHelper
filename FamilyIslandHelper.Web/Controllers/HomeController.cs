@@ -1,4 +1,5 @@
-﻿using FamilyIslandHelper.Api.Helpers;
+﻿using FamilyIslandHelper.Api;
+using FamilyIslandHelper.Api.Helpers;
 using FamilyIslandHelper.Api.Models.Abstract;
 using FamilyIslandHelper.Web.Models;
 using Microsoft.AspNetCore.Mvc;
@@ -12,21 +13,31 @@ namespace FamilyIslandHelper.Web.Controllers
 	{
 		private ViewModel viewModel;
 
-		private readonly List<string> buildingsNames = BuildingHelper.GetBuildingsNames().ToList();
+		private ApiVersion apiVersion = ApiVersion.v1;
+		private readonly BuildingHelper buildingHelper;
+		private readonly ItemHelper itemHelper;
+		private readonly List<string> buildingsNames;
+
+		public HomeController()
+		{
+			buildingHelper = new BuildingHelper(apiVersion);
+			itemHelper = new ItemHelper(apiVersion);
+			buildingsNames = buildingHelper.GetBuildingsNames();
+		}
 
 		[HttpGet]
 		public IActionResult Index()
 		{
 			var buildingName1 = buildingsNames.First();
 
-			var items1 = BuildingHelper.GetItemsOfBuilding(buildingName1).ToList();
+			var items1 = buildingHelper.GetItemsOfBuilding(buildingName1);
 
 			var itemName1 = items1.First();
 
 			viewModel = new ViewModel
 			{
 				BuildingsNames = buildingsNames,
-				BuildingProduceRatio = BuildingHelper.CreateBuilding(buildingName1).ProduceRatio,
+				BuildingProduceRatio = buildingHelper.CreateBuilding(buildingName1).ProduceRatio,
 				BuildingName = buildingName1,
 				ShowListOfComponents = false,
 				Items = items1,
@@ -46,7 +57,7 @@ namespace FamilyIslandHelper.Web.Controllers
 				throw new ArgumentNullException(nameof(viewModel));
 			}
 
-			var items = BuildingHelper.GetItemsOfBuilding(viewModel.BuildingName).ToList();
+			var items = buildingHelper.GetItemsOfBuilding(viewModel.BuildingName);
 
 			viewModel.BuildingsNames = buildingsNames;
 
@@ -57,19 +68,19 @@ namespace FamilyIslandHelper.Web.Controllers
 
 			viewModel.ItemInfo = GetInfoAboutItem(viewModel.ItemName, viewModel.ItemCount, viewModel.ShowListOfComponents);
 			viewModel.Items = items;
-			viewModel.BuildingProduceRatio = BuildingHelper.CreateBuilding(viewModel.BuildingName).ProduceRatio;
+			viewModel.BuildingProduceRatio = buildingHelper.CreateBuilding(viewModel.BuildingName).ProduceRatio;
 
 			return View(viewModel);
 		}
 
-		private static string GetInfoAboutItem(string itemName, int itemCount, bool showListOfComponents)
+		private string GetInfoAboutItem(string itemName, int itemCount, bool showListOfComponents)
 		{
 			if (itemName == null)
 			{
 				throw new ArgumentNullException(nameof(itemName));
 			}
 
-			var item = ItemHelper.FindItemByName(itemName);
+			var item = itemHelper.FindItemByName(itemName);
 
 			var info = item.ToString(itemCount);
 
