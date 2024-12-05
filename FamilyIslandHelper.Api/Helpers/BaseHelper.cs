@@ -2,9 +2,18 @@
 {
 	public abstract class BaseHelper
 	{
-		public const string FolderWithPictures = "Pictures";
-
 		protected const string MainNamespace = "FamilyIslandHelper.Api";
-		protected const string ImageExtension = ".png";
+		public const string ImageExtension = ".png";
+
+		protected BaseHelper(ApiVersion apiVersion)
+		{
+			Prefix = apiVersion == ApiVersion.v1 ? string.Empty : "_v2";
+
+			FolderWithPictures = $"Pictures{Prefix}";
+		}
+
+		protected string Prefix { get; }
+
+		public string FolderWithPictures { get; }
 	}
 }

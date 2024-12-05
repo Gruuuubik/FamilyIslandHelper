@@ -204,7 +204,7 @@
 			this.pnl_Buildings2.AutoScroll = true;
 			this.pnl_Buildings2.Location = new System.Drawing.Point(15, 55);
 			this.pnl_Buildings2.Name = "pnl_Buildings2";
-			this.pnl_Buildings2.Size = new System.Drawing.Size(437, 85);
+			this.pnl_Buildings2.Size = new System.Drawing.Size(431, 85);
 			this.pnl_Buildings2.TabIndex = 15;
 			// 
 			// lbl_Ratio2
@@ -248,7 +248,7 @@
 			this.tv_Components2.ItemHeight = 30;
 			this.tv_Components2.Location = new System.Drawing.Point(15, 250);
 			this.tv_Components2.Name = "tv_Components2";
-			this.tv_Components2.Size = new System.Drawing.Size(419, 394);
+			this.tv_Components2.Size = new System.Drawing.Size(413, 394);
 			this.tv_Components2.TabIndex = 12;
 			this.tv_Components2.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.tv_Components_AfterSelect);
 			// 
@@ -259,18 +259,16 @@
 			this.pnl_Items2.AutoScroll = true;
 			this.pnl_Items2.Location = new System.Drawing.Point(15, 150);
 			this.pnl_Items2.Name = "pnl_Items2";
-			this.pnl_Items2.Size = new System.Drawing.Size(419, 90);
+			this.pnl_Items2.Size = new System.Drawing.Size(413, 90);
 			this.pnl_Items2.TabIndex = 11;
 			// 
 			// rb_v1
 			// 
 			this.rb_v1.AutoSize = true;
-			this.rb_v1.Checked = true;
 			this.rb_v1.Location = new System.Drawing.Point(128, 9);
 			this.rb_v1.Name = "rb_v1";
 			this.rb_v1.Size = new System.Drawing.Size(47, 24);
 			this.rb_v1.TabIndex = 16;
-			this.rb_v1.TabStop = true;
 			this.rb_v1.Text = "v1";
 			this.rb_v1.UseVisualStyleBackColor = true;
 			this.rb_v1.CheckedChanged += new System.EventHandler(this.rb_v1_CheckedChanged);
@@ -287,10 +285,12 @@
 			// rb_v2
 			// 
 			this.rb_v2.AutoSize = true;
+			this.rb_v2.Checked = true;
 			this.rb_v2.Location = new System.Drawing.Point(179, 9);
 			this.rb_v2.Name = "rb_v2";
 			this.rb_v2.Size = new System.Drawing.Size(47, 24);
 			this.rb_v2.TabIndex = 17;
+			this.rb_v2.TabStop = true;
 			this.rb_v2.Text = "v2";
 			this.rb_v2.UseVisualStyleBackColor = true;
 			this.rb_v2.CheckedChanged += new System.EventHandler(this.rb_v2_CheckedChanged);

@@ -2,27 +2,54 @@
 using FamilyIslandHelper.Api.Models.Abstract;
 using FamilyIslandHelper.Api.Models.Items;
 using FamilyIslandHelper.Api.Models.Resources;
+using FluentAssertions;
 using Xunit;
 
 namespace FamilyIslandHelper.Api.Net6.UnitTests
 {
 	public class ItemHelperTests : BaseTest
 	{
+		private ItemHelper itemHelper;
+
+		public ItemHelperTests()
+		{
+			itemHelper = new ItemHelper(ApiVersion.v1);
+		}
+
+		[Theory]
+		[InlineData(ApiVersion.v1)]
+		[InlineData(ApiVersion.v2)]
+		public void When_GetResourcesNames_Then_AllResourcesHavePictures(ApiVersion apiVersion)
+		{
+			itemHelper = new ItemHelper(apiVersion);
+
+			var actualResourcesNamesWithExtensions = itemHelper.GetResourcesNames().Select(r => r + BaseHelper.ImageExtension);
+
+			var resourcesFiles = Directory.GetFiles(itemHelper.FolderWithResourcesPictures);
+			var expectedResourcesNames = resourcesFiles.Select(b => b.Split(pathSeparator).Last());
+
+			actualResourcesNamesWithExtensions.Should().BeEquivalentTo(expectedResourcesNames);
+		}
+
 		[Theory]
 		[InlineData("itemName")]
 		public void When_FindItemByNameWithNullParameter_Then_ThrowsException(string expectedParamName)
 		{
-			var exception = Assert.Throws<ArgumentNullException>(() => ItemHelper.FindItemByName(null));
+			var exception = Assert.Throws<ArgumentNullException>(() => itemHelper.FindItemByName(null));
 
 			Assert.Equal(expectedParamName, exception.ParamName);
 		}
 
 		[Theory]
-		[InlineData("Lace", typeof(Lace))]
-		[InlineData("Cone", typeof(Cone))]
-		public void When_FindItemByName_Then_ReturnCorrectItem(string itemName, Type expectedItemType)
+		[InlineData(ApiVersion.v1, "Lace", typeof(Lace))]
+		[InlineData(ApiVersion.v2, "Lace", typeof(Models.Items_v2.Lace))]
+		[InlineData(ApiVersion.v1, "Stone", typeof(Stone))]
+		[InlineData(ApiVersion.v2, "Stone", typeof(Models.Resources_v2.Stone))]
+		public void When_FindItemByName_Then_ReturnCorrectItem(ApiVersion apiVersion, string itemName, Type expectedItemType)
 		{
-			var actualItem = ItemHelper.FindItemByName(itemName);
+			itemHelper = new ItemHelper(apiVersion);
+
+			var actualItem = itemHelper.FindItemByName(itemName);
 
 			Assert.Equal(expectedItemType, actualItem.GetType());
 		}
@@ -31,16 +58,19 @@ namespace FamilyIslandHelper.Api.Net6.UnitTests
 		[InlineData("Cone123", null)]
 		public void When_FindItemByNameForNotExistedItem_Then_ReturnNull(string itemName, Item expectedItem)
 		{
-			var actualItem = ItemHelper.FindItemByName(itemName);
+			var actualItem = itemHelper.FindItemByName(itemName);
 
 			Assert.Equal(expectedItem, actualItem);
 		}
 
 		[Theory]
-		[InlineData("Lace", typeof(Lace))]
-		public void When_TryToCreateProducibleItem_Then_ReturnCorrectProducibleItem(string itemTypeString, Type expectedItemType)
+		[InlineData(ApiVersion.v1, "Lace", typeof(Lace))]
+		[InlineData(ApiVersion.v2, "Lace", typeof(Models.Items_v2.Lace))]
+		public void When_TryToCreateProducibleItem_Then_ReturnCorrectProducibleItem(ApiVersion apiVersion, string itemTypeString, Type expectedItemType)
 		{
-			var item = ItemHelper.CreateProducibleItem(itemTypeString);
+			itemHelper = new ItemHelper(apiVersion);
+
+			var item = itemHelper.CreateProducibleItem(itemTypeString);
 
 			Assert.Equal(expectedItemType, item.GetType());
 		}
@@ -54,7 +84,7 @@ namespace FamilyIslandHelper.Api.Net6.UnitTests
 		[MemberData(nameof(GetProduceTime_TestData))]
 		public void When_GetProduceTime_Then_ReturnCorrectValue(string itemTypeString, TimeSpan expectedProduceTime)
 		{
-			var item = ItemHelper.CreateProducibleItem(itemTypeString);
+			var item = itemHelper.CreateProducibleItem(itemTypeString);
 
 			Assert.Equal(expectedProduceTime, item.ProduceTime);
 		}
@@ -63,7 +93,7 @@ namespace FamilyIslandHelper.Api.Net6.UnitTests
 		[InlineData("Stone", typeof(Stone))]
 		public void When_TryToCreateResourceItem_Then_ReturnCorrectResourceItem(string itemTypeString, Type expectedItemType)
 		{
-			var item = ItemHelper.CreateResourceItem(itemTypeString);
+			var item = itemHelper.CreateResourceItem(itemTypeString);
 
 			Assert.Equal(expectedItemType, item.GetType());
 		}
@@ -140,7 +170,7 @@ namespace FamilyIslandHelper.Api.Net6.UnitTests
 		[MemberData(nameof(GetInfoAboutItem_TestData))]
 		public void When_GetInfoAboutItem_Then_ReturnCorrectValue(string itemName, int itemCount, bool showListOfComponents, List<string> expectedInfo)
 		{
-			var actualInfo = ItemHelper.GetInfoAboutItem(itemName, itemCount, showListOfComponents);
+			var actualInfo = itemHelper.GetInfoAboutItem(itemName, itemCount, showListOfComponents);
 
 			Assert.Equal(expectedInfo, actualInfo);
 		}
@@ -149,7 +179,7 @@ namespace FamilyIslandHelper.Api.Net6.UnitTests
 		[InlineData("Loom", "Lace", new[] { "Pictures", "Items", "Loom", "Lace.png" })]
 		public void When_GetBuildingImagePathByName_Then_ReturnCorrectValue(string buildingName, string itemName, string[] expectedPath)
 		{
-			var actualPath = ItemHelper.GetItemImagePathByName(buildingName, itemName);
+			var actualPath = itemHelper.GetItemImagePathByName(buildingName, itemName);
 
 			Assert.Equal(Path.Combine(expectedPath), actualPath);
 		}
@@ -158,7 +188,7 @@ namespace FamilyIslandHelper.Api.Net6.UnitTests
 		[InlineData(43)]
 		public void When_GetResourcesNames_Then_ReturnCorrectValue(int expectedNamesCount)
 		{
-			var actualNames = ItemHelper.GetResourcesNames();
+			var actualNames = itemHelper.GetResourcesNames();
 
 			Assert.Equal(expectedNamesCount, actualNames.Count);
 		}
@@ -167,7 +197,7 @@ namespace FamilyIslandHelper.Api.Net6.UnitTests
 		[InlineData("Feather", new[] { "Pictures", "Resources", "Feather.png" })]
 		public void When_GetResourceImagePathByName_Then_ReturnCorrectValue(string resourceName, string[] expectedPath)
 		{
-			var actualPath = ItemHelper.GetResourceImagePathByName(resourceName);
+			var actualPath = itemHelper.GetResourceImagePathByName(resourceName);
 
 			Assert.Equal(Path.Combine(expectedPath), actualPath);
 		}
