@@ -20,6 +20,9 @@ jobs:
 
     name: Windows Build
     runs-on: windows-latest
+    outputs: 
+      Version: ${{ steps.gitversion.outputs.SemVer }}
+      CommitsSinceVersionSource: ${{ steps.gitversion.outputs.CommitsSinceVersionSource }} 
 
     steps:
     - name: ⤵️ Checkout Source
@@ -27,6 +30,20 @@ jobs:
       with:
         fetch-depth: 0
 
+    # Install and calculate the new version with GitVersion  
+    - name: Install GitVersion
+      uses: gittools/actions/gitversion/setup@v0.9.7
+      with:
+        versionSpec: 5.x
+    - name: Determine Version
+      uses: gittools/actions/gitversion/execute@v0.9.7
+      id: gitversion # step id used as reference for output values
+    - name: Display GitVersion outputs
+      run: |
+        echo "Version: ${{ steps.gitversion.outputs.SemVer }}"
+        echo "CommitsSinceVersionSource: ${{ steps.gitversion.outputs.CommitsSinceVersionSource }}"
+
+    # Build/pack the project
     - name: 🛠️ Setup .NET SDK ${{ matrix.dotnet-version }}
       uses: actions/setup-dotnet@v4
       with:
