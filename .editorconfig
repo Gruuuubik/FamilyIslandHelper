@@ -58,6 +58,18 @@ dotnet_diagnostic.SA1132.severity = none
 # SA1300: Element should begin with upper-case letter
 dotnet_diagnostic.SA1300.severity = none
 
+# SA1128: Put constructor initializers on their own line
+dotnet_diagnostic.SA1128.severity = none
+
+# SA1204: Static elements should appear before instance elements
+dotnet_diagnostic.SA1204.severity = none
+
+# SA1202: Elements should be ordered by access
+dotnet_diagnostic.SA1202.severity = none
+
+# CS8618: Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
+dotnet_diagnostic.CS8618.severity = none
+
 [*.{cs,vb}]
 #### Naming styles ####
 
