@@ -3,8 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.6.33829.357
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FamilyIslandHelper.Desktop", "FamilyIslandHelper.Desktop\FamilyIslandHelper.Desktop.csproj", "{A176C930-ACD3-437F-AB7D-EF132D668EC5}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FamilyIslandHelper.Api", "FamilyIslandHelper.Api\FamilyIslandHelper.Api.csproj", "{700A438E-A124-4010-95B7-23E21249EC23}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FamilyIslandHelper.Api.Net6.UnitTests", "FamilyIslandHelper.Api.Net6.UnitTests\FamilyIslandHelper.Api.Net6.UnitTests.csproj", "{BCAD7E07-67BE-41EE-A9A0-257741D2E8C1}"
@@ -23,14 +21,6 @@ Global
 		Release|x64 = Release|x64
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{A176C930-ACD3-437F-AB7D-EF132D668EC5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A176C930-ACD3-437F-AB7D-EF132D668EC5}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A176C930-ACD3-437F-AB7D-EF132D668EC5}.Debug|x64.ActiveCfg = Debug|x64
-		{A176C930-ACD3-437F-AB7D-EF132D668EC5}.Debug|x64.Build.0 = Debug|x64
-		{A176C930-ACD3-437F-AB7D-EF132D668EC5}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A176C930-ACD3-437F-AB7D-EF132D668EC5}.Release|Any CPU.Build.0 = Release|Any CPU
-		{A176C930-ACD3-437F-AB7D-EF132D668EC5}.Release|x64.ActiveCfg = Release|x64
-		{A176C930-ACD3-437F-AB7D-EF132D668EC5}.Release|x64.Build.0 = Release|x64
 		{700A438E-A124-4010-95B7-23E21249EC23}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{700A438E-A124-4010-95B7-23E21249EC23}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{700A438E-A124-4010-95B7-23E21249EC23}.Debug|x64.ActiveCfg = Debug|x64
