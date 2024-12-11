@@ -4,7 +4,6 @@ using FamilyIslandHelper.Api.Models.Abstract;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
-using System.IO;
 using System.Linq;
 using System.Windows.Forms;
 
@@ -221,13 +220,11 @@ namespace FamilyIslandHelper.Desktop
 
 			for (var i = 0; i < itemsNames.Count; i++)
 			{
-				var itemPath = itemHelper.GetItemImagePathByName(buildingName, itemsNames[i]);
-
 				var panel = new Panel
 				{
 					Tag = itemsNames[i] + "_" + panelNumber,
 					Size = new Size(size, size),
-					BackgroundImage = File.Exists(itemPath) ? Image.FromFile(itemPath) : null,
+					BackgroundImage = itemHelper.GetItemImageByName(buildingName, itemsNames[i]),
 					BackgroundImageLayout = ImageLayout.Stretch,
 					Cursor = Cursors.Hand
 				};
@@ -267,7 +264,7 @@ namespace FamilyIslandHelper.Desktop
 				{
 					Tag = buildingsNames[i] + "_" + panelNumber,
 					Size = new Size(size, size),
-					BackgroundImage = Image.FromFile(buildingHelper.GetBuildingImagePathByName(buildingsNames[i])),
+					BackgroundImage = buildingHelper.GetBuildingImageByName(buildingsNames[i]),
 					BackgroundImageLayout = ImageLayout.Stretch,
 					Cursor = Cursors.Hand
 				};
@@ -307,13 +304,13 @@ namespace FamilyIslandHelper.Desktop
 
 				for (var i = 0; i < itemsNames.Count; i++)
 				{
-					var itemPath = itemHelper.GetItemImagePathByName(buildingName, itemsNames[i]);
+					var itemImage = itemHelper.GetItemImageByName(buildingName, itemsNames[i]);
 
 					dictImagesIndexes.Add(itemsNames[i], counter);
 
-					if (File.Exists(itemPath))
+					if (itemImage != null)
 					{
-						imageList.Images.Add(Image.FromFile(itemPath));
+						imageList.Images.Add(itemImage);
 					}
 
 					counter++;
@@ -325,7 +322,7 @@ namespace FamilyIslandHelper.Desktop
 			for (var i = 0; i < resourcesNames.Count; i++)
 			{
 				dictImagesIndexes.Add(resourcesNames[i], counter);
-				imageList.Images.Add(Image.FromFile(itemHelper.GetResourceImagePathByName(resourcesNames[i])));
+				imageList.Images.Add(itemHelper.GetResourceImageByName(resourcesNames[i]));
 				counter++;
 			}
 
