@@ -6,6 +6,7 @@
     <EnableNETAnalyzers>True</EnableNETAnalyzers>
     <EnablePackageValidation>true</EnablePackageValidation>
     <Deterministic>true</Deterministic>
+    <Version>1.2.1</Version>
     <ContinuousIntegrationBuild>True</ContinuousIntegrationBuild>
     <_SkipUpgradeNetAnalyzersNuGetWarning>true</_SkipUpgradeNetAnalyzersNuGetWarning>
     <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
