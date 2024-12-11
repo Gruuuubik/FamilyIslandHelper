@@ -1,11 +1,11 @@
-name: Web
+name: Api
 
 on:
   workflow_dispatch:
 
   push:
     branches:
-      - web
+      - api
   pull_request:
 
 env:
@@ -42,7 +42,7 @@ jobs:
       run: dotnet tool install -g dotnet-coverage
 
     - name: 🔨 Execute unit tests
-      run: dotnet test --no-restore --verbosity normal --collect "Code Coverage;Format=cobertura"
+      run: dotnet test --configuration ${{ matrix.configuration }} --no-build --no-restore --verbosity normal --collect "Code Coverage;Format=cobertura"
 
     - name: 💾 ReportGenerator
       uses: danielpalme/ReportGenerator-GitHub-Action@5.2.0
