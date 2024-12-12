@@ -1,5 +1,4 @@
 ﻿using FamilyIslandHelper.Api.Helpers;
-using FluentAssertions;
 using Xunit;
 
 namespace FamilyIslandHelper.Api.Net6.UnitTests
@@ -19,21 +18,6 @@ namespace FamilyIslandHelper.Api.Net6.UnitTests
 
 			Assert.Equal(expectedCount, actualBuildingsClasses.Count);
 			Assert.All(actualBuildingsClasses, (bc) => Assert.NotNull(bc));
-		}
-
-		[Theory]
-		[InlineData(ApiVersion.v1)]
-		[InlineData(ApiVersion.v2)]
-		public void When_GetAllBuildingsNames_Then_AllBuildingsHaveFolders(ApiVersion apiVersion)
-		{
-			buildingHelper = new BuildingHelper(apiVersion);
-
-			var actualBuildingsNames = buildingHelper.GetBuildingsNames();
-
-			var buildingsDirectories = Directory.GetDirectories(new ItemHelper(apiVersion).FolderWithItemsPictures);
-			var expectedBuildingsNames = buildingsDirectories.Select(b => b.Split(pathSeparator).Last());
-
-			actualBuildingsNames.Should().Equal(expectedBuildingsNames);
 		}
 
 		[Theory]
@@ -88,5 +72,37 @@ namespace FamilyIslandHelper.Api.Net6.UnitTests
 				Assert.Equal(building.Name, items.Select(i => i.BuildingToCreate.Name).Distinct().Single());
 			}
 		}
+
+		public static IEnumerable<object[]> GetAllBuildingsNames_TestData()
+		{
+			yield return new object[] { ApiVersion.v1, new[] { "CarpentryWorkshop", "JewelryWorkshop", "Knocker", "Loom", "MeteoriteForge", "Mill", "Mixer", "Pottery", "Sawmill", "ShamanWorkshop", "Smelter", "Tannery", "Workshop" } };
+			yield return new object[] { ApiVersion.v2, new[] { "AlchemistLaboratory", "Bench", "CarpentryWorkshop", "Forge", "JewelryWorkshop", "Kiln", "Knocker", "Loom", "MeteoriteForge", "Mill", "Mixer", "Pottery", "Sawmill", "SewingWorkshop", "Smelter", "Tannery", "Workshop" } };
+		}
+
+		[Theory]
+		[MemberData(nameof(GetAllBuildingsNames_TestData))]
+		public void When_GetAllBuildingsNames_Then_AllBuildingsHavePictures(ApiVersion apiVersion, IEnumerable<string> buildingsNames)
+		{
+			buildingHelper = new BuildingHelper(apiVersion);
+
+			foreach (var buildingName in buildingsNames)
+			{
+				Assert.NotNull(buildingHelper.GetBuildingImageByName(buildingName));
+			}
+		}
+
+#if WINDOWS
+		[Theory]
+		[InlineData(ApiVersion.v1, "Knocker")]
+		[InlineData(ApiVersion.v2, "Knocker")]
+		public void When_GetBuildingImageByName_Then_ReturnCorrectValue(ApiVersion apiVersion, string buildingName)
+		{
+			buildingHelper = new BuildingHelper(apiVersion);
+
+			var actualImage = buildingHelper.GetBuildingImageByName(buildingName);
+
+			Assert.Equal(System.Drawing.Imaging.ImageFormat.Png, actualImage.RawFormat);
+		}
+#endif
 	}
 }

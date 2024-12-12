@@ -2,7 +2,6 @@
 using FamilyIslandHelper.Api.Models.Abstract;
 using FamilyIslandHelper.Api.Models.Items;
 using FamilyIslandHelper.Api.Models.Resources;
-using FluentAssertions;
 using Xunit;
 
 namespace FamilyIslandHelper.Api.Net6.UnitTests
@@ -23,12 +22,12 @@ namespace FamilyIslandHelper.Api.Net6.UnitTests
 		{
 			itemHelper = new ItemHelper(apiVersion);
 
-			var actualResourcesNamesWithExtensions = itemHelper.GetResourcesNames().Select(r => r + BaseHelper.ImageExtension);
+			var actualResourcesNames = itemHelper.GetResourcesNames();
 
-			var resourcesFiles = Directory.GetFiles(itemHelper.FolderWithResourcesPictures);
-			var expectedResourcesNames = resourcesFiles.Select(b => b.Split(pathSeparator).Last());
-
-			actualResourcesNamesWithExtensions.Should().BeEquivalentTo(expectedResourcesNames);
+			foreach (var resourceName in actualResourcesNames)
+			{
+				Assert.NotNull(itemHelper.GetResourceImageByName(resourceName));
+			}
 		}
 
 		[Theory]
@@ -200,6 +199,24 @@ namespace FamilyIslandHelper.Api.Net6.UnitTests
 			var actualPath = itemHelper.GetResourceImagePathByName(resourceName);
 
 			Assert.Equal(Path.Combine(expectedPath), actualPath);
+		}
+
+		public static IEnumerable<object[]> GetAllItemsNames_TestData()
+		{
+			yield return new object[] { ApiVersion.v1, "Pottery", new[] { "Amphora", "Bowl", "Flashlight", "Jug", "Pot" } };
+			yield return new object[] { ApiVersion.v2, "Pottery", new[] { "Amphora", "Bowl", "Jug", "Pot" } };
+		}
+
+		[Theory]
+		[MemberData(nameof(GetAllItemsNames_TestData))]
+		public void When_GetAllItemsNames_Then_AllItemsHavePictures(ApiVersion apiVersion, string buildingClassName, IEnumerable<string> itemsNames)
+		{
+			itemHelper = new ItemHelper(apiVersion);
+
+			foreach (var itemName in itemsNames)
+			{
+				Assert.NotNull(itemHelper.GetItemImageByName(buildingClassName, itemName));
+			}
 		}
 	}
 }
