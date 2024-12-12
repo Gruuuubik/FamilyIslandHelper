@@ -6,7 +6,7 @@
     <EnableNETAnalyzers>True</EnableNETAnalyzers>
     <EnablePackageValidation>true</EnablePackageValidation>
     <Deterministic>true</Deterministic>
-    <Version>1.2.1</Version>
+    <Version>1.2.3</Version>
     <ContinuousIntegrationBuild>True</ContinuousIntegrationBuild>
     <_SkipUpgradeNetAnalyzersNuGetWarning>true</_SkipUpgradeNetAnalyzersNuGetWarning>
     <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
@@ -24,12 +24,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Content Include="Pictures\**\*.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Pictures_v2\**\*.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
+    <EmbeddedResource Include="Pictures\**\*.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pictures_v2\**\*.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
     <None Include="README.md" Pack="true" PackagePath="\" />
   </ItemGroup>
 
@@ -46,6 +46,7 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
+    <PackageReference Include="System.Drawing.Common" Version="6.0.0" />
   </ItemGroup>
 
 </Project>

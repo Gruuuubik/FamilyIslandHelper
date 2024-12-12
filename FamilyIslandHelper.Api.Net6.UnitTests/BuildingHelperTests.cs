@@ -88,5 +88,36 @@ namespace FamilyIslandHelper.Api.Net6.UnitTests
 				Assert.Equal(building.Name, items.Select(i => i.BuildingToCreate.Name).Distinct().Single());
 			}
 		}
+
+		public static IEnumerable<object[]> GetAllBuildingsNames_TestData()
+		{
+			yield return new object[] { ApiVersion.v1, new[] { "CarpentryWorkshop", "JewelryWorkshop", "Knocker", "Loom", "MeteoriteForge", "Mill", "Mixer", "Pottery", "Sawmill", "ShamanWorkshop", "Smelter", "Tannery", "Workshop" } };
+			yield return new object[] { ApiVersion.v2, new[] { "AlchemistLaboratory", "Bench", "CarpentryWorkshop", "Forge", "JewelryWorkshop", "Kiln", "Knocker", "Loom", "MeteoriteForge", "Mill", "Mixer", "Pottery", "Sawmill", "SewingWorkshop", "Smelter", "Tannery", "Workshop" } };
+		}
+
+		[Theory]
+		[MemberData(nameof(GetAllBuildingsNames_TestData))]
+		public void When_GetAllBuildingsNames_Then_AllBuildingsHavePictures(ApiVersion apiVersion, IEnumerable<string> expectedItemsNames)
+		{
+			buildingHelper = new BuildingHelper(apiVersion);
+
+			var itemsPaths = Directory.GetFiles(buildingHelper.FolderWithBuildingsPictures);
+
+			var actualItemsNames = itemsPaths.Select(ip => ip.Split('.').First().Split(pathSeparator).Last()).OrderBy(i => i);
+
+			Assert.Equal(expectedItemsNames, actualItemsNames);
+		}
+
+		[Theory]
+		[InlineData(ApiVersion.v1, "Knocker", new[] { "Pictures", "Buildings", "Knocker.png" })]
+		[InlineData(ApiVersion.v2, "Knocker", new[] { "Pictures_v2", "Buildings", "Knocker.png" })]
+		public void When_GetBuildingImageByName_Then_ReturnCorrectValue(ApiVersion apiVersion, string buildingName, string[] expectedPath)
+		{
+			buildingHelper = new BuildingHelper(apiVersion);
+
+			var actualImage = buildingHelper.GetBuildingImageByName(buildingName);
+
+			Assert.Equal(System.Drawing.Imaging.ImageFormat.Png, actualImage.RawFormat);
+		}
 	}
 }
