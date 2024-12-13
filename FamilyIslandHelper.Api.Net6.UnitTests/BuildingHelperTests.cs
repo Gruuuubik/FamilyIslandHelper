@@ -44,18 +44,6 @@ namespace FamilyIslandHelper.Api.Net6.UnitTests
 		}
 
 		[Theory]
-		[InlineData(ApiVersion.v1, "Knocker", new[] { "Pictures", "Buildings", "Knocker.png" })]
-		[InlineData(ApiVersion.v2, "Knocker", new[] { "Pictures_v2", "Buildings", "Knocker.png" })]
-		public void When_GetBuildingImagePathByName_Then_ReturnCorrectValue(ApiVersion apiVersion, string buildingName, string[] expectedPath)
-		{
-			buildingHelper = new BuildingHelper(apiVersion);
-
-			var actualPath = buildingHelper.GetBuildingImagePathByName(buildingName);
-
-			Assert.Equal(Path.Combine(expectedPath), actualPath);
-		}
-
-		[Theory]
 		[InlineData(ApiVersion.v1)]
 		[InlineData(ApiVersion.v2)]
 		public void When_CheckBuildingToCreateForAllItems_Then_ReturnCorrectValue(ApiVersion apiVersion)

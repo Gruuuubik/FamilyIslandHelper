@@ -57,14 +57,9 @@ namespace FamilyIslandHelper.Api.Helpers
 			return building.Items.OrderBy(i => i.LevelWhenAppears).ThenBy(i => i.TotalProduceTime).Select(i => i.GetType().Name).ToList();
 		}
 
-		public string GetBuildingImagePathByName(string buildingName)
-		{
-			return Path.Combine(FolderWithBuildingsPictures, buildingName + ImageExtension);
-		}
-
 		public Image GetBuildingImageByName(string buildingName)
 		{
-			var imagePath = $"{MainNamespace}.{GetBuildingImagePathByName(buildingName)}";
+			var imagePath = $"{MainNamespace}.{FolderWithBuildingsPictures}.{buildingName + ImageExtension}";
 			Image image = null;
 
 			using (var stream = assembly.GetManifestResourceStream(imagePath.Replace("\\", ".")))

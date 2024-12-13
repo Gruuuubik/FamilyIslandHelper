@@ -192,15 +192,6 @@ namespace FamilyIslandHelper.Api.Net6.UnitTests
 			Assert.Equal(expectedNamesCount, actualNames.Count);
 		}
 
-		[Theory]
-		[InlineData("Feather", new[] { "Pictures", "Resources", "Feather.png" })]
-		public void When_GetResourceImagePathByName_Then_ReturnCorrectValue(string resourceName, string[] expectedPath)
-		{
-			var actualPath = itemHelper.GetResourceImagePathByName(resourceName);
-
-			Assert.Equal(Path.Combine(expectedPath), actualPath);
-		}
-
 		public static IEnumerable<object[]> GetAllItemsNames_TestData()
 		{
 			yield return new object[] { ApiVersion.v1, "Pottery", new[] { "Amphora", "Bowl", "Flashlight", "Jug", "Pot" } };

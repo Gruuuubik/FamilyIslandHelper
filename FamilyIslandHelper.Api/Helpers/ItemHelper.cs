@@ -182,14 +182,9 @@ namespace FamilyIslandHelper.Api.Helpers
 			return ClassHelper.GetClassesNames(ResourcesNamespace).ToList();
 		}
 
-		public string GetResourceImagePathByName(string resourceName)
-		{
-			return Path.Combine(FolderWithResourcesPictures, resourceName + ImageExtension);
-		}
-
 		public Image GetResourceImageByName(string resourceName)
 		{
-			var imagePath = $"{MainNamespace}.{GetResourceImagePathByName(resourceName)}";
+			var imagePath = $"{MainNamespace}.{FolderWithResourcesPictures}.{resourceName + ImageExtension}";
 			Image image = null;
 
 			using (var stream = assembly.GetManifestResourceStream(imagePath.Replace("\\", ".")))
