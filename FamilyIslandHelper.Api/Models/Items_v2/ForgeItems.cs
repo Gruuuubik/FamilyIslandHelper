@@ -34,4 +34,19 @@ namespace FamilyIslandHelper.Api.Models.Items_v2
 			(new Wood(), 15)
 		};
 	}
+
+	public class Glass : ProducibleItem
+	{
+		public override string Name => "Стекло";
+		public override int LevelWhenAppears => 79;
+		public override TimeSpan OriginalProduceTime => TimeSpan.FromMinutes(35);
+		public override Building BuildingToCreate => new Forge();
+
+		public override List<(Item item, int count)> Components => new List<(Item item, int count)>
+		{
+			(new Stone(), 25),
+			(new Axe(), 4),
+			(new Coal(), 3)
+		};
+	}
 }
