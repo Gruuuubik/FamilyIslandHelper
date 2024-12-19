@@ -4,19 +4,16 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
 using System.Linq;
-using System.Reflection;
 
 namespace FamilyIslandHelper.Api.Helpers
 {
 	public class ItemHelper : BaseHelper
 	{
 		private readonly string itemsNamespace;
-		private readonly Assembly assembly;
 
 		public ItemHelper(ApiVersion apiVersion) : base(apiVersion)
 		{
 			itemsNamespace = $"{MainNamespace}.Models.Items{Prefix}";
-			assembly = Assembly.GetExecutingAssembly();
 
 			FolderWithResourcesPictures = Path.Combine(FolderWithPictures, "Resources");
 			FolderWithItemsPictures = Path.Combine(FolderWithPictures, "Items");
@@ -166,15 +163,14 @@ namespace FamilyIslandHelper.Api.Helpers
 
 		public Image GetItemImageByName(string buildingName, string itemName)
 		{
+			return Image.FromStream(GetItemImageStreamByName(buildingName, itemName));
+		}
+
+		public MemoryStream GetItemImageStreamByName(string buildingName, string itemName)
+		{
 			var imagePath = $"{MainNamespace}.{GetItemImagePathByName(buildingName, itemName)}";
-			Image image = null;
 
-			using (var stream = assembly.GetManifestResourceStream(imagePath.Replace("\\", ".")))
-			{
-				image = Image.FromStream(stream);
-			}
-
-			return image;
+			return GetImageStreamByImagePath(imagePath);
 		}
 
 		public List<string> GetResourcesNames()
@@ -184,15 +180,14 @@ namespace FamilyIslandHelper.Api.Helpers
 
 		public Image GetResourceImageByName(string resourceName)
 		{
+			return Image.FromStream(GetResourceImageStreamByName(resourceName));
+		}
+
+		public MemoryStream GetResourceImageStreamByName(string resourceName)
+		{
 			var imagePath = $"{MainNamespace}.{FolderWithResourcesPictures}.{resourceName + ImageExtension}";
-			Image image = null;
 
-			using (var stream = assembly.GetManifestResourceStream(imagePath.Replace("\\", ".")))
-			{
-				image = Image.FromStream(stream);
-			}
-
-			return image;
+			return GetImageStreamByImagePath(imagePath);
 		}
 	}
 }
