@@ -32,4 +32,17 @@ namespace FamilyIslandHelper.Api.Models.Items_v2
 			(new Milk(), 3)
 		};
 	}
+
+	public class Cheese : ProducibleItem
+	{
+		public override string Name => "Сыр";
+		public override int LevelWhenAppears => 25;
+		public override TimeSpan OriginalProduceTime => TimeSpan.FromHours(3) + TimeSpan.FromMinutes(45);
+		public override Building BuildingToCreate => new Mixer();
+
+		public override List<(Item item, int count)> Components => new List<(Item item, int count)>
+		{
+			(new Milk(), 6)
+		};
+	}
 }
