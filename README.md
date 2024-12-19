@@ -7,6 +7,9 @@ Helper for game [FamilyIsland](https://play.google.com/store/apps/details?id=com
 Windows Application:
 ![Windows Application](WinFormsScreen1.png "Windows Application")
 
+Web Application:
+![Web Application](WebScreen1.png "Web Application")
+
 ## Packages
 
 | Package | NuGet.org |
