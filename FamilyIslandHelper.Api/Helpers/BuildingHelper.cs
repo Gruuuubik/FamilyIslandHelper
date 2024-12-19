@@ -5,19 +5,16 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
 using System.Linq;
-using System.Reflection;
 
 namespace FamilyIslandHelper.Api.Helpers
 {
 	public class BuildingHelper : BaseHelper
 	{
 		private readonly string buildingsNamespace;
-		private readonly Assembly assembly;
 
 		public BuildingHelper(ApiVersion apiVersion) : base(apiVersion)
 		{
 			buildingsNamespace = $"{MainNamespace}.Models.Buildings{Prefix}";
-			assembly = Assembly.GetExecutingAssembly();
 			FolderWithBuildingsPictures = Path.Combine(FolderWithPictures, "Buildings");
 		}
 
@@ -59,15 +56,14 @@ namespace FamilyIslandHelper.Api.Helpers
 
 		public Image GetBuildingImageByName(string buildingName)
 		{
+			return Image.FromStream(GetBuildingImageStreamByName(buildingName));
+		}
+
+		public MemoryStream GetBuildingImageStreamByName(string buildingName)
+		{
 			var imagePath = $"{MainNamespace}.{FolderWithBuildingsPictures}.{buildingName + ImageExtension}";
-			Image image = null;
 
-			using (var stream = assembly.GetManifestResourceStream(imagePath.Replace("\\", ".")))
-			{
-				image = Image.FromStream(stream);
-			}
-
-			return image;
+			return GetImageStreamByImagePath(imagePath);
 		}
 	}
 }
