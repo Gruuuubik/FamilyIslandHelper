@@ -4,7 +4,7 @@ using FamilyIslandHelper.Api.Models.Items;
 using FamilyIslandHelper.Api.Models.Resources;
 using Xunit;
 
-namespace FamilyIslandHelper.Api.Net6.UnitTests
+namespace FamilyIslandHelper.Api.UnitTests
 {
 	public class ItemHelperTests : BaseTest
 	{

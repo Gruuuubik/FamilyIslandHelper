@@ -3,7 +3,7 @@ using FamilyIslandHelper.Api.Models.Buildings;
 using FamilyIslandHelper.Api.Models.Items;
 using Xunit;
 
-namespace FamilyIslandHelper.Api.Net6.UnitTests
+namespace FamilyIslandHelper.Api.UnitTests
 {
 	public class ProducibleItemTests : BaseTest
 	{

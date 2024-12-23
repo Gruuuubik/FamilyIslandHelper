@@ -1,4 +1,4 @@
-﻿namespace FamilyIslandHelper.Api.Net6.UnitTests
+﻿namespace FamilyIslandHelper.Api.UnitTests
 {
 	public abstract class BaseTest
 	{

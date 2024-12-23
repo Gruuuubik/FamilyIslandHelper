@@ -1,7 +1,7 @@
 ﻿using FamilyIslandHelper.Api.Helpers;
 using Xunit;
 
-namespace FamilyIslandHelper.Api.Net6.UnitTests
+namespace FamilyIslandHelper.Api.UnitTests
 {
 	public class BuildingHelperTests : BaseTest
 	{
