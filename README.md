@@ -4,8 +4,6 @@ Helper for game [FamilyIsland](https://play.google.com/store/apps/details?id=com
 
 ![Static Badge](https://img.shields.io/badge/Gruuuubik-FamilyIslandHelper-FamilyIslandHelper)
 
-Windows Application:
-![Windows Application](WinFormsScreen1.png "Windows Application")
 
 ## Packages
 
@@ -16,15 +14,20 @@ Windows Application:
 
 ## CI-CD
 
-| Workflow     | Status                                   |
-|--------------|------------------------------------------|
-| main         | [![Main](https://github.com/Gruuuubik/FamilyIslandHelper/actions/workflows/desktop.yml/badge.svg?branch=main)](https://github.com/Gruuuubik/FamilyIslandHelper/actions/workflows/desktop.yml) |
-| web          | [![Web](https://github.com/Gruuuubik/FamilyIslandHelper/actions/workflows/web.yml/badge.svg?branch=web)](https://github.com/Gruuuubik/FamilyIslandHelper/actions/workflows/web.yml) |
+[![Api](https://github.com/Gruuuubik/FamilyIslandHelper.Api/actions/workflows/api.yml/badge.svg?branch=api)](https://github.com/Gruuuubik/FamilyIslandHelper.Api/actions/workflows/api.yml)
 
 
-## Deployed web version
+## Where used
 
-https://gruuuubik.bsite.net/
+### Desktop application
+
+Repo: [FamilyIslandHelper.Desktop](https://github.com/Gruuuubik/FamilyIslandHelper.Desktop)
+
+### Web application
+
+Repo: [FamilyIslandHelper.Web](https://github.com/Gruuuubik/FamilyIslandHelper.Web)
+
+Deployed web application: [gruuuubik.bsite.net](https://gruuuubik.bsite.net/)
 
 
 ## Authors
