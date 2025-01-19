@@ -12,7 +12,8 @@ namespace FamilyIslandHelper.Api.Models.Buildings_v2
 		{
 			new Soap(),
 			new Butter(),
-			new Cheese()
+			new Cheese(),
+			new WhippedCream()
 		};
 	}
 }
