@@ -1,0 +1,1312 @@
+﻿FamilyIslandHelper.Api.Models.Items_v2.WhippedCream
+FamilyIslandHelper.Api.Models.Abstract.ResourceItem
+FamilyIslandHelper.Api.Models.Abstract.ZeroCostResourceItem
+FamilyIslandHelper.Api.Models.Buildings.Workshop
+FamilyIslandHelper.Api.Models.Items.Axe
+FamilyIslandHelper.Api.Models.Items.Brick
+FamilyIslandHelper.Api.Models.Items.Knife
+FamilyIslandHelper.Api.Models.Items.Scraper
+FamilyIslandHelper.Api.Models.Items.WickerBasket
+FamilyIslandHelper.Api.Models.Resources_v2.Wood
+FamilyIslandHelper.Api.Models.Buildings_v2.Workshop
+FamilyIslandHelper.Api.Models.Items.Barrel
+FamilyIslandHelper.Api.Models.Items.EdgedBoard
+FamilyIslandHelper.Api.Models.Items.Trough
+FamilyIslandHelper.Api.Models.Items.WoodenBeam
+abstract FamilyIslandHelper.Api.Models.Abstract.Building.Items.get -> System.Collections.Generic.List<FamilyIslandHelper.Api.Models.Abstract.ProducibleItem>
+abstract FamilyIslandHelper.Api.Models.Abstract.Building.Name.get -> string
+abstract FamilyIslandHelper.Api.Models.Abstract.Building.ProduceRatio.get -> double
+abstract FamilyIslandHelper.Api.Models.Abstract.Item.Name.get -> string
+abstract FamilyIslandHelper.Api.Models.Abstract.ProducibleItem.BuildingToCreate.get -> FamilyIslandHelper.Api.Models.Abstract.Building
+abstract FamilyIslandHelper.Api.Models.Abstract.ProducibleItem.Components.get -> System.Collections.Generic.List<(FamilyIslandHelper.Api.Models.Abstract.Item item, int count)>
+abstract FamilyIslandHelper.Api.Models.Abstract.ProducibleItem.LevelWhenAppears.get -> int
+abstract FamilyIslandHelper.Api.Models.Abstract.ProducibleItem.OriginalProduceTime.get -> System.TimeSpan
+abstract FamilyIslandHelper.Api.Models.Abstract.ResourceItem.EnergyCost.get -> int
+const FamilyIslandHelper.Api.Helpers.BaseHelper.ImageExtension = ".png" -> string
+const FamilyIslandHelper.Api.Helpers.BaseHelper.MainNamespace = "FamilyIslandHelper.Api" -> string
+FamilyIslandHelper.Api.ApiVersion
+FamilyIslandHelper.Api.ApiVersion.v1 = 0 -> FamilyIslandHelper.Api.ApiVersion
+FamilyIslandHelper.Api.ApiVersion.v2 = 1 -> FamilyIslandHelper.Api.ApiVersion
+FamilyIslandHelper.Api.Helpers.BaseHelper
+FamilyIslandHelper.Api.Helpers.BaseHelper.Assembly.get -> System.Reflection.Assembly
+FamilyIslandHelper.Api.Helpers.BaseHelper.BaseHelper(FamilyIslandHelper.Api.ApiVersion apiVersion) -> void
+FamilyIslandHelper.Api.Helpers.BaseHelper.FolderWithPictures.get -> string
+FamilyIslandHelper.Api.Helpers.BaseHelper.GetImageStreamByImagePath(string imagePath) -> System.IO.MemoryStream
+FamilyIslandHelper.Api.Helpers.BaseHelper.Prefix.get -> string
+FamilyIslandHelper.Api.Helpers.BuildingHelper
+FamilyIslandHelper.Api.Helpers.BuildingHelper.BuildingHelper(FamilyIslandHelper.Api.ApiVersion apiVersion) -> void
+FamilyIslandHelper.Api.Helpers.BuildingHelper.CreateBuilding(string buildingName) -> FamilyIslandHelper.Api.Models.Abstract.Building
+FamilyIslandHelper.Api.Helpers.BuildingHelper.FolderWithBuildingsPictures.get -> string
+FamilyIslandHelper.Api.Helpers.BuildingHelper.GetBuildingImageByName(string buildingName) -> System.Drawing.Image
+FamilyIslandHelper.Api.Helpers.BuildingHelper.GetBuildingImageStreamByName(string buildingName) -> System.IO.MemoryStream
+FamilyIslandHelper.Api.Helpers.BuildingHelper.GetBuildingsClasses() -> System.Collections.Generic.List<FamilyIslandHelper.Api.Models.BuildingInfo>
+FamilyIslandHelper.Api.Helpers.BuildingHelper.GetBuildingsNames() -> System.Collections.Generic.List<string>
+FamilyIslandHelper.Api.Helpers.BuildingHelper.GetItemsOfBuilding(string buildingName) -> System.Collections.Generic.List<string>
+FamilyIslandHelper.Api.Helpers.ClassHelper
+FamilyIslandHelper.Api.Helpers.ClassHelper.ClassHelper() -> void
+FamilyIslandHelper.Api.Helpers.ItemHelper
+FamilyIslandHelper.Api.Helpers.ItemHelper.CreateProducibleItem(string itemTypeString) -> FamilyIslandHelper.Api.Models.Abstract.ProducibleItem
+FamilyIslandHelper.Api.Helpers.ItemHelper.CreateResourceItem(string itemTypeString) -> FamilyIslandHelper.Api.Models.Abstract.ResourceItem
+FamilyIslandHelper.Api.Helpers.ItemHelper.FindItemByName(string itemName) -> FamilyIslandHelper.Api.Models.Abstract.Item
+FamilyIslandHelper.Api.Helpers.ItemHelper.FolderWithItemsPictures.get -> string
+FamilyIslandHelper.Api.Helpers.ItemHelper.FolderWithResourcesPictures.get -> string
+FamilyIslandHelper.Api.Helpers.ItemHelper.GetInfoAboutItem(string itemName, int itemCount, bool showListOfComponents) -> System.Collections.Generic.List<string>
+FamilyIslandHelper.Api.Helpers.ItemHelper.GetItemImageByName(string buildingName, string itemName) -> System.Drawing.Image
+FamilyIslandHelper.Api.Helpers.ItemHelper.GetItemImagePathByName(string buildingName, string itemName) -> string
+FamilyIslandHelper.Api.Helpers.ItemHelper.GetItemImageStreamByName(string buildingName, string itemName) -> System.IO.MemoryStream
+FamilyIslandHelper.Api.Helpers.ItemHelper.GetResourceImageByName(string resourceName) -> System.Drawing.Image
+FamilyIslandHelper.Api.Helpers.ItemHelper.GetResourceImageStreamByName(string resourceName) -> System.IO.MemoryStream
+FamilyIslandHelper.Api.Helpers.ItemHelper.GetResourcesNames() -> System.Collections.Generic.List<string>
+FamilyIslandHelper.Api.Helpers.ItemHelper.ItemHelper(FamilyIslandHelper.Api.ApiVersion apiVersion) -> void
+FamilyIslandHelper.Api.Helpers.ItemHelper.ResourcesNamespace.get -> string
+FamilyIslandHelper.Api.Models.Abstract.Building
+FamilyIslandHelper.Api.Models.Abstract.Building.Building() -> void
+FamilyIslandHelper.Api.Models.Abstract.Item
+FamilyIslandHelper.Api.Models.Abstract.Item.Item() -> void
+FamilyIslandHelper.Api.Models.Abstract.ProducibleItem
+FamilyIslandHelper.Api.Models.Abstract.ProducibleItem.ComponentsInfo(int tabsCount, int itemCount) -> System.Collections.Generic.List<string>
+FamilyIslandHelper.Api.Models.Abstract.ProducibleItem.ProduceEnergyCost.get -> int
+FamilyIslandHelper.Api.Models.Abstract.ProducibleItem.ProducibleItem() -> void
+FamilyIslandHelper.Api.Models.Abstract.ProducibleItem.TotalProduceTime.get -> System.TimeSpan
+FamilyIslandHelper.Api.Models.Abstract.ResourceItem.ResourceItem() -> void
+FamilyIslandHelper.Api.Models.Abstract.ZeroCostResourceItem.ZeroCostResourceItem() -> void
+FamilyIslandHelper.Api.Models.BuildingInfo
+FamilyIslandHelper.Api.Models.BuildingInfo.BuildingInfo() -> void
+FamilyIslandHelper.Api.Models.BuildingInfo.Name.get -> string
+FamilyIslandHelper.Api.Models.BuildingInfo.Name.set -> void
+FamilyIslandHelper.Api.Models.BuildingInfo.Value.get -> string
+FamilyIslandHelper.Api.Models.BuildingInfo.Value.set -> void
+FamilyIslandHelper.Api.Models.Buildings.CarpentryWorkshop
+FamilyIslandHelper.Api.Models.Buildings.CarpentryWorkshop.CarpentryWorkshop() -> void
+FamilyIslandHelper.Api.Models.Buildings.JewelryWorkshop
+FamilyIslandHelper.Api.Models.Buildings.JewelryWorkshop.JewelryWorkshop() -> void
+FamilyIslandHelper.Api.Models.Buildings.Knocker
+FamilyIslandHelper.Api.Models.Buildings.Knocker.Knocker() -> void
+FamilyIslandHelper.Api.Models.Buildings.Loom
+FamilyIslandHelper.Api.Models.Buildings.Loom.Loom() -> void
+FamilyIslandHelper.Api.Models.Buildings.MeteoriteForge
+FamilyIslandHelper.Api.Models.Buildings.MeteoriteForge.MeteoriteForge() -> void
+FamilyIslandHelper.Api.Models.Buildings.Mill
+FamilyIslandHelper.Api.Models.Buildings.Mill.Mill() -> void
+FamilyIslandHelper.Api.Models.Buildings.Mixer
+FamilyIslandHelper.Api.Models.Buildings.Mixer.Mixer() -> void
+FamilyIslandHelper.Api.Models.Buildings.Pottery
+FamilyIslandHelper.Api.Models.Buildings.Pottery.Pottery() -> void
+FamilyIslandHelper.Api.Models.Buildings.Sawmill
+FamilyIslandHelper.Api.Models.Buildings.Sawmill.Sawmill() -> void
+FamilyIslandHelper.Api.Models.Buildings.ShamanWorkshop
+FamilyIslandHelper.Api.Models.Buildings.ShamanWorkshop.ShamanWorkshop() -> void
+FamilyIslandHelper.Api.Models.Buildings.Smelter
+FamilyIslandHelper.Api.Models.Buildings.Smelter.Smelter() -> void
+FamilyIslandHelper.Api.Models.Buildings.Tannery
+FamilyIslandHelper.Api.Models.Buildings.Tannery.Tannery() -> void
+FamilyIslandHelper.Api.Models.Buildings.Workshop.Workshop() -> void
+FamilyIslandHelper.Api.Models.Buildings_v2.AlchemistLaboratory
+FamilyIslandHelper.Api.Models.Buildings_v2.AlchemistLaboratory.AlchemistLaboratory() -> void
+FamilyIslandHelper.Api.Models.Buildings_v2.Bench
+FamilyIslandHelper.Api.Models.Buildings_v2.Bench.Bench() -> void
+FamilyIslandHelper.Api.Models.Buildings_v2.CarpentryWorkshop
+FamilyIslandHelper.Api.Models.Buildings_v2.CarpentryWorkshop.CarpentryWorkshop() -> void
+FamilyIslandHelper.Api.Models.Buildings_v2.Forge
+FamilyIslandHelper.Api.Models.Buildings_v2.Forge.Forge() -> void
+FamilyIslandHelper.Api.Models.Buildings_v2.JewelryWorkshop
+FamilyIslandHelper.Api.Models.Buildings_v2.JewelryWorkshop.JewelryWorkshop() -> void
+FamilyIslandHelper.Api.Models.Buildings_v2.Kiln
+FamilyIslandHelper.Api.Models.Buildings_v2.Kiln.Kiln() -> void
+FamilyIslandHelper.Api.Models.Buildings_v2.Knocker
+FamilyIslandHelper.Api.Models.Buildings_v2.Knocker.Knocker() -> void
+FamilyIslandHelper.Api.Models.Buildings_v2.Loom
+FamilyIslandHelper.Api.Models.Buildings_v2.Loom.Loom() -> void
+FamilyIslandHelper.Api.Models.Buildings_v2.MeteoriteForge
+FamilyIslandHelper.Api.Models.Buildings_v2.MeteoriteForge.MeteoriteForge() -> void
+FamilyIslandHelper.Api.Models.Buildings_v2.Mill
+FamilyIslandHelper.Api.Models.Buildings_v2.Mill.Mill() -> void
+FamilyIslandHelper.Api.Models.Buildings_v2.Mixer
+FamilyIslandHelper.Api.Models.Buildings_v2.Mixer.Mixer() -> void
+FamilyIslandHelper.Api.Models.Buildings_v2.Pottery
+FamilyIslandHelper.Api.Models.Buildings_v2.Pottery.Pottery() -> void
+FamilyIslandHelper.Api.Models.Buildings_v2.Sawmill
+FamilyIslandHelper.Api.Models.Buildings_v2.Sawmill.Sawmill() -> void
+FamilyIslandHelper.Api.Models.Buildings_v2.SewingWorkshop
+FamilyIslandHelper.Api.Models.Buildings_v2.SewingWorkshop.SewingWorkshop() -> void
+FamilyIslandHelper.Api.Models.Buildings_v2.Smelter
+FamilyIslandHelper.Api.Models.Buildings_v2.Smelter.Smelter() -> void
+FamilyIslandHelper.Api.Models.Buildings_v2.Tannery
+FamilyIslandHelper.Api.Models.Buildings_v2.Tannery.Tannery() -> void
+FamilyIslandHelper.Api.Models.Buildings_v2.Workshop.Workshop() -> void
+FamilyIslandHelper.Api.Models.Items.AmethystPendant
+FamilyIslandHelper.Api.Models.Items.AmethystPendant.AmethystPendant() -> void
+FamilyIslandHelper.Api.Models.Items.Amphora
+FamilyIslandHelper.Api.Models.Items.Amphora.Amphora() -> void
+FamilyIslandHelper.Api.Models.Items.Axe.Axe() -> void
+FamilyIslandHelper.Api.Models.Items.Barrel.Barrel() -> void
+FamilyIslandHelper.Api.Models.Items.Beams
+FamilyIslandHelper.Api.Models.Items.Beams.Beams() -> void
+FamilyIslandHelper.Api.Models.Items.BluePaint
+FamilyIslandHelper.Api.Models.Items.BluePaint.BluePaint() -> void
+FamilyIslandHelper.Api.Models.Items.Bowl
+FamilyIslandHelper.Api.Models.Items.Bowl.Bowl() -> void
+FamilyIslandHelper.Api.Models.Items.Brick.Brick() -> void
+FamilyIslandHelper.Api.Models.Items.BurntBrick
+FamilyIslandHelper.Api.Models.Items.BurntBrick.BurntBrick() -> void
+FamilyIslandHelper.Api.Models.Items.Butter
+FamilyIslandHelper.Api.Models.Items.Butter.Butter() -> void
+FamilyIslandHelper.Api.Models.Items.Cheese
+FamilyIslandHelper.Api.Models.Items.Cheese.Cheese() -> void
+FamilyIslandHelper.Api.Models.Items.ChickenFood
+FamilyIslandHelper.Api.Models.Items.ChickenFood.ChickenFood() -> void
+FamilyIslandHelper.Api.Models.Items.Cloth
+FamilyIslandHelper.Api.Models.Items.Cloth.Cloth() -> void
+FamilyIslandHelper.Api.Models.Items.Coal
+FamilyIslandHelper.Api.Models.Items.Coal.Coal() -> void
+FamilyIslandHelper.Api.Models.Items.CowFood
+FamilyIslandHelper.Api.Models.Items.CowFood.CowFood() -> void
+FamilyIslandHelper.Api.Models.Items.Crest
+FamilyIslandHelper.Api.Models.Items.Crest.Crest() -> void
+FamilyIslandHelper.Api.Models.Items.CrystalLotus
+FamilyIslandHelper.Api.Models.Items.CrystalLotus.CrystalLotus() -> void
+FamilyIslandHelper.Api.Models.Items.DreamCatcher
+FamilyIslandHelper.Api.Models.Items.DreamCatcher.DreamCatcher() -> void
+FamilyIslandHelper.Api.Models.Items.DyedFabric
+FamilyIslandHelper.Api.Models.Items.DyedFabric.DyedFabric() -> void
+FamilyIslandHelper.Api.Models.Items.EdgedBoard.EdgedBoard() -> void
+FamilyIslandHelper.Api.Models.Items.EmeraldRing
+FamilyIslandHelper.Api.Models.Items.EmeraldRing.EmeraldRing() -> void
+FamilyIslandHelper.Api.Models.Items.Flashlight
+FamilyIslandHelper.Api.Models.Items.Flashlight.Flashlight() -> void
+FamilyIslandHelper.Api.Models.Items.Flour
+FamilyIslandHelper.Api.Models.Items.Flour.Flour() -> void
+FamilyIslandHelper.Api.Models.Items.FlowerWreath
+FamilyIslandHelper.Api.Models.Items.FlowerWreath.FlowerWreath() -> void
+FamilyIslandHelper.Api.Models.Items.FragrantBouquet
+FamilyIslandHelper.Api.Models.Items.FragrantBouquet.FragrantBouquet() -> void
+FamilyIslandHelper.Api.Models.Items.GemNecklace
+FamilyIslandHelper.Api.Models.Items.GemNecklace.GemNecklace() -> void
+FamilyIslandHelper.Api.Models.Items.Gloves
+FamilyIslandHelper.Api.Models.Items.Gloves.Gloves() -> void
+FamilyIslandHelper.Api.Models.Items.GoatFood
+FamilyIslandHelper.Api.Models.Items.GoatFood.GoatFood() -> void
+FamilyIslandHelper.Api.Models.Items.Gold
+FamilyIslandHelper.Api.Models.Items.Gold.Gold() -> void
+FamilyIslandHelper.Api.Models.Items.Hammer
+FamilyIslandHelper.Api.Models.Items.Hammer.Hammer() -> void
+FamilyIslandHelper.Api.Models.Items.Incense
+FamilyIslandHelper.Api.Models.Items.Incense.Incense() -> void
+FamilyIslandHelper.Api.Models.Items.IronIngot
+FamilyIslandHelper.Api.Models.Items.IronIngot.IronIngot() -> void
+FamilyIslandHelper.Api.Models.Items.IronPipe
+FamilyIslandHelper.Api.Models.Items.IronPipe.IronPipe() -> void
+FamilyIslandHelper.Api.Models.Items.IronPlate
+FamilyIslandHelper.Api.Models.Items.IronPlate.IronPlate() -> void
+FamilyIslandHelper.Api.Models.Items.Jug
+FamilyIslandHelper.Api.Models.Items.Jug.Jug() -> void
+FamilyIslandHelper.Api.Models.Items.Knife.Knife() -> void
+FamilyIslandHelper.Api.Models.Items.Lace
+FamilyIslandHelper.Api.Models.Items.Lace.Lace() -> void
+FamilyIslandHelper.Api.Models.Items.Leather
+FamilyIslandHelper.Api.Models.Items.Leather.Leather() -> void
+FamilyIslandHelper.Api.Models.Items.LeatherBall
+FamilyIslandHelper.Api.Models.Items.LeatherBall.LeatherBall() -> void
+FamilyIslandHelper.Api.Models.Items.LemonOil
+FamilyIslandHelper.Api.Models.Items.LemonOil.LemonOil() -> void
+FamilyIslandHelper.Api.Models.Items.LimestoneBlock
+FamilyIslandHelper.Api.Models.Items.LimestoneBlock.LimestoneBlock() -> void
+FamilyIslandHelper.Api.Models.Items.Millstone
+FamilyIslandHelper.Api.Models.Items.Millstone.Millstone() -> void
+FamilyIslandHelper.Api.Models.Items.Nails
+FamilyIslandHelper.Api.Models.Items.Nails.Nails() -> void
+FamilyIslandHelper.Api.Models.Items.Necklace
+FamilyIslandHelper.Api.Models.Items.Necklace.Necklace() -> void
+FamilyIslandHelper.Api.Models.Items.Needle
+FamilyIslandHelper.Api.Models.Items.Needle.Needle() -> void
+FamilyIslandHelper.Api.Models.Items.Ocher
+FamilyIslandHelper.Api.Models.Items.Ocher.Ocher() -> void
+FamilyIslandHelper.Api.Models.Items.Paints
+FamilyIslandHelper.Api.Models.Items.Paints.Paints() -> void
+FamilyIslandHelper.Api.Models.Items.PalmBeams
+FamilyIslandHelper.Api.Models.Items.PalmBeams.PalmBeams() -> void
+FamilyIslandHelper.Api.Models.Items.Papyrus
+FamilyIslandHelper.Api.Models.Items.Papyrus.Papyrus() -> void
+FamilyIslandHelper.Api.Models.Items.PearlEarrings
+FamilyIslandHelper.Api.Models.Items.PearlEarrings.PearlEarrings() -> void
+FamilyIslandHelper.Api.Models.Items.PicnicBasket
+FamilyIslandHelper.Api.Models.Items.PicnicBasket.PicnicBasket() -> void
+FamilyIslandHelper.Api.Models.Items.Pipe
+FamilyIslandHelper.Api.Models.Items.Pipe.Pipe() -> void
+FamilyIslandHelper.Api.Models.Items.Pot
+FamilyIslandHelper.Api.Models.Items.Pot.Pot() -> void
+FamilyIslandHelper.Api.Models.Items.Resin
+FamilyIslandHelper.Api.Models.Items.Resin.Resin() -> void
+FamilyIslandHelper.Api.Models.Items.Rope
+FamilyIslandHelper.Api.Models.Items.Rope.Rope() -> void
+FamilyIslandHelper.Api.Models.Items.RuneStone
+FamilyIslandHelper.Api.Models.Items.RuneStone.RuneStone() -> void
+FamilyIslandHelper.Api.Models.Items.Sackcloth
+FamilyIslandHelper.Api.Models.Items.Sackcloth.Sackcloth() -> void
+FamilyIslandHelper.Api.Models.Items.SapphireBracelet
+FamilyIslandHelper.Api.Models.Items.SapphireBracelet.SapphireBracelet() -> void
+FamilyIslandHelper.Api.Models.Items.Scraper.Scraper() -> void
+FamilyIslandHelper.Api.Models.Items.Shingles
+FamilyIslandHelper.Api.Models.Items.Shingles.Shingles() -> void
+FamilyIslandHelper.Api.Models.Items.Soap
+FamilyIslandHelper.Api.Models.Items.Soap.Soap() -> void
+FamilyIslandHelper.Api.Models.Items.Stairs
+FamilyIslandHelper.Api.Models.Items.Stairs.Stairs() -> void
+FamilyIslandHelper.Api.Models.Items.Stakes
+FamilyIslandHelper.Api.Models.Items.Stakes.Stakes() -> void
+FamilyIslandHelper.Api.Models.Items.StoneBlock
+FamilyIslandHelper.Api.Models.Items.StoneBlock.StoneBlock() -> void
+FamilyIslandHelper.Api.Models.Items.Stool
+FamilyIslandHelper.Api.Models.Items.Stool.Stool() -> void
+FamilyIslandHelper.Api.Models.Items.SunflowerOil
+FamilyIslandHelper.Api.Models.Items.SunflowerOil.SunflowerOil() -> void
+FamilyIslandHelper.Api.Models.Items.Syrup
+FamilyIslandHelper.Api.Models.Items.Syrup.Syrup() -> void
+FamilyIslandHelper.Api.Models.Items.Tambourine
+FamilyIslandHelper.Api.Models.Items.Tambourine.Tambourine() -> void
+FamilyIslandHelper.Api.Models.Items.Trough.Trough() -> void
+FamilyIslandHelper.Api.Models.Items.UnedgedBoard
+FamilyIslandHelper.Api.Models.Items.UnedgedBoard.UnedgedBoard() -> void
+FamilyIslandHelper.Api.Models.Items.Wattle
+FamilyIslandHelper.Api.Models.Items.Wattle.Wattle() -> void
+FamilyIslandHelper.Api.Models.Items.WhippedCream
+FamilyIslandHelper.Api.Models.Items.WhippedCream.WhippedCream() -> void
+FamilyIslandHelper.Api.Models.Items.WhitePaint
+FamilyIslandHelper.Api.Models.Items.WhitePaint.WhitePaint() -> void
+FamilyIslandHelper.Api.Models.Items.WickerBasket.WickerBasket() -> void
+FamilyIslandHelper.Api.Models.Items.WoodenBeam.WoodenBeam() -> void
+FamilyIslandHelper.Api.Models.Items_v2.Amphora
+FamilyIslandHelper.Api.Models.Items_v2.Amphora.Amphora() -> void
+FamilyIslandHelper.Api.Models.Items_v2.Axe
+FamilyIslandHelper.Api.Models.Items_v2.Axe.Axe() -> void
+FamilyIslandHelper.Api.Models.Items_v2.Barrel
+FamilyIslandHelper.Api.Models.Items_v2.Barrel.Barrel() -> void
+FamilyIslandHelper.Api.Models.Items_v2.Basket
+FamilyIslandHelper.Api.Models.Items_v2.Basket.Basket() -> void
+FamilyIslandHelper.Api.Models.Items_v2.Beams
+FamilyIslandHelper.Api.Models.Items_v2.Beams.Beams() -> void
+FamilyIslandHelper.Api.Models.Items_v2.Board
+FamilyIslandHelper.Api.Models.Items_v2.Board.Board() -> void
+FamilyIslandHelper.Api.Models.Items_v2.Bowl
+FamilyIslandHelper.Api.Models.Items_v2.Bowl.Bowl() -> void
+FamilyIslandHelper.Api.Models.Items_v2.Bracelet
+FamilyIslandHelper.Api.Models.Items_v2.Bracelet.Bracelet() -> void
+FamilyIslandHelper.Api.Models.Items_v2.Brick
+FamilyIslandHelper.Api.Models.Items_v2.Brick.Brick() -> void
+FamilyIslandHelper.Api.Models.Items_v2.BuildingTimber
+FamilyIslandHelper.Api.Models.Items_v2.BuildingTimber.BuildingTimber() -> void
+FamilyIslandHelper.Api.Models.Items_v2.BurntBrick
+FamilyIslandHelper.Api.Models.Items_v2.BurntBrick.BurntBrick() -> void
+FamilyIslandHelper.Api.Models.Items_v2.Butter
+FamilyIslandHelper.Api.Models.Items_v2.Butter.Butter() -> void
+FamilyIslandHelper.Api.Models.Items_v2.Cardboard
+FamilyIslandHelper.Api.Models.Items_v2.Cardboard.Cardboard() -> void
+FamilyIslandHelper.Api.Models.Items_v2.Cheese
+FamilyIslandHelper.Api.Models.Items_v2.Cheese.Cheese() -> void
+FamilyIslandHelper.Api.Models.Items_v2.ChickenFood
+FamilyIslandHelper.Api.Models.Items_v2.ChickenFood.ChickenFood() -> void
+FamilyIslandHelper.Api.Models.Items_v2.Cloth
+FamilyIslandHelper.Api.Models.Items_v2.Cloth.Cloth() -> void
+FamilyIslandHelper.Api.Models.Items_v2.Coal
+FamilyIslandHelper.Api.Models.Items_v2.Coal.Coal() -> void
+FamilyIslandHelper.Api.Models.Items_v2.CowFood
+FamilyIslandHelper.Api.Models.Items_v2.CowFood.CowFood() -> void
+FamilyIslandHelper.Api.Models.Items_v2.Crest
+FamilyIslandHelper.Api.Models.Items_v2.Crest.Crest() -> void
+FamilyIslandHelper.Api.Models.Items_v2.Earrings
+FamilyIslandHelper.Api.Models.Items_v2.Earrings.Earrings() -> void
+FamilyIslandHelper.Api.Models.Items_v2.Emerald
+FamilyIslandHelper.Api.Models.Items_v2.Emerald.Emerald() -> void
+FamilyIslandHelper.Api.Models.Items_v2.Flour
+FamilyIslandHelper.Api.Models.Items_v2.Flour.Flour() -> void
+FamilyIslandHelper.Api.Models.Items_v2.Glass
+FamilyIslandHelper.Api.Models.Items_v2.Glass.Glass() -> void
+FamilyIslandHelper.Api.Models.Items_v2.Gloves
+FamilyIslandHelper.Api.Models.Items_v2.Gloves.Gloves() -> void
+FamilyIslandHelper.Api.Models.Items_v2.GoatFood
+FamilyIslandHelper.Api.Models.Items_v2.GoatFood.GoatFood() -> void
+FamilyIslandHelper.Api.Models.Items_v2.Gold
+FamilyIslandHelper.Api.Models.Items_v2.Gold.Gold() -> void
+FamilyIslandHelper.Api.Models.Items_v2.Hammer
+FamilyIslandHelper.Api.Models.Items_v2.Hammer.Hammer() -> void
+FamilyIslandHelper.Api.Models.Items_v2.IronIngot
+FamilyIslandHelper.Api.Models.Items_v2.IronIngot.IronIngot() -> void
+FamilyIslandHelper.Api.Models.Items_v2.IronPlate
+FamilyIslandHelper.Api.Models.Items_v2.IronPlate.IronPlate() -> void
+FamilyIslandHelper.Api.Models.Items_v2.Jug
+FamilyIslandHelper.Api.Models.Items_v2.Jug.Jug() -> void
+FamilyIslandHelper.Api.Models.Items_v2.Knife
+FamilyIslandHelper.Api.Models.Items_v2.Knife.Knife() -> void
+FamilyIslandHelper.Api.Models.Items_v2.Lace
+FamilyIslandHelper.Api.Models.Items_v2.Lace.Lace() -> void
+FamilyIslandHelper.Api.Models.Items_v2.Leather
+FamilyIslandHelper.Api.Models.Items_v2.Leather.Leather() -> void
+FamilyIslandHelper.Api.Models.Items_v2.LeatherСord
+FamilyIslandHelper.Api.Models.Items_v2.LeatherСord.LeatherСord() -> void
+FamilyIslandHelper.Api.Models.Items_v2.Nails
+FamilyIslandHelper.Api.Models.Items_v2.Nails.Nails() -> void
+FamilyIslandHelper.Api.Models.Items_v2.Needle
+FamilyIslandHelper.Api.Models.Items_v2.Needle.Needle() -> void
+FamilyIslandHelper.Api.Models.Items_v2.Papyrus
+FamilyIslandHelper.Api.Models.Items_v2.Papyrus.Papyrus() -> void
+FamilyIslandHelper.Api.Models.Items_v2.Pot
+FamilyIslandHelper.Api.Models.Items_v2.Pot.Pot() -> void
+FamilyIslandHelper.Api.Models.Items_v2.Resin
+FamilyIslandHelper.Api.Models.Items_v2.Resin.Resin() -> void
+FamilyIslandHelper.Api.Models.Items_v2.Rope
+FamilyIslandHelper.Api.Models.Items_v2.Rope.Rope() -> void
+FamilyIslandHelper.Api.Models.Items_v2.Sackcloth
+FamilyIslandHelper.Api.Models.Items_v2.Sackcloth.Sackcloth() -> void
+FamilyIslandHelper.Api.Models.Items_v2.Scraper
+FamilyIslandHelper.Api.Models.Items_v2.Scraper.Scraper() -> void
+FamilyIslandHelper.Api.Models.Items_v2.Shingles
+FamilyIslandHelper.Api.Models.Items_v2.Shingles.Shingles() -> void
+FamilyIslandHelper.Api.Models.Items_v2.SmoothBoard
+FamilyIslandHelper.Api.Models.Items_v2.SmoothBoard.SmoothBoard() -> void
+FamilyIslandHelper.Api.Models.Items_v2.Soap
+FamilyIslandHelper.Api.Models.Items_v2.Soap.Soap() -> void
+FamilyIslandHelper.Api.Models.Items_v2.Spoon
+FamilyIslandHelper.Api.Models.Items_v2.Spoon.Spoon() -> void
+FamilyIslandHelper.Api.Models.Items_v2.Stairs
+FamilyIslandHelper.Api.Models.Items_v2.Stairs.Stairs() -> void
+FamilyIslandHelper.Api.Models.Items_v2.Stakes
+FamilyIslandHelper.Api.Models.Items_v2.Stakes.Stakes() -> void
+FamilyIslandHelper.Api.Models.Items_v2.StoneBlock
+FamilyIslandHelper.Api.Models.Items_v2.StoneBlock.StoneBlock() -> void
+FamilyIslandHelper.Api.Models.Items_v2.StoneTile
+FamilyIslandHelper.Api.Models.Items_v2.StoneTile.StoneTile() -> void
+FamilyIslandHelper.Api.Models.Items_v2.Stool
+FamilyIslandHelper.Api.Models.Items_v2.Stool.Stool() -> void
+FamilyIslandHelper.Api.Models.Items_v2.Wattle
+FamilyIslandHelper.Api.Models.Items_v2.Wattle.Wattle() -> void
+FamilyIslandHelper.Api.Models.Resources.Amber
+FamilyIslandHelper.Api.Models.Resources.Amber.Amber() -> void
+FamilyIslandHelper.Api.Models.Resources.Amethyst
+FamilyIslandHelper.Api.Models.Resources.Amethyst.Amethyst() -> void
+FamilyIslandHelper.Api.Models.Resources.Ash
+FamilyIslandHelper.Api.Models.Resources.Ash.Ash() -> void
+FamilyIslandHelper.Api.Models.Resources.BlueOre
+FamilyIslandHelper.Api.Models.Resources.BlueOre.BlueOre() -> void
+FamilyIslandHelper.Api.Models.Resources.Candle
+FamilyIslandHelper.Api.Models.Resources.Candle.Candle() -> void
+FamilyIslandHelper.Api.Models.Resources.Carrot
+FamilyIslandHelper.Api.Models.Resources.Carrot.Carrot() -> void
+FamilyIslandHelper.Api.Models.Resources.Claw
+FamilyIslandHelper.Api.Models.Resources.Claw.Claw() -> void
+FamilyIslandHelper.Api.Models.Resources.Clay
+FamilyIslandHelper.Api.Models.Resources.Clay.Clay() -> void
+FamilyIslandHelper.Api.Models.Resources.Clover
+FamilyIslandHelper.Api.Models.Resources.Clover.Clover() -> void
+FamilyIslandHelper.Api.Models.Resources.Cone
+FamilyIslandHelper.Api.Models.Resources.Cone.Cone() -> void
+FamilyIslandHelper.Api.Models.Resources.CopperOre
+FamilyIslandHelper.Api.Models.Resources.CopperOre.CopperOre() -> void
+FamilyIslandHelper.Api.Models.Resources.Corn
+FamilyIslandHelper.Api.Models.Resources.Corn.Corn() -> void
+FamilyIslandHelper.Api.Models.Resources.Cotton
+FamilyIslandHelper.Api.Models.Resources.Cotton.Cotton() -> void
+FamilyIslandHelper.Api.Models.Resources.Egg
+FamilyIslandHelper.Api.Models.Resources.Egg.Egg() -> void
+FamilyIslandHelper.Api.Models.Resources.Emerald
+FamilyIslandHelper.Api.Models.Resources.Emerald.Emerald() -> void
+FamilyIslandHelper.Api.Models.Resources.Feather
+FamilyIslandHelper.Api.Models.Resources.Feather.Feather() -> void
+FamilyIslandHelper.Api.Models.Resources.Gem
+FamilyIslandHelper.Api.Models.Resources.Gem.Gem() -> void
+FamilyIslandHelper.Api.Models.Resources.GoldOre
+FamilyIslandHelper.Api.Models.Resources.GoldOre.GoldOre() -> void
+FamilyIslandHelper.Api.Models.Resources.Grass
+FamilyIslandHelper.Api.Models.Resources.Grass.Grass() -> void
+FamilyIslandHelper.Api.Models.Resources.Heather
+FamilyIslandHelper.Api.Models.Resources.Heather.Heather() -> void
+FamilyIslandHelper.Api.Models.Resources.Iron
+FamilyIslandHelper.Api.Models.Resources.Iron.Iron() -> void
+FamilyIslandHelper.Api.Models.Resources.Lazurite
+FamilyIslandHelper.Api.Models.Resources.Lazurite.Lazurite() -> void
+FamilyIslandHelper.Api.Models.Resources.Lemon
+FamilyIslandHelper.Api.Models.Resources.Lemon.Lemon() -> void
+FamilyIslandHelper.Api.Models.Resources.Limestone
+FamilyIslandHelper.Api.Models.Resources.Limestone.Limestone() -> void
+FamilyIslandHelper.Api.Models.Resources.LotusFlower
+FamilyIslandHelper.Api.Models.Resources.LotusFlower.LotusFlower() -> void
+FamilyIslandHelper.Api.Models.Resources.MeadowGrass
+FamilyIslandHelper.Api.Models.Resources.MeadowGrass.MeadowGrass() -> void
+FamilyIslandHelper.Api.Models.Resources.Milk
+FamilyIslandHelper.Api.Models.Resources.Milk.Milk() -> void
+FamilyIslandHelper.Api.Models.Resources.PalmLeaf
+FamilyIslandHelper.Api.Models.Resources.PalmLeaf.PalmLeaf() -> void
+FamilyIslandHelper.Api.Models.Resources.PalmLog
+FamilyIslandHelper.Api.Models.Resources.PalmLog.PalmLog() -> void
+FamilyIslandHelper.Api.Models.Resources.Pearl
+FamilyIslandHelper.Api.Models.Resources.Pearl.Pearl() -> void
+FamilyIslandHelper.Api.Models.Resources.Pepper
+FamilyIslandHelper.Api.Models.Resources.Pepper.Pepper() -> void
+FamilyIslandHelper.Api.Models.Resources.Poison
+FamilyIslandHelper.Api.Models.Resources.Poison.Poison() -> void
+FamilyIslandHelper.Api.Models.Resources.Potherb
+FamilyIslandHelper.Api.Models.Resources.Potherb.Potherb() -> void
+FamilyIslandHelper.Api.Models.Resources.Salt
+FamilyIslandHelper.Api.Models.Resources.Salt.Salt() -> void
+FamilyIslandHelper.Api.Models.Resources.Sapphire
+FamilyIslandHelper.Api.Models.Resources.Sapphire.Sapphire() -> void
+FamilyIslandHelper.Api.Models.Resources.Shell
+FamilyIslandHelper.Api.Models.Resources.Shell.Shell() -> void
+FamilyIslandHelper.Api.Models.Resources.Silverine
+FamilyIslandHelper.Api.Models.Resources.Silverine.Silverine() -> void
+FamilyIslandHelper.Api.Models.Resources.Skin
+FamilyIslandHelper.Api.Models.Resources.Skin.Skin() -> void
+FamilyIslandHelper.Api.Models.Resources.Stick
+FamilyIslandHelper.Api.Models.Resources.Stick.Stick() -> void
+FamilyIslandHelper.Api.Models.Resources.Stone
+FamilyIslandHelper.Api.Models.Resources.Stone.Stone() -> void
+FamilyIslandHelper.Api.Models.Resources.Sunflower
+FamilyIslandHelper.Api.Models.Resources.Sunflower.Sunflower() -> void
+FamilyIslandHelper.Api.Models.Resources.Wheat
+FamilyIslandHelper.Api.Models.Resources.Wheat.Wheat() -> void
+FamilyIslandHelper.Api.Models.Resources.Wood
+FamilyIslandHelper.Api.Models.Resources.Wood.Wood() -> void
+FamilyIslandHelper.Api.Models.Resources_v2.Clay
+FamilyIslandHelper.Api.Models.Resources_v2.Clay.Clay() -> void
+FamilyIslandHelper.Api.Models.Resources_v2.Corn
+FamilyIslandHelper.Api.Models.Resources_v2.Corn.Corn() -> void
+FamilyIslandHelper.Api.Models.Resources_v2.Cotton
+FamilyIslandHelper.Api.Models.Resources_v2.Cotton.Cotton() -> void
+FamilyIslandHelper.Api.Models.Resources_v2.Egg
+FamilyIslandHelper.Api.Models.Resources_v2.Egg.Egg() -> void
+FamilyIslandHelper.Api.Models.Resources_v2.Feather
+FamilyIslandHelper.Api.Models.Resources_v2.Feather.Feather() -> void
+FamilyIslandHelper.Api.Models.Resources_v2.Grass
+FamilyIslandHelper.Api.Models.Resources_v2.Grass.Grass() -> void
+FamilyIslandHelper.Api.Models.Resources_v2.Iron
+FamilyIslandHelper.Api.Models.Resources_v2.Iron.Iron() -> void
+FamilyIslandHelper.Api.Models.Resources_v2.Milk
+FamilyIslandHelper.Api.Models.Resources_v2.Milk.Milk() -> void
+FamilyIslandHelper.Api.Models.Resources_v2.Potherb
+FamilyIslandHelper.Api.Models.Resources_v2.Potherb.Potherb() -> void
+FamilyIslandHelper.Api.Models.Resources_v2.Skin
+FamilyIslandHelper.Api.Models.Resources_v2.Skin.Skin() -> void
+FamilyIslandHelper.Api.Models.Resources_v2.Stick
+FamilyIslandHelper.Api.Models.Resources_v2.Stick.Stick() -> void
+FamilyIslandHelper.Api.Models.Resources_v2.Stone
+FamilyIslandHelper.Api.Models.Resources_v2.Stone.Stone() -> void
+FamilyIslandHelper.Api.Models.Resources_v2.Tomato
+FamilyIslandHelper.Api.Models.Resources_v2.Tomato.Tomato() -> void
+FamilyIslandHelper.Api.Models.Resources_v2.Wheat
+FamilyIslandHelper.Api.Models.Resources_v2.Wheat.Wheat() -> void
+FamilyIslandHelper.Api.Models.Resources_v2.Wood.Wood() -> void
+override FamilyIslandHelper.Api.Models.Abstract.Building.ToString() -> string
+override FamilyIslandHelper.Api.Models.Abstract.Item.ToString() -> string
+override FamilyIslandHelper.Api.Models.Abstract.ProducibleItem.ToString() -> string
+override FamilyIslandHelper.Api.Models.Abstract.ProducibleItem.ToString(int itemCount) -> string
+override FamilyIslandHelper.Api.Models.Abstract.ResourceItem.ToString() -> string
+override FamilyIslandHelper.Api.Models.Abstract.ResourceItem.ToString(int itemCount) -> string
+override FamilyIslandHelper.Api.Models.Abstract.ZeroCostResourceItem.EnergyCost.get -> int
+override FamilyIslandHelper.Api.Models.Abstract.ZeroCostResourceItem.ToString() -> string
+override FamilyIslandHelper.Api.Models.Abstract.ZeroCostResourceItem.ToString(int itemCount) -> string
+override FamilyIslandHelper.Api.Models.Buildings.CarpentryWorkshop.Items.get -> System.Collections.Generic.List<FamilyIslandHelper.Api.Models.Abstract.ProducibleItem>
+override FamilyIslandHelper.Api.Models.Buildings.CarpentryWorkshop.Name.get -> string
+override FamilyIslandHelper.Api.Models.Buildings.CarpentryWorkshop.ProduceRatio.get -> double
+override FamilyIslandHelper.Api.Models.Buildings.JewelryWorkshop.Items.get -> System.Collections.Generic.List<FamilyIslandHelper.Api.Models.Abstract.ProducibleItem>
+override FamilyIslandHelper.Api.Models.Buildings.JewelryWorkshop.Name.get -> string
+override FamilyIslandHelper.Api.Models.Buildings.JewelryWorkshop.ProduceRatio.get -> double
+override FamilyIslandHelper.Api.Models.Buildings.Knocker.Items.get -> System.Collections.Generic.List<FamilyIslandHelper.Api.Models.Abstract.ProducibleItem>
+override FamilyIslandHelper.Api.Models.Buildings.Knocker.Name.get -> string
+override FamilyIslandHelper.Api.Models.Buildings.Knocker.ProduceRatio.get -> double
+override FamilyIslandHelper.Api.Models.Buildings.Loom.Items.get -> System.Collections.Generic.List<FamilyIslandHelper.Api.Models.Abstract.ProducibleItem>
+override FamilyIslandHelper.Api.Models.Buildings.Loom.Name.get -> string
+override FamilyIslandHelper.Api.Models.Buildings.Loom.ProduceRatio.get -> double
+override FamilyIslandHelper.Api.Models.Buildings.MeteoriteForge.Items.get -> System.Collections.Generic.List<FamilyIslandHelper.Api.Models.Abstract.ProducibleItem>
+override FamilyIslandHelper.Api.Models.Buildings.MeteoriteForge.Name.get -> string
+override FamilyIslandHelper.Api.Models.Buildings.MeteoriteForge.ProduceRatio.get -> double
+override FamilyIslandHelper.Api.Models.Buildings.Mill.Items.get -> System.Collections.Generic.List<FamilyIslandHelper.Api.Models.Abstract.ProducibleItem>
+override FamilyIslandHelper.Api.Models.Buildings.Mill.Name.get -> string
+override FamilyIslandHelper.Api.Models.Buildings.Mill.ProduceRatio.get -> double
+override FamilyIslandHelper.Api.Models.Buildings.Mixer.Items.get -> System.Collections.Generic.List<FamilyIslandHelper.Api.Models.Abstract.ProducibleItem>
+override FamilyIslandHelper.Api.Models.Buildings.Mixer.Name.get -> string
+override FamilyIslandHelper.Api.Models.Buildings.Mixer.ProduceRatio.get -> double
+override FamilyIslandHelper.Api.Models.Buildings.Pottery.Items.get -> System.Collections.Generic.List<FamilyIslandHelper.Api.Models.Abstract.ProducibleItem>
+override FamilyIslandHelper.Api.Models.Buildings.Pottery.Name.get -> string
+override FamilyIslandHelper.Api.Models.Buildings.Pottery.ProduceRatio.get -> double
+override FamilyIslandHelper.Api.Models.Buildings.Sawmill.Items.get -> System.Collections.Generic.List<FamilyIslandHelper.Api.Models.Abstract.ProducibleItem>
+override FamilyIslandHelper.Api.Models.Buildings.Sawmill.Name.get -> string
+override FamilyIslandHelper.Api.Models.Buildings.Sawmill.ProduceRatio.get -> double
+override FamilyIslandHelper.Api.Models.Buildings.ShamanWorkshop.Items.get -> System.Collections.Generic.List<FamilyIslandHelper.Api.Models.Abstract.ProducibleItem>
+override FamilyIslandHelper.Api.Models.Buildings.ShamanWorkshop.Name.get -> string
+override FamilyIslandHelper.Api.Models.Buildings.ShamanWorkshop.ProduceRatio.get -> double
+override FamilyIslandHelper.Api.Models.Buildings.Smelter.Items.get -> System.Collections.Generic.List<FamilyIslandHelper.Api.Models.Abstract.ProducibleItem>
+override FamilyIslandHelper.Api.Models.Buildings.Smelter.Name.get -> string
+override FamilyIslandHelper.Api.Models.Buildings.Smelter.ProduceRatio.get -> double
+override FamilyIslandHelper.Api.Models.Buildings.Tannery.Items.get -> System.Collections.Generic.List<FamilyIslandHelper.Api.Models.Abstract.ProducibleItem>
+override FamilyIslandHelper.Api.Models.Buildings.Tannery.Name.get -> string
+override FamilyIslandHelper.Api.Models.Buildings.Tannery.ProduceRatio.get -> double
+override FamilyIslandHelper.Api.Models.Buildings.Workshop.Items.get -> System.Collections.Generic.List<FamilyIslandHelper.Api.Models.Abstract.ProducibleItem>
+override FamilyIslandHelper.Api.Models.Buildings.Workshop.Name.get -> string
+override FamilyIslandHelper.Api.Models.Buildings.Workshop.ProduceRatio.get -> double
+override FamilyIslandHelper.Api.Models.Buildings_v2.AlchemistLaboratory.Items.get -> System.Collections.Generic.List<FamilyIslandHelper.Api.Models.Abstract.ProducibleItem>
+override FamilyIslandHelper.Api.Models.Buildings_v2.AlchemistLaboratory.Name.get -> string
+override FamilyIslandHelper.Api.Models.Buildings_v2.AlchemistLaboratory.ProduceRatio.get -> double
+override FamilyIslandHelper.Api.Models.Buildings_v2.Bench.Items.get -> System.Collections.Generic.List<FamilyIslandHelper.Api.Models.Abstract.ProducibleItem>
+override FamilyIslandHelper.Api.Models.Buildings_v2.Bench.Name.get -> string
+override FamilyIslandHelper.Api.Models.Buildings_v2.Bench.ProduceRatio.get -> double
+override FamilyIslandHelper.Api.Models.Buildings_v2.CarpentryWorkshop.Items.get -> System.Collections.Generic.List<FamilyIslandHelper.Api.Models.Abstract.ProducibleItem>
+override FamilyIslandHelper.Api.Models.Buildings_v2.CarpentryWorkshop.Name.get -> string
+override FamilyIslandHelper.Api.Models.Buildings_v2.CarpentryWorkshop.ProduceRatio.get -> double
+override FamilyIslandHelper.Api.Models.Buildings_v2.Forge.Items.get -> System.Collections.Generic.List<FamilyIslandHelper.Api.Models.Abstract.ProducibleItem>
+override FamilyIslandHelper.Api.Models.Buildings_v2.Forge.Name.get -> string
+override FamilyIslandHelper.Api.Models.Buildings_v2.Forge.ProduceRatio.get -> double
+override FamilyIslandHelper.Api.Models.Buildings_v2.JewelryWorkshop.Items.get -> System.Collections.Generic.List<FamilyIslandHelper.Api.Models.Abstract.ProducibleItem>
+override FamilyIslandHelper.Api.Models.Buildings_v2.JewelryWorkshop.Name.get -> string
+override FamilyIslandHelper.Api.Models.Buildings_v2.JewelryWorkshop.ProduceRatio.get -> double
+override FamilyIslandHelper.Api.Models.Buildings_v2.Kiln.Items.get -> System.Collections.Generic.List<FamilyIslandHelper.Api.Models.Abstract.ProducibleItem>
+override FamilyIslandHelper.Api.Models.Buildings_v2.Kiln.Name.get -> string
+override FamilyIslandHelper.Api.Models.Buildings_v2.Kiln.ProduceRatio.get -> double
+override FamilyIslandHelper.Api.Models.Buildings_v2.Knocker.Items.get -> System.Collections.Generic.List<FamilyIslandHelper.Api.Models.Abstract.ProducibleItem>
+override FamilyIslandHelper.Api.Models.Buildings_v2.Knocker.Name.get -> string
+override FamilyIslandHelper.Api.Models.Buildings_v2.Knocker.ProduceRatio.get -> double
+override FamilyIslandHelper.Api.Models.Buildings_v2.Loom.Items.get -> System.Collections.Generic.List<FamilyIslandHelper.Api.Models.Abstract.ProducibleItem>
+override FamilyIslandHelper.Api.Models.Buildings_v2.Loom.Name.get -> string
+override FamilyIslandHelper.Api.Models.Buildings_v2.Loom.ProduceRatio.get -> double
+override FamilyIslandHelper.Api.Models.Buildings_v2.MeteoriteForge.Items.get -> System.Collections.Generic.List<FamilyIslandHelper.Api.Models.Abstract.ProducibleItem>
+override FamilyIslandHelper.Api.Models.Buildings_v2.MeteoriteForge.Name.get -> string
+override FamilyIslandHelper.Api.Models.Buildings_v2.MeteoriteForge.ProduceRatio.get -> double
+override FamilyIslandHelper.Api.Models.Buildings_v2.Mill.Items.get -> System.Collections.Generic.List<FamilyIslandHelper.Api.Models.Abstract.ProducibleItem>
+override FamilyIslandHelper.Api.Models.Buildings_v2.Mill.Name.get -> string
+override FamilyIslandHelper.Api.Models.Buildings_v2.Mill.ProduceRatio.get -> double
+override FamilyIslandHelper.Api.Models.Buildings_v2.Mixer.Items.get -> System.Collections.Generic.List<FamilyIslandHelper.Api.Models.Abstract.ProducibleItem>
+override FamilyIslandHelper.Api.Models.Buildings_v2.Mixer.Name.get -> string
+override FamilyIslandHelper.Api.Models.Buildings_v2.Mixer.ProduceRatio.get -> double
+override FamilyIslandHelper.Api.Models.Buildings_v2.Pottery.Items.get -> System.Collections.Generic.List<FamilyIslandHelper.Api.Models.Abstract.ProducibleItem>
+override FamilyIslandHelper.Api.Models.Buildings_v2.Pottery.Name.get -> string
+override FamilyIslandHelper.Api.Models.Buildings_v2.Pottery.ProduceRatio.get -> double
+override FamilyIslandHelper.Api.Models.Buildings_v2.Sawmill.Items.get -> System.Collections.Generic.List<FamilyIslandHelper.Api.Models.Abstract.ProducibleItem>
+override FamilyIslandHelper.Api.Models.Buildings_v2.Sawmill.Name.get -> string
+override FamilyIslandHelper.Api.Models.Buildings_v2.Sawmill.ProduceRatio.get -> double
+override FamilyIslandHelper.Api.Models.Buildings_v2.SewingWorkshop.Items.get -> System.Collections.Generic.List<FamilyIslandHelper.Api.Models.Abstract.ProducibleItem>
+override FamilyIslandHelper.Api.Models.Buildings_v2.SewingWorkshop.Name.get -> string
+override FamilyIslandHelper.Api.Models.Buildings_v2.SewingWorkshop.ProduceRatio.get -> double
+override FamilyIslandHelper.Api.Models.Buildings_v2.Smelter.Items.get -> System.Collections.Generic.List<FamilyIslandHelper.Api.Models.Abstract.ProducibleItem>
+override FamilyIslandHelper.Api.Models.Buildings_v2.Smelter.Name.get -> string
+override FamilyIslandHelper.Api.Models.Buildings_v2.Smelter.ProduceRatio.get -> double
+override FamilyIslandHelper.Api.Models.Buildings_v2.Tannery.Items.get -> System.Collections.Generic.List<FamilyIslandHelper.Api.Models.Abstract.ProducibleItem>
+override FamilyIslandHelper.Api.Models.Buildings_v2.Tannery.Name.get -> string
+override FamilyIslandHelper.Api.Models.Buildings_v2.Tannery.ProduceRatio.get -> double
+override FamilyIslandHelper.Api.Models.Buildings_v2.Workshop.Items.get -> System.Collections.Generic.List<FamilyIslandHelper.Api.Models.Abstract.ProducibleItem>
+override FamilyIslandHelper.Api.Models.Buildings_v2.Workshop.Name.get -> string
+override FamilyIslandHelper.Api.Models.Buildings_v2.Workshop.ProduceRatio.get -> double
+override FamilyIslandHelper.Api.Models.Items.AmethystPendant.BuildingToCreate.get -> FamilyIslandHelper.Api.Models.Abstract.Building
+override FamilyIslandHelper.Api.Models.Items.AmethystPendant.Components.get -> System.Collections.Generic.List<(FamilyIslandHelper.Api.Models.Abstract.Item item, int count)>
+override FamilyIslandHelper.Api.Models.Items.AmethystPendant.LevelWhenAppears.get -> int
+override FamilyIslandHelper.Api.Models.Items.AmethystPendant.Name.get -> string
+override FamilyIslandHelper.Api.Models.Items.AmethystPendant.OriginalProduceTime.get -> System.TimeSpan
+override FamilyIslandHelper.Api.Models.Items.Amphora.BuildingToCreate.get -> FamilyIslandHelper.Api.Models.Abstract.Building
+override FamilyIslandHelper.Api.Models.Items.Amphora.Components.get -> System.Collections.Generic.List<(FamilyIslandHelper.Api.Models.Abstract.Item item, int count)>
+override FamilyIslandHelper.Api.Models.Items.Amphora.LevelWhenAppears.get -> int
+override FamilyIslandHelper.Api.Models.Items.Amphora.Name.get -> string
+override FamilyIslandHelper.Api.Models.Items.Amphora.OriginalProduceTime.get -> System.TimeSpan
+override FamilyIslandHelper.Api.Models.Items.Axe.BuildingToCreate.get -> FamilyIslandHelper.Api.Models.Abstract.Building
+override FamilyIslandHelper.Api.Models.Items.Axe.Components.get -> System.Collections.Generic.List<(FamilyIslandHelper.Api.Models.Abstract.Item item, int count)>
+override FamilyIslandHelper.Api.Models.Items.Axe.LevelWhenAppears.get -> int
+override FamilyIslandHelper.Api.Models.Items.Axe.Name.get -> string
+override FamilyIslandHelper.Api.Models.Items.Axe.OriginalProduceTime.get -> System.TimeSpan
+override FamilyIslandHelper.Api.Models.Items.Barrel.BuildingToCreate.get -> FamilyIslandHelper.Api.Models.Abstract.Building
+override FamilyIslandHelper.Api.Models.Items.Barrel.Components.get -> System.Collections.Generic.List<(FamilyIslandHelper.Api.Models.Abstract.Item item, int count)>
+override FamilyIslandHelper.Api.Models.Items.Barrel.LevelWhenAppears.get -> int
+override FamilyIslandHelper.Api.Models.Items.Barrel.Name.get -> string
+override FamilyIslandHelper.Api.Models.Items.Barrel.OriginalProduceTime.get -> System.TimeSpan
+override FamilyIslandHelper.Api.Models.Items.Beams.BuildingToCreate.get -> FamilyIslandHelper.Api.Models.Abstract.Building
+override FamilyIslandHelper.Api.Models.Items.Beams.Components.get -> System.Collections.Generic.List<(FamilyIslandHelper.Api.Models.Abstract.Item item, int count)>
+override FamilyIslandHelper.Api.Models.Items.Beams.LevelWhenAppears.get -> int
+override FamilyIslandHelper.Api.Models.Items.Beams.Name.get -> string
+override FamilyIslandHelper.Api.Models.Items.Beams.OriginalProduceTime.get -> System.TimeSpan
+override FamilyIslandHelper.Api.Models.Items.BluePaint.BuildingToCreate.get -> FamilyIslandHelper.Api.Models.Abstract.Building
+override FamilyIslandHelper.Api.Models.Items.BluePaint.Components.get -> System.Collections.Generic.List<(FamilyIslandHelper.Api.Models.Abstract.Item item, int count)>
+override FamilyIslandHelper.Api.Models.Items.BluePaint.LevelWhenAppears.get -> int
+override FamilyIslandHelper.Api.Models.Items.BluePaint.Name.get -> string
+override FamilyIslandHelper.Api.Models.Items.BluePaint.OriginalProduceTime.get -> System.TimeSpan
+override FamilyIslandHelper.Api.Models.Items.Bowl.BuildingToCreate.get -> FamilyIslandHelper.Api.Models.Abstract.Building
+override FamilyIslandHelper.Api.Models.Items.Bowl.Components.get -> System.Collections.Generic.List<(FamilyIslandHelper.Api.Models.Abstract.Item item, int count)>
+override FamilyIslandHelper.Api.Models.Items.Bowl.LevelWhenAppears.get -> int
+override FamilyIslandHelper.Api.Models.Items.Bowl.Name.get -> string
+override FamilyIslandHelper.Api.Models.Items.Bowl.OriginalProduceTime.get -> System.TimeSpan
+override FamilyIslandHelper.Api.Models.Items.Brick.BuildingToCreate.get -> FamilyIslandHelper.Api.Models.Abstract.Building
+override FamilyIslandHelper.Api.Models.Items.Brick.Components.get -> System.Collections.Generic.List<(FamilyIslandHelper.Api.Models.Abstract.Item item, int count)>
+override FamilyIslandHelper.Api.Models.Items.Brick.LevelWhenAppears.get -> int
+override FamilyIslandHelper.Api.Models.Items.Brick.Name.get -> string
+override FamilyIslandHelper.Api.Models.Items.Brick.OriginalProduceTime.get -> System.TimeSpan
+override FamilyIslandHelper.Api.Models.Items.BurntBrick.BuildingToCreate.get -> FamilyIslandHelper.Api.Models.Abstract.Building
+override FamilyIslandHelper.Api.Models.Items.BurntBrick.Components.get -> System.Collections.Generic.List<(FamilyIslandHelper.Api.Models.Abstract.Item item, int count)>
+override FamilyIslandHelper.Api.Models.Items.BurntBrick.LevelWhenAppears.get -> int
+override FamilyIslandHelper.Api.Models.Items.BurntBrick.Name.get -> string
+override FamilyIslandHelper.Api.Models.Items.BurntBrick.OriginalProduceTime.get -> System.TimeSpan
+override FamilyIslandHelper.Api.Models.Items.Butter.BuildingToCreate.get -> FamilyIslandHelper.Api.Models.Abstract.Building
+override FamilyIslandHelper.Api.Models.Items.Butter.Components.get -> System.Collections.Generic.List<(FamilyIslandHelper.Api.Models.Abstract.Item item, int count)>
+override FamilyIslandHelper.Api.Models.Items.Butter.LevelWhenAppears.get -> int
+override FamilyIslandHelper.Api.Models.Items.Butter.Name.get -> string
+override FamilyIslandHelper.Api.Models.Items.Butter.OriginalProduceTime.get -> System.TimeSpan
+override FamilyIslandHelper.Api.Models.Items.Cheese.BuildingToCreate.get -> FamilyIslandHelper.Api.Models.Abstract.Building
+override FamilyIslandHelper.Api.Models.Items.Cheese.Components.get -> System.Collections.Generic.List<(FamilyIslandHelper.Api.Models.Abstract.Item item, int count)>
+override FamilyIslandHelper.Api.Models.Items.Cheese.LevelWhenAppears.get -> int
+override FamilyIslandHelper.Api.Models.Items.Cheese.Name.get -> string
+override FamilyIslandHelper.Api.Models.Items.Cheese.OriginalProduceTime.get -> System.TimeSpan
+override FamilyIslandHelper.Api.Models.Items.ChickenFood.BuildingToCreate.get -> FamilyIslandHelper.Api.Models.Abstract.Building
+override FamilyIslandHelper.Api.Models.Items.ChickenFood.Components.get -> System.Collections.Generic.List<(FamilyIslandHelper.Api.Models.Abstract.Item item, int count)>
+override FamilyIslandHelper.Api.Models.Items.ChickenFood.LevelWhenAppears.get -> int
+override FamilyIslandHelper.Api.Models.Items.ChickenFood.Name.get -> string
+override FamilyIslandHelper.Api.Models.Items.ChickenFood.OriginalProduceTime.get -> System.TimeSpan
+override FamilyIslandHelper.Api.Models.Items.Cloth.BuildingToCreate.get -> FamilyIslandHelper.Api.Models.Abstract.Building
+override FamilyIslandHelper.Api.Models.Items.Cloth.Components.get -> System.Collections.Generic.List<(FamilyIslandHelper.Api.Models.Abstract.Item item, int count)>
+override FamilyIslandHelper.Api.Models.Items.Cloth.LevelWhenAppears.get -> int
+override FamilyIslandHelper.Api.Models.Items.Cloth.Name.get -> string
+override FamilyIslandHelper.Api.Models.Items.Cloth.OriginalProduceTime.get -> System.TimeSpan
+override FamilyIslandHelper.Api.Models.Items.Coal.BuildingToCreate.get -> FamilyIslandHelper.Api.Models.Abstract.Building
+override FamilyIslandHelper.Api.Models.Items.Coal.Components.get -> System.Collections.Generic.List<(FamilyIslandHelper.Api.Models.Abstract.Item item, int count)>
+override FamilyIslandHelper.Api.Models.Items.Coal.LevelWhenAppears.get -> int
+override FamilyIslandHelper.Api.Models.Items.Coal.Name.get -> string
+override FamilyIslandHelper.Api.Models.Items.Coal.OriginalProduceTime.get -> System.TimeSpan
+override FamilyIslandHelper.Api.Models.Items.CowFood.BuildingToCreate.get -> FamilyIslandHelper.Api.Models.Abstract.Building
+override FamilyIslandHelper.Api.Models.Items.CowFood.Components.get -> System.Collections.Generic.List<(FamilyIslandHelper.Api.Models.Abstract.Item item, int count)>
+override FamilyIslandHelper.Api.Models.Items.CowFood.LevelWhenAppears.get -> int
+override FamilyIslandHelper.Api.Models.Items.CowFood.Name.get -> string
+override FamilyIslandHelper.Api.Models.Items.CowFood.OriginalProduceTime.get -> System.TimeSpan
+override FamilyIslandHelper.Api.Models.Items.Crest.BuildingToCreate.get -> FamilyIslandHelper.Api.Models.Abstract.Building
+override FamilyIslandHelper.Api.Models.Items.Crest.Components.get -> System.Collections.Generic.List<(FamilyIslandHelper.Api.Models.Abstract.Item item, int count)>
+override FamilyIslandHelper.Api.Models.Items.Crest.LevelWhenAppears.get -> int
+override FamilyIslandHelper.Api.Models.Items.Crest.Name.get -> string
+override FamilyIslandHelper.Api.Models.Items.Crest.OriginalProduceTime.get -> System.TimeSpan
+override FamilyIslandHelper.Api.Models.Items.CrystalLotus.BuildingToCreate.get -> FamilyIslandHelper.Api.Models.Abstract.Building
+override FamilyIslandHelper.Api.Models.Items.CrystalLotus.Components.get -> System.Collections.Generic.List<(FamilyIslandHelper.Api.Models.Abstract.Item item, int count)>
+override FamilyIslandHelper.Api.Models.Items.CrystalLotus.LevelWhenAppears.get -> int
+override FamilyIslandHelper.Api.Models.Items.CrystalLotus.Name.get -> string
+override FamilyIslandHelper.Api.Models.Items.CrystalLotus.OriginalProduceTime.get -> System.TimeSpan
+override FamilyIslandHelper.Api.Models.Items.DreamCatcher.BuildingToCreate.get -> FamilyIslandHelper.Api.Models.Abstract.Building
+override FamilyIslandHelper.Api.Models.Items.DreamCatcher.Components.get -> System.Collections.Generic.List<(FamilyIslandHelper.Api.Models.Abstract.Item item, int count)>
+override FamilyIslandHelper.Api.Models.Items.DreamCatcher.LevelWhenAppears.get -> int
+override FamilyIslandHelper.Api.Models.Items.DreamCatcher.Name.get -> string
+override FamilyIslandHelper.Api.Models.Items.DreamCatcher.OriginalProduceTime.get -> System.TimeSpan
+override FamilyIslandHelper.Api.Models.Items.DyedFabric.BuildingToCreate.get -> FamilyIslandHelper.Api.Models.Abstract.Building
+override FamilyIslandHelper.Api.Models.Items.DyedFabric.Components.get -> System.Collections.Generic.List<(FamilyIslandHelper.Api.Models.Abstract.Item item, int count)>
+override FamilyIslandHelper.Api.Models.Items.DyedFabric.LevelWhenAppears.get -> int
+override FamilyIslandHelper.Api.Models.Items.DyedFabric.Name.get -> string
+override FamilyIslandHelper.Api.Models.Items.DyedFabric.OriginalProduceTime.get -> System.TimeSpan
+override FamilyIslandHelper.Api.Models.Items.EdgedBoard.BuildingToCreate.get -> FamilyIslandHelper.Api.Models.Abstract.Building
+override FamilyIslandHelper.Api.Models.Items.EdgedBoard.Components.get -> System.Collections.Generic.List<(FamilyIslandHelper.Api.Models.Abstract.Item item, int count)>
+override FamilyIslandHelper.Api.Models.Items.EdgedBoard.LevelWhenAppears.get -> int
+override FamilyIslandHelper.Api.Models.Items.EdgedBoard.Name.get -> string
+override FamilyIslandHelper.Api.Models.Items.EdgedBoard.OriginalProduceTime.get -> System.TimeSpan
+override FamilyIslandHelper.Api.Models.Items.EmeraldRing.BuildingToCreate.get -> FamilyIslandHelper.Api.Models.Abstract.Building
+override FamilyIslandHelper.Api.Models.Items.EmeraldRing.Components.get -> System.Collections.Generic.List<(FamilyIslandHelper.Api.Models.Abstract.Item item, int count)>
+override FamilyIslandHelper.Api.Models.Items.EmeraldRing.LevelWhenAppears.get -> int
+override FamilyIslandHelper.Api.Models.Items.EmeraldRing.Name.get -> string
+override FamilyIslandHelper.Api.Models.Items.EmeraldRing.OriginalProduceTime.get -> System.TimeSpan
+override FamilyIslandHelper.Api.Models.Items.Flashlight.BuildingToCreate.get -> FamilyIslandHelper.Api.Models.Abstract.Building
+override FamilyIslandHelper.Api.Models.Items.Flashlight.Components.get -> System.Collections.Generic.List<(FamilyIslandHelper.Api.Models.Abstract.Item item, int count)>
+override FamilyIslandHelper.Api.Models.Items.Flashlight.LevelWhenAppears.get -> int
+override FamilyIslandHelper.Api.Models.Items.Flashlight.Name.get -> string
+override FamilyIslandHelper.Api.Models.Items.Flashlight.OriginalProduceTime.get -> System.TimeSpan
+override FamilyIslandHelper.Api.Models.Items.Flour.BuildingToCreate.get -> FamilyIslandHelper.Api.Models.Abstract.Building
+override FamilyIslandHelper.Api.Models.Items.Flour.Components.get -> System.Collections.Generic.List<(FamilyIslandHelper.Api.Models.Abstract.Item item, int count)>
+override FamilyIslandHelper.Api.Models.Items.Flour.LevelWhenAppears.get -> int
+override FamilyIslandHelper.Api.Models.Items.Flour.Name.get -> string
+override FamilyIslandHelper.Api.Models.Items.Flour.OriginalProduceTime.get -> System.TimeSpan
+override FamilyIslandHelper.Api.Models.Items.FlowerWreath.BuildingToCreate.get -> FamilyIslandHelper.Api.Models.Abstract.Building
+override FamilyIslandHelper.Api.Models.Items.FlowerWreath.Components.get -> System.Collections.Generic.List<(FamilyIslandHelper.Api.Models.Abstract.Item item, int count)>
+override FamilyIslandHelper.Api.Models.Items.FlowerWreath.LevelWhenAppears.get -> int
+override FamilyIslandHelper.Api.Models.Items.FlowerWreath.Name.get -> string
+override FamilyIslandHelper.Api.Models.Items.FlowerWreath.OriginalProduceTime.get -> System.TimeSpan
+override FamilyIslandHelper.Api.Models.Items.FragrantBouquet.BuildingToCreate.get -> FamilyIslandHelper.Api.Models.Abstract.Building
+override FamilyIslandHelper.Api.Models.Items.FragrantBouquet.Components.get -> System.Collections.Generic.List<(FamilyIslandHelper.Api.Models.Abstract.Item item, int count)>
+override FamilyIslandHelper.Api.Models.Items.FragrantBouquet.LevelWhenAppears.get -> int
+override FamilyIslandHelper.Api.Models.Items.FragrantBouquet.Name.get -> string
+override FamilyIslandHelper.Api.Models.Items.FragrantBouquet.OriginalProduceTime.get -> System.TimeSpan
+override FamilyIslandHelper.Api.Models.Items.GemNecklace.BuildingToCreate.get -> FamilyIslandHelper.Api.Models.Abstract.Building
+override FamilyIslandHelper.Api.Models.Items.GemNecklace.Components.get -> System.Collections.Generic.List<(FamilyIslandHelper.Api.Models.Abstract.Item item, int count)>
+override FamilyIslandHelper.Api.Models.Items.GemNecklace.LevelWhenAppears.get -> int
+override FamilyIslandHelper.Api.Models.Items.GemNecklace.Name.get -> string
+override FamilyIslandHelper.Api.Models.Items.GemNecklace.OriginalProduceTime.get -> System.TimeSpan
+override FamilyIslandHelper.Api.Models.Items.Gloves.BuildingToCreate.get -> FamilyIslandHelper.Api.Models.Abstract.Building
+override FamilyIslandHelper.Api.Models.Items.Gloves.Components.get -> System.Collections.Generic.List<(FamilyIslandHelper.Api.Models.Abstract.Item item, int count)>
+override FamilyIslandHelper.Api.Models.Items.Gloves.LevelWhenAppears.get -> int
+override FamilyIslandHelper.Api.Models.Items.Gloves.Name.get -> string
+override FamilyIslandHelper.Api.Models.Items.Gloves.OriginalProduceTime.get -> System.TimeSpan
+override FamilyIslandHelper.Api.Models.Items.GoatFood.BuildingToCreate.get -> FamilyIslandHelper.Api.Models.Abstract.Building
+override FamilyIslandHelper.Api.Models.Items.GoatFood.Components.get -> System.Collections.Generic.List<(FamilyIslandHelper.Api.Models.Abstract.Item item, int count)>
+override FamilyIslandHelper.Api.Models.Items.GoatFood.LevelWhenAppears.get -> int
+override FamilyIslandHelper.Api.Models.Items.GoatFood.Name.get -> string
+override FamilyIslandHelper.Api.Models.Items.GoatFood.OriginalProduceTime.get -> System.TimeSpan
+override FamilyIslandHelper.Api.Models.Items.Gold.BuildingToCreate.get -> FamilyIslandHelper.Api.Models.Abstract.Building
+override FamilyIslandHelper.Api.Models.Items.Gold.Components.get -> System.Collections.Generic.List<(FamilyIslandHelper.Api.Models.Abstract.Item item, int count)>
+override FamilyIslandHelper.Api.Models.Items.Gold.LevelWhenAppears.get -> int
+override FamilyIslandHelper.Api.Models.Items.Gold.Name.get -> string
+override FamilyIslandHelper.Api.Models.Items.Gold.OriginalProduceTime.get -> System.TimeSpan
+override FamilyIslandHelper.Api.Models.Items.Hammer.BuildingToCreate.get -> FamilyIslandHelper.Api.Models.Abstract.Building
+override FamilyIslandHelper.Api.Models.Items.Hammer.Components.get -> System.Collections.Generic.List<(FamilyIslandHelper.Api.Models.Abstract.Item item, int count)>
+override FamilyIslandHelper.Api.Models.Items.Hammer.LevelWhenAppears.get -> int
+override FamilyIslandHelper.Api.Models.Items.Hammer.Name.get -> string
+override FamilyIslandHelper.Api.Models.Items.Hammer.OriginalProduceTime.get -> System.TimeSpan
+override FamilyIslandHelper.Api.Models.Items.Incense.BuildingToCreate.get -> FamilyIslandHelper.Api.Models.Abstract.Building
+override FamilyIslandHelper.Api.Models.Items.Incense.Components.get -> System.Collections.Generic.List<(FamilyIslandHelper.Api.Models.Abstract.Item item, int count)>
+override FamilyIslandHelper.Api.Models.Items.Incense.LevelWhenAppears.get -> int
+override FamilyIslandHelper.Api.Models.Items.Incense.Name.get -> string
+override FamilyIslandHelper.Api.Models.Items.Incense.OriginalProduceTime.get -> System.TimeSpan
+override FamilyIslandHelper.Api.Models.Items.IronIngot.BuildingToCreate.get -> FamilyIslandHelper.Api.Models.Abstract.Building
+override FamilyIslandHelper.Api.Models.Items.IronIngot.Components.get -> System.Collections.Generic.List<(FamilyIslandHelper.Api.Models.Abstract.Item item, int count)>
+override FamilyIslandHelper.Api.Models.Items.IronIngot.LevelWhenAppears.get -> int
+override FamilyIslandHelper.Api.Models.Items.IronIngot.Name.get -> string
+override FamilyIslandHelper.Api.Models.Items.IronIngot.OriginalProduceTime.get -> System.TimeSpan
+override FamilyIslandHelper.Api.Models.Items.IronPipe.BuildingToCreate.get -> FamilyIslandHelper.Api.Models.Abstract.Building
+override FamilyIslandHelper.Api.Models.Items.IronPipe.Components.get -> System.Collections.Generic.List<(FamilyIslandHelper.Api.Models.Abstract.Item item, int count)>
+override FamilyIslandHelper.Api.Models.Items.IronPipe.LevelWhenAppears.get -> int
+override FamilyIslandHelper.Api.Models.Items.IronPipe.Name.get -> string
+override FamilyIslandHelper.Api.Models.Items.IronPipe.OriginalProduceTime.get -> System.TimeSpan
+override FamilyIslandHelper.Api.Models.Items.IronPlate.BuildingToCreate.get -> FamilyIslandHelper.Api.Models.Abstract.Building
+override FamilyIslandHelper.Api.Models.Items.IronPlate.Components.get -> System.Collections.Generic.List<(FamilyIslandHelper.Api.Models.Abstract.Item item, int count)>
+override FamilyIslandHelper.Api.Models.Items.IronPlate.LevelWhenAppears.get -> int
+override FamilyIslandHelper.Api.Models.Items.IronPlate.Name.get -> string
+override FamilyIslandHelper.Api.Models.Items.IronPlate.OriginalProduceTime.get -> System.TimeSpan
+override FamilyIslandHelper.Api.Models.Items.Jug.BuildingToCreate.get -> FamilyIslandHelper.Api.Models.Abstract.Building
+override FamilyIslandHelper.Api.Models.Items.Jug.Components.get -> System.Collections.Generic.List<(FamilyIslandHelper.Api.Models.Abstract.Item item, int count)>
+override FamilyIslandHelper.Api.Models.Items.Jug.LevelWhenAppears.get -> int
+override FamilyIslandHelper.Api.Models.Items.Jug.Name.get -> string
+override FamilyIslandHelper.Api.Models.Items.Jug.OriginalProduceTime.get -> System.TimeSpan
+override FamilyIslandHelper.Api.Models.Items.Knife.BuildingToCreate.get -> FamilyIslandHelper.Api.Models.Abstract.Building
+override FamilyIslandHelper.Api.Models.Items.Knife.Components.get -> System.Collections.Generic.List<(FamilyIslandHelper.Api.Models.Abstract.Item item, int count)>
+override FamilyIslandHelper.Api.Models.Items.Knife.LevelWhenAppears.get -> int
+override FamilyIslandHelper.Api.Models.Items.Knife.Name.get -> string
+override FamilyIslandHelper.Api.Models.Items.Knife.OriginalProduceTime.get -> System.TimeSpan
+override FamilyIslandHelper.Api.Models.Items.Lace.BuildingToCreate.get -> FamilyIslandHelper.Api.Models.Abstract.Building
+override FamilyIslandHelper.Api.Models.Items.Lace.Components.get -> System.Collections.Generic.List<(FamilyIslandHelper.Api.Models.Abstract.Item item, int count)>
+override FamilyIslandHelper.Api.Models.Items.Lace.LevelWhenAppears.get -> int
+override FamilyIslandHelper.Api.Models.Items.Lace.Name.get -> string
+override FamilyIslandHelper.Api.Models.Items.Lace.OriginalProduceTime.get -> System.TimeSpan
+override FamilyIslandHelper.Api.Models.Items.Leather.BuildingToCreate.get -> FamilyIslandHelper.Api.Models.Abstract.Building
+override FamilyIslandHelper.Api.Models.Items.Leather.Components.get -> System.Collections.Generic.List<(FamilyIslandHelper.Api.Models.Abstract.Item item, int count)>
+override FamilyIslandHelper.Api.Models.Items.Leather.LevelWhenAppears.get -> int
+override FamilyIslandHelper.Api.Models.Items.Leather.Name.get -> string
+override FamilyIslandHelper.Api.Models.Items.Leather.OriginalProduceTime.get -> System.TimeSpan
+override FamilyIslandHelper.Api.Models.Items.LeatherBall.BuildingToCreate.get -> FamilyIslandHelper.Api.Models.Abstract.Building
+override FamilyIslandHelper.Api.Models.Items.LeatherBall.Components.get -> System.Collections.Generic.List<(FamilyIslandHelper.Api.Models.Abstract.Item item, int count)>
+override FamilyIslandHelper.Api.Models.Items.LeatherBall.LevelWhenAppears.get -> int
+override FamilyIslandHelper.Api.Models.Items.LeatherBall.Name.get -> string
+override FamilyIslandHelper.Api.Models.Items.LeatherBall.OriginalProduceTime.get -> System.TimeSpan
+override FamilyIslandHelper.Api.Models.Items.LemonOil.BuildingToCreate.get -> FamilyIslandHelper.Api.Models.Abstract.Building
+override FamilyIslandHelper.Api.Models.Items.LemonOil.Components.get -> System.Collections.Generic.List<(FamilyIslandHelper.Api.Models.Abstract.Item item, int count)>
+override FamilyIslandHelper.Api.Models.Items.LemonOil.LevelWhenAppears.get -> int
+override FamilyIslandHelper.Api.Models.Items.LemonOil.Name.get -> string
+override FamilyIslandHelper.Api.Models.Items.LemonOil.OriginalProduceTime.get -> System.TimeSpan
+override FamilyIslandHelper.Api.Models.Items.LimestoneBlock.BuildingToCreate.get -> FamilyIslandHelper.Api.Models.Abstract.Building
+override FamilyIslandHelper.Api.Models.Items.LimestoneBlock.Components.get -> System.Collections.Generic.List<(FamilyIslandHelper.Api.Models.Abstract.Item item, int count)>
+override FamilyIslandHelper.Api.Models.Items.LimestoneBlock.LevelWhenAppears.get -> int
+override FamilyIslandHelper.Api.Models.Items.LimestoneBlock.Name.get -> string
+override FamilyIslandHelper.Api.Models.Items.LimestoneBlock.OriginalProduceTime.get -> System.TimeSpan
+override FamilyIslandHelper.Api.Models.Items.Millstone.BuildingToCreate.get -> FamilyIslandHelper.Api.Models.Abstract.Building
+override FamilyIslandHelper.Api.Models.Items.Millstone.Components.get -> System.Collections.Generic.List<(FamilyIslandHelper.Api.Models.Abstract.Item item, int count)>
+override FamilyIslandHelper.Api.Models.Items.Millstone.LevelWhenAppears.get -> int
+override FamilyIslandHelper.Api.Models.Items.Millstone.Name.get -> string
+override FamilyIslandHelper.Api.Models.Items.Millstone.OriginalProduceTime.get -> System.TimeSpan
+override FamilyIslandHelper.Api.Models.Items.Nails.BuildingToCreate.get -> FamilyIslandHelper.Api.Models.Abstract.Building
+override FamilyIslandHelper.Api.Models.Items.Nails.Components.get -> System.Collections.Generic.List<(FamilyIslandHelper.Api.Models.Abstract.Item item, int count)>
+override FamilyIslandHelper.Api.Models.Items.Nails.LevelWhenAppears.get -> int
+override FamilyIslandHelper.Api.Models.Items.Nails.Name.get -> string
+override FamilyIslandHelper.Api.Models.Items.Nails.OriginalProduceTime.get -> System.TimeSpan
+override FamilyIslandHelper.Api.Models.Items.Necklace.BuildingToCreate.get -> FamilyIslandHelper.Api.Models.Abstract.Building
+override FamilyIslandHelper.Api.Models.Items.Necklace.Components.get -> System.Collections.Generic.List<(FamilyIslandHelper.Api.Models.Abstract.Item item, int count)>
+override FamilyIslandHelper.Api.Models.Items.Necklace.LevelWhenAppears.get -> int
+override FamilyIslandHelper.Api.Models.Items.Necklace.Name.get -> string
+override FamilyIslandHelper.Api.Models.Items.Necklace.OriginalProduceTime.get -> System.TimeSpan
+override FamilyIslandHelper.Api.Models.Items.Needle.BuildingToCreate.get -> FamilyIslandHelper.Api.Models.Abstract.Building
+override FamilyIslandHelper.Api.Models.Items.Needle.Components.get -> System.Collections.Generic.List<(FamilyIslandHelper.Api.Models.Abstract.Item item, int count)>
+override FamilyIslandHelper.Api.Models.Items.Needle.LevelWhenAppears.get -> int
+override FamilyIslandHelper.Api.Models.Items.Needle.Name.get -> string
+override FamilyIslandHelper.Api.Models.Items.Needle.OriginalProduceTime.get -> System.TimeSpan
+override FamilyIslandHelper.Api.Models.Items.Ocher.BuildingToCreate.get -> FamilyIslandHelper.Api.Models.Abstract.Building
+override FamilyIslandHelper.Api.Models.Items.Ocher.Components.get -> System.Collections.Generic.List<(FamilyIslandHelper.Api.Models.Abstract.Item item, int count)>
+override FamilyIslandHelper.Api.Models.Items.Ocher.LevelWhenAppears.get -> int
+override FamilyIslandHelper.Api.Models.Items.Ocher.Name.get -> string
+override FamilyIslandHelper.Api.Models.Items.Ocher.OriginalProduceTime.get -> System.TimeSpan
+override FamilyIslandHelper.Api.Models.Items.Paints.BuildingToCreate.get -> FamilyIslandHelper.Api.Models.Abstract.Building
+override FamilyIslandHelper.Api.Models.Items.Paints.Components.get -> System.Collections.Generic.List<(FamilyIslandHelper.Api.Models.Abstract.Item item, int count)>
+override FamilyIslandHelper.Api.Models.Items.Paints.LevelWhenAppears.get -> int
+override FamilyIslandHelper.Api.Models.Items.Paints.Name.get -> string
+override FamilyIslandHelper.Api.Models.Items.Paints.OriginalProduceTime.get -> System.TimeSpan
+override FamilyIslandHelper.Api.Models.Items.PalmBeams.BuildingToCreate.get -> FamilyIslandHelper.Api.Models.Abstract.Building
+override FamilyIslandHelper.Api.Models.Items.PalmBeams.Components.get -> System.Collections.Generic.List<(FamilyIslandHelper.Api.Models.Abstract.Item item, int count)>
+override FamilyIslandHelper.Api.Models.Items.PalmBeams.LevelWhenAppears.get -> int
+override FamilyIslandHelper.Api.Models.Items.PalmBeams.Name.get -> string
+override FamilyIslandHelper.Api.Models.Items.PalmBeams.OriginalProduceTime.get -> System.TimeSpan
+override FamilyIslandHelper.Api.Models.Items.Papyrus.BuildingToCreate.get -> FamilyIslandHelper.Api.Models.Abstract.Building
+override FamilyIslandHelper.Api.Models.Items.Papyrus.Components.get -> System.Collections.Generic.List<(FamilyIslandHelper.Api.Models.Abstract.Item item, int count)>
+override FamilyIslandHelper.Api.Models.Items.Papyrus.LevelWhenAppears.get -> int
+override FamilyIslandHelper.Api.Models.Items.Papyrus.Name.get -> string
+override FamilyIslandHelper.Api.Models.Items.Papyrus.OriginalProduceTime.get -> System.TimeSpan
+override FamilyIslandHelper.Api.Models.Items.PearlEarrings.BuildingToCreate.get -> FamilyIslandHelper.Api.Models.Abstract.Building
+override FamilyIslandHelper.Api.Models.Items.PearlEarrings.Components.get -> System.Collections.Generic.List<(FamilyIslandHelper.Api.Models.Abstract.Item item, int count)>
+override FamilyIslandHelper.Api.Models.Items.PearlEarrings.LevelWhenAppears.get -> int
+override FamilyIslandHelper.Api.Models.Items.PearlEarrings.Name.get -> string
+override FamilyIslandHelper.Api.Models.Items.PearlEarrings.OriginalProduceTime.get -> System.TimeSpan
+override FamilyIslandHelper.Api.Models.Items.PicnicBasket.BuildingToCreate.get -> FamilyIslandHelper.Api.Models.Abstract.Building
+override FamilyIslandHelper.Api.Models.Items.PicnicBasket.Components.get -> System.Collections.Generic.List<(FamilyIslandHelper.Api.Models.Abstract.Item item, int count)>
+override FamilyIslandHelper.Api.Models.Items.PicnicBasket.LevelWhenAppears.get -> int
+override FamilyIslandHelper.Api.Models.Items.PicnicBasket.Name.get -> string
+override FamilyIslandHelper.Api.Models.Items.PicnicBasket.OriginalProduceTime.get -> System.TimeSpan
+override FamilyIslandHelper.Api.Models.Items.Pipe.BuildingToCreate.get -> FamilyIslandHelper.Api.Models.Abstract.Building
+override FamilyIslandHelper.Api.Models.Items.Pipe.Components.get -> System.Collections.Generic.List<(FamilyIslandHelper.Api.Models.Abstract.Item item, int count)>
+override FamilyIslandHelper.Api.Models.Items.Pipe.LevelWhenAppears.get -> int
+override FamilyIslandHelper.Api.Models.Items.Pipe.Name.get -> string
+override FamilyIslandHelper.Api.Models.Items.Pipe.OriginalProduceTime.get -> System.TimeSpan
+override FamilyIslandHelper.Api.Models.Items.Pot.BuildingToCreate.get -> FamilyIslandHelper.Api.Models.Abstract.Building
+override FamilyIslandHelper.Api.Models.Items.Pot.Components.get -> System.Collections.Generic.List<(FamilyIslandHelper.Api.Models.Abstract.Item item, int count)>
+override FamilyIslandHelper.Api.Models.Items.Pot.LevelWhenAppears.get -> int
+override FamilyIslandHelper.Api.Models.Items.Pot.Name.get -> string
+override FamilyIslandHelper.Api.Models.Items.Pot.OriginalProduceTime.get -> System.TimeSpan
+override FamilyIslandHelper.Api.Models.Items.Resin.BuildingToCreate.get -> FamilyIslandHelper.Api.Models.Abstract.Building
+override FamilyIslandHelper.Api.Models.Items.Resin.Components.get -> System.Collections.Generic.List<(FamilyIslandHelper.Api.Models.Abstract.Item item, int count)>
+override FamilyIslandHelper.Api.Models.Items.Resin.LevelWhenAppears.get -> int
+override FamilyIslandHelper.Api.Models.Items.Resin.Name.get -> string
+override FamilyIslandHelper.Api.Models.Items.Resin.OriginalProduceTime.get -> System.TimeSpan
+override FamilyIslandHelper.Api.Models.Items.Rope.BuildingToCreate.get -> FamilyIslandHelper.Api.Models.Abstract.Building
+override FamilyIslandHelper.Api.Models.Items.Rope.Components.get -> System.Collections.Generic.List<(FamilyIslandHelper.Api.Models.Abstract.Item item, int count)>
+override FamilyIslandHelper.Api.Models.Items.Rope.LevelWhenAppears.get -> int
+override FamilyIslandHelper.Api.Models.Items.Rope.Name.get -> string
+override FamilyIslandHelper.Api.Models.Items.Rope.OriginalProduceTime.get -> System.TimeSpan
+override FamilyIslandHelper.Api.Models.Items.RuneStone.BuildingToCreate.get -> FamilyIslandHelper.Api.Models.Abstract.Building
+override FamilyIslandHelper.Api.Models.Items.RuneStone.Components.get -> System.Collections.Generic.List<(FamilyIslandHelper.Api.Models.Abstract.Item item, int count)>
+override FamilyIslandHelper.Api.Models.Items.RuneStone.LevelWhenAppears.get -> int
+override FamilyIslandHelper.Api.Models.Items.RuneStone.Name.get -> string
+override FamilyIslandHelper.Api.Models.Items.RuneStone.OriginalProduceTime.get -> System.TimeSpan
+override FamilyIslandHelper.Api.Models.Items.Sackcloth.BuildingToCreate.get -> FamilyIslandHelper.Api.Models.Abstract.Building
+override FamilyIslandHelper.Api.Models.Items.Sackcloth.Components.get -> System.Collections.Generic.List<(FamilyIslandHelper.Api.Models.Abstract.Item item, int count)>
+override FamilyIslandHelper.Api.Models.Items.Sackcloth.LevelWhenAppears.get -> int
+override FamilyIslandHelper.Api.Models.Items.Sackcloth.Name.get -> string
+override FamilyIslandHelper.Api.Models.Items.Sackcloth.OriginalProduceTime.get -> System.TimeSpan
+override FamilyIslandHelper.Api.Models.Items.SapphireBracelet.BuildingToCreate.get -> FamilyIslandHelper.Api.Models.Abstract.Building
+override FamilyIslandHelper.Api.Models.Items.SapphireBracelet.Components.get -> System.Collections.Generic.List<(FamilyIslandHelper.Api.Models.Abstract.Item item, int count)>
+override FamilyIslandHelper.Api.Models.Items.SapphireBracelet.LevelWhenAppears.get -> int
+override FamilyIslandHelper.Api.Models.Items.SapphireBracelet.Name.get -> string
+override FamilyIslandHelper.Api.Models.Items.SapphireBracelet.OriginalProduceTime.get -> System.TimeSpan
+override FamilyIslandHelper.Api.Models.Items.Scraper.BuildingToCreate.get -> FamilyIslandHelper.Api.Models.Abstract.Building
+override FamilyIslandHelper.Api.Models.Items.Scraper.Components.get -> System.Collections.Generic.List<(FamilyIslandHelper.Api.Models.Abstract.Item item, int count)>
+override FamilyIslandHelper.Api.Models.Items.Scraper.LevelWhenAppears.get -> int
+override FamilyIslandHelper.Api.Models.Items.Scraper.Name.get -> string
+override FamilyIslandHelper.Api.Models.Items.Scraper.OriginalProduceTime.get -> System.TimeSpan
+override FamilyIslandHelper.Api.Models.Items.Shingles.BuildingToCreate.get -> FamilyIslandHelper.Api.Models.Abstract.Building
+override FamilyIslandHelper.Api.Models.Items.Shingles.Components.get -> System.Collections.Generic.List<(FamilyIslandHelper.Api.Models.Abstract.Item item, int count)>
+override FamilyIslandHelper.Api.Models.Items.Shingles.LevelWhenAppears.get -> int
+override FamilyIslandHelper.Api.Models.Items.Shingles.Name.get -> string
+override FamilyIslandHelper.Api.Models.Items.Shingles.OriginalProduceTime.get -> System.TimeSpan
+override FamilyIslandHelper.Api.Models.Items.Soap.BuildingToCreate.get -> FamilyIslandHelper.Api.Models.Abstract.Building
+override FamilyIslandHelper.Api.Models.Items.Soap.Components.get -> System.Collections.Generic.List<(FamilyIslandHelper.Api.Models.Abstract.Item item, int count)>
+override FamilyIslandHelper.Api.Models.Items.Soap.LevelWhenAppears.get -> int
+override FamilyIslandHelper.Api.Models.Items.Soap.Name.get -> string
+override FamilyIslandHelper.Api.Models.Items.Soap.OriginalProduceTime.get -> System.TimeSpan
+override FamilyIslandHelper.Api.Models.Items.Stairs.BuildingToCreate.get -> FamilyIslandHelper.Api.Models.Abstract.Building
+override FamilyIslandHelper.Api.Models.Items.Stairs.Components.get -> System.Collections.Generic.List<(FamilyIslandHelper.Api.Models.Abstract.Item item, int count)>
+override FamilyIslandHelper.Api.Models.Items.Stairs.LevelWhenAppears.get -> int
+override FamilyIslandHelper.Api.Models.Items.Stairs.Name.get -> string
+override FamilyIslandHelper.Api.Models.Items.Stairs.OriginalProduceTime.get -> System.TimeSpan
+override FamilyIslandHelper.Api.Models.Items.Stakes.BuildingToCreate.get -> FamilyIslandHelper.Api.Models.Abstract.Building
+override FamilyIslandHelper.Api.Models.Items.Stakes.Components.get -> System.Collections.Generic.List<(FamilyIslandHelper.Api.Models.Abstract.Item item, int count)>
+override FamilyIslandHelper.Api.Models.Items.Stakes.LevelWhenAppears.get -> int
+override FamilyIslandHelper.Api.Models.Items.Stakes.Name.get -> string
+override FamilyIslandHelper.Api.Models.Items.Stakes.OriginalProduceTime.get -> System.TimeSpan
+override FamilyIslandHelper.Api.Models.Items.StoneBlock.BuildingToCreate.get -> FamilyIslandHelper.Api.Models.Abstract.Building
+override FamilyIslandHelper.Api.Models.Items.StoneBlock.Components.get -> System.Collections.Generic.List<(FamilyIslandHelper.Api.Models.Abstract.Item item, int count)>
+override FamilyIslandHelper.Api.Models.Items.StoneBlock.LevelWhenAppears.get -> int
+override FamilyIslandHelper.Api.Models.Items.StoneBlock.Name.get -> string
+override FamilyIslandHelper.Api.Models.Items.StoneBlock.OriginalProduceTime.get -> System.TimeSpan
+override FamilyIslandHelper.Api.Models.Items.Stool.BuildingToCreate.get -> FamilyIslandHelper.Api.Models.Abstract.Building
+override FamilyIslandHelper.Api.Models.Items.Stool.Components.get -> System.Collections.Generic.List<(FamilyIslandHelper.Api.Models.Abstract.Item item, int count)>
+override FamilyIslandHelper.Api.Models.Items.Stool.LevelWhenAppears.get -> int
+override FamilyIslandHelper.Api.Models.Items.Stool.Name.get -> string
+override FamilyIslandHelper.Api.Models.Items.Stool.OriginalProduceTime.get -> System.TimeSpan
+override FamilyIslandHelper.Api.Models.Items.SunflowerOil.BuildingToCreate.get -> FamilyIslandHelper.Api.Models.Abstract.Building
+override FamilyIslandHelper.Api.Models.Items.SunflowerOil.Components.get -> System.Collections.Generic.List<(FamilyIslandHelper.Api.Models.Abstract.Item item, int count)>
+override FamilyIslandHelper.Api.Models.Items.SunflowerOil.LevelWhenAppears.get -> int
+override FamilyIslandHelper.Api.Models.Items.SunflowerOil.Name.get -> string
+override FamilyIslandHelper.Api.Models.Items.SunflowerOil.OriginalProduceTime.get -> System.TimeSpan
+override FamilyIslandHelper.Api.Models.Items.Syrup.BuildingToCreate.get -> FamilyIslandHelper.Api.Models.Abstract.Building
+override FamilyIslandHelper.Api.Models.Items.Syrup.Components.get -> System.Collections.Generic.List<(FamilyIslandHelper.Api.Models.Abstract.Item item, int count)>
+override FamilyIslandHelper.Api.Models.Items.Syrup.LevelWhenAppears.get -> int
+override FamilyIslandHelper.Api.Models.Items.Syrup.Name.get -> string
+override FamilyIslandHelper.Api.Models.Items.Syrup.OriginalProduceTime.get -> System.TimeSpan
+override FamilyIslandHelper.Api.Models.Items.Tambourine.BuildingToCreate.get -> FamilyIslandHelper.Api.Models.Abstract.Building
+override FamilyIslandHelper.Api.Models.Items.Tambourine.Components.get -> System.Collections.Generic.List<(FamilyIslandHelper.Api.Models.Abstract.Item item, int count)>
+override FamilyIslandHelper.Api.Models.Items.Tambourine.LevelWhenAppears.get -> int
+override FamilyIslandHelper.Api.Models.Items.Tambourine.Name.get -> string
+override FamilyIslandHelper.Api.Models.Items.Tambourine.OriginalProduceTime.get -> System.TimeSpan
+override FamilyIslandHelper.Api.Models.Items.Trough.BuildingToCreate.get -> FamilyIslandHelper.Api.Models.Abstract.Building
+override FamilyIslandHelper.Api.Models.Items.Trough.Components.get -> System.Collections.Generic.List<(FamilyIslandHelper.Api.Models.Abstract.Item item, int count)>
+override FamilyIslandHelper.Api.Models.Items.Trough.LevelWhenAppears.get -> int
+override FamilyIslandHelper.Api.Models.Items.Trough.Name.get -> string
+override FamilyIslandHelper.Api.Models.Items.Trough.OriginalProduceTime.get -> System.TimeSpan
+override FamilyIslandHelper.Api.Models.Items.UnedgedBoard.BuildingToCreate.get -> FamilyIslandHelper.Api.Models.Abstract.Building
+override FamilyIslandHelper.Api.Models.Items.UnedgedBoard.Components.get -> System.Collections.Generic.List<(FamilyIslandHelper.Api.Models.Abstract.Item item, int count)>
+override FamilyIslandHelper.Api.Models.Items.UnedgedBoard.LevelWhenAppears.get -> int
+override FamilyIslandHelper.Api.Models.Items.UnedgedBoard.Name.get -> string
+override FamilyIslandHelper.Api.Models.Items.UnedgedBoard.OriginalProduceTime.get -> System.TimeSpan
+override FamilyIslandHelper.Api.Models.Items.Wattle.BuildingToCreate.get -> FamilyIslandHelper.Api.Models.Abstract.Building
+override FamilyIslandHelper.Api.Models.Items.Wattle.Components.get -> System.Collections.Generic.List<(FamilyIslandHelper.Api.Models.Abstract.Item item, int count)>
+override FamilyIslandHelper.Api.Models.Items.Wattle.LevelWhenAppears.get -> int
+override FamilyIslandHelper.Api.Models.Items.Wattle.Name.get -> string
+override FamilyIslandHelper.Api.Models.Items.Wattle.OriginalProduceTime.get -> System.TimeSpan
+override FamilyIslandHelper.Api.Models.Items.WhippedCream.BuildingToCreate.get -> FamilyIslandHelper.Api.Models.Abstract.Building
+override FamilyIslandHelper.Api.Models.Items.WhippedCream.Components.get -> System.Collections.Generic.List<(FamilyIslandHelper.Api.Models.Abstract.Item item, int count)>
+override FamilyIslandHelper.Api.Models.Items.WhippedCream.LevelWhenAppears.get -> int
+override FamilyIslandHelper.Api.Models.Items.WhippedCream.Name.get -> string
+override FamilyIslandHelper.Api.Models.Items.WhippedCream.OriginalProduceTime.get -> System.TimeSpan
+override FamilyIslandHelper.Api.Models.Items.WhitePaint.BuildingToCreate.get -> FamilyIslandHelper.Api.Models.Abstract.Building
+override FamilyIslandHelper.Api.Models.Items.WhitePaint.Components.get -> System.Collections.Generic.List<(FamilyIslandHelper.Api.Models.Abstract.Item item, int count)>
+override FamilyIslandHelper.Api.Models.Items.WhitePaint.LevelWhenAppears.get -> int
+override FamilyIslandHelper.Api.Models.Items.WhitePaint.Name.get -> string
+override FamilyIslandHelper.Api.Models.Items.WhitePaint.OriginalProduceTime.get -> System.TimeSpan
+override FamilyIslandHelper.Api.Models.Items.WickerBasket.BuildingToCreate.get -> FamilyIslandHelper.Api.Models.Abstract.Building
+override FamilyIslandHelper.Api.Models.Items.WickerBasket.Components.get -> System.Collections.Generic.List<(FamilyIslandHelper.Api.Models.Abstract.Item item, int count)>
+override FamilyIslandHelper.Api.Models.Items.WickerBasket.LevelWhenAppears.get -> int
+override FamilyIslandHelper.Api.Models.Items.WickerBasket.Name.get -> string
+override FamilyIslandHelper.Api.Models.Items.WickerBasket.OriginalProduceTime.get -> System.TimeSpan
+override FamilyIslandHelper.Api.Models.Items.WoodenBeam.BuildingToCreate.get -> FamilyIslandHelper.Api.Models.Abstract.Building
+override FamilyIslandHelper.Api.Models.Items.WoodenBeam.Components.get -> System.Collections.Generic.List<(FamilyIslandHelper.Api.Models.Abstract.Item item, int count)>
+override FamilyIslandHelper.Api.Models.Items.WoodenBeam.LevelWhenAppears.get -> int
+override FamilyIslandHelper.Api.Models.Items.WoodenBeam.Name.get -> string
+override FamilyIslandHelper.Api.Models.Items.WoodenBeam.OriginalProduceTime.get -> System.TimeSpan
+override FamilyIslandHelper.Api.Models.Items_v2.Amphora.BuildingToCreate.get -> FamilyIslandHelper.Api.Models.Abstract.Building
+override FamilyIslandHelper.Api.Models.Items_v2.Amphora.Components.get -> System.Collections.Generic.List<(FamilyIslandHelper.Api.Models.Abstract.Item item, int count)>
+override FamilyIslandHelper.Api.Models.Items_v2.Amphora.LevelWhenAppears.get -> int
+override FamilyIslandHelper.Api.Models.Items_v2.Amphora.Name.get -> string
+override FamilyIslandHelper.Api.Models.Items_v2.Amphora.OriginalProduceTime.get -> System.TimeSpan
+override FamilyIslandHelper.Api.Models.Items_v2.Axe.BuildingToCreate.get -> FamilyIslandHelper.Api.Models.Abstract.Building
+override FamilyIslandHelper.Api.Models.Items_v2.Axe.Components.get -> System.Collections.Generic.List<(FamilyIslandHelper.Api.Models.Abstract.Item item, int count)>
+override FamilyIslandHelper.Api.Models.Items_v2.Axe.LevelWhenAppears.get -> int
+override FamilyIslandHelper.Api.Models.Items_v2.Axe.Name.get -> string
+override FamilyIslandHelper.Api.Models.Items_v2.Axe.OriginalProduceTime.get -> System.TimeSpan
+override FamilyIslandHelper.Api.Models.Items_v2.Barrel.BuildingToCreate.get -> FamilyIslandHelper.Api.Models.Abstract.Building
+override FamilyIslandHelper.Api.Models.Items_v2.Barrel.Components.get -> System.Collections.Generic.List<(FamilyIslandHelper.Api.Models.Abstract.Item item, int count)>
+override FamilyIslandHelper.Api.Models.Items_v2.Barrel.LevelWhenAppears.get -> int
+override FamilyIslandHelper.Api.Models.Items_v2.Barrel.Name.get -> string
+override FamilyIslandHelper.Api.Models.Items_v2.Barrel.OriginalProduceTime.get -> System.TimeSpan
+override FamilyIslandHelper.Api.Models.Items_v2.Basket.BuildingToCreate.get -> FamilyIslandHelper.Api.Models.Abstract.Building
+override FamilyIslandHelper.Api.Models.Items_v2.Basket.Components.get -> System.Collections.Generic.List<(FamilyIslandHelper.Api.Models.Abstract.Item item, int count)>
+override FamilyIslandHelper.Api.Models.Items_v2.Basket.LevelWhenAppears.get -> int
+override FamilyIslandHelper.Api.Models.Items_v2.Basket.Name.get -> string
+override FamilyIslandHelper.Api.Models.Items_v2.Basket.OriginalProduceTime.get -> System.TimeSpan
+override FamilyIslandHelper.Api.Models.Items_v2.Beams.BuildingToCreate.get -> FamilyIslandHelper.Api.Models.Abstract.Building
+override FamilyIslandHelper.Api.Models.Items_v2.Beams.Components.get -> System.Collections.Generic.List<(FamilyIslandHelper.Api.Models.Abstract.Item item, int count)>
+override FamilyIslandHelper.Api.Models.Items_v2.Beams.LevelWhenAppears.get -> int
+override FamilyIslandHelper.Api.Models.Items_v2.Beams.Name.get -> string
+override FamilyIslandHelper.Api.Models.Items_v2.Beams.OriginalProduceTime.get -> System.TimeSpan
+override FamilyIslandHelper.Api.Models.Items_v2.Board.BuildingToCreate.get -> FamilyIslandHelper.Api.Models.Abstract.Building
+override FamilyIslandHelper.Api.Models.Items_v2.Board.Components.get -> System.Collections.Generic.List<(FamilyIslandHelper.Api.Models.Abstract.Item item, int count)>
+override FamilyIslandHelper.Api.Models.Items_v2.Board.LevelWhenAppears.get -> int
+override FamilyIslandHelper.Api.Models.Items_v2.Board.Name.get -> string
+override FamilyIslandHelper.Api.Models.Items_v2.Board.OriginalProduceTime.get -> System.TimeSpan
+override FamilyIslandHelper.Api.Models.Items_v2.Bowl.BuildingToCreate.get -> FamilyIslandHelper.Api.Models.Abstract.Building
+override FamilyIslandHelper.Api.Models.Items_v2.Bowl.Components.get -> System.Collections.Generic.List<(FamilyIslandHelper.Api.Models.Abstract.Item item, int count)>
+override FamilyIslandHelper.Api.Models.Items_v2.Bowl.LevelWhenAppears.get -> int
+override FamilyIslandHelper.Api.Models.Items_v2.Bowl.Name.get -> string
+override FamilyIslandHelper.Api.Models.Items_v2.Bowl.OriginalProduceTime.get -> System.TimeSpan
+override FamilyIslandHelper.Api.Models.Items_v2.Bracelet.BuildingToCreate.get -> FamilyIslandHelper.Api.Models.Abstract.Building
+override FamilyIslandHelper.Api.Models.Items_v2.Bracelet.Components.get -> System.Collections.Generic.List<(FamilyIslandHelper.Api.Models.Abstract.Item item, int count)>
+override FamilyIslandHelper.Api.Models.Items_v2.Bracelet.LevelWhenAppears.get -> int
+override FamilyIslandHelper.Api.Models.Items_v2.Bracelet.Name.get -> string
+override FamilyIslandHelper.Api.Models.Items_v2.Bracelet.OriginalProduceTime.get -> System.TimeSpan
+override FamilyIslandHelper.Api.Models.Items_v2.Brick.BuildingToCreate.get -> FamilyIslandHelper.Api.Models.Abstract.Building
+override FamilyIslandHelper.Api.Models.Items_v2.Brick.Components.get -> System.Collections.Generic.List<(FamilyIslandHelper.Api.Models.Abstract.Item item, int count)>
+override FamilyIslandHelper.Api.Models.Items_v2.Brick.LevelWhenAppears.get -> int
+override FamilyIslandHelper.Api.Models.Items_v2.Brick.Name.get -> string
+override FamilyIslandHelper.Api.Models.Items_v2.Brick.OriginalProduceTime.get -> System.TimeSpan
+override FamilyIslandHelper.Api.Models.Items_v2.BuildingTimber.BuildingToCreate.get -> FamilyIslandHelper.Api.Models.Abstract.Building
+override FamilyIslandHelper.Api.Models.Items_v2.BuildingTimber.Components.get -> System.Collections.Generic.List<(FamilyIslandHelper.Api.Models.Abstract.Item item, int count)>
+override FamilyIslandHelper.Api.Models.Items_v2.BuildingTimber.LevelWhenAppears.get -> int
+override FamilyIslandHelper.Api.Models.Items_v2.BuildingTimber.Name.get -> string
+override FamilyIslandHelper.Api.Models.Items_v2.BuildingTimber.OriginalProduceTime.get -> System.TimeSpan
+override FamilyIslandHelper.Api.Models.Items_v2.BurntBrick.BuildingToCreate.get -> FamilyIslandHelper.Api.Models.Abstract.Building
+override FamilyIslandHelper.Api.Models.Items_v2.BurntBrick.Components.get -> System.Collections.Generic.List<(FamilyIslandHelper.Api.Models.Abstract.Item item, int count)>
+override FamilyIslandHelper.Api.Models.Items_v2.BurntBrick.LevelWhenAppears.get -> int
+override FamilyIslandHelper.Api.Models.Items_v2.BurntBrick.Name.get -> string
+override FamilyIslandHelper.Api.Models.Items_v2.BurntBrick.OriginalProduceTime.get -> System.TimeSpan
+override FamilyIslandHelper.Api.Models.Items_v2.Butter.BuildingToCreate.get -> FamilyIslandHelper.Api.Models.Abstract.Building
+override FamilyIslandHelper.Api.Models.Items_v2.Butter.Components.get -> System.Collections.Generic.List<(FamilyIslandHelper.Api.Models.Abstract.Item item, int count)>
+override FamilyIslandHelper.Api.Models.Items_v2.Butter.LevelWhenAppears.get -> int
+override FamilyIslandHelper.Api.Models.Items_v2.Butter.Name.get -> string
+override FamilyIslandHelper.Api.Models.Items_v2.Butter.OriginalProduceTime.get -> System.TimeSpan
+override FamilyIslandHelper.Api.Models.Items_v2.Cardboard.BuildingToCreate.get -> FamilyIslandHelper.Api.Models.Abstract.Building
+override FamilyIslandHelper.Api.Models.Items_v2.Cardboard.Components.get -> System.Collections.Generic.List<(FamilyIslandHelper.Api.Models.Abstract.Item item, int count)>
+override FamilyIslandHelper.Api.Models.Items_v2.Cardboard.LevelWhenAppears.get -> int
+override FamilyIslandHelper.Api.Models.Items_v2.Cardboard.Name.get -> string
+override FamilyIslandHelper.Api.Models.Items_v2.Cardboard.OriginalProduceTime.get -> System.TimeSpan
+override FamilyIslandHelper.Api.Models.Items_v2.Cheese.BuildingToCreate.get -> FamilyIslandHelper.Api.Models.Abstract.Building
+override FamilyIslandHelper.Api.Models.Items_v2.Cheese.Components.get -> System.Collections.Generic.List<(FamilyIslandHelper.Api.Models.Abstract.Item item, int count)>
+override FamilyIslandHelper.Api.Models.Items_v2.Cheese.LevelWhenAppears.get -> int
+override FamilyIslandHelper.Api.Models.Items_v2.Cheese.Name.get -> string
+override FamilyIslandHelper.Api.Models.Items_v2.Cheese.OriginalProduceTime.get -> System.TimeSpan
+override FamilyIslandHelper.Api.Models.Items_v2.ChickenFood.BuildingToCreate.get -> FamilyIslandHelper.Api.Models.Abstract.Building
+override FamilyIslandHelper.Api.Models.Items_v2.ChickenFood.Components.get -> System.Collections.Generic.List<(FamilyIslandHelper.Api.Models.Abstract.Item item, int count)>
+override FamilyIslandHelper.Api.Models.Items_v2.ChickenFood.LevelWhenAppears.get -> int
+override FamilyIslandHelper.Api.Models.Items_v2.ChickenFood.Name.get -> string
+override FamilyIslandHelper.Api.Models.Items_v2.ChickenFood.OriginalProduceTime.get -> System.TimeSpan
+override FamilyIslandHelper.Api.Models.Items_v2.Cloth.BuildingToCreate.get -> FamilyIslandHelper.Api.Models.Abstract.Building
+override FamilyIslandHelper.Api.Models.Items_v2.Cloth.Components.get -> System.Collections.Generic.List<(FamilyIslandHelper.Api.Models.Abstract.Item item, int count)>
+override FamilyIslandHelper.Api.Models.Items_v2.Cloth.LevelWhenAppears.get -> int
+override FamilyIslandHelper.Api.Models.Items_v2.Cloth.Name.get -> string
+override FamilyIslandHelper.Api.Models.Items_v2.Cloth.OriginalProduceTime.get -> System.TimeSpan
+override FamilyIslandHelper.Api.Models.Items_v2.Coal.BuildingToCreate.get -> FamilyIslandHelper.Api.Models.Abstract.Building
+override FamilyIslandHelper.Api.Models.Items_v2.Coal.Components.get -> System.Collections.Generic.List<(FamilyIslandHelper.Api.Models.Abstract.Item item, int count)>
+override FamilyIslandHelper.Api.Models.Items_v2.Coal.LevelWhenAppears.get -> int
+override FamilyIslandHelper.Api.Models.Items_v2.Coal.Name.get -> string
+override FamilyIslandHelper.Api.Models.Items_v2.Coal.OriginalProduceTime.get -> System.TimeSpan
+override FamilyIslandHelper.Api.Models.Items_v2.CowFood.BuildingToCreate.get -> FamilyIslandHelper.Api.Models.Abstract.Building
+override FamilyIslandHelper.Api.Models.Items_v2.CowFood.Components.get -> System.Collections.Generic.List<(FamilyIslandHelper.Api.Models.Abstract.Item item, int count)>
+override FamilyIslandHelper.Api.Models.Items_v2.CowFood.LevelWhenAppears.get -> int
+override FamilyIslandHelper.Api.Models.Items_v2.CowFood.Name.get -> string
+override FamilyIslandHelper.Api.Models.Items_v2.CowFood.OriginalProduceTime.get -> System.TimeSpan
+override FamilyIslandHelper.Api.Models.Items_v2.Crest.BuildingToCreate.get -> FamilyIslandHelper.Api.Models.Abstract.Building
+override FamilyIslandHelper.Api.Models.Items_v2.Crest.Components.get -> System.Collections.Generic.List<(FamilyIslandHelper.Api.Models.Abstract.Item item, int count)>
+override FamilyIslandHelper.Api.Models.Items_v2.Crest.LevelWhenAppears.get -> int
+override FamilyIslandHelper.Api.Models.Items_v2.Crest.Name.get -> string
+override FamilyIslandHelper.Api.Models.Items_v2.Crest.OriginalProduceTime.get -> System.TimeSpan
+override FamilyIslandHelper.Api.Models.Items_v2.Earrings.BuildingToCreate.get -> FamilyIslandHelper.Api.Models.Abstract.Building
+override FamilyIslandHelper.Api.Models.Items_v2.Earrings.Components.get -> System.Collections.Generic.List<(FamilyIslandHelper.Api.Models.Abstract.Item item, int count)>
+override FamilyIslandHelper.Api.Models.Items_v2.Earrings.LevelWhenAppears.get -> int
+override FamilyIslandHelper.Api.Models.Items_v2.Earrings.Name.get -> string
+override FamilyIslandHelper.Api.Models.Items_v2.Earrings.OriginalProduceTime.get -> System.TimeSpan
+override FamilyIslandHelper.Api.Models.Items_v2.Emerald.BuildingToCreate.get -> FamilyIslandHelper.Api.Models.Abstract.Building
+override FamilyIslandHelper.Api.Models.Items_v2.Emerald.Components.get -> System.Collections.Generic.List<(FamilyIslandHelper.Api.Models.Abstract.Item item, int count)>
+override FamilyIslandHelper.Api.Models.Items_v2.Emerald.LevelWhenAppears.get -> int
+override FamilyIslandHelper.Api.Models.Items_v2.Emerald.Name.get -> string
+override FamilyIslandHelper.Api.Models.Items_v2.Emerald.OriginalProduceTime.get -> System.TimeSpan
+override FamilyIslandHelper.Api.Models.Items_v2.Flour.BuildingToCreate.get -> FamilyIslandHelper.Api.Models.Abstract.Building
+override FamilyIslandHelper.Api.Models.Items_v2.Flour.Components.get -> System.Collections.Generic.List<(FamilyIslandHelper.Api.Models.Abstract.Item item, int count)>
+override FamilyIslandHelper.Api.Models.Items_v2.Flour.LevelWhenAppears.get -> int
+override FamilyIslandHelper.Api.Models.Items_v2.Flour.Name.get -> string
+override FamilyIslandHelper.Api.Models.Items_v2.Flour.OriginalProduceTime.get -> System.TimeSpan
+override FamilyIslandHelper.Api.Models.Items_v2.Glass.BuildingToCreate.get -> FamilyIslandHelper.Api.Models.Abstract.Building
+override FamilyIslandHelper.Api.Models.Items_v2.Glass.Components.get -> System.Collections.Generic.List<(FamilyIslandHelper.Api.Models.Abstract.Item item, int count)>
+override FamilyIslandHelper.Api.Models.Items_v2.Glass.LevelWhenAppears.get -> int
+override FamilyIslandHelper.Api.Models.Items_v2.Glass.Name.get -> string
+override FamilyIslandHelper.Api.Models.Items_v2.Glass.OriginalProduceTime.get -> System.TimeSpan
+override FamilyIslandHelper.Api.Models.Items_v2.Gloves.BuildingToCreate.get -> FamilyIslandHelper.Api.Models.Abstract.Building
+override FamilyIslandHelper.Api.Models.Items_v2.Gloves.Components.get -> System.Collections.Generic.List<(FamilyIslandHelper.Api.Models.Abstract.Item item, int count)>
+override FamilyIslandHelper.Api.Models.Items_v2.Gloves.LevelWhenAppears.get -> int
+override FamilyIslandHelper.Api.Models.Items_v2.Gloves.Name.get -> string
+override FamilyIslandHelper.Api.Models.Items_v2.Gloves.OriginalProduceTime.get -> System.TimeSpan
+override FamilyIslandHelper.Api.Models.Items_v2.GoatFood.BuildingToCreate.get -> FamilyIslandHelper.Api.Models.Abstract.Building
+override FamilyIslandHelper.Api.Models.Items_v2.GoatFood.Components.get -> System.Collections.Generic.List<(FamilyIslandHelper.Api.Models.Abstract.Item item, int count)>
+override FamilyIslandHelper.Api.Models.Items_v2.GoatFood.LevelWhenAppears.get -> int
+override FamilyIslandHelper.Api.Models.Items_v2.GoatFood.Name.get -> string
+override FamilyIslandHelper.Api.Models.Items_v2.GoatFood.OriginalProduceTime.get -> System.TimeSpan
+override FamilyIslandHelper.Api.Models.Items_v2.Gold.BuildingToCreate.get -> FamilyIslandHelper.Api.Models.Abstract.Building
+override FamilyIslandHelper.Api.Models.Items_v2.Gold.Components.get -> System.Collections.Generic.List<(FamilyIslandHelper.Api.Models.Abstract.Item item, int count)>
+override FamilyIslandHelper.Api.Models.Items_v2.Gold.LevelWhenAppears.get -> int
+override FamilyIslandHelper.Api.Models.Items_v2.Gold.Name.get -> string
+override FamilyIslandHelper.Api.Models.Items_v2.Gold.OriginalProduceTime.get -> System.TimeSpan
+override FamilyIslandHelper.Api.Models.Items_v2.Hammer.BuildingToCreate.get -> FamilyIslandHelper.Api.Models.Abstract.Building
+override FamilyIslandHelper.Api.Models.Items_v2.Hammer.Components.get -> System.Collections.Generic.List<(FamilyIslandHelper.Api.Models.Abstract.Item item, int count)>
+override FamilyIslandHelper.Api.Models.Items_v2.Hammer.LevelWhenAppears.get -> int
+override FamilyIslandHelper.Api.Models.Items_v2.Hammer.Name.get -> string
+override FamilyIslandHelper.Api.Models.Items_v2.Hammer.OriginalProduceTime.get -> System.TimeSpan
+override FamilyIslandHelper.Api.Models.Items_v2.IronIngot.BuildingToCreate.get -> FamilyIslandHelper.Api.Models.Abstract.Building
+override FamilyIslandHelper.Api.Models.Items_v2.IronIngot.Components.get -> System.Collections.Generic.List<(FamilyIslandHelper.Api.Models.Abstract.Item item, int count)>
+override FamilyIslandHelper.Api.Models.Items_v2.IronIngot.LevelWhenAppears.get -> int
+override FamilyIslandHelper.Api.Models.Items_v2.IronIngot.Name.get -> string
+override FamilyIslandHelper.Api.Models.Items_v2.IronIngot.OriginalProduceTime.get -> System.TimeSpan
+override FamilyIslandHelper.Api.Models.Items_v2.IronPlate.BuildingToCreate.get -> FamilyIslandHelper.Api.Models.Abstract.Building
+override FamilyIslandHelper.Api.Models.Items_v2.IronPlate.Components.get -> System.Collections.Generic.List<(FamilyIslandHelper.Api.Models.Abstract.Item item, int count)>
+override FamilyIslandHelper.Api.Models.Items_v2.IronPlate.LevelWhenAppears.get -> int
+override FamilyIslandHelper.Api.Models.Items_v2.IronPlate.Name.get -> string
+override FamilyIslandHelper.Api.Models.Items_v2.IronPlate.OriginalProduceTime.get -> System.TimeSpan
+override FamilyIslandHelper.Api.Models.Items_v2.Jug.BuildingToCreate.get -> FamilyIslandHelper.Api.Models.Abstract.Building
+override FamilyIslandHelper.Api.Models.Items_v2.Jug.Components.get -> System.Collections.Generic.List<(FamilyIslandHelper.Api.Models.Abstract.Item item, int count)>
+override FamilyIslandHelper.Api.Models.Items_v2.Jug.LevelWhenAppears.get -> int
+override FamilyIslandHelper.Api.Models.Items_v2.Jug.Name.get -> string
+override FamilyIslandHelper.Api.Models.Items_v2.Jug.OriginalProduceTime.get -> System.TimeSpan
+override FamilyIslandHelper.Api.Models.Items_v2.Knife.BuildingToCreate.get -> FamilyIslandHelper.Api.Models.Abstract.Building
+override FamilyIslandHelper.Api.Models.Items_v2.Knife.Components.get -> System.Collections.Generic.List<(FamilyIslandHelper.Api.Models.Abstract.Item item, int count)>
+override FamilyIslandHelper.Api.Models.Items_v2.Knife.LevelWhenAppears.get -> int
+override FamilyIslandHelper.Api.Models.Items_v2.Knife.Name.get -> string
+override FamilyIslandHelper.Api.Models.Items_v2.Knife.OriginalProduceTime.get -> System.TimeSpan
+override FamilyIslandHelper.Api.Models.Items_v2.Lace.BuildingToCreate.get -> FamilyIslandHelper.Api.Models.Abstract.Building
+override FamilyIslandHelper.Api.Models.Items_v2.Lace.Components.get -> System.Collections.Generic.List<(FamilyIslandHelper.Api.Models.Abstract.Item item, int count)>
+override FamilyIslandHelper.Api.Models.Items_v2.Lace.LevelWhenAppears.get -> int
+override FamilyIslandHelper.Api.Models.Items_v2.Lace.Name.get -> string
+override FamilyIslandHelper.Api.Models.Items_v2.Lace.OriginalProduceTime.get -> System.TimeSpan
+override FamilyIslandHelper.Api.Models.Items_v2.Leather.BuildingToCreate.get -> FamilyIslandHelper.Api.Models.Abstract.Building
+override FamilyIslandHelper.Api.Models.Items_v2.Leather.Components.get -> System.Collections.Generic.List<(FamilyIslandHelper.Api.Models.Abstract.Item item, int count)>
+override FamilyIslandHelper.Api.Models.Items_v2.Leather.LevelWhenAppears.get -> int
+override FamilyIslandHelper.Api.Models.Items_v2.Leather.Name.get -> string
+override FamilyIslandHelper.Api.Models.Items_v2.Leather.OriginalProduceTime.get -> System.TimeSpan
+override FamilyIslandHelper.Api.Models.Items_v2.LeatherСord.BuildingToCreate.get -> FamilyIslandHelper.Api.Models.Abstract.Building
+override FamilyIslandHelper.Api.Models.Items_v2.LeatherСord.Components.get -> System.Collections.Generic.List<(FamilyIslandHelper.Api.Models.Abstract.Item item, int count)>
+override FamilyIslandHelper.Api.Models.Items_v2.LeatherСord.LevelWhenAppears.get -> int
+override FamilyIslandHelper.Api.Models.Items_v2.LeatherСord.Name.get -> string
+override FamilyIslandHelper.Api.Models.Items_v2.LeatherСord.OriginalProduceTime.get -> System.TimeSpan
+override FamilyIslandHelper.Api.Models.Items_v2.Nails.BuildingToCreate.get -> FamilyIslandHelper.Api.Models.Abstract.Building
+override FamilyIslandHelper.Api.Models.Items_v2.Nails.Components.get -> System.Collections.Generic.List<(FamilyIslandHelper.Api.Models.Abstract.Item item, int count)>
+override FamilyIslandHelper.Api.Models.Items_v2.Nails.LevelWhenAppears.get -> int
+override FamilyIslandHelper.Api.Models.Items_v2.Nails.Name.get -> string
+override FamilyIslandHelper.Api.Models.Items_v2.Nails.OriginalProduceTime.get -> System.TimeSpan
+override FamilyIslandHelper.Api.Models.Items_v2.Needle.BuildingToCreate.get -> FamilyIslandHelper.Api.Models.Abstract.Building
+override FamilyIslandHelper.Api.Models.Items_v2.Needle.Components.get -> System.Collections.Generic.List<(FamilyIslandHelper.Api.Models.Abstract.Item item, int count)>
+override FamilyIslandHelper.Api.Models.Items_v2.Needle.LevelWhenAppears.get -> int
+override FamilyIslandHelper.Api.Models.Items_v2.Needle.Name.get -> string
+override FamilyIslandHelper.Api.Models.Items_v2.Needle.OriginalProduceTime.get -> System.TimeSpan
+override FamilyIslandHelper.Api.Models.Items_v2.Papyrus.BuildingToCreate.get -> FamilyIslandHelper.Api.Models.Abstract.Building
+override FamilyIslandHelper.Api.Models.Items_v2.Papyrus.Components.get -> System.Collections.Generic.List<(FamilyIslandHelper.Api.Models.Abstract.Item item, int count)>
+override FamilyIslandHelper.Api.Models.Items_v2.Papyrus.LevelWhenAppears.get -> int
+override FamilyIslandHelper.Api.Models.Items_v2.Papyrus.Name.get -> string
+override FamilyIslandHelper.Api.Models.Items_v2.Papyrus.OriginalProduceTime.get -> System.TimeSpan
+override FamilyIslandHelper.Api.Models.Items_v2.Pot.BuildingToCreate.get -> FamilyIslandHelper.Api.Models.Abstract.Building
+override FamilyIslandHelper.Api.Models.Items_v2.Pot.Components.get -> System.Collections.Generic.List<(FamilyIslandHelper.Api.Models.Abstract.Item item, int count)>
+override FamilyIslandHelper.Api.Models.Items_v2.Pot.LevelWhenAppears.get -> int
+override FamilyIslandHelper.Api.Models.Items_v2.Pot.Name.get -> string
+override FamilyIslandHelper.Api.Models.Items_v2.Pot.OriginalProduceTime.get -> System.TimeSpan
+override FamilyIslandHelper.Api.Models.Items_v2.Resin.BuildingToCreate.get -> FamilyIslandHelper.Api.Models.Abstract.Building
+override FamilyIslandHelper.Api.Models.Items_v2.Resin.Components.get -> System.Collections.Generic.List<(FamilyIslandHelper.Api.Models.Abstract.Item item, int count)>
+override FamilyIslandHelper.Api.Models.Items_v2.Resin.LevelWhenAppears.get -> int
+override FamilyIslandHelper.Api.Models.Items_v2.Resin.Name.get -> string
+override FamilyIslandHelper.Api.Models.Items_v2.Resin.OriginalProduceTime.get -> System.TimeSpan
+override FamilyIslandHelper.Api.Models.Items_v2.Rope.BuildingToCreate.get -> FamilyIslandHelper.Api.Models.Abstract.Building
+override FamilyIslandHelper.Api.Models.Items_v2.Rope.Components.get -> System.Collections.Generic.List<(FamilyIslandHelper.Api.Models.Abstract.Item item, int count)>
+override FamilyIslandHelper.Api.Models.Items_v2.Rope.LevelWhenAppears.get -> int
+override FamilyIslandHelper.Api.Models.Items_v2.Rope.Name.get -> string
+override FamilyIslandHelper.Api.Models.Items_v2.Rope.OriginalProduceTime.get -> System.TimeSpan
+override FamilyIslandHelper.Api.Models.Items_v2.Sackcloth.BuildingToCreate.get -> FamilyIslandHelper.Api.Models.Abstract.Building
+override FamilyIslandHelper.Api.Models.Items_v2.Sackcloth.Components.get -> System.Collections.Generic.List<(FamilyIslandHelper.Api.Models.Abstract.Item item, int count)>
+override FamilyIslandHelper.Api.Models.Items_v2.Sackcloth.LevelWhenAppears.get -> int
+override FamilyIslandHelper.Api.Models.Items_v2.Sackcloth.Name.get -> string
+override FamilyIslandHelper.Api.Models.Items_v2.Sackcloth.OriginalProduceTime.get -> System.TimeSpan
+override FamilyIslandHelper.Api.Models.Items_v2.Scraper.BuildingToCreate.get -> FamilyIslandHelper.Api.Models.Abstract.Building
+override FamilyIslandHelper.Api.Models.Items_v2.Scraper.Components.get -> System.Collections.Generic.List<(FamilyIslandHelper.Api.Models.Abstract.Item item, int count)>
+override FamilyIslandHelper.Api.Models.Items_v2.Scraper.LevelWhenAppears.get -> int
+override FamilyIslandHelper.Api.Models.Items_v2.Scraper.Name.get -> string
+override FamilyIslandHelper.Api.Models.Items_v2.Scraper.OriginalProduceTime.get -> System.TimeSpan
+override FamilyIslandHelper.Api.Models.Items_v2.Shingles.BuildingToCreate.get -> FamilyIslandHelper.Api.Models.Abstract.Building
+override FamilyIslandHelper.Api.Models.Items_v2.Shingles.Components.get -> System.Collections.Generic.List<(FamilyIslandHelper.Api.Models.Abstract.Item item, int count)>
+override FamilyIslandHelper.Api.Models.Items_v2.Shingles.LevelWhenAppears.get -> int
+override FamilyIslandHelper.Api.Models.Items_v2.Shingles.Name.get -> string
+override FamilyIslandHelper.Api.Models.Items_v2.Shingles.OriginalProduceTime.get -> System.TimeSpan
+override FamilyIslandHelper.Api.Models.Items_v2.SmoothBoard.BuildingToCreate.get -> FamilyIslandHelper.Api.Models.Abstract.Building
+override FamilyIslandHelper.Api.Models.Items_v2.SmoothBoard.Components.get -> System.Collections.Generic.List<(FamilyIslandHelper.Api.Models.Abstract.Item item, int count)>
+override FamilyIslandHelper.Api.Models.Items_v2.SmoothBoard.LevelWhenAppears.get -> int
+override FamilyIslandHelper.Api.Models.Items_v2.SmoothBoard.Name.get -> string
+override FamilyIslandHelper.Api.Models.Items_v2.SmoothBoard.OriginalProduceTime.get -> System.TimeSpan
+override FamilyIslandHelper.Api.Models.Items_v2.Soap.BuildingToCreate.get -> FamilyIslandHelper.Api.Models.Abstract.Building
+override FamilyIslandHelper.Api.Models.Items_v2.Soap.Components.get -> System.Collections.Generic.List<(FamilyIslandHelper.Api.Models.Abstract.Item item, int count)>
+override FamilyIslandHelper.Api.Models.Items_v2.Soap.LevelWhenAppears.get -> int
+override FamilyIslandHelper.Api.Models.Items_v2.Soap.Name.get -> string
+override FamilyIslandHelper.Api.Models.Items_v2.Soap.OriginalProduceTime.get -> System.TimeSpan
+override FamilyIslandHelper.Api.Models.Items_v2.Spoon.BuildingToCreate.get -> FamilyIslandHelper.Api.Models.Abstract.Building
+override FamilyIslandHelper.Api.Models.Items_v2.Spoon.Components.get -> System.Collections.Generic.List<(FamilyIslandHelper.Api.Models.Abstract.Item item, int count)>
+override FamilyIslandHelper.Api.Models.Items_v2.Spoon.LevelWhenAppears.get -> int
+override FamilyIslandHelper.Api.Models.Items_v2.Spoon.Name.get -> string
+override FamilyIslandHelper.Api.Models.Items_v2.Spoon.OriginalProduceTime.get -> System.TimeSpan
+override FamilyIslandHelper.Api.Models.Items_v2.Stairs.BuildingToCreate.get -> FamilyIslandHelper.Api.Models.Abstract.Building
+override FamilyIslandHelper.Api.Models.Items_v2.Stairs.Components.get -> System.Collections.Generic.List<(FamilyIslandHelper.Api.Models.Abstract.Item item, int count)>
+override FamilyIslandHelper.Api.Models.Items_v2.Stairs.LevelWhenAppears.get -> int
+override FamilyIslandHelper.Api.Models.Items_v2.Stairs.Name.get -> string
+override FamilyIslandHelper.Api.Models.Items_v2.Stairs.OriginalProduceTime.get -> System.TimeSpan
+override FamilyIslandHelper.Api.Models.Items_v2.Stakes.BuildingToCreate.get -> FamilyIslandHelper.Api.Models.Abstract.Building
+override FamilyIslandHelper.Api.Models.Items_v2.Stakes.Components.get -> System.Collections.Generic.List<(FamilyIslandHelper.Api.Models.Abstract.Item item, int count)>
+override FamilyIslandHelper.Api.Models.Items_v2.Stakes.LevelWhenAppears.get -> int
+override FamilyIslandHelper.Api.Models.Items_v2.Stakes.Name.get -> string
+override FamilyIslandHelper.Api.Models.Items_v2.Stakes.OriginalProduceTime.get -> System.TimeSpan
+override FamilyIslandHelper.Api.Models.Items_v2.StoneBlock.BuildingToCreate.get -> FamilyIslandHelper.Api.Models.Abstract.Building
+override FamilyIslandHelper.Api.Models.Items_v2.StoneBlock.Components.get -> System.Collections.Generic.List<(FamilyIslandHelper.Api.Models.Abstract.Item item, int count)>
+override FamilyIslandHelper.Api.Models.Items_v2.StoneBlock.LevelWhenAppears.get -> int
+override FamilyIslandHelper.Api.Models.Items_v2.StoneBlock.Name.get -> string
+override FamilyIslandHelper.Api.Models.Items_v2.StoneBlock.OriginalProduceTime.get -> System.TimeSpan
+override FamilyIslandHelper.Api.Models.Items_v2.StoneTile.BuildingToCreate.get -> FamilyIslandHelper.Api.Models.Abstract.Building
+override FamilyIslandHelper.Api.Models.Items_v2.StoneTile.Components.get -> System.Collections.Generic.List<(FamilyIslandHelper.Api.Models.Abstract.Item item, int count)>
+override FamilyIslandHelper.Api.Models.Items_v2.StoneTile.LevelWhenAppears.get -> int
+override FamilyIslandHelper.Api.Models.Items_v2.StoneTile.Name.get -> string
+override FamilyIslandHelper.Api.Models.Items_v2.StoneTile.OriginalProduceTime.get -> System.TimeSpan
+override FamilyIslandHelper.Api.Models.Items_v2.Stool.BuildingToCreate.get -> FamilyIslandHelper.Api.Models.Abstract.Building
+override FamilyIslandHelper.Api.Models.Items_v2.Stool.Components.get -> System.Collections.Generic.List<(FamilyIslandHelper.Api.Models.Abstract.Item item, int count)>
+override FamilyIslandHelper.Api.Models.Items_v2.Stool.LevelWhenAppears.get -> int
+override FamilyIslandHelper.Api.Models.Items_v2.Stool.Name.get -> string
+override FamilyIslandHelper.Api.Models.Items_v2.Stool.OriginalProduceTime.get -> System.TimeSpan
+override FamilyIslandHelper.Api.Models.Items_v2.Wattle.BuildingToCreate.get -> FamilyIslandHelper.Api.Models.Abstract.Building
+override FamilyIslandHelper.Api.Models.Items_v2.Wattle.Components.get -> System.Collections.Generic.List<(FamilyIslandHelper.Api.Models.Abstract.Item item, int count)>
+override FamilyIslandHelper.Api.Models.Items_v2.Wattle.LevelWhenAppears.get -> int
+override FamilyIslandHelper.Api.Models.Items_v2.Wattle.Name.get -> string
+override FamilyIslandHelper.Api.Models.Items_v2.Wattle.OriginalProduceTime.get -> System.TimeSpan
+override FamilyIslandHelper.Api.Models.Resources.Amber.Name.get -> string
+override FamilyIslandHelper.Api.Models.Resources.Amethyst.Name.get -> string
+override FamilyIslandHelper.Api.Models.Resources.Ash.Name.get -> string
+override FamilyIslandHelper.Api.Models.Resources.BlueOre.EnergyCost.get -> int
+override FamilyIslandHelper.Api.Models.Resources.BlueOre.Name.get -> string
+override FamilyIslandHelper.Api.Models.Resources.Candle.Name.get -> string
+override FamilyIslandHelper.Api.Models.Resources.Carrot.Name.get -> string
+override FamilyIslandHelper.Api.Models.Resources.Claw.Name.get -> string
+override FamilyIslandHelper.Api.Models.Resources.Clay.EnergyCost.get -> int
+override FamilyIslandHelper.Api.Models.Resources.Clay.Name.get -> string
+override FamilyIslandHelper.Api.Models.Resources.Clover.EnergyCost.get -> int
+override FamilyIslandHelper.Api.Models.Resources.Clover.Name.get -> string
+override FamilyIslandHelper.Api.Models.Resources.Cone.EnergyCost.get -> int
+override FamilyIslandHelper.Api.Models.Resources.Cone.Name.get -> string
+override FamilyIslandHelper.Api.Models.Resources.CopperOre.EnergyCost.get -> int
+override FamilyIslandHelper.Api.Models.Resources.CopperOre.Name.get -> string
+override FamilyIslandHelper.Api.Models.Resources.Corn.Name.get -> string
+override FamilyIslandHelper.Api.Models.Resources.Cotton.Name.get -> string
+override FamilyIslandHelper.Api.Models.Resources.Egg.Name.get -> string
+override FamilyIslandHelper.Api.Models.Resources.Emerald.Name.get -> string
+override FamilyIslandHelper.Api.Models.Resources.Feather.Name.get -> string
+override FamilyIslandHelper.Api.Models.Resources.Gem.Name.get -> string
+override FamilyIslandHelper.Api.Models.Resources.GoldOre.EnergyCost.get -> int
+override FamilyIslandHelper.Api.Models.Resources.GoldOre.Name.get -> string
+override FamilyIslandHelper.Api.Models.Resources.Grass.EnergyCost.get -> int
+override FamilyIslandHelper.Api.Models.Resources.Grass.Name.get -> string
+override FamilyIslandHelper.Api.Models.Resources.Heather.Name.get -> string
+override FamilyIslandHelper.Api.Models.Resources.Iron.EnergyCost.get -> int
+override FamilyIslandHelper.Api.Models.Resources.Iron.Name.get -> string
+override FamilyIslandHelper.Api.Models.Resources.Lazurite.Name.get -> string
+override FamilyIslandHelper.Api.Models.Resources.Lemon.Name.get -> string
+override FamilyIslandHelper.Api.Models.Resources.Limestone.EnergyCost.get -> int
+override FamilyIslandHelper.Api.Models.Resources.Limestone.Name.get -> string
+override FamilyIslandHelper.Api.Models.Resources.LotusFlower.Name.get -> string
+override FamilyIslandHelper.Api.Models.Resources.MeadowGrass.Name.get -> string
+override FamilyIslandHelper.Api.Models.Resources.Milk.Name.get -> string
+override FamilyIslandHelper.Api.Models.Resources.PalmLeaf.EnergyCost.get -> int
+override FamilyIslandHelper.Api.Models.Resources.PalmLeaf.Name.get -> string
+override FamilyIslandHelper.Api.Models.Resources.PalmLog.EnergyCost.get -> int
+override FamilyIslandHelper.Api.Models.Resources.PalmLog.Name.get -> string
+override FamilyIslandHelper.Api.Models.Resources.Pearl.Name.get -> string
+override FamilyIslandHelper.Api.Models.Resources.Pepper.Name.get -> string
+override FamilyIslandHelper.Api.Models.Resources.Poison.EnergyCost.get -> int
+override FamilyIslandHelper.Api.Models.Resources.Poison.Name.get -> string
+override FamilyIslandHelper.Api.Models.Resources.Potherb.Name.get -> string
+override FamilyIslandHelper.Api.Models.Resources.Salt.Name.get -> string
+override FamilyIslandHelper.Api.Models.Resources.Sapphire.Name.get -> string
+override FamilyIslandHelper.Api.Models.Resources.Shell.Name.get -> string
+override FamilyIslandHelper.Api.Models.Resources.Silverine.Name.get -> string
+override FamilyIslandHelper.Api.Models.Resources.Skin.Name.get -> string
+override FamilyIslandHelper.Api.Models.Resources.Stick.EnergyCost.get -> int
+override FamilyIslandHelper.Api.Models.Resources.Stick.Name.get -> string
+override FamilyIslandHelper.Api.Models.Resources.Stone.EnergyCost.get -> int
+override FamilyIslandHelper.Api.Models.Resources.Stone.Name.get -> string
+override FamilyIslandHelper.Api.Models.Resources.Sunflower.Name.get -> string
+override FamilyIslandHelper.Api.Models.Resources.Wheat.Name.get -> string
+override FamilyIslandHelper.Api.Models.Resources.Wood.EnergyCost.get -> int
+override FamilyIslandHelper.Api.Models.Resources.Wood.Name.get -> string
+override FamilyIslandHelper.Api.Models.Resources_v2.Clay.EnergyCost.get -> int
+override FamilyIslandHelper.Api.Models.Resources_v2.Clay.Name.get -> string
+override FamilyIslandHelper.Api.Models.Resources_v2.Corn.Name.get -> string
+override FamilyIslandHelper.Api.Models.Resources_v2.Cotton.Name.get -> string
+override FamilyIslandHelper.Api.Models.Resources_v2.Egg.Name.get -> string
+override FamilyIslandHelper.Api.Models.Resources_v2.Feather.Name.get -> string
+override FamilyIslandHelper.Api.Models.Resources_v2.Grass.EnergyCost.get -> int
+override FamilyIslandHelper.Api.Models.Resources_v2.Grass.Name.get -> string
+override FamilyIslandHelper.Api.Models.Resources_v2.Iron.EnergyCost.get -> int
+override FamilyIslandHelper.Api.Models.Resources_v2.Iron.Name.get -> string
+override FamilyIslandHelper.Api.Models.Resources_v2.Milk.Name.get -> string
+override FamilyIslandHelper.Api.Models.Resources_v2.Potherb.Name.get -> string
+override FamilyIslandHelper.Api.Models.Resources_v2.Skin.Name.get -> string
+override FamilyIslandHelper.Api.Models.Resources_v2.Stick.EnergyCost.get -> int
+override FamilyIslandHelper.Api.Models.Resources_v2.Stick.Name.get -> string
+override FamilyIslandHelper.Api.Models.Resources_v2.Stone.EnergyCost.get -> int
+override FamilyIslandHelper.Api.Models.Resources_v2.Stone.Name.get -> string
+override FamilyIslandHelper.Api.Models.Resources_v2.Tomato.Name.get -> string
+override FamilyIslandHelper.Api.Models.Resources_v2.Wheat.Name.get -> string
+override FamilyIslandHelper.Api.Models.Resources_v2.Wood.EnergyCost.get -> int
+override FamilyIslandHelper.Api.Models.Resources_v2.Wood.Name.get -> string
+static FamilyIslandHelper.Api.Helpers.ItemHelper.CompareItems(FamilyIslandHelper.Api.Models.Abstract.Item item1, FamilyIslandHelper.Api.Models.Abstract.Item item2) -> string
+static FamilyIslandHelper.Api.Helpers.ItemHelper.CompareItems(FamilyIslandHelper.Api.Models.Abstract.Item item1, int count1, FamilyIslandHelper.Api.Models.Abstract.Item item2, int count2) -> string
+virtual FamilyIslandHelper.Api.Models.Abstract.Item.ToString(int itemCount) -> string

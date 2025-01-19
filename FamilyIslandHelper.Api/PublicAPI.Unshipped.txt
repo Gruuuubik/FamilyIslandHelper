@@ -1,0 +1,6 @@
+﻿override FamilyIslandHelper.Api.Models.Items_v2.WhippedCream.BuildingToCreate.get -> FamilyIslandHelper.Api.Models.Abstract.Building
+override FamilyIslandHelper.Api.Models.Items_v2.WhippedCream.Components.get -> System.Collections.Generic.List<(FamilyIslandHelper.Api.Models.Abstract.Item item, int count)>
+override FamilyIslandHelper.Api.Models.Items_v2.WhippedCream.LevelWhenAppears.get -> int
+override FamilyIslandHelper.Api.Models.Items_v2.WhippedCream.Name.get -> string
+override FamilyIslandHelper.Api.Models.Items_v2.WhippedCream.OriginalProduceTime.get -> System.TimeSpan
+FamilyIslandHelper.Api.Models.Items_v2.WhippedCream.WhippedCream() -> void
