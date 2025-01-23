@@ -9,7 +9,7 @@ namespace FamilyIslandHelper.Api.UnitTests
 
 		[Theory]
 		[InlineData(ApiVersion.v1, 13)]
-		[InlineData(ApiVersion.v2, 17)]
+		[InlineData(ApiVersion.v2, 18)]
 		public void When_GetBuildingsClasses_Then_ReturnCorrectCollection(ApiVersion apiVersion, int expectedCount)
 		{
 			buildingHelper = new BuildingHelper(apiVersion);

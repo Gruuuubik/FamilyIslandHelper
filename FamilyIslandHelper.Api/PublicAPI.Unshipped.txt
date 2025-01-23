@@ -1,4 +1,16 @@
-﻿override FamilyIslandHelper.Api.Models.Items_v2.WhippedCream.BuildingToCreate.get -> FamilyIslandHelper.Api.Models.Abstract.Building
+﻿FamilyIslandHelper.Api.Models.Buildings_v2.ShamanWorkshop
+FamilyIslandHelper.Api.Models.Buildings_v2.ShamanWorkshop.ShamanWorkshop() -> void
+FamilyIslandHelper.Api.Models.Items_v2.Ocher
+FamilyIslandHelper.Api.Models.Items_v2.Ocher.Ocher() -> void
+override FamilyIslandHelper.Api.Models.Buildings_v2.ShamanWorkshop.Items.get -> System.Collections.Generic.List<FamilyIslandHelper.Api.Models.Abstract.ProducibleItem>
+override FamilyIslandHelper.Api.Models.Buildings_v2.ShamanWorkshop.Name.get -> string
+override FamilyIslandHelper.Api.Models.Buildings_v2.ShamanWorkshop.ProduceRatio.get -> double
+override FamilyIslandHelper.Api.Models.Items_v2.Ocher.BuildingToCreate.get -> FamilyIslandHelper.Api.Models.Abstract.Building
+override FamilyIslandHelper.Api.Models.Items_v2.Ocher.Components.get -> System.Collections.Generic.List<(FamilyIslandHelper.Api.Models.Abstract.Item item, int count)>
+override FamilyIslandHelper.Api.Models.Items_v2.Ocher.LevelWhenAppears.get -> int
+override FamilyIslandHelper.Api.Models.Items_v2.Ocher.Name.get -> string
+override FamilyIslandHelper.Api.Models.Items_v2.Ocher.OriginalProduceTime.get -> System.TimeSpan
+override FamilyIslandHelper.Api.Models.Items_v2.WhippedCream.BuildingToCreate.get -> FamilyIslandHelper.Api.Models.Abstract.Building
 override FamilyIslandHelper.Api.Models.Items_v2.WhippedCream.Components.get -> System.Collections.Generic.List<(FamilyIslandHelper.Api.Models.Abstract.Item item, int count)>
 override FamilyIslandHelper.Api.Models.Items_v2.WhippedCream.LevelWhenAppears.get -> int
 override FamilyIslandHelper.Api.Models.Items_v2.WhippedCream.Name.get -> string
