@@ -12,7 +12,8 @@ namespace FamilyIslandHelper.Api.Models.Buildings_v2
 		{
 			new Resin(),
 			new IronIngot(),
-			new Coal()
+			new Coal(),
+			new SteelSheet()
 		};
 	}
 }

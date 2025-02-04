@@ -48,4 +48,19 @@ namespace FamilyIslandHelper.Api.Models.Items_v2
 				(new Stick(), 18)
 			};
 	}
+
+	public class SteelSheet : ProducibleItem
+	{
+		public override string Name => "Стальной лист";
+		public override int LevelWhenAppears => 90;
+		public override TimeSpan OriginalProduceTime => TimeSpan.FromHours(1);
+		public override Building BuildingToCreate => new Smelter();
+
+		public override List<(Item item, int count)> Components => new List<(Item item, int count)>
+			{
+				(new Iron(), 25),
+				(new Stone(), 25),
+				(new Clay(), 30)
+			};
+	}
 }
