@@ -23,12 +23,14 @@ namespace FamilyIslandHelper.Api.Models.Items_v2
 	{
 		public override string Name => "Черепица";
 		public override int LevelWhenAppears => 46;
-		public override TimeSpan OriginalProduceTime => TimeSpan.FromHours(2);
+		public override TimeSpan OriginalProduceTime => TimeSpan.FromHours(1);
 		public override Building BuildingToCreate => new Kiln();
 
 		public override List<(Item item, int count)> Components => new List<(Item item, int count)>
 			{
-				(new Clay(), 20)
+				(new SmoothBoard(), 3),
+				(new Clay(), 35),
+				(new Wood(), 20)
 			};
 	}
 }
