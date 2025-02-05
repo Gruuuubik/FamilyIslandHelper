@@ -1310,3 +1310,28 @@ override FamilyIslandHelper.Api.Models.Resources_v2.Wood.Name.get -> string
 static FamilyIslandHelper.Api.Helpers.ItemHelper.CompareItems(FamilyIslandHelper.Api.Models.Abstract.Item item1, FamilyIslandHelper.Api.Models.Abstract.Item item2) -> string
 static FamilyIslandHelper.Api.Helpers.ItemHelper.CompareItems(FamilyIslandHelper.Api.Models.Abstract.Item item1, int count1, FamilyIslandHelper.Api.Models.Abstract.Item item2, int count2) -> string
 virtual FamilyIslandHelper.Api.Models.Abstract.Item.ToString(int itemCount) -> string
+FamilyIslandHelper.Api.Models.Buildings_v2.ShamanWorkshop
+FamilyIslandHelper.Api.Models.Buildings_v2.ShamanWorkshop.ShamanWorkshop() -> void
+FamilyIslandHelper.Api.Models.Items_v2.Ocher
+FamilyIslandHelper.Api.Models.Items_v2.Ocher.Ocher() -> void
+FamilyIslandHelper.Api.Models.Items_v2.SteelSheet
+FamilyIslandHelper.Api.Models.Items_v2.SteelSheet.SteelSheet() -> void
+override FamilyIslandHelper.Api.Models.Buildings_v2.ShamanWorkshop.Items.get -> System.Collections.Generic.List<FamilyIslandHelper.Api.Models.Abstract.ProducibleItem>
+override FamilyIslandHelper.Api.Models.Buildings_v2.ShamanWorkshop.Name.get -> string
+override FamilyIslandHelper.Api.Models.Buildings_v2.ShamanWorkshop.ProduceRatio.get -> double
+override FamilyIslandHelper.Api.Models.Items_v2.Ocher.BuildingToCreate.get -> FamilyIslandHelper.Api.Models.Abstract.Building
+override FamilyIslandHelper.Api.Models.Items_v2.Ocher.Components.get -> System.Collections.Generic.List<(FamilyIslandHelper.Api.Models.Abstract.Item item, int count)>
+override FamilyIslandHelper.Api.Models.Items_v2.Ocher.LevelWhenAppears.get -> int
+override FamilyIslandHelper.Api.Models.Items_v2.Ocher.Name.get -> string
+override FamilyIslandHelper.Api.Models.Items_v2.Ocher.OriginalProduceTime.get -> System.TimeSpan
+override FamilyIslandHelper.Api.Models.Items_v2.SteelSheet.BuildingToCreate.get -> FamilyIslandHelper.Api.Models.Abstract.Building
+override FamilyIslandHelper.Api.Models.Items_v2.SteelSheet.Components.get -> System.Collections.Generic.List<(FamilyIslandHelper.Api.Models.Abstract.Item item, int count)>
+override FamilyIslandHelper.Api.Models.Items_v2.SteelSheet.LevelWhenAppears.get -> int
+override FamilyIslandHelper.Api.Models.Items_v2.SteelSheet.Name.get -> string
+override FamilyIslandHelper.Api.Models.Items_v2.SteelSheet.OriginalProduceTime.get -> System.TimeSpan
+override FamilyIslandHelper.Api.Models.Items_v2.WhippedCream.BuildingToCreate.get -> FamilyIslandHelper.Api.Models.Abstract.Building
+override FamilyIslandHelper.Api.Models.Items_v2.WhippedCream.Components.get -> System.Collections.Generic.List<(FamilyIslandHelper.Api.Models.Abstract.Item item, int count)>
+override FamilyIslandHelper.Api.Models.Items_v2.WhippedCream.LevelWhenAppears.get -> int
+override FamilyIslandHelper.Api.Models.Items_v2.WhippedCream.Name.get -> string
+override FamilyIslandHelper.Api.Models.Items_v2.WhippedCream.OriginalProduceTime.get -> System.TimeSpan
+FamilyIslandHelper.Api.Models.Items_v2.WhippedCream.WhippedCream() -> void
