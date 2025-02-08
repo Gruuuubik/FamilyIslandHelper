@@ -1,1 +1,1 @@
-﻿
+﻿static FamilyIslandHelper.Api.Helpers.ItemHelper.GetTotalProduceTimeForAmount(FamilyIslandHelper.Api.Models.Abstract.Item item, int itemCount) -> System.TimeSpan

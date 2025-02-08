@@ -150,7 +150,7 @@ namespace FamilyIslandHelper.Api.Helpers
 				}
 
 				info.Add(string.Empty);
-				info.Add("Итого времени на производство: " + TimeSpan.FromSeconds(producibleItem.TotalProduceTime.TotalSeconds * itemCount));
+				info.Add("Итого времени на производство: " + GetTotalProduceTimeForAmount(producibleItem, itemCount));
 			}
 
 			return info;
@@ -188,6 +188,16 @@ namespace FamilyIslandHelper.Api.Helpers
 			var imagePath = $"{MainNamespace}.{FolderWithResourcesPictures}.{resourceName + ImageExtension}";
 
 			return GetImageStreamByImagePath(imagePath);
+		}
+
+		public static TimeSpan GetTotalProduceTimeForAmount(Item item, int itemCount)
+		{
+			if (item is ProducibleItem producibleItem)
+			{
+				return TimeSpan.FromSeconds(producibleItem.TotalProduceTime.TotalSeconds * itemCount);
+			}
+
+			return TimeSpan.Zero;
 		}
 	}
 }

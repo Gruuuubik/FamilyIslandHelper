@@ -209,5 +209,20 @@ namespace FamilyIslandHelper.Api.UnitTests
 				Assert.NotNull(itemHelper.GetItemImageByName(buildingClassName, itemName));
 			}
 		}
+
+		public static IEnumerable<object[]> GetTotalProduceTimeForAmount_TestData()
+		{
+			yield return new object[] { new Amphora(), 3, new TimeSpan(1, 3, 6, 0, 0) };
+			yield return new object[] { new Stone(), 2, TimeSpan.Zero };
+		}
+
+		[Theory]
+		[MemberData(nameof(GetTotalProduceTimeForAmount_TestData))]
+		public void When_GetTotalProduceTimeForAmount_Then_ReturnCorrectValue(Item item, int amount, TimeSpan expectedTime)
+		{
+			var totalProduceTime = ItemHelper.GetTotalProduceTimeForAmount(item, amount);
+
+			Assert.Equal(expectedTime, totalProduceTime);
+		}
 	}
 }
