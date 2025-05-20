@@ -34,4 +34,19 @@ namespace FamilyIslandHelper.Api.Models.Items_v2
 			(new Hammer(), 1)
 		};
 	}
+
+	public class IronPipe : ProducibleItem
+	{
+		public override string Name => "Железная труба";
+		public override int LevelWhenAppears => 65;
+		public override TimeSpan OriginalProduceTime => TimeSpan.FromMinutes(60);
+		public override Building BuildingToCreate => new MeteoriteForge();
+
+		public override List<(Item item, int count)> Components => new List<(Item item, int count)>
+		{
+			(new SteelSheet(), 2),
+			(new Stone(), 22),
+			(new Grass(), 25)
+		};
+	}
 }
