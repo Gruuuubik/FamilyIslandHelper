@@ -74,20 +74,6 @@ namespace FamilyIslandHelper.Api.UnitTests
 			Assert.Equal(expectedItemType, item.GetType());
 		}
 
-		public static IEnumerable<object[]> GetProduceTime_TestData()
-		{
-			yield return new object[] { nameof(Sackcloth), TimeSpan.FromMinutes(40) };
-		}
-
-		[Theory]
-		[MemberData(nameof(GetProduceTime_TestData))]
-		public void When_GetProduceTime_Then_ReturnCorrectValue(string itemTypeString, TimeSpan expectedProduceTime)
-		{
-			var item = itemHelper.CreateProducibleItem(itemTypeString);
-
-			Assert.Equal(expectedProduceTime, item.ProduceTime);
-		}
-
 		[Theory]
 		[InlineData("Stone", typeof(Stone))]
 		public void When_TryToCreateResourceItem_Then_ReturnCorrectResourceItem(string itemTypeString, Type expectedItemType)
@@ -100,19 +86,13 @@ namespace FamilyIslandHelper.Api.UnitTests
 		public static IEnumerable<object[]> CompareItemsWithDifferentCount_TestData()
 		{
 			yield return new object[] { new Lace(), 2, new Lace(), 2,
-				"2 'Шнурок' и 2 'Шнурок' равны по энергии. 2 'Шнурок' и 2 'Шнурок' равны по времени производства." };
+				"2 'Шнурок' и 2 'Шнурок' равны по энергии." };
 
 			yield return new object[] { new Rope(), 5, new Wattle(), 3,
 				"3 'Плетень' выгоднее, чем 5 'Верёвка' по энергии." };
 
 			yield return new object[] { new Stone(), 5, new Grass(), 3,
 				"3 'Трава' выгоднее, чем 5 'Камень' по энергии." };
-
-			yield return new object[] { new Scraper(), 1, new Lace(), 5,
-				"1 'Скребок' и 5 'Шнурок' равны по энергии. 1 'Скребок' выгоднее, чем 5 'Шнурок' по времени производства." };
-
-			yield return new object[] { new Lace(), 5, new Scraper(), 1,
-				"5 'Шнурок' и 1 'Скребок' равны по энергии. 1 'Скребок' выгоднее, чем 5 'Шнурок' по времени производства." };
 		}
 
 		[Theory]
@@ -127,7 +107,7 @@ namespace FamilyIslandHelper.Api.UnitTests
 		public static IEnumerable<object[]> CompareItems_TestData()
 		{
 			yield return new object[] { new Lace(), new Lace(),
-				"1 'Шнурок' и 1 'Шнурок' равны по энергии. 1 'Шнурок' и 1 'Шнурок' равны по времени производства." };
+				"1 'Шнурок' и 1 'Шнурок' равны по энергии." };
 
 			yield return new object[] { new Rope(), new Wattle(),
 				"1 'Верёвка' выгоднее, чем 1 'Плетень' по энергии." };
@@ -147,20 +127,16 @@ namespace FamilyIslandHelper.Api.UnitTests
 			yield return new object[] { "Lace", 1, false,
 				new List<string>
 				{
-					"Шнурок(00:01:40, 4 энергии)",
-					"",
-					"Итого времени на производство: 00:01:40"
+					"Шнурок(4 энергии)"
 				}
 			};
 
 			yield return new object[] { "Lace", 1, true,
 				new List<string>
 				{
-					"Шнурок(00:01:40, 4 энергии)",
+					"Шнурок(4 энергии)",
 					"",
-					"Components:", "\tТрава(2 энергии) - 2 шт.",
-					"",
-					"Итого времени на производство: 00:01:40"
+					"Components:", "\tТрава(2 энергии) - 2 шт."
 				}
 			};
 		}
@@ -208,21 +184,6 @@ namespace FamilyIslandHelper.Api.UnitTests
 			{
 				Assert.NotNull(itemHelper.GetItemImageByName(buildingClassName, itemName));
 			}
-		}
-
-		public static IEnumerable<object[]> GetTotalProduceTimeForAmount_TestData()
-		{
-			yield return new object[] { new Amphora(), 3, new TimeSpan(1, 3, 6, 0, 0) };
-			yield return new object[] { new Stone(), 2, TimeSpan.Zero };
-		}
-
-		[Theory]
-		[MemberData(nameof(GetTotalProduceTimeForAmount_TestData))]
-		public void When_GetTotalProduceTimeForAmount_Then_ReturnCorrectValue(Item item, int amount, TimeSpan expectedTime)
-		{
-			var totalProduceTime = ItemHelper.GetTotalProduceTimeForAmount(item, amount);
-
-			Assert.Equal(expectedTime, totalProduceTime);
 		}
 	}
 }

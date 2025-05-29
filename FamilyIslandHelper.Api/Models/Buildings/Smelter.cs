@@ -7,7 +7,6 @@ namespace FamilyIslandHelper.Api.Models.Buildings
 	public class Smelter : Building
 	{
 		public override string Name => "Плавильня";
-		public override double ProduceRatio => 1.5;
 		public override List<ProducibleItem> Items => new List<ProducibleItem>
 		{
 			new Resin(),

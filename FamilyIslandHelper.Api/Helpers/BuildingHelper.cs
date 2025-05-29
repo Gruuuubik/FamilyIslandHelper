@@ -51,7 +51,7 @@ namespace FamilyIslandHelper.Api.Helpers
 		{
 			var building = CreateBuilding(buildingName);
 
-			return building.Items.OrderBy(i => i.LevelWhenAppears).ThenBy(i => i.TotalProduceTime).Select(i => i.GetType().Name).ToList();
+			return building.Items.OrderBy(i => i.LevelWhenAppears).Select(i => i.GetType().Name).ToList();
 		}
 
 		public Image GetBuildingImageByName(string buildingName)

@@ -7,42 +7,28 @@ namespace FamilyIslandHelper.Api.UnitTests
 {
 	public class ProducibleItemTests : BaseTest
 	{
-		public static IEnumerable<object[]> TotalProduceTime_TestData()
-		{
-			yield return new object[] { new Rope(), TimeSpan.FromSeconds(2360) };
-		}
-
-		[Theory]
-		[MemberData(nameof(TotalProduceTime_TestData))]
-		public void Given_ProducibleItem_When_GetTotalProduceTime_Then_ReturnCorrectValue(ProducibleItem producibleItem1, TimeSpan expectedTotalProduceTime)
-		{
-			var actualTotalProduceTime = producibleItem1.TotalProduceTime;
-
-			Assert.Equal(expectedTotalProduceTime, actualTotalProduceTime);
-		}
-
 		public static IEnumerable<object[]> ComponentsInfo_TestData()
 		{
 			yield return new object[] { new Rope(), 1, new List<string>
 			{
-				"\tШнурок(00:01:40, 4 энергии) - 3 шт.",
+				"\tШнурок(4 энергии) - 3 шт.",
 				"\t\tТрава(6 энергии) - 6 шт.",
-				"\tИгла(00:10:00, 24 энергии) - 1 шт.",
+				"\tИгла(24 энергии) - 1 шт.",
 				"\t\tКоготь - 1 шт.",
-				"\t\tСкребок(00:02:40, 20 энергии) - 1 шт.",
+				"\t\tСкребок(20 энергии) - 1 шт.",
 				"\t\t\tКамень(10 энергии) - 2 шт.",
-				"\t\tШнурок(00:01:40, 4 энергии) - 1 шт.",
+				"\t\tШнурок(4 энергии) - 1 шт.",
 				"\t\t\tТрава(2 энергии) - 2 шт."
 			} };
 			yield return new object[] { new Rope(), 3, new List<string>
 			{
-				"\tШнурок(00:05:00, 12 энергии) - 9 шт.",
+				"\tШнурок(12 энергии) - 9 шт.",
 				"\t\tТрава(18 энергии) - 18 шт.",
-				"\tИгла(00:30:00, 72 энергии) - 3 шт.",
+				"\tИгла(72 энергии) - 3 шт.",
 				"\t\tКоготь - 3 шт.",
-				"\t\tСкребок(00:08:00, 60 энергии) - 3 шт.",
+				"\t\tСкребок(60 энергии) - 3 шт.",
 				"\t\t\tКамень(30 энергии) - 6 шт.",
-				"\t\tШнурок(00:05:00, 12 энергии) - 3 шт.",
+				"\t\tШнурок(12 энергии) - 3 шт.",
 				"\t\t\tТрава(6 энергии) - 6 шт."
 			} };
 		}
@@ -58,8 +44,8 @@ namespace FamilyIslandHelper.Api.UnitTests
 
 		public static IEnumerable<object[]> ToString_TestData()
 		{
-			yield return new object[] { new Rope(), 1, "Верёвка(00:20:00, 36 энергии)" };
-			yield return new object[] { new Rope(), 3, "Верёвка(01:00:00, 108 энергии)" };
+			yield return new object[] { new Rope(), 1, "Верёвка(36 энергии)" };
+			yield return new object[] { new Rope(), 3, "Верёвка(108 энергии)" };
 		}
 
 		[Theory]
@@ -113,7 +99,6 @@ namespace FamilyIslandHelper.Api.UnitTests
 		{
 			Assert.All(producibleItems, (item) => Assert.NotNull(item.Name));
 			Assert.All(producibleItems, (item) => Assert.InRange(item.LevelWhenAppears, 1, 100));
-			Assert.All(producibleItems, (item) => Assert.InRange(item.OriginalProduceTime, TimeSpan.FromSeconds(1), TimeSpan.FromHours(20)));
 			Assert.All(producibleItems, (item) => Assert.NotNull(item.BuildingToCreate));
 			Assert.All(producibleItems, (item) => Assert.NotEmpty(item.Components));
 		}

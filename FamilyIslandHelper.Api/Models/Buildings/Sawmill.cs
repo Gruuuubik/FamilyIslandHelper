@@ -7,7 +7,6 @@ namespace FamilyIslandHelper.Api.Models.Buildings
 	public class Sawmill : Building
 	{
 		public override string Name => "Лесопилка";
-		public override double ProduceRatio => 1.5;
 		public override List<ProducibleItem> Items => new List<ProducibleItem>
 		{
 			new Stakes(),

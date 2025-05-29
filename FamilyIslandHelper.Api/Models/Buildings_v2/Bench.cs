@@ -7,7 +7,6 @@ namespace FamilyIslandHelper.Api.Models.Buildings_v2
 	public class Bench : Building
 	{
 		public override string Name => "Лавка (?)";
-		public override double ProduceRatio => 1;
 
 		public override List<ProducibleItem> Items => new List<ProducibleItem>
 		{

@@ -1,8 +1,1 @@
-﻿FamilyIslandHelper.Api.Models.Items_v2.IronPipe
-FamilyIslandHelper.Api.Models.Items_v2.IronPipe.IronPipe() -> void
-override FamilyIslandHelper.Api.Models.Items_v2.IronPipe.BuildingToCreate.get -> FamilyIslandHelper.Api.Models.Abstract.Building
-override FamilyIslandHelper.Api.Models.Items_v2.IronPipe.Components.get -> System.Collections.Generic.List<(FamilyIslandHelper.Api.Models.Abstract.Item item, int count)>
-override FamilyIslandHelper.Api.Models.Items_v2.IronPipe.LevelWhenAppears.get -> int
-override FamilyIslandHelper.Api.Models.Items_v2.IronPipe.Name.get -> string
-override FamilyIslandHelper.Api.Models.Items_v2.IronPipe.OriginalProduceTime.get -> System.TimeSpan
-static FamilyIslandHelper.Api.Helpers.ItemHelper.GetTotalProduceTimeForAmount(FamilyIslandHelper.Api.Models.Abstract.Item item, int itemCount) -> System.TimeSpan
+﻿

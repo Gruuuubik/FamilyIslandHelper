@@ -10,7 +10,6 @@ namespace FamilyIslandHelper.Api.Models.Items
 	{
 		public override string Name => "Рунный камень";
 		public override int LevelWhenAppears => 62;
-		public override TimeSpan OriginalProduceTime => TimeSpan.FromHours(6);
 		public override Building BuildingToCreate => new ShamanWorkshop();
 
 		public override List<(Item item, int count)> Components => new List<(Item item, int count)>
@@ -25,7 +24,6 @@ namespace FamilyIslandHelper.Api.Models.Items
 	{
 		public override string Name => "Цветочный венок";
 		public override int LevelWhenAppears => 64;
-		public override TimeSpan OriginalProduceTime => TimeSpan.FromHours(1);
 		public override Building BuildingToCreate => new ShamanWorkshop();
 
 		public override List<(Item item, int count)> Components => new List<(Item item, int count)>
@@ -40,7 +38,6 @@ namespace FamilyIslandHelper.Api.Models.Items
 	{
 		public override string Name => "Душистый букет";
 		public override int LevelWhenAppears => 66;
-		public override TimeSpan OriginalProduceTime => TimeSpan.FromMinutes(30);
 		public override Building BuildingToCreate => new ShamanWorkshop();
 
 		public override List<(Item item, int count)> Components => new List<(Item item, int count)>

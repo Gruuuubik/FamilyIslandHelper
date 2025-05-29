@@ -10,7 +10,6 @@ namespace FamilyIslandHelper.Api.Models.Items
 	{
 		public override string Name => "Шнурок";
 		public override int LevelWhenAppears => 2;
-		public override TimeSpan OriginalProduceTime => TimeSpan.FromSeconds(150);
 		public override Building BuildingToCreate => new Loom();
 
 		public override List<(Item item, int count)> Components => new List<(Item item, int count)>
@@ -23,7 +22,6 @@ namespace FamilyIslandHelper.Api.Models.Items
 	{
 		public override string Name => "Плетень";
 		public override int LevelWhenAppears => 4;
-		public override TimeSpan OriginalProduceTime => TimeSpan.FromMinutes(6);
 		public override Building BuildingToCreate => new Loom();
 
 		public override List<(Item item, int count)> Components => new List<(Item item, int count)>
@@ -37,7 +35,6 @@ namespace FamilyIslandHelper.Api.Models.Items
 	{
 		public override string Name => "Верёвка";
 		public override int LevelWhenAppears => 15;
-		public override TimeSpan OriginalProduceTime => TimeSpan.FromMinutes(30);
 		public override Building BuildingToCreate => new Loom();
 
 		public override List<(Item item, int count)> Components => new List<(Item item, int count)>
@@ -51,7 +48,6 @@ namespace FamilyIslandHelper.Api.Models.Items
 	{
 		public override string Name => "Перчатки";
 		public override int LevelWhenAppears => 15;
-		public override TimeSpan OriginalProduceTime => TimeSpan.FromMinutes(30);
 		public override Building BuildingToCreate => new Loom();
 
 		public override List<(Item item, int count)> Components => new List<(Item item, int count)>
@@ -64,7 +60,6 @@ namespace FamilyIslandHelper.Api.Models.Items
 	{
 		public override string Name => "Мешковина";
 		public override int LevelWhenAppears => 26;
-		public override TimeSpan OriginalProduceTime => TimeSpan.FromHours(1);
 		public override Building BuildingToCreate => new Loom();
 
 		public override List<(Item item, int count)> Components => new List<(Item item, int count)>
@@ -78,7 +73,6 @@ namespace FamilyIslandHelper.Api.Models.Items
 	{
 		public override string Name => "Ткань";
 		public override int LevelWhenAppears => 38;
-		public override TimeSpan OriginalProduceTime => TimeSpan.FromHours(3);
 		public override Building BuildingToCreate => new Loom();
 
 		public override List<(Item item, int count)> Components => new List<(Item item, int count)>
@@ -92,7 +86,6 @@ namespace FamilyIslandHelper.Api.Models.Items
 	{
 		public override string Name => "Ожерелье";
 		public override int LevelWhenAppears => 42;
-		public override TimeSpan OriginalProduceTime => TimeSpan.FromHours(1);
 		public override Building BuildingToCreate => new Loom();
 
 		public override List<(Item item, int count)> Components => new List<(Item item, int count)>
@@ -107,7 +100,6 @@ namespace FamilyIslandHelper.Api.Models.Items
 	{
 		public override string Name => "Корзинка для пикника";
 		public override int LevelWhenAppears => 57;
-		public override TimeSpan OriginalProduceTime => TimeSpan.FromMinutes(30);
 		public override Building BuildingToCreate => new Loom();
 
 		public override List<(Item item, int count)> Components => new List<(Item item, int count)>
@@ -122,7 +114,6 @@ namespace FamilyIslandHelper.Api.Models.Items
 	{
 		public override string Name => "Плетеная корзинка";
 		public override int LevelWhenAppears => 57;
-		public override TimeSpan OriginalProduceTime => TimeSpan.FromMinutes(30);
 		public override Building BuildingToCreate => new Loom();
 
 		public override List<(Item item, int count)> Components => new List<(Item item, int count)>
@@ -137,7 +128,6 @@ namespace FamilyIslandHelper.Api.Models.Items
 	{
 		public override string Name => "Ловец снов";
 		public override int LevelWhenAppears => 59;
-		public override TimeSpan OriginalProduceTime => TimeSpan.FromHours(2);
 		public override Building BuildingToCreate => new Loom();
 
 		public override List<(Item item, int count)> Components => new List<(Item item, int count)>
@@ -152,7 +142,6 @@ namespace FamilyIslandHelper.Api.Models.Items
 	{
 		public override string Name => "Окрашенная ткань";
 		public override int LevelWhenAppears => 61;
-		public override TimeSpan OriginalProduceTime => TimeSpan.FromHours(4);
 		public override Building BuildingToCreate => new Loom();
 
 		public override List<(Item item, int count)> Components => new List<(Item item, int count)>

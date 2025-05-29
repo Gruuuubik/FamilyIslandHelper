@@ -10,7 +10,6 @@ namespace FamilyIslandHelper.Api.Models.Items_v2
 	{
 		public override string Name => "Гвозди";
 		public override int LevelWhenAppears => 35;
-		public override TimeSpan OriginalProduceTime => TimeSpan.FromMinutes(25);
 		public override Building BuildingToCreate => new MeteoriteForge();
 
 		public override List<(Item item, int count)> Components => new List<(Item item, int count)>
@@ -25,7 +24,6 @@ namespace FamilyIslandHelper.Api.Models.Items_v2
 	{
 		public override string Name => "Железная пластина";
 		public override int LevelWhenAppears => 54;
-		public override TimeSpan OriginalProduceTime => TimeSpan.FromMinutes(30);
 		public override Building BuildingToCreate => new MeteoriteForge();
 
 		public override List<(Item item, int count)> Components => new List<(Item item, int count)>
@@ -40,7 +38,6 @@ namespace FamilyIslandHelper.Api.Models.Items_v2
 	{
 		public override string Name => "Железная труба";
 		public override int LevelWhenAppears => 65;
-		public override TimeSpan OriginalProduceTime => TimeSpan.FromMinutes(60);
 		public override Building BuildingToCreate => new MeteoriteForge();
 
 		public override List<(Item item, int count)> Components => new List<(Item item, int count)>

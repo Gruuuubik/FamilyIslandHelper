@@ -10,7 +10,6 @@ namespace FamilyIslandHelper.Api.Models.Items_v2
 	{
 		public override string Name => "Шнурок";
 		public override int LevelWhenAppears => 2;
-		public override TimeSpan OriginalProduceTime => TimeSpan.FromSeconds(51);
 		public override Building BuildingToCreate => new Loom();
 
 		public override List<(Item item, int count)> Components => new List<(Item item, int count)>
@@ -23,7 +22,6 @@ namespace FamilyIslandHelper.Api.Models.Items_v2
 	{
 		public override string Name => "Верёвка";
 		public override int LevelWhenAppears => 15;
-		public override TimeSpan OriginalProduceTime => TimeSpan.FromMinutes(3);
 		public override Building BuildingToCreate => new Loom();
 
 		public override List<(Item item, int count)> Components => new List<(Item item, int count)>
@@ -37,7 +35,6 @@ namespace FamilyIslandHelper.Api.Models.Items_v2
 	{
 		public override string Name => "Кожаный шнур";
 		public override int LevelWhenAppears => 16;
-		public override TimeSpan OriginalProduceTime => TimeSpan.FromMinutes(17);
 		public override Building BuildingToCreate => new Loom();
 
 		public override List<(Item item, int count)> Components => new List<(Item item, int count)>
@@ -52,7 +49,6 @@ namespace FamilyIslandHelper.Api.Models.Items_v2
 	{
 		public override string Name => "Корзина";
 		public override int LevelWhenAppears => 17;
-		public override TimeSpan OriginalProduceTime => TimeSpan.FromMinutes(50);
 		public override Building BuildingToCreate => new Loom();
 
 		public override List<(Item item, int count)> Components => new List<(Item item, int count)>

@@ -7,7 +7,6 @@ namespace FamilyIslandHelper.Api.Models.Buildings_v2
 	public class Loom : Building
 	{
 		public override string Name => "Ткацкий станок";
-		public override double ProduceRatio => 1;
 		public override List<ProducibleItem> Items => new List<ProducibleItem>
 		{
 			new Lace(),

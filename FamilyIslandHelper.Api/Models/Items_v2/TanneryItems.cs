@@ -1,7 +1,6 @@
 ﻿using FamilyIslandHelper.Api.Models.Abstract;
 using FamilyIslandHelper.Api.Models.Buildings_v2;
 using FamilyIslandHelper.Api.Models.Resources_v2;
-using System;
 using System.Collections.Generic;
 
 namespace FamilyIslandHelper.Api.Models.Items_v2
@@ -10,7 +9,6 @@ namespace FamilyIslandHelper.Api.Models.Items_v2
 	{
 		public override string Name => "Кожа";
 		public override int LevelWhenAppears => 24;
-		public override TimeSpan OriginalProduceTime => TimeSpan.FromMinutes(20);
 		public override Building BuildingToCreate => new Tannery();
 
 		public override List<(Item item, int count)> Components => new List<(Item item, int count)>
@@ -25,7 +23,6 @@ namespace FamilyIslandHelper.Api.Models.Items_v2
 	{
 		public override string Name => "Пергамент";
 		public override int LevelWhenAppears => 36;
-		public override TimeSpan OriginalProduceTime => TimeSpan.FromMinutes(70);
 		public override Building BuildingToCreate => new Tannery();
 
 		public override List<(Item item, int count)> Components => new List<(Item item, int count)>
@@ -40,7 +37,6 @@ namespace FamilyIslandHelper.Api.Models.Items_v2
 	{
 		public override string Name => "Картон";
 		public override int LevelWhenAppears => 40;
-		public override TimeSpan OriginalProduceTime => TimeSpan.FromMinutes(112);
 		public override Building BuildingToCreate => new Tannery();
 
 		public override List<(Item item, int count)> Components => new List<(Item item, int count)>

@@ -72,9 +72,6 @@ namespace FamilyIslandHelper.Api.Helpers
 			var cost1 = 0;
 			var cost2 = 0;
 
-			var time1 = TimeSpan.Zero;
-			var time2 = TimeSpan.Zero;
-
 			if (item1 is ResourceItem resourceItem1)
 			{
 				cost1 = resourceItem1.EnergyCost;
@@ -82,7 +79,6 @@ namespace FamilyIslandHelper.Api.Helpers
 			else if (item1 is ProducibleItem producibleItem1)
 			{
 				cost1 = producibleItem1.ProduceEnergyCost;
-				time1 = producibleItem1.TotalProduceTime;
 			}
 
 			if (item2 is ResourceItem resourceItem2)
@@ -92,13 +88,10 @@ namespace FamilyIslandHelper.Api.Helpers
 			else if (item2 is ProducibleItem producibleItem2)
 			{
 				cost2 = producibleItem2.ProduceEnergyCost;
-				time2 = producibleItem2.TotalProduceTime;
 			}
 
 			cost1 *= count1;
 			cost2 *= count2;
-			time1 = TimeSpan.FromTicks(time1.Ticks * count1);
-			time2 = TimeSpan.FromTicks(time2.Ticks * count2);
 
 			string result;
 
@@ -113,19 +106,6 @@ namespace FamilyIslandHelper.Api.Helpers
 			else
 			{
 				result = $"{count1} '{item1.Name}' и {count2} '{item2.Name}' равны по энергии.";
-
-				if (time1 < time2)
-				{
-					result += $" {count1} '{item1.Name}' выгоднее, чем {count2} '{item2.Name}' по времени производства.";
-				}
-				else if (time1 > time2)
-				{
-					result += $" {count2} '{item2.Name}' выгоднее, чем {count1} '{item1.Name}' по времени производства.";
-				}
-				else
-				{
-					result += $" {count1} '{item1.Name}' и {count2} '{item2.Name}' равны по времени производства.";
-				}
 			}
 
 			return result;
@@ -148,9 +128,6 @@ namespace FamilyIslandHelper.Api.Helpers
 
 					info.AddRange(producibleItem.ComponentsInfo(0, itemCount));
 				}
-
-				info.Add(string.Empty);
-				info.Add("Итого времени на производство: " + GetTotalProduceTimeForAmount(producibleItem, itemCount));
 			}
 
 			return info;
@@ -188,16 +165,6 @@ namespace FamilyIslandHelper.Api.Helpers
 			var imagePath = $"{MainNamespace}.{FolderWithResourcesPictures}.{resourceName + ImageExtension}";
 
 			return GetImageStreamByImagePath(imagePath);
-		}
-
-		public static TimeSpan GetTotalProduceTimeForAmount(Item item, int itemCount)
-		{
-			if (item is ProducibleItem producibleItem)
-			{
-				return TimeSpan.FromSeconds(producibleItem.TotalProduceTime.TotalSeconds * itemCount);
-			}
-
-			return TimeSpan.Zero;
 		}
 	}
 }

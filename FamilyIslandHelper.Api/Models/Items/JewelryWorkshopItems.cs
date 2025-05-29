@@ -10,7 +10,6 @@ namespace FamilyIslandHelper.Api.Models.Items
 	{
 		public override string Name => "Сапфировый браслет";
 		public override int LevelWhenAppears => 37;
-		public override TimeSpan OriginalProduceTime => TimeSpan.FromMinutes(75);
 		public override Building BuildingToCreate => new JewelryWorkshop();
 
 		public override List<(Item item, int count)> Components => new List<(Item item, int count)>
@@ -25,7 +24,6 @@ namespace FamilyIslandHelper.Api.Models.Items
 	{
 		public override string Name => "Самоцветное ожерелье";
 		public override int LevelWhenAppears => 39;
-		public override TimeSpan OriginalProduceTime => TimeSpan.FromMinutes(75);
 		public override Building BuildingToCreate => new JewelryWorkshop();
 
 		public override List<(Item item, int count)> Components => new List<(Item item, int count)>
@@ -40,7 +38,6 @@ namespace FamilyIslandHelper.Api.Models.Items
 	{
 		public override string Name => "Аметистовый кулон";
 		public override int LevelWhenAppears => 38;
-		public override TimeSpan OriginalProduceTime => TimeSpan.FromHours(1);
 		public override Building BuildingToCreate => new JewelryWorkshop();
 
 		public override List<(Item item, int count)> Components => new List<(Item item, int count)>
@@ -55,7 +52,6 @@ namespace FamilyIslandHelper.Api.Models.Items
 	{
 		public override string Name => "Изумрудное кольцо";
 		public override int LevelWhenAppears => 37;
-		public override TimeSpan OriginalProduceTime => TimeSpan.FromMinutes(75);
 		public override Building BuildingToCreate => new JewelryWorkshop();
 
 		public override List<(Item item, int count)> Components => new List<(Item item, int count)>
@@ -69,7 +65,6 @@ namespace FamilyIslandHelper.Api.Models.Items
 	{
 		public override string Name => "Жемчужные сережки";
 		public override int LevelWhenAppears => 20;
-		public override TimeSpan OriginalProduceTime => TimeSpan.FromMinutes(75);
 		public override Building BuildingToCreate => new JewelryWorkshop();
 
 		public override List<(Item item, int count)> Components => new List<(Item item, int count)>
@@ -83,7 +78,6 @@ namespace FamilyIslandHelper.Api.Models.Items
 	{
 		public override string Name => "Хрустальный лотос";
 		public override int LevelWhenAppears => 63;
-		public override TimeSpan OriginalProduceTime => TimeSpan.FromMinutes(1);
 		public override Building BuildingToCreate => new JewelryWorkshop();
 
 		public override List<(Item item, int count)> Components => new List<(Item item, int count)>
