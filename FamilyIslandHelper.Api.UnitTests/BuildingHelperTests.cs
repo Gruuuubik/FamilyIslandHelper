@@ -9,7 +9,7 @@ namespace FamilyIslandHelper.Api.UnitTests
 
 		[Theory]
 		[InlineData(ApiVersion.v1, 13)]
-		[InlineData(ApiVersion.v2, 18)]
+		[InlineData(ApiVersion.v2, 19)]
 		public void When_GetBuildingsClasses_Then_ReturnCorrectCollection(ApiVersion apiVersion, int expectedCount)
 		{
 			buildingHelper = new BuildingHelper(apiVersion);
@@ -57,7 +57,7 @@ namespace FamilyIslandHelper.Api.UnitTests
 				var building = buildingHelper.CreateBuilding(buildingName);
 				var items = building.Items;
 
-				Assert.Equal(building.Name, items.Select(i => i.BuildingToCreate.Name).Distinct().Single());
+				Assert.Equal(building.Name, items.Select(i => i.BuildingToCreate.Name).Distinct().SingleOrDefault());
 			}
 		}
 

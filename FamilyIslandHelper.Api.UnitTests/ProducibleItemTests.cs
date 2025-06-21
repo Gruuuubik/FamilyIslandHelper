@@ -77,6 +77,7 @@ namespace FamilyIslandHelper.Api.UnitTests
 			yield return new object[] { new Models.Buildings_v2.Bench().Items };
 			yield return new object[] { new Models.Buildings_v2.CarpentryWorkshop().Items };
 			yield return new object[] { new Models.Buildings_v2.Forge().Items };
+			yield return new object[] { new Models.Buildings_v2.GlassWorkshop().Items };
 			yield return new object[] { new Models.Buildings_v2.JewelryWorkshop().Items };
 			yield return new object[] { new Models.Buildings_v2.Kiln().Items };
 			yield return new object[] { new Models.Buildings_v2.Knocker().Items };

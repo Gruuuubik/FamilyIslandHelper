@@ -1,1 +1,4 @@
-﻿
+﻿FamilyIslandHelper.Api.Models.Buildings_v2.GlassWorkshop
+FamilyIslandHelper.Api.Models.Buildings_v2.GlassWorkshop.GlassWorkshop() -> void
+override FamilyIslandHelper.Api.Models.Buildings_v2.GlassWorkshop.Items.get -> System.Collections.Generic.List<FamilyIslandHelper.Api.Models.Abstract.ProducibleItem>
+override FamilyIslandHelper.Api.Models.Buildings_v2.GlassWorkshop.Name.get -> string
