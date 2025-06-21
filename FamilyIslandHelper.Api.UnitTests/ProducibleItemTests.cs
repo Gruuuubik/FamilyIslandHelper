@@ -78,6 +78,7 @@ namespace FamilyIslandHelper.Api.UnitTests
 			yield return new object[] { new Models.Buildings_v2.CarpentryWorkshop().Items };
 			yield return new object[] { new Models.Buildings_v2.Forge().Items };
 			yield return new object[] { new Models.Buildings_v2.GlassWorkshop().Items };
+			yield return new object[] { new Models.Buildings_v2.HobbyCorner().Items };
 			yield return new object[] { new Models.Buildings_v2.JewelryWorkshop().Items };
 			yield return new object[] { new Models.Buildings_v2.Kiln().Items };
 			yield return new object[] { new Models.Buildings_v2.Knocker().Items };
@@ -99,7 +100,7 @@ namespace FamilyIslandHelper.Api.UnitTests
 		public void Given_ProducibleItem_When_GetProperties_Then_ReturnNotNullValues(List<ProducibleItem> producibleItems)
 		{
 			Assert.All(producibleItems, (item) => Assert.NotNull(item.Name));
-			Assert.All(producibleItems, (item) => Assert.InRange(item.LevelWhenAppears, 1, 100));
+			Assert.All(producibleItems, (item) => Assert.InRange(item.LevelWhenAppears, 1, 150));
 			Assert.All(producibleItems, (item) => Assert.NotNull(item.BuildingToCreate));
 			Assert.All(producibleItems, (item) => Assert.NotEmpty(item.Components));
 		}

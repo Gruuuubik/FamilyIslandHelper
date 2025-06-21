@@ -1,9 +1,13 @@
 ﻿FamilyIslandHelper.Api.Models.Buildings_v2.GlassWorkshop
 FamilyIslandHelper.Api.Models.Buildings_v2.GlassWorkshop.GlassWorkshop() -> void
+FamilyIslandHelper.Api.Models.Buildings_v2.HobbyCorner
+FamilyIslandHelper.Api.Models.Buildings_v2.HobbyCorner.HobbyCorner() -> void
 FamilyIslandHelper.Api.Models.Items_v2.PaintedParchment
 FamilyIslandHelper.Api.Models.Items_v2.PaintedParchment.PaintedParchment() -> void
 override FamilyIslandHelper.Api.Models.Buildings_v2.GlassWorkshop.Items.get -> System.Collections.Generic.List<FamilyIslandHelper.Api.Models.Abstract.ProducibleItem>
 override FamilyIslandHelper.Api.Models.Buildings_v2.GlassWorkshop.Name.get -> string
+override FamilyIslandHelper.Api.Models.Buildings_v2.HobbyCorner.Items.get -> System.Collections.Generic.List<FamilyIslandHelper.Api.Models.Abstract.ProducibleItem>
+override FamilyIslandHelper.Api.Models.Buildings_v2.HobbyCorner.Name.get -> string
 override FamilyIslandHelper.Api.Models.Items_v2.PaintedParchment.BuildingToCreate.get -> FamilyIslandHelper.Api.Models.Abstract.Building
 override FamilyIslandHelper.Api.Models.Items_v2.PaintedParchment.Components.get -> System.Collections.Generic.List<(FamilyIslandHelper.Api.Models.Abstract.Item item, int count)>
 override FamilyIslandHelper.Api.Models.Items_v2.PaintedParchment.LevelWhenAppears.get -> int
