@@ -11,7 +11,8 @@ namespace FamilyIslandHelper.Api.Models.Buildings_v2
 		{
 			new Leather(),
 			new Papyrus(),
-			new Cardboard()
+			new Cardboard(),
+			new PaintedParchment()
 		};
 	}
 }

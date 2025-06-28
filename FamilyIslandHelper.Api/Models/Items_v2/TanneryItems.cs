@@ -46,4 +46,18 @@ namespace FamilyIslandHelper.Api.Models.Items_v2
 			(new Wood(), 15)
 		};
 	}
+
+	public class PaintedParchment : ProducibleItem
+	{
+		public override string Name => "Крашеный пергамент";
+		public override int LevelWhenAppears => 100;
+		public override Building BuildingToCreate => new Tannery();
+
+		public override List<(Item item, int count)> Components => new List<(Item item, int count)>
+		{
+			(new Grass(), 40),
+			(new Skin(), 1),
+			(new Clay(), 30)
+		};
+	}
 }
