@@ -49,7 +49,6 @@ namespace FamilyIslandHelper.Api.UnitTests
 		public void When_CheckBuildingToCreateForAllItems_Then_ReturnCorrectValue(ApiVersion apiVersion)
 		{
 			buildingHelper = new BuildingHelper(apiVersion);
-
 			var buildingNames = buildingHelper.GetBuildingsNames();
 
 			foreach (var buildingName in buildingNames)
@@ -63,15 +62,16 @@ namespace FamilyIslandHelper.Api.UnitTests
 
 		public static IEnumerable<object[]> GetAllBuildingsNames_TestData()
 		{
-			yield return new object[] { ApiVersion.v1, new[] { "CarpentryWorkshop", "JewelryWorkshop", "Knocker", "Loom", "MeteoriteForge", "Mill", "Mixer", "Pottery", "Sawmill", "ShamanWorkshop", "Smelter", "Tannery", "Workshop" } };
-			yield return new object[] { ApiVersion.v2, new[] { "AlchemistLaboratory", "Bench", "CarpentryWorkshop", "Forge", "JewelryWorkshop", "Kiln", "Knocker", "Loom", "MeteoriteForge", "Mill", "Mixer", "Pottery", "Sawmill", "SewingWorkshop", "Smelter", "Tannery", "Workshop" } };
+			yield return new object[] { ApiVersion.v1 };
+			yield return new object[] { ApiVersion.v2 };
 		}
 
 		[Theory]
 		[MemberData(nameof(GetAllBuildingsNames_TestData))]
-		public void When_GetAllBuildingsNames_Then_AllBuildingsHavePictures(ApiVersion apiVersion, IEnumerable<string> buildingsNames)
+		public void When_GetAllBuildingsNames_Then_AllBuildingsHavePictures(ApiVersion apiVersion)
 		{
 			buildingHelper = new BuildingHelper(apiVersion);
+			var buildingsNames = buildingHelper.GetBuildingsNames();
 
 			foreach (var buildingName in buildingsNames)
 			{
