@@ -31,4 +31,18 @@ namespace FamilyIslandHelper.Api.Models.Items_v2
 				(new Wood(), 10)
 			};
 	}
+
+	public class Cup : ProducibleItem
+	{
+		public override string Name => "Чашка";
+		public override int LevelWhenAppears => 60;
+		public override Building BuildingToCreate => new Kiln();
+
+		public override List<(Item item, int count)> Components => new List<(Item item, int count)>
+			{
+				(new Clay(), 15),
+				(new Amphora(), 2),
+				(new Wood(), 8)
+			};
+	}
 }

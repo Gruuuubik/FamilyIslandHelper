@@ -33,4 +33,18 @@ namespace FamilyIslandHelper.Api.Models.Items_v2
 				(new Wood(), 6)
 			};
 	}
+
+	public class Mercury : ProducibleItem
+	{
+		public override string Name => "Ртуть";
+		public override int LevelWhenAppears => 85;
+		public override Building BuildingToCreate => new AlchemistLaboratory();
+
+		public override List<(Item item, int count)> Components => new List<(Item item, int count)>
+			{
+				(new Iron(), 15),
+				(new Stick(), 37),
+				(new Clay(), 30)
+			};
+	}
 }

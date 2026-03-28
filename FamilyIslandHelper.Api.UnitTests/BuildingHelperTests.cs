@@ -22,7 +22,7 @@ namespace FamilyIslandHelper.Api.UnitTests
 
 		[Theory]
 		[InlineData(ApiVersion.v1, "Mill", new[] { "GoatFood", "ChickenFood", "Ocher", "Flour", "SunflowerOil", "Syrup", "CowFood" })]
-		[InlineData(ApiVersion.v2, "Forge", new[] { "Needle", "Hammer", "Glass" })]
+		[InlineData(ApiVersion.v2, "Forge", new[] { "Needle", "Hammer", "Glass", "Lock" })]
 		public void When_TryToGetItemsOfBuilding_Then_ReturnCorrectItems(ApiVersion apiVersion, string buildingName, IEnumerable<string> expectedItems)
 		{
 			buildingHelper = new BuildingHelper(apiVersion);

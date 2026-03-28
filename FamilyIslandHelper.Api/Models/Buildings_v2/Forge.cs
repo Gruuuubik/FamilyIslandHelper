@@ -11,7 +11,8 @@ namespace FamilyIslandHelper.Api.Models.Buildings_v2
 		{
 			new Needle(),
 			new Hammer(),
-			new Glass()
+			new Glass(),
+			new Lock()
 		};
 	}
 }

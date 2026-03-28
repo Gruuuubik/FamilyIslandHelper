@@ -32,4 +32,18 @@ namespace FamilyIslandHelper.Api.Models.Items_v2
 				(new Clay(), 22)
 			};
 	}
+
+	public class Trough : ProducibleItem
+	{
+		public override string Name => "Корыто";
+		public override int LevelWhenAppears => 80;
+		public override Building BuildingToCreate => new Bench();
+
+		public override List<(Item item, int count)> Components => new List<(Item item, int count)>
+			{
+				(new SmoothBoard(), 2),
+				(new Grass(), 40),
+				(new Stone(), 25)
+			};
+	}
 }

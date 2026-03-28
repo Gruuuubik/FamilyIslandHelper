@@ -32,4 +32,17 @@ namespace FamilyIslandHelper.Api.Models.Items_v2
 				(new Hammer(), 1)
 			};
 	}
+
+	public class Tiara : ProducibleItem
+	{
+		public override string Name => "Тиара";
+		public override int LevelWhenAppears => 65;
+		public override Building BuildingToCreate => new JewelryWorkshop();
+
+		public override List<(Item item, int count)> Components => new List<(Item item, int count)>
+			{
+				(new Clay(), 12),
+				(new Emerald(), 4)
+			};
+	}
 }

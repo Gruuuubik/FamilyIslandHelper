@@ -46,4 +46,18 @@ namespace FamilyIslandHelper.Api.Models.Items_v2
 			(new Wood(), 30)
 		};
 	}
+
+	public class Lock : ProducibleItem
+	{
+		public override string Name => "Замок";
+		public override int LevelWhenAppears => 85;
+		public override Building BuildingToCreate => new Forge();
+
+		public override List<(Item item, int count)> Components => new List<(Item item, int count)>
+		{
+			(new IronIngot(), 2),
+			(new Stick(), 35),
+			(new Stone(), 30)
+		};
+	}
 }
